@@ -12,7 +12,7 @@ class SubjectsTableSeeder extends Seeder
     public function run()
     {
         DB::table('subjects')->insert([
-            'name' => 'URDU',
+            'name' => 'ICT',
         ]);
 
         DB::table('subjects')->insert([
@@ -20,7 +20,7 @@ class SubjectsTableSeeder extends Seeder
         ]);
 
         DB::table('subjects')->insert([
-            'name' => 'ISLAMIYAT',
+            'name' => 'BASIC SCIENCE',
         ]);
 
         DB::table('subjects')->insert([

@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "start": "node your-script.js",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
@@ -27,6 +28,7 @@
     "bootstrap-vue": "^2.1.0",
     "laravel-vue-pagination": "^2.3.1",
     "vue-datatables-net": "^1.2.4",
-    "vue-resource": "^1.5.1"
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.1.6"
   }
 }

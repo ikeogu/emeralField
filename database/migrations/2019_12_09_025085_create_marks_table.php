@@ -21,11 +21,11 @@ class CreateMarksTable extends Migration
             $table->smallInteger('obtain_marks');
             $table->timestamps();
 
-            $table->foreign('student_id')
-                    ->references('id')->on('students')->onDelete('cascade');
+            // $table->foreign('student_id')
+            //         ->references('id')->on('students')->onDelete('cascade');
 
-            $table->foreign('subject_id')
-                    ->references('id')->on('subjects')->onDelete('cascade');
+            // $table->foreign('subject_id')
+            //         ->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 

@@ -19,11 +19,15 @@ class Student extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'father_name' => $this->father_name,
+            'email' => $this->email,
+            'p_email' => $this->p_email,
+            'surname' => $this->surname,
             'roll_no' => $this->roll_no,
             'gender' => $this->gender,
             'contact' => $this->contact,
+            'dob' => $this->dob,
             'address' => $this->address,
+            'identification_mark'=> $this->identification_mark,
             'subjects' => SubjectResource::collection($this->whenLoaded('subjects')),
         ];
     }

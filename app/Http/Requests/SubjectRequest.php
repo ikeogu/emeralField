@@ -25,13 +25,12 @@ class SubjectRequest extends FormRequest
      {
        return [
            'name' => 'required|string',
+           'description' => 'required|string',
+           'level' => 'required',
+           'class_work' => 'required',
+           'home_work' => 'required',
        ];
      }
 
-     public function attributes()
-     {
-         return [
-             'name' => 'Subject Name',
-         ];
-     }
+     
 }

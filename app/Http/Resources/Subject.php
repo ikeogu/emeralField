@@ -19,6 +19,15 @@ class Subject extends JsonResource
       return [
           'id' => $this->id,
           'name' => $this->name,
+          'description' => $this->description,
+          'class_work' => $this->class_work,
+          'home_work' => $this->home_work,
+          'level' => $this->level,
+          'holiday_assignment' => $this->holiday_assignment,
+          'summative_test' => $this->summative_test,
+          'cat_1' => $this->cat_1,
+          'cat_2' => $this->cat_2,
+          'exam' => $this->exam,
           'students' => StudentResource::collection($this->whenLoaded('students')),
       ];
     }

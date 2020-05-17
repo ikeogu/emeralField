@@ -32,7 +32,7 @@
                 <form v-if="this.unassignedSubjects.length > 0" method="post" name="assignsubjects" id="assignsubjects" action="#" @submit.prevent="assignSubject(student_id, subject_id)">
 
                   <div class="form-group">
-                    <label for="gender">Unassigned Subjects</label>
+                    <label for="gender">Assigned Subjects</label>
                     <select class="form-control" name="subject" id="subject" v-model="subject_id">
                           <option v-for="subject in unassignedSubjects"  :key="subject.id" v-bind:value="subject.id">{{ subject.name }}</option>
                     </select>
@@ -43,7 +43,7 @@
                   </div>
                 </form>
                 <span v-else>All Subjects Assigned to this Student!</span>
-                <br/>
+                <br>
 
                 <span class="mt-3">Assigned Subjects</span>
                 <table class="table table-striped table-bordered" style="width:100%">
@@ -59,7 +59,7 @@
                       <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSubject(student_id, subject.id)" data-toggle="modal">Delete</a></td>
                     </tr>
                   </tbody>
-                  </tbody>
+                  
                 </table>
               </div>
 
@@ -75,28 +75,31 @@
               <thead>
                 <tr>
                   <th>Roll#</th>
-                  <th>Student Name</th>
-                  <th>Father Name</th>
+                  <th>First Name</th>
+                  <th>Surname</th>
                   <th>Gender</th>
+                  <th>Class</th>
                   <th>Contact</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="student in students.data" :key="student.id">
-                  <th scope="row">{{ student.roll_no }}</th>
-                  <td>{{ student.name }}</td>
-                  <td>{{ student.father_name.slice(0,50) + "....." }}</td>
-                  <td>{{ student.gender }}</td>
-                  <td>{{ student.contact }}</td>
+                <tr v-for="s in students.data" :key="s.id">
+                  <th scope="row">{{ s.roll_no }}</th>
+                           <td>{{ s.surname}}</td>
+                            <td>{{ s.name}}</td>
+                            <td>{{ s.email}}</td> 
+                            <td>{{ s.dob}}</td>
+                            <td>{{ s.gender}}</td>
+                            <td>{{getAge( s.dob)}}</td>
                   <td><a href="#"
-                       v-on:click="unassignedSubjectsList(student.id)"
+                       v-on:click="unassignedSubjectsList(s.id)"
                        data-target="#exampleModal1"
                        data-toggle="modal"
                        v-bind:title="student.name">Assign Subjects</a></td>
                 </tr>
               </tbody>
-              </tbody>
+             
             </table>
             <pagination :data="students" :limit="2" @pagination-change-page="studentLists">
               <span slot="prev-nav">&lt; Previous</span>
@@ -138,6 +141,10 @@
           this.pagenumber = page
         })
       },
+      
+     getAge(birthDate){
+      Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
+    },
       unassignedSubjectsList(student) {
         this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/unassignedsubjects').then(response => {
           this.unassignedSubjects = response.data;

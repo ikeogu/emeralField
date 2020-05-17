@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Subject;
+use App\Student;
 use App\Http\Requests\SubjectRequest;
 use App\Http\Resources\Subject as SubjectResource;
 use App\Http\Resources\SubjectCollection;
 use App\Http\Resources\StudentCollection;
 use DB;
+use App\SubjectMark;
 use App\Marks;
 
 class SubjectController extends Controller
@@ -104,4 +106,23 @@ class SubjectController extends Controller
       }
       return $marks;
     }
+
+    public function studentsubjects($id){
+        
+        $data = DB::select(" SELECT  subject_id FROM `student_subject` WHERE student_id = $id");
+        $student = Student::find($id);
+        $subject =[];
+        $mark = [];
+        
+        foreach($data as $sub){
+            $s = Subject::where('id','=', $sub->subject_id)->first();
+            $mrk =SubjectMark::where('subject_id','=', $sub->subject_id)->first();
+            array_push($subject,$s);
+            array_push($mark,$mrk);
+        }
+        // dd(json_encode($mark));
+        return  view('students/sheet',['student'=>$student , 'data'=>json_encode($subject)]);
+    }
+
+    
 }

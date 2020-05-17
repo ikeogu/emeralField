@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Marks;
 use Illuminate\Http\Request;
+use App\Student;
 
 class MarksController extends Controller
 {

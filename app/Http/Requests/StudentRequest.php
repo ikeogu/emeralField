@@ -25,29 +25,17 @@ class StudentRequest extends FormRequest
     {
       return [
           'name' => 'required|string|between:3,255',
-          'father_name' => 'required|string|between:3,255',
-          'roll_no' => 'required|integer',
+          'surname' => 'required|string|between:3,255',
+          
           'dob' => 'nullable|date',
           'gender' => 'nullable|integer|between:1,3',
-          'cnic' => 'nullable|regex:[^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$]',
+        //   'cnic' => 'nullable|regex:[^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$]',
           'identification_mark' => 'nullable|string',
           'contact' => 'required|between:10,20|regex:[^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$]',
           'address' => 'required|string',
+          
       ];
     }
 
-    public function attributes()
-    {
-        return [
-            'name' => 'Student Name',
-            'father_name' => 'Father Name',
-            'roll_no' => 'Roll No.',
-            'dob' => 'Date of birth',
-            'gender' => 'Gender',
-            'cnic' => 'CNIC',
-            'identification_mark' => 'Mark of identification',
-            'contact' => 'Contact',
-            'address' => 'Address',
-        ];
-    }
+    
 }
