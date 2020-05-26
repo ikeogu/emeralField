@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-gradient-primary">
+{{-- <div class="bg-gradient-primary">
     <div class="container">
 
         <!-- Outer Row -->
@@ -72,5 +72,6 @@
         </div>
 
     </div>
-</div>
+</div> --}}
+<login></login>
 @endsection

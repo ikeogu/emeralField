@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -23,14 +22,19 @@ class AuthController extends Controller
         }
         $user = new User;
         $user->email = $request->email;
+        $user->name = $request->name;
         $user->password = bcrypt($request->password);
+        $user->isAdmin = $request->isAdmin;
+        $user->api_token = JWTAuth::fromUser($user);
         $user->save();
-        return response()->json(['status' => 'success'], 200);
+        $token =JWTAuth::fromUser($user);
+        return response()->json(['status' => 'success','name' =>$user->name,'token'=>$token], 200);
     }
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        if ($token = $this->guard()->attempt($credentials)) {
+        
+        if ($token = $this->guardS()->attempt($credentials)) {
             return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
         }
         return response()->json(['error' => 'login_error'], 401);
@@ -53,14 +57,14 @@ class AuthController extends Controller
     }
     public function refresh()
     {
-        if ($token = $this->guard()->refresh()) {
+        if ($token = $this->guardS()->refresh()) {
             return response()
                 ->json(['status' => 'successs'], 200)
                 ->header('Authorization', $token);
         }
         return response()->json(['error' => 'refresh_token_error'], 401);
     }
-    private function guard()
+    private function guardS()
     {
         return Auth::guard();
     }

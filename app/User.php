@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     // 1 - admin, 2- Teacher , 3- Student, 
     protected $fillable = [
-        'name', 'email', 'password','isAdmin',
+        'name', 'email', 'password','isAdmin','api_token'
     ];
 
     /**

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTFactory;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Tymon\JWTAuth\PayloadFactory;
+use Tymon\JWTAuth\JWTManager as JWT;
 
 class UserController extends Controller
 {
