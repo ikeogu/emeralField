@@ -1,0 +1,212 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentRequest;
+use App\Http\Resources\Student as StudentResource;
+use App\Http\Resources\StudentCollection;
+use App\Http\Resources\s5ClassResourceCollection;
+use Illuminate\Support\Facades\Hash;
+use App\Student;
+use App\Subject;
+use App\StudentsClass;
+use App\SubjectMark;
+use App\StudentTermClass;
+use App\User;
+use App\Term;
+use App\S5Class;
+use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+class StudentController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return new StudentCollection(Student::paginate(10));
+    }
+    public function index2()
+    {
+      $students = Student::all();
+      return response()->json($students);
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StudentRequest $request)
+    {
+      $student = $request->isMethod('put') ? Student::findOrFail($request->student_id) : new Student;
+      
+      $student->name = $request->name;
+      $student->surname = $request->surname;
+      $student->roll_no = Student::max('id') + 1;
+      $student->email = strtolower($student->name[0].$student->surname).$student->roll_no.'@efa.sch.ng';
+      $student->dob = $request->dob;
+      $student->p_email = $request->p_email;
+      $student->gender = $request->gender;
+      $student->contact = $request->contact;
+      $student->address = $request->address;
+      $student->s_class = $request->s_class; 
+       $class = s5Class::find($request->s_class);
+       $class->student()->attach($student);
+       $student->level = $class->level;
+      $student->identification_mark = $request->identification_mark;
+      if($student->save()){
+
+        $user = new User();
+        $user->name = $student->name. $student->surname;
+        $user->email = $student->email;
+        $user->password = Hash::make(strtolower($student->name));
+        $user->isAdmin = 4;
+        $user->student()->attach($student);
+        $user->save();
+        // StudentClass 
+        $class = S5Class::find($student->s_class);
+        $sess = Term::find($request->term_id);
+        
+        $class->session = null;
+        $class->student()->attach($student->id);
+
+        $stc = new StudentTermClass();
+        $stc->student_id = $student->id;
+        $stc->term_id = $request->term_id;
+        $stc->s5_class_id = $class->id;
+        
+        $stc->save();
+
+        return new StudentResource($student);
+      }
+       
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Student $student)
+    {
+        return new StudentResource($student);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(StudentRequest $request,  $id)
+    {
+      $student = Student::find($id);
+      $student->name = $request->name;
+      $student->surname = $request->surname;
+      
+      $student->dob = $request->dob;
+      $student->p_email = $request->p_email;
+      
+      $student->contact = $request->contact;
+      $student->address = $request->address;
+        return new StudentResource($student);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Student $student)
+    {
+        $student->delete();
+
+        return new StudentResource($student);
+    }
+
+        public function unassignedSubjects(Student $student,Term $term)
+        {
+          $ids = [];
+          $marks = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)
+          ->get();
+          foreach ($marks as $subject) {
+            array_push($ids, $subject->subject_id);
+          }
+
+          $subjects = Subject::whereNotIn('id', $ids)->get();
+
+          return $subjects;
+
+        }
+
+        public function assignedSubjects(Student $student, Term $term)
+        {
+          $ids = [];
+          
+          $mark = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)
+           ->get();
+          
+          foreach ($mark as $subject) {
+            array_push($ids, $subject->subject_id);
+          }
+          
+            $subjects = Subject::whereIn('id', $ids)->get();
+            
+         return $subjects;
+        }
+
+      public function assignSubject(Student $student, Subject $subject,Term $term)
+      {
+        $term->subject()->attach($subject->id,array('student_id' => $student->id));
+        $student->subjects()->attach($subject->id);
+
+              $mark = new SubjectMark();
+              
+              $mark->student_id = $student->id;
+              $mark->subject_id = $subject->id;
+              $mark->subname = $subject->name;
+              $mark->term_id = $term->id;
+              $subject->subjectMark()->save($mark);
+              
+      }
+
+      public function deleteSubject(Student $student, Subject $subject, Term $term)
+      {
+        $student->subjects()->detach($subject->id);
+        $term->subject()->detach($subject->id);
+      }
+
+      public function new_class($s5class,$student){
+        $class = S5Class::find($s5class);
+        $stud = Student::findOrFail($student);
+        $class->student()->attach($stud->id);
+        return new StudentResource($class);
+      }
+      public function myClasses($id){
+        $imstudent = Student::find($id);
+        return new S5ClassResourceCollection($imstudent->s5class);
+      }
+
+      public function search(Request $request){
+         $query = $request->input('query');
+        $users = Student::where('name','like','%'.$query.'%')->orWhere('surname','like','%'.$query.'%')->get();
+        return response()->json($users);
+      }
+
+      public function my_record($id, $class_id, $term_id){
+        $student = Student::find($id);
+        $term = Term::find($term_id);
+        $class = S5Class::find($class_id);
+             
+        return  view('students/term_sheet',['student'=>$student ,'myclass'=>$class, 'term'=>$term]);
+      }
+      
+}

@@ -36,4 +36,11 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function student(){
+        return $this->belongsToMany(Student::class);
+    }
+    public function teacher(){
+        return $this->belongsToMany(Teacher::class);
+    }
 }
