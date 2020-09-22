@@ -205,53 +205,54 @@
 
         <div class="card">
           <div class="card-header">Term List</div>
-          <div class="card-body">
-
-            <table class="table table-striped table-bordered" style="width:100%">
-              <thead>
-                <tr>
-                  <th> Name</th>
-                  <th>Description</th>
-                  <th>Session</th>
-                  <th>Classes</th>
-                  <th></th>
-                  <th colspan="2">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="term in laravelData.data" :key="term.id">
-                  <td>{{ term.name }}</td>
-                  <td>{{ term.description }}</td>
-                  <td>{{ term.session }}</td>
-                  
-                  <td>
-                    <a :href="'http://127.0.0.1:8000/api/terms_classes/' + term.id" class="btn btn-success text-white">view Classes</a>
-                  </td>
-                  <!-- link to student in a class -->
-                  <td>
-                      <a class="btn btn-info text-white" 
-                      v-on:click="unassignedClassList(term.id)"
-                       data-target="#exampleModal23"
-                       data-toggle="modal"
-                       v-bind:title="term.name" > Assign Class</a>
-                      <a href="#"
-                       v-on:click="editTerm(term.id)"
-                       data-target="#exampleModal1"
-                       data-toggle="modal"
-                       v-bind:title="term.name" class="btn btn-warning">Edit</a>
-                       
+          <div class="card-body ">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                  <tr>
+                    <th> Name</th>
+                    <th>Description</th>
+                    <th>Session</th>
+                    <th>Classes</th>
+                    <th></th>
+                    <th colspan="2">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="term in laravelData.data" :key="term.id">
+                    <td>{{ term.name }}</td>
+                    <td>{{ term.description }}</td>
+                    <td>{{ term.session }}</td>
+                    
+                    <td>
+                      <a :href="'http://127.0.0.1:8000/api/terms_classes/' + term.id" class="btn btn-success text-white">view Classes</a>
                     </td>
+                    <!-- link to student in a class -->
+                    <td>
+                        <a class="btn btn-info text-white" 
+                        v-on:click="unassignedClassList(term.id)"
+                        data-target="#exampleModal23"
+                        data-toggle="modal"
+                        v-bind:title="term.name" > Assign Class</a>
+                        <a href="#"
+                        v-on:click="editTerm(term.id)"
+                        data-target="#exampleModal1"
+                        data-toggle="modal"
+                        v-bind:title="term.name" class="btn btn-warning">Edit</a>
+                        
+                      </td>
 
-                  <td>
-                      <a href="#" data-target="#exampleModal2" v-on:click="deleteId(term.id)" data-toggle="modal" v-bind:id="id" class="btn btn-danger">Delete</a></td>
-                </tr>
-              </tbody>
-              
-            </table>
-            <pagination :data="laravelData" :limit="2" @pagination-change-page="termLists">
-              <span slot="prev-nav">&lt; Previous</span>
-              <span slot="next-nav">Next &gt;</span>
-            </pagination>
+                    <td>
+                        <a href="#" data-target="#exampleModal2" v-on:click="deleteId(term.id)" data-toggle="modal" v-bind:id="id" class="btn btn-danger">Delete</a></td>
+                  </tr>
+                </tbody>
+                
+              </table>
+              <pagination :data="laravelData" :limit="2" @pagination-change-page="termLists">
+                <span slot="prev-nav">&lt; Previous</span>
+                <span slot="next-nav">Next &gt;</span>
+              </pagination>
+            </div>
           </div>
         </div>
 

@@ -7,7 +7,7 @@
         <a href="#"
            data-target="#exampleModal"
            data-toggle="modal"
-           class="btn btn-primary">Add GradeSetting</a>
+           class="btn btn-success">Add GradeSetting</a>
       </div>
     </div>
 
@@ -162,7 +162,7 @@
                   <td><a href="#" data-target="#exampleModal2" v-on:click="deleteId(gSetting.id)" data-toggle="modal" v-bind:id="id">Delete</a></td>
                 </tr>
               </tbody>
-              </tbody>
+              
             </table>
             <pagination :data="laravelData" :limit="2" @pagination-change-page="gradeSettingLists">
               <span slot="prev-nav">&lt; Previous</span>

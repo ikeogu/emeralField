@@ -25,7 +25,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'isAdmin'
     ];
 
     /**
@@ -43,4 +43,5 @@ class User extends Authenticatable implements JWTSubject
     public function teacher(){
         return $this->belongsToMany(Teacher::class);
     }
+    
 }

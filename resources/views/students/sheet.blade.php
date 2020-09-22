@@ -12,10 +12,10 @@
         <!-- Page Heading -->
         <div class="row">
 
-            <div class="col-9">
-                <h2 class="h3 mb-2 text-gray-800">Record of {{$student->surname}} {{$student->name}} </h2>
+            <div class="col-8">
+                <h2 class="h4 mb-2 text-gray-800">Record of {{$student->surname}} {{$student->name}} </h2>
             </div>
-            <div class="col-3" style="float:right;">
+            <div class="col-4 justify-content-left flaot" >
                 <h5 class=" mb-2 text-gray-800 ">Level: {{$student->level}} </h5>
             </div>
         </div>
@@ -27,3 +27,6 @@
     </div>
 
 @endsection
+<style>
+    .float{float:right;}
+</style>

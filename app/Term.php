@@ -18,10 +18,14 @@ class Term extends Model
         return $this->belongsToMany(S5Class::class);
     }
     public function student(){
-        return $this->belongsToMany(Student::class)->withPivot('subject_id')->withTimestamps();;
+        return $this->belongsToMany(Student::class)->withPivot('subject_id')->withTimestamps();
     }
 
     public function subject(){
         return $this->belongsToMany(Subject::class);
     } 
+
+    public function teacher(){
+        return $this->belongsToMany(Teacher::class);
+    }
 }

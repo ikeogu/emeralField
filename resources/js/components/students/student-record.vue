@@ -9,99 +9,14 @@
         </div>
       </div>
       <div class="col-md-12">
-        <!-- Button trigger modal -->
-
-        <!-- Modal -->
-
-        <!-- <div class="modal fade"
-             id="exampleModal"
-             tabindex="-1"
-             role="dialog"
-             aria-labelledby="exampleModalLabel"
-             aria-hidden="true"
-             v-bind:class="{ showmodal:showmodal }">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Assign Mark to Subjects</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-              </div>
-              <div class="modal-body">
-                <form v-if="student_details.level === 'High School'" method="post" name="assignMark" id="assignsubjects" action="#" @submit.prevent="assignMark">
-
-                   <div class="form-group">
-                    <label for="roll_no">CAT 1</label>
-                    <input type="text" name="CAT1"  class="form-control" placeholder="Enter CAT 1 Score" v-model="student_mark.CAT1" />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="roll_no">CAT 2</label>
-                    <input type="number" name="CAT2" class="form-control" placeholder="Enter CAT 2 Score" v-model="student_mark.CAT2" />
-                  </div>
-                  <div class="form-group">
-                    <label for="contact">MSC</label>
-                    <input type="number" name="MSC"  class="form-control" placeholder="Enter MSC Score" v-model="student_mark.msc" />
-                  </div>
-                  <div class="form-group">
-                    <label for="contact">Exam</label>
-                    <input type="number" name="exam"  class="form-control" placeholder="Enter MSC Score" v-model="student_mark.exam" />
-                  </div>
-
-                  <div class="form-group text-center">
-                    <button class="btn btn-success">Submit</button>
-                  </div>
-                </form>
-                 <form v-if="student_details.level === 'Year School'" method="post" name="assignMArk" id="assignsubjects" action="#" @submit.prevent="assignMark">
-
-                   <div class="form-group">
-                    <label for="roll_no">Home Work</label>
-                    <input type="number" name="HW"  class="form-control"  v-model="student_mark.HW" />
-                  </div>
-                  <div class="form-group">
-                    <label for="roll_no">Class Work</label>
-                    <input type="number" name="CW" class="form-control" placeholder="Enter CAT 2 Score" v-model="student_mark.CW" />
-                  </div>
-                  <div class="form-group">
-                    <label for="contact">Friday Assignment</label>
-                    <input type="number" name="FT"  class="form-control" v-model="student_mark.FT" />
-                  </div>
-                  <div class="form-group">
-                    <label for="roll_no">Holiday Assignment</label>
-                    <input type="number" name="HA"  class="form-control"  v-model="student_mark.HA" />
-                  </div>
-                  <div class="form-group">
-                    <label for="roll_no">Summative Test</label>
-                    <input type="number" name="summative_test" class="form-control" placeholder="Enter CAT 2 Score" v-model="student_mark.summative_test" />
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="contact">Exam</label>
-                    <input type="number" name="exam"  class="form-control" v-model="student_mark.exam" />
-                  </div>
-
-                  <div class="form-group text-center">
-                    <button class="btn btn-success">Submit</button>
-                  </div>
-                </form>
-               
-               <span v-else></span>
-
-              </div>
-
-            </div>
-          </div>
-        </div> -->
-
         <div class="card">
           <div class="card-header"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
               <div class="row" v-if="student_details.level === 'High School'">
                
-                <div class="col-12">
-                  <table  class="table-wrapper" >
+                <div class="col-12 table-responsive">
+                  <table  class=" table-bordered table-striped" >
                     <thead >
                       <th>Subject</th>
                         <th>CAT 1</th>
@@ -145,8 +60,8 @@
               </div> 
               <div class="row" v-if="student_details.level === 'Year School'">
                 
-                <div class="col-12">
-                  <table  class="" >
+                <div class="col-12 table-responsive">
+                  <table  class="table tab table-bordered table-striped" >
                     <thead >
                       <th>Subject</th>
                         <th>Hw</th>
@@ -162,24 +77,18 @@
                     <tbody>
         
                       <tr v-for="marks in assignedSubjects" :key="marks.id" :subject_id="marks.subject_id">
-                          <td> {{marks.subname}}</td>
-                          <td>{{marks.HW}}</td>
-                           <td>{{marks.CW}}</td>
-                           <td>{{marks.HA}}</td>
-                            <td>{{marks.FT}}</td>
-                            <td>{{marks.Summative_test}}</td>
-                            <td>{{marks.TCA}}</td>
-                            <td>{{marks.Exam}}</td>
-                            <td>{{marks.GT}}</td>
+                          <td class="td"> {{marks.subname}}</td>
+                          <td class="td2">{{marks.HW}}</td>
+                           <td class="td2">{{marks.CW}}</td>
+                           <td class="td2">{{marks.HA}}</td>
+                            <td class="td2">{{marks.FT}}</td>
+                            <td class="td2">{{marks.Summative_test}}</td>
+                            <td class="td2">{{marks.TCA}}</td>
+                            <td class="td2">{{marks.Exam}}</td>
+                            <td class="td2">{{marks.GT}}</td>
                        
                           <td>  
-                            <!-- <a href="#"
-                                data-target="#exampleModal"
-                                data-toggle="modal"
-                                v-on:click="getSubjectID(marks.id)"
-                                class="btn btn-success" >Add Score
-                            </a> -->
-                              <a href="#"
+                             <a href="#"
                                v-on:click="editScore(marks.id)"
                                 data-target="#exampleModalEdit"
                                 data-toggle="modal"
@@ -187,7 +96,7 @@
                                 class="btn btn-success">Edit
                             </a>
                             
-                        </td>
+                          </td>
                       </tr>
                       
                     </tbody>
@@ -286,6 +195,24 @@
 </template>
 
 <script src="https://vuejs.org/js/vue.min.js"></script>
+<style type="text/css">
+ .td{
+   
+    position: -webkit-sticky !important;
+     position: relative !important; 
+     left: -1px !important; 
+    text-align: center !important;
+    
+   white-space: normal !important;
+ }
+ .td2{
+   
+   white-space: normal !important;
+ }
+ .tab{
+   background-color: #eee !important; 
+ }
+</style>
 <script>
 
   export default {
@@ -439,8 +366,8 @@
             $('body')
               .removeClass()
               .removeAttr('style')
-            $('.modal-backdrop').remove()
-            this.scoreLists(this.pagenumber)
+            $('.modal-backdrop').remove();
+            this.scoreLists(this.pagenumber);
           })
       },
       deleteSubject(student_id, subject_id) {
@@ -465,7 +392,7 @@
             $('body')
               .removeClass()
               .removeAttr('style')
-            $('.modal-backdrop').remove()
+            $('.modal-backdrop').remove();
             this.scoreLists(this.pagenumber)
           })
       },

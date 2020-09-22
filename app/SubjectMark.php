@@ -11,6 +11,7 @@ class SubjectMark extends Model
         'student_id',
         'subject_id',
         'term_id',
+        'subname',
         'HW',
         'CW',
         'FT',
@@ -29,5 +30,8 @@ class SubjectMark extends Model
     }
     public function student(){
         return $this->belongsToMany(Student::class);
+    }
+    public function studentName(){
+        return $this->belongsTo(Student::class)->withPivot();
     }
 }

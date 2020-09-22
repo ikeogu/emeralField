@@ -13,10 +13,14 @@ class CreateStudentTermClassesTable extends Migration
      */
     public function up()
     {
-        // Schema::create('student_term_classes', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+        Schema::create('student_term_classes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedInteger('s5_class_id');
+            $table->unsignedInteger('term_id');
+            $table->unsignedInteger('student_id');
+            
+            $table->timestamps();
+        });
     }
 
     /**

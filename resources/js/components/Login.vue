@@ -1,6 +1,6 @@
 
 <template>
-    <div class="bg-gradient-primary">
+    <div class="bg-gradient-secondary">
         <div class="container">
 
             <!-- Outer Row -->

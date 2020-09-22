@@ -22,6 +22,7 @@ import students from './components/students/index.vue';
  import gradeSettings from './components/gradeSettings/index.vue';
  import marksFeeding from './components/marksFeeding/index.vue';
  import teachers from './components/teachers/index.vue';
+ import Summative from './components/result/summative.vue';
  
 
  import studentclass from  './components/class/student-class.vue';
@@ -30,12 +31,15 @@ import students from './components/students/index.vue';
  import studClass from './components/class/studClass.vue';
  import terms from './components/class/terms.vue';
  import termsheet from './components/students/term_sheet.vue';
- 
+ import Tboard from './components/teachers/tboard';
+ import Stud from './components/teachers/stud_with_subject.vue';
+ import classStudent from './components/class/classstudent.vue';
  
  
  import Biodata from './components/students/biodata';
  import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
  import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
+//  Vue.prototype.$userId = document.querySelector("meta[name='user_id']").getAttribute('content');
 
 
 
@@ -132,7 +136,11 @@ new Vue({
         'student-record':studentRecord,
         'term':term,
         'termclasses':termclasses,
-        'biodata':Biodata
+        'biodata':Biodata,
+        'tboard':Tboard,
+        'stud':Stud,
+        'class-student':classStudent,
+        'summative-test':Summative,
     },
     
 });

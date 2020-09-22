@@ -13,10 +13,13 @@ class CreateGradeSettingsTable extends Migration
      */
     public function up()
     {
-        // Schema::create('grade_settings', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+        Schema::create('grade_settings', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('percentage', 10);
+            $table->string('grade', 5);
+            $table->string('description');
+            $table->timestamps();
+        });
     }
 
     /**

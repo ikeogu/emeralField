@@ -8,7 +8,7 @@
         <div class="card-body">
         <h5 class="card-title">{{term.name}}</h5>
         <p class="card-text">{{term.session}}</p>
-        <a :href="'http://127.0.0.1:8000/api//' + term.id" class="btn btn-success">view</a>
+        <a :href="'http://127.0.0.1:8000/api/' + term.id" class="btn btn-success">view</a>
         </div>
       </div>
         
@@ -16,7 +16,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <div v-bind:class="{ succmsg: succmsg }">
+      <div v-bind:class="{succmsg: succmsg }">
         <div class="col-md-12 col-lg-12">
           <div class="alert alert-success cusmsg">{{ actionmsg }}</div>
         </div>
@@ -36,7 +36,7 @@
                         
                         <div class="row" v-if="logged_in.level === 'High School'">
                             
-                            <div class="col-12">
+                          <div class="col-12 table-responsive">
                             <table  class="table-wrapper" >
                                 <thead >
                                   <th>Subject</th>

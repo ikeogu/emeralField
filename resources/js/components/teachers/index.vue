@@ -7,7 +7,7 @@
         <a href="#"
            data-target="#exampleModal"
            data-toggle="modal"
-           class="btn btn-primary">Add Teacher</a>
+           class="btn btn-success">Add Teacher</a>
       </div>
     </div>
 
@@ -80,7 +80,7 @@
             </div>
           </div>
         </div>
-
+<!-- Modal to Add Teacher -->
         <div class="modal fade"
              id="exampleModal1"
              tabindex="-1"
@@ -140,7 +140,7 @@
             </div>
           </div>
         </div>
-
+<!-- Moadal to Delete a techer -->
         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -165,10 +165,71 @@
             </div>
           </div>
         </div>
+<!-- Modal to assign Subjeco teacher  -->
+          <div class="modal fade"
+             id="exampleModal12"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true"
+             v-bind:class="{ showmodal:showmodal }">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Assign Subjects</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+              </div>
+              <div class="modal-body">
+                <form v-if="this.unassignedSubjects.length > 0" method="post" name="assignsubjects" id="assignsubjects" action="#" @submit.prevent="assignSubject(teacher_id, subject_id)">
 
+                  <div class="form-group">
+                    <label for="gender">Assigned Subjects</label>
+                    <select class="form-control" name="subject" id="subject" v-model="subject_id">
+                          <option v-for="subject in unassignedSubjects"  :key="subject.id" v-bind:value="subject.id">{{ subject.name }}</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+                <span v-else>All Subjects has been Assigned to this Teacher!</span>
+                <br>
+
+                <div class="card">
+                  <div class="card-header">Assigned Subject</div>
+                    <div class="card-body">
+                      <table class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Subjects</th>
+                                                        
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="subject in assignedSubjects" :key="subject.id">
+                            <th scope="row">{{ subject.name }}</th>
+                           
+                            <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSubject(student_id, subject.id)" data-toggle="modal">Delete</a></td>
+                          </tr>
+                        </tbody>
+                        
+                      </table>
+                    </div>
+                  </div>
+              </div>
+              </div>
+
+            </div>
+          </div>
+        
+        <!-- End of modal -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Teachers </h6>
+            <h6 class="m-0 font-weight-bold text-success">Teachers </h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -180,7 +241,7 @@
                   <th>Email</th>
                   <th>Level</th>
                   <th>Status</th>
-                  <th>Subjects</th>
+                  
                   
                   <th colspan="2">Action</th>
                 </thead>
@@ -193,12 +254,18 @@
                     <td>{{ teacher.email }}</td>
                     <td>{{ teacher.level }}</td>
                     <td>{{ teacher.status }}</td>
-                    <td><a href="#"
+                    <td>
+                      <a href="#" class="btn btn-success text-white"
+                       v-on:click="unassignedSubjectList(teacher.id)"
+                       data-target="#exampleModal12"
+                       data-toggle="modal"
+                       v-bind:title="teacher.name">Assign Subjects</a>
+                      <a href="#" class="btn btn-info text-white"
                         v-on:click="editTeacher(teacher.id)"
                         data-target="#exampleModal1"
                         data-toggle="modal"
                         v-bind:title="teacher.name">Edit</a></td>
-                    <td><a href="#" data-target="#exampleModal2" v-on:click="deleteId(teacher.id)" data-toggle="modal" v-bind:id="id">Delete</a></td>
+                    <td><a href="#" class="btn btn-danger text-white" data-target="#exampleModal2" v-on:click="deleteId(teacher.id)" data-toggle="modal" v-bind:id="id">Delete</a></td>
                     </tr>
                 </tbody>
               
@@ -233,6 +300,9 @@
         laravelData: {},
         laravelClassData:{},
         id: '',
+        unassignedSubjects:{},
+        assignedSubjects:{},
+        subject_id:'',
         succmsg: true,
         showmodal: false,
         pagenumber: 1,
@@ -360,8 +430,40 @@
           .removeClass()
           .removeAttr('style')
         $('.modal-backdrop').remove()
-      }
+      },
+
+        unassignedSubjectList(subject) {
+        this.$http.get('http://127.0.0.1:8000/api/teachers/'+subject+'/unassignedsubjects').then(response => {
+          this.unassignedSubjects = response.data;
+          
+          this.teacher.teacher_id = subject;
+          this.assignedSubjectList(subject);
+        })
+      },
+      assignedSubjectList(subject) {
+        this.$http.get('http://127.0.0.1:8000/api/teachers/'+subject+'/assignedsubjects').then(response => {
+          this.assignedSubjects = response.data
+        })
+      },
+      assignSubject(teacher_id, subject_id){
+        this.$http
+          .post('http://127.0.0.1:8000/api/teachers/'+this.teacher.teacher_id+'/assignsubject/'+subject_id, {
+            teacher_id: this.teacher.teacher_id,
+            subject_id: this.class_id,
+          })
+          .then(data => {
+            this.subject_id = '';
+            this.assignedSubjectList(this.teacher.teacher_id);
+            this.unassignedSubjectList(this.teacher.teacher_id);
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+          })
+      },
     },
+    // asssign a subject to teacher
+
     mounted() {
       this.fetchClasses();
       this.teacherLists()

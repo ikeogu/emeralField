@@ -154,7 +154,8 @@
         <div class="card">
           <div class="card-header">Class List</div>
           <div class="card-body">
-
+            <div class="table-responsive">
+            
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
@@ -192,6 +193,7 @@
               <span slot="prev-nav">&lt; Previous</span>
               <span slot="next-nav">Next &gt;</span>
             </pagination>
+            </div>
           </div>
         </div>
 

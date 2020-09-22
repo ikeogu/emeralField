@@ -92,6 +92,8 @@
                 <div class="card">
                   <div class="card-header">Assigned Subject</div>
                     <div class="card-body">
+                     <div class="table-responsive">
+            
                       <table class="table table-striped table-bordered" style="width:100%">
                         <thead>
                           <tr>
@@ -116,6 +118,7 @@
                         </tbody>
                         
                       </table>
+                      </div>
                     </div>
                   </div>
               </div>
@@ -128,7 +131,8 @@
         <div class="card">
           <div class="card-header">Students List</div>
           <div class="card-body">
-
+               <div class="table-responsive">
+            
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
@@ -136,9 +140,9 @@
                   <th>Surname</th>
                   <th>Other name</th>
                   <th>Email</th>
-                  <th>DOB</th>
+                  
                   <th>Gender</th>
-                  <th>Age</th>
+                  
                   <th>Action</th>
                 </tr>
               </thead>
@@ -149,9 +153,9 @@
                            <td>{{ st.surname}}</td>
                             <td>{{ st.name}}</td>
                             <td>{{ st.email}}</td> 
-                            <td>{{ st.dob}}</td>
+                            
                             <td>{{ st.gender}}</td>
-                            <td>{{st.identifi}}</td>
+                            
                           <td>
 
                             <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
@@ -165,7 +169,7 @@
               </tbody>
              <span v-else> No Student has been added to this class</span>
             </table>
-            
+            </div>
           </div>
         </div>
 

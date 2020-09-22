@@ -11,7 +11,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    {{-- @if (Auth::check()) 
+    <meta name="user_id" content="{{ Auth::user()->id }}" />
+    @endif --}}
     <title>{{ config('app.name', 'EmeraldField Schools') }} |
         @yield('title')
     </title>
@@ -62,49 +64,14 @@
               <!-- Divider -->
               <hr class="sidebar-divider">
         
-              <!-- Heading -->
-              <div class="sidebar-heading">
-                Interface
-              </div>
-        
-              <!-- Nav Item - Pages Collapse Menu -->
-              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  <i class="fas fa-fw fa-cog"></i>
-                  <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
-                  </div>
-                </div>
-              </li>
-        
-              <!-- Nav Item - Utilities Collapse Menu -->
-              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                  <i class="fas fa-fw fa-wrench"></i>
-                  <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
-                  </div>
-                </div>
-              </li>
-        
+             
+             
               <!-- Divider -->
               <hr class="sidebar-divider">
         
               <!-- Heading -->
               <div class="sidebar-heading">
-                Addons
+                
               </div>
         
               <!-- Nav Item - Pages Collapse Menu -->
@@ -120,9 +87,9 @@
                           <i class="fas fa-fw fa-chart-area"></i>
                           <span> All Students</span></a>
                       
-                    <a class="collapse-item" href="login.html">High School Students</a>
-                    <a class="collapse-item" href="register.html">Year School Students</a>
-                    <a class="collapse-item" href="forgot-password.html">Early Year</a>
+                      <a class="collapse-item" href="{{route('hschool')}}">High School Students</a>
+                    <a class="collapse-item" href="{{route('yschool')}}">Year School Students</a>
+                    <a class="collapse-item" href="{{route('eschool')}}">Early Year</a>
                     <div class="collapse-divider"></div>
                     
                   </div>
@@ -138,21 +105,26 @@
               
               <li class="nav-item">
               <a class="nav-link" href="{{route('class.index')}}">
-                  <i class="fas fa-fw fa-chart-area"></i>
+                  <i class="fas fa-fw fa-house"></i>
                   <span>Classes</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('subjects.index')}}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Subjects</span></a>
                 </li>
                 
               <!-- Nav Item - Tables -->
               <li class="nav-item">
               <a class="nav-link" href="{{route('teachers.index')}}">
-                  <i class="fas fa-fw fa-table"></i>
+                  <i class="fas fa-fw fa-user"></i>
                   <span>Teacher</span></a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('grades.index')}}">
+                    <i class="fas fa-fw fa-setting-o"></i>
+                    <span>Grade Settings</span></a>
+                </li>
         
               <!-- Divider -->
               <hr class="sidebar-divider d-none d-md-block">
@@ -307,7 +279,7 @@
               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+              <a class="btn btn-primary" href="/logout">Logout</a>
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ use App\StudentsClass;
 use App\Student;
 
 class S5ClassController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      *

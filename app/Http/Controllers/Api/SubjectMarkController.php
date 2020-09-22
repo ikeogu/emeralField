@@ -12,6 +12,7 @@ use App\Student;
 
 class SubjectMarkController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -84,8 +85,8 @@ class SubjectMarkController extends Controller
             $subjectMark->MSC = 0;
             $subjectMark->CAT1 = 0;
             $subjectMark->CAT2 = 0;
-            $subjectMark->TCA =  $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test;
-            $subjectMark->GT = $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test + $subjectMark->Exam + $subjectMark->MSC +$subjectMark->CAT1 + $subjectMark->CAT2;
+            $subjectMark->TCA = $subjectMark->HA + $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test;
+            $subjectMark->GT = $subjectMark->TCA+ $subjectMark->Exam ;
             if($subjectMark->save()){
                 //    return 
                     $subj->studentMark()->attach($subjectMark);
@@ -93,7 +94,7 @@ class SubjectMarkController extends Controller
                     return new SubjectMarkResource($subjectMark);
                }
 
-        } elseif($tudent->level === 'Early Years'){
+        } elseif($student->level === 'Early Years'){
             $subjectMark->subject_id = $request->subject_id;
             $subjectMark->student_id = $request->student_id;
             $subjectMark->HW = $request->HW;
@@ -102,8 +103,8 @@ class SubjectMarkController extends Controller
             $subjectMark->HA = $request->HA;
             $subjectMark->Summative_test = $request->summative_test;
             $subjectMark->Exam = $request->exam;
-            $subjectMark->TCA =  $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test;
-            $subjectMark->GT = $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test +$subjectMark->Exam;
+            $subjectMark->TCA =$subjectMark->HA +   $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test;
+            $subjectMark->GT = $subjectMark->TCA +  $subjectMark->Exam;
             if($subjectMark->save()){
                 //    return 
                     $subj->studentMark()->attach($subjectMark);
@@ -168,7 +169,7 @@ class SubjectMarkController extends Controller
         $subjectMarks->GT = $subjectMarks->TCA +$request->Exam;
         $subjectMarks->save();
 
-        // return  $subjectMarks;
+        return new SubjectMarkResource($subjectMarks);
     }
     /**
      * Remove the specified resource from storage.
@@ -183,4 +184,6 @@ class SubjectMarkController extends Controller
         $s->delete();
         return new SubjectMarkResource($s);
     }
+
+    
 }

@@ -88,7 +88,7 @@
                         <label for="address">Academic Session</label>
                         <select class="form-control" name="term_id" v-model="student.term_id"  >
                           
-                          <option v-for="term in laravelTerm.data" v-bind:key="term.id" >
+                          <option v-for="term in laravelTerm.data" v-bind:key="term.id" v-bind:value="term.id">
                               {{term.name}} ({{term.session}})
                           </option>
                         </select>

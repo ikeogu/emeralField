@@ -11004,3 +11004,16 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+.green{
+  background-color:green;
+  color:white;
+  border-bottom: 50px solid green;
+	
+	border-right: 25px solid transparent;
+
+	width: 125px;
+}
+.yellow{
+  background-color:yellow;
+  color:white;
+}

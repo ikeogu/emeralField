@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 class StudentController extends Controller
 {
+  
     /**
      * Display a listing of the resource.
      *
@@ -56,17 +57,17 @@ class StudentController extends Controller
       $student->address = $request->address;
       $student->s_class = $request->s_class; 
        $class = s5Class::find($request->s_class);
-       $class->student()->attach($student);
-       $student->level = $class->level;
+      
+       $student->level = $class->status;
       $student->identification_mark = $request->identification_mark;
       if($student->save()){
-
+        $class->student()->attach($student);
         $user = new User();
         $user->name = $student->name. $student->surname;
         $user->email = $student->email;
         $user->password = Hash::make(strtolower($student->name));
         $user->isAdmin = 4;
-        $user->student()->attach($student);
+        $user->student_id =$student->id;
         $user->save();
         // StudentClass 
         $class = S5Class::find($student->s_class);
@@ -77,7 +78,7 @@ class StudentController extends Controller
 
         $stc = new StudentTermClass();
         $stc->student_id = $student->id;
-        $stc->term_id = $request->term_id;
+        $stc->term_id = $sess->id;
         $stc->s5_class_id = $class->id;
         
         $stc->save();
@@ -174,6 +175,7 @@ class StudentController extends Controller
               $mark->subject_id = $subject->id;
               $mark->subname = $subject->name;
               $mark->term_id = $term->id;
+              $student->subjectMark()->save($mark);
               $subject->subjectMark()->save($mark);
               
       }

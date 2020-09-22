@@ -13,10 +13,14 @@ class CreateS5ClassesTable extends Migration
      */
     public function up()
     {
-        // Schema::create('s5_classes', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+        Schema::create('s5_classes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->bigInteger('no_of_students');
+            $table->string('description');
+            $table->string('status');
+            $table->timestamps();
+        });
     }
 
     /**

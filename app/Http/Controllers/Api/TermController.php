@@ -7,15 +7,29 @@ use App\Term;
 use App\S5Class;
 use App\TermClasses;
 use App\Student;
+use App\SubjectMark;
+use App\Subject;
+use App\Teacher;
+use App\StudentTermClass;
+use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Resources\TermResource;
 use App\Http\Resources\TermClassesResource;
 use App\Http\Resources\TermResourceCollection;
 use App\Http\Resources\S5ClassResource;
 use App\Http\Resources\S5ClassResourceCollection;
+use App\Http\Resources\SubjectMarkResource;
+use App\Http\Resources\SubjectMarkCollection;
+
+use App\Http\Resources\Subject as SubjectResource;
+
+use App\Http\Resources\Student as StudentResource;
+use Illuminate\Database\Eloquent\Collection;
 
 class TermController extends Controller
 {
+  
     /**
      * Display a listing of the resource.
      *
@@ -175,10 +189,40 @@ class TermController extends Controller
         
         return view('class/studentClass',['terms'=>json_encode($term->student),'t'=>$term]);
   }
+  public function term_class_t($class_id, $term,$subject_id){
+   //visit here later if there is any future modification to make 
+      $term = Term::find($term);
+      $classes = S5Class::find($class_id);
+      $subject = Subject::find($subject_id);
+      
+     
+     $students = SubjectMark::with('student','subject')->where('subject_id', $subject->id)->where('term_id', $term->id)->get();
+     
+     return  SubjectMarkResource::collection($students);
+       
+      // return view('teacher/student_in_class',['students'=>json_encode($students),'t'=>$term,'classes'=>$classes]); 
+     
+  
+  }
 
   public function add_student_term(Student $student, Term $term){
-    $term->student()->attach($student->id);
+     return $term->student()->attach($student->id);
     
+  }
+
+  public function class_student($classid,$term){
+   
+    $term_ = Term::find($term);
+    $class_ = S5Class::find($classid);
+    $students = StudentTermClass::where('term_id',$term)->where('s5_class_id',$classid)->get();
+    $ids = [];
+    
+    foreach($students as $stu){
+      array_push($ids, $stu->student_id);
+    }
+    $class_std = Student::whereIn('id',$ids)->get();
+    
+    return view('class.classStudent',['students'=>json_encode($class_std),'t'=>$term_,'class_'=>$class_]);
   }
   
 }

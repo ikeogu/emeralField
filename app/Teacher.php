@@ -8,4 +8,18 @@ class Teacher extends Model
 {
     //
     protected $fillable=['name','email','status','start_year','level'];
+
+   
+
+        public function user(){
+            return $this->belongsTo(User::class);
+        }
+
+        public function term(){
+            return $this->belongsToMany(Term::class)->withPivot('subject_id')->withTimestamps();
+        }
+        
+        public function subjects(){
+            return $this->belongsToMany(Subject::class);
+        }
 }

@@ -31,9 +31,17 @@ class HomeController extends Controller
             if(Auth::user()->isAdmin == 4){
                 return redirect(route('student.dashboard'));
             }
+            if(Auth::user()->isAdmin == 3){
+                return redirect(route('teacher.dashboard'));
+            }
             
         }
+        return redirect('/login');
     }
-
+    
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
+    }
     
 }

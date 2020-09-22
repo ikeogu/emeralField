@@ -16,6 +16,7 @@ class CreateStudentTermTable extends Migration
         Schema::create('student_term', function (Blueprint $table) {
             $table->id();
             $table->biginteger('student_id');
+            $table->biginteger('subject_id');
             $table->bigInteger('term_id');
             $table->timestamps();
         });

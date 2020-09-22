@@ -13,10 +13,20 @@ class CreateMarksTable extends Migration
      */
     public function up()
     {
-        // Schema::create('marks', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+        Schema::create('marks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('student_id');
+            $table->unsignedInteger('subject_id');
+            $table->smallInteger('total_marks');
+            $table->smallInteger('obtain_marks');
+            $table->timestamps();
+
+            // $table->foreign('student_id')
+            //         ->references('id')->on('students')->onDelete('cascade');
+
+            // $table->foreign('subject_id')
+            //         ->references('id')->on('subjects')->onDelete('cascade');
+        });
     }
 
     /**

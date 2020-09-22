@@ -13,10 +13,12 @@ class CreateTermClassesTable extends Migration
      */
     public function up()
     {
-        // Schema::create('term_classes', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+        Schema::create('term_classes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('class_id');
+            $table->bigInteger('term_id');
+            $table->timestamps();
+        });
     }
 
     /**

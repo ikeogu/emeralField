@@ -30,7 +30,8 @@
         <div class="card">
           <div class="card-header">Class List</div>
           <div class="card-body">
-
+               <div class="table-responsive">
+            
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
                 
@@ -49,7 +50,7 @@
                   <td>{{ las.no_of_students }}</td>
                   <td>{{ las.status }}</td>
                   <td>
-                    <a :href="'http://127.0.0.1:8000/api/terms_class/'+las.id+'/term/'+term.id" class="btn btn-info text-white ">view  Students</a>
+                    <a :href="'http://127.0.0.1:8000/api/class_student/'+las.id+'/term/'+term.id" class="btn btn-info text-white ">view  Students</a>
                   </td>
                   <!-- link to student in a class -->
                   
@@ -57,7 +58,7 @@
               </tbody>
             
             </table>
-            
+            </div>
           </div>
         </div>
 

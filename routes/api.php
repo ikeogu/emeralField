@@ -35,11 +35,17 @@ Route::namespace('Api')->group(function () {
     Route::apiResource('teachers', 'TeacherController');
     Route::apiResource('terms', 'TermController');
     Route::apiResource('subjectMark','SubjectMarkController');
-
+    // assign subject for students
     Route::get('students/{student}/unassignedsubjects/{term}', 'StudentController@unassignedSubjects');
     Route::get('students/{student}/assignedsubjects/{term}', 'StudentController@assignedSubjects');
     Route::post('students/{student}/assignsubject/{subject}/term/{term}', 'StudentController@assignSubject');
     Route::delete('students/{student}/deletesubject/{subject}/term/{term}', 'StudentController@deleteSubject');
+    // Assign subject and class to Teachers
+    Route::get('teachers/{teacher}/unassignedsubjects/', 'TeacherController@unassignedSubjects');
+    Route::get('teachers/{teacher}/assignedsubjects/', 'TeacherController@assignedSubjects');
+    Route::post('teachers/{teacher}/assignsubject/{subject}', 'TeacherController@assignSubject');
+    Route::delete('teachers/{teacher}/deletesubject/{subject}', 'TeacherController@deleteSubject');
+
     Route::get('results/students', 'ResultController@students');
     Route::get('results/student/{student}', 'ResultController@result');
     Route::get('subjectlist', 'SubjectController@subjectList');
@@ -72,7 +78,12 @@ Route::namespace('Api')->group(function () {
     // subjectMArk Controller
      Route::get('subjectMarks/{student}','SubjectMarkController@show_Mark');
     //  update SubjectMark
-// search student
+    // search student
     Route::get('/search','StudentController@search');
     Route::get('allstudents','StudentController@index2'); 
+    // select term and class
+    Route::get('teacher/{term}/assignclass/{class}/subject/{subject}', 'TermController@term_class_t')->name('tct');
+    Route::get('student_in_class', 'TermController@term_class_t');
+
+    Route::get('class_student/{class}/term/{term}', 'TermController@class_student');
 });
