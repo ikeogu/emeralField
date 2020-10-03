@@ -34,4 +34,8 @@ class SubjectMark extends Model
     public function studentName(){
         return $this->belongsTo(Student::class)->withPivot();
     }
+
+    public function s5_class(){
+        return $this->belongsTo(S5Class::class); 
+    }
 }

@@ -3,6 +3,7 @@
    namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\S5ClassRequest;
 use App\Term;
 use App\S5Class;
 use App\TermClasses;
@@ -11,6 +12,7 @@ use App\SubjectMark;
 use App\Subject;
 use App\Teacher;
 use App\StudentTermClass;
+use App\StudentTerm;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -133,18 +135,13 @@ class TermController extends Controller
         return new TermResource($t);
     }
 
-  public function unassignedClasses(Term $term)
+    public function unassignedClasses(Term $term)
     {
           $ids = [];
-        //   $class_1 = TermClasses::where('term_id','=',$term);
-
           foreach ($term->classes as $class) {
-            //   $cls = S5Class::where('id','=',$t->class_id)->get();
             array_push($ids, $class->id);
           }
-
-          $classes = S5Class::whereNotIn('id', $ids)->get();
-
+         $classes = S5Class::whereNotIn('id', $ids)->get();
           return $classes;
 
     }
@@ -183,31 +180,41 @@ class TermController extends Controller
     $classes = S5Class::find($term);
     return  new S5ClassResourceCollection($classes->term);
   }
+// this function fetches each student from the appropiate class and term
+  public function students_in_term($id,$class_id){
 
-  public function students_in_term($id){
         $term = Term::find($id);
-        
-        return view('class/studentClass',['terms'=>json_encode($term->student),'t'=>$term]);
+        $class_T = S5Class::find($class_id);
+        $student_id = StudentTerm::where('s5_class_id', $class_id)->where('term_id',$id)->get();
+        $ids = array();
+        foreach($student_id as $id){
+          array_push($ids,$id->student_id);
+        } 
+        $students = Student::whereIn('id',$ids)->get();
+        return view('class/studentClass',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
   }
   public function term_class_t($class_id, $term,$subject_id){
    //visit here later if there is any future modification to make 
       $term = Term::find($term);
       $classes = S5Class::find($class_id);
       $subject = Subject::find($subject_id);
-      
-     
-     $students = SubjectMark::with('student','subject')->where('subject_id', $subject->id)->where('term_id', $term->id)->get();
-     
-     return  SubjectMarkResource::collection($students);
-       
+      $students = SubjectMark::with('student','subject')->
+      where('subject_id', $subject->id)->where('term_id', $term->id)->
+      where('s5_class_id', $classes->id)->get();
+      return  SubjectMarkResource::collection($students);  
       // return view('teacher/student_in_class',['students'=>json_encode($students),'t'=>$term,'classes'=>$classes]); 
      
   
   }
-
-  public function add_student_term(Student $student, Term $term){
-     return $term->student()->attach($student->id);
-    
+ //Add student to their appropiate class and Term
+  public function add_student_term(Student $student, Term $term, $s5class){
+    $class_ = S5Class::find($s5class);
+    $studentTerm = new StudentTerm();
+    $studentTerm->term_id = $term->id;
+    $studentTerm->s5_class_id = $class_->id;
+    $studentTerm->student_id = $student->id;
+    $studentTerm->save();
+     return back();
   }
 
   public function class_student($classid,$term){

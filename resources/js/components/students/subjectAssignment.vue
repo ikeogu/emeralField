@@ -79,7 +79,7 @@
                   <th>Surname</th>
                   <th>Gender</th>
                   <th>Class</th>
-                  <th>Contact</th>
+                  
                   <th>Action</th>
                 </tr>
               </thead>
@@ -91,7 +91,7 @@
                             <td>{{ s.email}}</td> 
                             <td>{{ s.dob}}</td>
                             <td>{{ s.gender}}</td>
-                            <td>{{getAge( s.dob)}}</td>
+                           
                   <td><a href="#"
                        v-on:click="unassignedSubjectsList(s.id)"
                        data-target="#exampleModal1"

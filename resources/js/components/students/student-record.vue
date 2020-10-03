@@ -9,8 +9,8 @@
         </div>
       </div>
       <div class="col-md-12">
-        <div class="card">
-          <div class="card-header"> {{assignedSubjects.length}} Subject's Record</div>
+        <div class="card ">
+          <div class="card-header bg-success text-white"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
               <div class="row" v-if="student_details.level === 'High School'">
@@ -246,6 +246,8 @@
           CAT2:'',
           Exam:'',
           MSC:'',
+          term_id:'',
+          s5_class_id:''
           
         }
       }
@@ -275,7 +277,8 @@
           .post('http://127.0.0.1:8000/api/subjectMark',{
             student_id: this.student_details.id,
             subject_id: this.student_mark.subject_id,
-            term_id: this.T.id,
+            term_id:this.student_mark.term_id,
+            s5_class_id:this.student_mark.s5_class_id,
              HA:this.student_mark.HA,
               CW:this.student_mark.CW,
               HW:this.student_mark.HW,
@@ -330,6 +333,7 @@
             student_id: this.student_details.id,
             subject_id: this.student_mark.subject_id,
             term_id: this.student_mark.term_id,
+            s5_class_id:this.student_mark.s5_class_id,
               HA:this.student_mark.HA,
               CW:this.student_mark.CW,
               HW:this.student_mark.HW,
@@ -375,6 +379,8 @@
           .delete('http://127.0.0.1:8000/api/students/'+student_id+'/deletesubject/'+subject_id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
+            term_id:this.student_mark.term_id,
+            s5_class_id:this.student_mark.s5_class_id,
           })
           .then(data => {
             this.succmsg = false
@@ -424,7 +430,7 @@
         $('.modal-backdrop').remove()
       }
     },
-    props:['studs_data','s_details','term'],
+    props:['studs_data','s_details','term','class_'],
     
     mounted() {
       
@@ -432,8 +438,9 @@
       this.student_details = this.s_details
       this.assignedMarks = this.sub_mark
       this.T = this.term
-      
-      this.scoreLists()
+      this.student_mark.s5_class_id = this.class_.id
+      this.student_mark.term_id = this.term.id
+      this.scoreLists(this.pagenumber)
       
       
       

@@ -28,15 +28,15 @@
 
 
         <div class="card">
-          <div class="card-header">Term List </div>
+          <div class="card-header bg-success text-white">Term List </div>
           <div class="card-body">
 
              <div class="row ">
-                 <div v-for="term in laravelData"  :key="term.id" class="card col-4 p-3 " style="width: 15rem; height: 10rem;" >
+                 <div v-for="term in laravelData"  :key="term.id" class="card col-lg-4 p-3 " style="width: 15rem; height: 10rem;" >
                     <div class="card-body">
                       <h5 class="card-title">{{term.name}}</h5>
                       <p class="card-text">{{term.session}}</p>
-                      <a :href="'http://127.0.0.1:8000/api/students_in_term/'+ term.id" class="btn btn-success"  >view</a>
+                      <a :href="'http://127.0.0.1:8000/api/students_in_term/'+ term.id+'/class/'+class_.id" class="btn btn-success"  >view</a>
                     </div>
                   </div>
                 </div>
@@ -58,6 +58,7 @@
        
         laravelData:{},
         term:{},
+        class_:{},
         id: '',
         succmsg: true,
         showmodal: false,
@@ -72,10 +73,11 @@
       
     
     },
-    props:['terms'],
+    props:['terms','myclass'],
     mounted() {
       
-       this.laravelData = this.terms
+       this.laravelData = this.terms,
+       this.class_ = this.myclass
        
        
      

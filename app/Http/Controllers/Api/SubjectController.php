@@ -12,6 +12,7 @@ use App\Http\Resources\StudentCollection;
 use DB;
 use App\SubjectMark;
 use App\Marks;
+use App\S5Class;
 use App\Term;
 class SubjectController extends Controller
 {
@@ -24,7 +25,7 @@ class SubjectController extends Controller
     {
         return new SubjectCollection(Subject::paginate(10));
     }
-
+// attached terms and class IDs to subejct assignment
     /**
      * Store a newly created resource in storage.
      *
@@ -107,19 +108,20 @@ class SubjectController extends Controller
       return $marks;
     }
 
-    public function studentsubjects($id,$term_id){
+    public function studentsubjects($id,$term_id,$class_id){
         
-        $marks = SubjectMark::where('student_id','=',$id)->where('term_id','=',$term_id)->with('subject')
+        $marks = SubjectMark::where('student_id','=',$id)->where('s5_class_id',$class_id)->
+        where('term_id','=',$term_id)->with('subject')
         ->get();
         $student = Student::find($id);
         $term = Term::find($term_id);
-             
-        return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term]);
+        $class_T = S5Class::find($class_id);    
+        return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
     }
 
-    public function my_subjects($id,$term_id){
+    public function my_subjects($id,$term_id,$class_id){
         
-        $marks = SubjectMark::where('student_id','=',$id)->where('term_id','=',$term_id)->with('subject')
+        $marks = SubjectMark::where('student_id','=',$id)->where('term_id','=',$term_id)->where('s5_class_id','=',$class_id)->with('subject')
         ->get();
         return  $marks;
         

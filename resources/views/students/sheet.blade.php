@@ -12,17 +12,29 @@
         <!-- Page Heading -->
         <div class="row">
 
-            <div class="col-8">
-                <h2 class="h4 mb-2 text-gray-800">Record of {{$student->surname}} {{$student->name}} </h2>
+            <div class="col-4">
+                <h2 class="h4 mb-2  text-success text-capitalize">{{$term->name}}</h2>
+                <h2 class="h4 mb-2 text-success text-success">{{$term->session}}</h2>
             </div>
             <div class="col-4 justify-content-left flaot" >
-                <h5 class=" mb-2 text-gray-800 ">Level: {{$student->level}} </h5>
+                <h5 class=" mb-2  text-success">CLASS: {{$class_T->name}} </h5>
+                <h5 class=" mb-2  text-success">NAME: {{$class_T->description}} </h5>
             </div>
+            <div class="col-4 justify-content-left flaot" >
+                <h5 class=" mb-2 text-success ">School: {{$student->level}} </h5>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-4 justify-content-center">
+                <h2 class="h4 mb-2 text-white btn btn-success">{{$student->surname}} {{$student->name}} </h2>
+            </div>
+            
         </div>
        
         
 
-    <student-record :studs_data ="{{$data}}" :s_details ="{{$student}}" :term = "{{$term}}"></student-record>
+    <student-record :studs_data ="{{$data}}" :s_details ="{{$student}}" :term="{{$term}}" :class_T="{{$class_T}}"></student-record>
 
     </div>
 

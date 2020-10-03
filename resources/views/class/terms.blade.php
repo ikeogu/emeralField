@@ -10,10 +10,10 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">{{$class->name}} Terms</h1>
+    <h2 class="h3 mb-2 text-success">{{$class_T->name}} {{$class_T->description}}</h2>
       
 
-    <terms :terms="{{$terms}}"></terms>
+    <terms :terms="{{$terms}}" :myclass="{{$class_T}}"></terms>
 
     </div>
 

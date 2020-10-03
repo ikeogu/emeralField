@@ -76,8 +76,8 @@ class Student extends Model
         return number_format((($avg/$scores) *100),1);
     }
 
-    public static function min_score($id){
-        $scores = SubjectMark::where('subject_id',$id)->get();
+    public static function min_score($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
@@ -87,8 +87,8 @@ class Student extends Model
         return min($score_list);
     }
     
-    public static function max_score($id){
-        $scores = SubjectMark::where('subject_id',$id)->get();
+    public static function max_score($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
@@ -97,8 +97,8 @@ class Student extends Model
         
         return max($score_list);
     }
-    public static function subject_total($subject_id){
-        $scores = SubjectMark::where('subject_id',$subject_id)->get();
+    public static function subject_total($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $sum =0;
         foreach ($scores as $key => $value) {
             # code...
@@ -111,31 +111,91 @@ class Student extends Model
         return ($sum / $n) * 100;
     }
     // Calculations For Examination
-    public static function subject_total_E($subject_id){
-        $scores = SubjectMark::where('subject_id',$subject_id)->get();
+    public static function subject_total_E($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $sum =0;
         foreach ($scores as $key => $value) {
             # code...
-            $sum +=$value->exam;
+            $sum +=$value->Exam;
         }
         return $sum;
     }
-    public static function max_score_E($id){
-        $scores = SubjectMark::where('subject_id',$id)->get();
+    public static function max_score_E($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
-            array_push($score_list,$value->exam);
+            array_push($score_list,$value->Exam);
         }
         
         return max($score_list);
     }
-    public static function min_score_E($id){
-        $scores = SubjectMark::where('subject_id',$id)->get();
+    public static function min_score_E($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
-            array_push($score_list,$value->exam);
+            array_push($score_list,$value->Exam);
+        }
+        
+        return min($score_list);
+    }
+
+    public static function subject_total_TCA($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $sum =0;
+        foreach ($scores as $key => $value) {
+            # code...
+            $sum +=$value->TCA;
+        }
+        return $sum;
+    }
+    public static function max_score_TCA($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->TCA);
+        }
+        
+        return max($score_list);
+    }
+    public static function min_score_TCA($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->TCA);
+        }
+        
+        return min($score_list);
+    }
+
+    public static function subject_total_GT($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $sum =0;
+        foreach ($scores as $key => $value) {
+            # code...
+            $sum +=$value->GT;
+        }
+        return $sum;
+    }
+    public static function max_score_GT($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->GT);
+        }
+        
+        return max($score_list);
+    }
+    public static function min_score_GT($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->GT);
         }
         
         return min($score_list);

@@ -129,7 +129,7 @@
         </div>
 
         <div class="card">
-          <div class="card-header">Students List</div>
+          <div class="card-header bg-success text-white">Students List</div>
           <div class="card-body">
                <div class="table-responsive">
             
@@ -158,13 +158,19 @@
                             
                           <td>
 
-                            <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
+                            <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
+                            class="btn btn-warning text-white  ">View Subjects</a>
                           </td>
                   <td><a href="#" class="btn btn-success text-white"
                        v-on:click="unassignedSubjectsList(st.id)"
                        data-target="#exampleModal1"
                        data-toggle="modal"
                        v-bind:title="st.name">Assign Subjects</a></td>
+                       <td><a href="#" class="btn btn-danger text-white"
+                       v-on:click="deleteId(st.id)"
+                       data-target="#exampleModal1"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Remove</a></td>
                 </tr>
               </tbody>
              <span v-else> No Student has been added to this class</span>
@@ -224,6 +230,7 @@ var itemVue = Vue.component("itemTemplate", {
           term_id : '',
           stud_id: '',
         },
+        myId:'', 
         
 
         waterMark : 'search student name',
@@ -269,9 +276,10 @@ var itemVue = Vue.component("itemTemplate", {
       addStudent() {
          this.add_student.term_id  = this.T_id.id,
         this.$http
-          .post('http://127.0.0.1:8000/api/student/'+this.add_student.stud_id+'/term/'+ this.add_student.term_id , {
+          .post('http://127.0.0.1:8000/api/add_student_class/'+this.add_student.stud_id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
              term_id: this.add_student.term_id ,
-            student_id: this.add_student.stud_id
+            student_id: this.add_student.stud_id,
+            class_id:this.myId.id
           })
           .then(data => {
             this.student_id = '';
@@ -295,7 +303,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       
       unassignedSubjectsList(student,term_id) {
-        this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/unassignedsubjects/'+this.T_id.id).then(response => {
+        this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.unassignedSubjects = response.data;
           this.student_id = student;
           
@@ -303,14 +311,14 @@ var itemVue = Vue.component("itemTemplate", {
         })
       },
       assignedSubjectsList(student,term_id) {
-        this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/assignedsubjects/'+this.T_id.id).then(response => {
+        this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/assignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.assignedSubjects = response.data
         })
       },
       
       assignSubject(student_id, subject_id,term_id){
         this.$http
-          .post('http://127.0.0.1:8000/api/students/'+student_id+'/assignsubject/'+subject_id+'/term/'+this.T_id.id, {
+          .post('http://127.0.0.1:8000/api/students/'+student_id+'/assignsubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
             term_id : this.T_id.id
@@ -327,7 +335,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       deleteSubject(student_id, subject_id) {
         this.$http
-          .delete('http://127.0.0.1:8000/api/students/'+student_id+'/deletesubject/'+subject_id, {
+          .delete('http://127.0.0.1:8000/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
           })
@@ -343,6 +351,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       deleteId(studentid) {
         this.id = studentid
+        this.deleteStudent(this.id)
       },
       
       deleteStudent() {
@@ -370,11 +379,13 @@ var itemVue = Vue.component("itemTemplate", {
         $('.modal-backdrop').remove()
       }
     },
-    props:['terms','t'],
+    props:['terms','t','m'],
     mounted() {
       this.studentLists();
-      this.s = this.terms
-      this.T_id =this.t
+      this.s = this.terms,
+      this.T_id =this.t,
+      this.myId = this.m
+      
       
       
     }

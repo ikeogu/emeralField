@@ -133,10 +133,10 @@ class StudentController extends Controller
         return new StudentResource($student);
     }
 
-        public function unassignedSubjects(Student $student,Term $term)
+        public function unassignedSubjects(Student $student,$class_id,Term $term)
         {
           $ids = [];
-          $marks = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)
+          $marks = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)->where('s5_class_id',$class_id)
           ->get();
           foreach ($marks as $subject) {
             array_push($ids, $subject->subject_id);
@@ -148,11 +148,11 @@ class StudentController extends Controller
 
         }
 
-        public function assignedSubjects(Student $student, Term $term)
+        public function assignedSubjects(Student $student,$class_id, Term $term)
         {
           $ids = [];
           
-          $mark = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)
+          $mark = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)->where('s5_class_id',$class_id)
            ->get();
           
           foreach ($mark as $subject) {
@@ -164,26 +164,28 @@ class StudentController extends Controller
          return $subjects;
         }
 
-      public function assignSubject(Student $student, Subject $subject,Term $term)
+      public function assignSubject(Student $student, Subject $subject,$s5class,Term $term)
       {
-        $term->subject()->attach($subject->id,array('student_id' => $student->id));
-        $student->subjects()->attach($subject->id);
+        $class_ = S5Class::find($s5class);
+        $term->subject()->attach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$class_->id));
+        
+        $student->subjects()->attach($subject->id,array('term_id' => $term->id,'s5_class_id'=>$class_->id));
 
               $mark = new SubjectMark();
-              
               $mark->student_id = $student->id;
               $mark->subject_id = $subject->id;
               $mark->subname = $subject->name;
               $mark->term_id = $term->id;
+              $mark->s5_class_id= $class_->id;
               $student->subjectMark()->save($mark);
               $subject->subjectMark()->save($mark);
-              
+              $class_->subjectMark()->save($mark);  
       }
 
-      public function deleteSubject(Student $student, Subject $subject, Term $term)
+      public function deleteSubject(Student $student, Subject $subject,$class_id, Term $term)
       {
-        $student->subjects()->detach($subject->id);
-        $term->subject()->detach($subject->id);
+        $student->subjects()->detach($subject->id,array('term_id' => $term->id,'s5_class_id'=>$class_->id));
+        $term->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$class_->id));
       }
 
       public function new_class($s5class,$student){

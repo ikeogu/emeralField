@@ -19,18 +19,21 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="float-left col-md-4">
-                <a href="{{route('summative',[$t->id])}}"  class="btn btn-success">Summative BroadSheet</a><br>
+            <div class="col-md-3">
+                <a href="{{route('summative',[$t->id,$class_->id])}}"  class="btn btn-success">Summative BroadSheet</a>
             </div>
-            <div class=" col-md-4 py-3">
-                <a href="{{route('exam',[$t->id])}}"  class="btn btn-success">Exam BroadSheet</a>
+            <div class="col-md-3">
+                <a href="{{route('tca',[$t->id,$class_->id])}}"  class="btn btn-success">TCA BroadSheet</a>
             </div>
-            <div class="float-right col-md-4">
-                <a href="{{route('gt',[$t->id])}}"  class="btn btn-success">Grand Total BroadSheet</a>
+            <div class=" col-md-3 py-3">
+                <a href="{{route('exam',[$t->id,$class_->id])}}"  class="btn btn-success">Exam BroadSheet</a>
+            </div>
+            <div class="col-md-3">
+                <a href="{{route('gt',[$t->id,$class_->id])}}"  class="btn btn-success">Grand Total BroadSheet</a>
             </div>
         </div>
 
-    <class-student :students="{{$students}}" :t="{{$t}}" ></class-student>
+    <class-student :students="{{$students}}" :t="{{$t}}" :class_T="{{$class_}}"></class-student>
 
     </div>
 

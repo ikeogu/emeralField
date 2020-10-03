@@ -41,7 +41,7 @@
                             
                           <td>
 
-                            <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
+                            <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/class/'+classId.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
                           </td>
                   
                 </tr>
@@ -70,13 +70,15 @@
           },
           T_id:{
               id:'',
-          }
+          },
+          classId:'',
       }
     },
-  props:['students','t'],
+  props:['students','t','class_'],
   mounted(){
       this.stud = this.students,
-      this.T_id = this.t
+      this.T_id = this.t,
+      this.classId = this.class_
   }
 }
 </script>

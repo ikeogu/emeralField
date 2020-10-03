@@ -36,10 +36,10 @@ Route::namespace('Api')->group(function () {
     Route::apiResource('terms', 'TermController');
     Route::apiResource('subjectMark','SubjectMarkController');
     // assign subject for students
-    Route::get('students/{student}/unassignedsubjects/{term}', 'StudentController@unassignedSubjects');
-    Route::get('students/{student}/assignedsubjects/{term}', 'StudentController@assignedSubjects');
-    Route::post('students/{student}/assignsubject/{subject}/term/{term}', 'StudentController@assignSubject');
-    Route::delete('students/{student}/deletesubject/{subject}/term/{term}', 'StudentController@deleteSubject');
+    Route::get('students/{student}/unassignedsubjects/class/{class}/term/{term}', 'StudentController@unassignedSubjects');
+    Route::get('students/{student}/assignedsubjects/class/{class}/term/{term}', 'StudentController@assignedSubjects');
+    Route::post('students/{student}/assignsubject/{subject}/class/{class}/term/{term}', 'StudentController@assignSubject');
+    Route::delete('students/{student}/deletesubject/{subject}/class/{class}/term/{term}', 'StudentController@deleteSubject');
     // Assign subject and class to Teachers
     Route::get('teachers/{teacher}/unassignedsubjects/', 'TeacherController@unassignedSubjects');
     Route::get('teachers/{teacher}/assignedsubjects/', 'TeacherController@assignedSubjects');
@@ -57,7 +57,7 @@ Route::namespace('Api')->group(function () {
     
     Route::get('myclass/{id}','StudentController@myClasses');
     Route::get('studentsclass/{id}','S5ClassController@stud_classes');
-    Route::get('studentSubject/{id}/term/{term}','SubjectController@studentsubjects');
+    Route::get('studentSubject/{id}/term/{term}/class/{class}','SubjectController@studentsubjects');
     Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
     Route::get('my_subject/{id}/term/{term}','SubjectController@my_subjects');
     // term structuring
@@ -71,9 +71,9 @@ Route::namespace('Api')->group(function () {
     // 
     Route::get('class_terms/{class}', 'S5ClassController@term_class');
     //
-    Route::get('students_in_term/{term}', 'TermController@students_in_term');
+    Route::get('students_in_term/{term}/class/{class}', 'TermController@students_in_term');
     Route::get('term_students/{term}', 'TermController@term_students');
-    Route::post('student/{student}/term/{term}', 'TermController@add_student_term');
+    Route::post('add_student_class/{student}/term/{term}/class/{class}', 'TermController@add_student_term');
     Route::get('s5class_term/{term}', 'S5ClassController@terms_class');
     // subjectMArk Controller
      Route::get('subjectMarks/{student}','SubjectMarkController@show_Mark');

@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
     <div class="card">
-        <div class="card-header">GRAND TOTAL BROADSHEET</div>
+    <div class="card-header bg-success text-capitalize text-white">GRAND TOTAL BROADSHEET {{$class_->name}}|   {{$class_->description}}  | {{$term->name}}|  {{$term->session}}</div>
         <div class="card-body">
             <div class="col-12 table-responsive">
                 <table  class="table table-striped table-bordered m-0  text-default" style="width:100%">
@@ -16,8 +16,11 @@
                     <th >Name</th>
                     @php
                     $total = 0;
-                    
-                    @endphp
+                     $sum_total = 0;
+                     $min_t = 0;
+                     $min_t_per = 0;
+                     $cl_av = 0;
+                    @endphp     
                     @foreach ($subject as  $key => $item)
                         <th class="rotate word" scope="col">{{$item->name}}</th>
                           
@@ -30,25 +33,25 @@
                     <th class="rotate">Average(%)</th> 
                     <th class="rotate">Remarks</th> 
                 </thead>
-                 @php
-                        $total = 0;
-                    @endphp                       
+                                     
                     @foreach ($students as $key =>$student)
                     
                     <tr>
                         
-                        <td>{{$key}}</td>
+                        <td>{{$key + 1}}</td>
                         <td>{{$student->name}}</td>                    
                         @foreach ($student->subjectMark as  $key => $item)
-                                              
+                        @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                 
                             <td>{{$item->GT}}</td>
                             @php
                                 $total += $item->GT;
                             @endphp  
+                        @endif
                         @endforeach
                         <td>{{$total}}</td>
                         <td>{{App\Student::average($total,$student->subjectMark->count())}}</td>
                         @php
+                            $sum_total += $total;
                             $avg = App\Student::average($total,$student->subjectMark->count());
                             $avgPer = App\Student::averPer($avg,$GT_score);
                             $total = 0;
@@ -62,35 +65,67 @@
                     @endforeach
                     <tr>
                         <th></th>
-                        <td></td>
-                    </tr>
-                    <tr>
+                    </tr> 
+                   
+                     <tr>
                         <td></td>
                         <th>Total</th>
-                        <td>Number In</td>
+                        @foreach ($subject as $item)
+                        <td>{{App\Student::subject_total_GT($item->id,$class_->id,$term->id)}} </td>
+                        @endforeach
+                        <td>{{$sum_total}}</td>
+                        <td>{{$min_t}}</td>
+                        <td>{{$min_t_per}}</td>
                         
                     </tr>
                     <tr>
                         <td></td>
                         <th>Max Score</th>
-                        <td>Number In</td>
+                        @foreach ($subject as $item)
+                        <td>{{App\Student::max_score_GT($item->id,$class_->id,$term->id)}}</td>
+                        @endforeach
+                        
                     </tr>
                     <tr>
                         <td></td>
                         <th>Min Score</th>
-                        <td>Number In</td>
-                    </tr>
+                        @foreach ($subject as $item)
+                             <td>{{App\Student::min_score_GT($item->id,$class_->id,$term->id)}}</td>
+                        @endforeach
+                        
+                    </tr> 
                     <tr>
                         <td></td>
-                        <th>Subject Average</th>
-                        <td>Number In</td>
-                    </tr>
+                        <th>Class Average</th>
+                        @foreach ($subject as $item)
+                        <td>{{App\Student::average(App\Student::subject_total_GT($item->id,$class_->id,$term->id),$students->count())}}</td>
+                        @endforeach
+                        
+                       
+                    </tr> 
                     <tr>
                         <td></td>
-                        <th>Subject Average (%)</th>
-                        <td>Number In</td>
-                    </tr>  
-                    
+                        <th>Class Performance (%)</th>
+                        @foreach ($subject as $item)
+                        <td>{{App\Student::average_per(App\Student::subject_total_GT($item->id,$class_->id,$term->id),($GT_score * $students->count()))}}</td>
+                        @php
+                            $cl_av += App\Student::average_per(App\Student::subject_total_GT($item->id,$class_->id,$term->id),($GT_score * $students->count()));
+                        @endphp
+                        @endforeach
+                        <td>{{App\Student::average($cl_av,$subject->count())}}</td>
+                        <td>Class Average</td>
+                       
+                        
+                    </tr> 
+                    <tr>
+                        <td></td>
+                        <th>Remarks</th>
+                        @foreach ($subject as $item)
+                        <td>{{App\Student::grade(App\Student::average_per(App\Student::subject_total_GT($item->id,$class_->id,$term->id),($GT_score * $students->count())),$grades)}}</td>
+                        @endforeach
+                        
+                        
+                    </tr>   
                 </tbody>
                 </table>
             </div>

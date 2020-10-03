@@ -119,30 +119,15 @@ class S5ClassController extends Controller
 
 
     public function term_class($id){
-        $class = S5Class::findOrFail($id);
+        $class_ = S5Class::findOrFail($id);
         
-        return  view('class/terms',['terms'=>json_encode($class->term), 'class'=>$class]);
+        return  view('class/terms',['terms'=>json_encode($class_->term), 'class_T'=>$class_]);
     }
 
     public function stud_classes($id){
 
         $studs = Student::where('s_class','=',$id)->get();
-        $class = S5Class::find($id);
-        // work for it to get data from studentaclass 
-        // $students = array();
-        // foreach ($studs as $value) {
-        //     # code...
-        //     $s = Student::where('id',$value->student_id)->get();
-        //     $students[] = $s;
-        //     // for ($i = 0; $i < count($students); $i) {
-        //     //     foreach($students[$i] as  $studen){
-        //     //         print_r($studen->surname);
-        //     //     }
-        //     // }
-            
-        // }
-        // dd($students);
-       
+        $class = S5Class::find($id);     
         
         return  view('class/studentClass',['students'=>json_encode($studs),'class'=>$class]);
     }

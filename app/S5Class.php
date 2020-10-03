@@ -18,8 +18,8 @@ class S5Class extends Model
     {
         return $this->belongsToMany(Term::class);
     }
-    // public function studtermclass()
-    // {
-    //     return $this->hasMany('App\StudentTermClass');
-    // }
+    public function subjectMark()
+    {
+        return $this->hasMany(SubjectMark::class);
+    }
 }

@@ -6,11 +6,13 @@
   <div id="postsrec" class="mt-5">
 
     <div class="row mt-5">
-        <h6>Session:{{term.session}}</h6>
-      <div class="col-lg-12 text-right" style="margin-bottom: 20px;">
+    
+      <div class="col-6 text-left" style="margin-bottom: 20px;">
+        <a class="btn btn-success text-white">SESSION : {{term.session}}</a>
+      </div>
+      <div class="col-6 text-right" style="margin-bottom: 20px;">
         <a href="#"
-           data-target="#exampleModal"
-           data-toggle="modal"
+           
            class="btn btn-success">{{term.name}}</a>
       </div>
     </div>

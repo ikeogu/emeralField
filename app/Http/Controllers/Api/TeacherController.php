@@ -33,7 +33,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        // Link the API to have class ID and Term ID
     }
 
     /**

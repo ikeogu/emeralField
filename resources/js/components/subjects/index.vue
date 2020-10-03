@@ -10,7 +10,7 @@
         <a href="#"
            data-target="#exampleModal"
            data-toggle="modal"
-           class="btn btn-primary">Add Subject</a>
+           class="btn btn-success">Add Subject</a>
       </div>
     </div>
 
@@ -206,8 +206,8 @@
         </div>
 
         <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Subjects</h6>
+          <div class="card-header py-3 bg-success">
+            <h6 class="m-0 font-weight-bold text-white">Subjects</h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -244,8 +244,8 @@
                         v-on:click="editSubject(sub.id)"
                         data-target="#exampleModal1"
                         data-toggle="modal"
-                        v-bind:title="sub.name">Edit</a></td>
-                    <td><a href="#" data-target="#exampleModal2" v-on:click="deleteId(sub.id)" data-toggle="modal" v-bind:id="id">Delete</a></td>
+                        v-bind:title="sub.name" class="btn btn-warning">Edit</a></td>
+                    <td><a href="#"  class="btn btn-danger" data-target="#exampleModal2" v-on:click="deleteId(sub.id)" data-toggle="modal" v-bind:id="id">Delete</a></td>
                   
                   </tr>
                 </tbody>

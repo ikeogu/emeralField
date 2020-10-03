@@ -39,8 +39,9 @@ Route::get('/logout', 'HomeController@logout')->name('logout');
  Route::get('eschool_students', 'StudentController@eschool')->name('eschool');  
  Route::get('yschool_students', 'StudentController@yschool')->name('yschool');
 //  Get Broad Sheet Ready
-Route::get('summative_test/{term}','StudentController@summative')->name('summative');
-Route::get('exam/{term}','StudentController@exam')->name('exam');
-Route::get('grand_total/{term}','StudentController@grandTotal')->name('gt');
+Route::get('summative_test/{term}/class/{class}','StudentController@summative')->name('summative');
+Route::get('exam/{term}/class/{class}','StudentController@exam')->name('exam');
+Route::get('grand_total/{term}/class/{class}','StudentController@grandTotal')->name('gt');
+Route::get('tca/{term}/class/{class}','StudentController@tca')->name('tca');
  Route::get('stud_in_class', 'TeacherController@sub_class')->name('stud_in_class');
 Route::view('results','results.result')->name('result');
