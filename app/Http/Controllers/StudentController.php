@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ClassTeacher;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Student;
 use App\Subject;
@@ -149,6 +151,41 @@ class StudentController extends Controller
        
                 
         return view('results.tca',['students'=>$class_std, 'subject'=>$subject,'TCA_score'=>$TCA_score,'grades'=>$grades,'term'=>$term,'class_'=>$class_]);
+    }
+    public function summative_sheet($student_id,$term_id,$class_id){
+        $term = Term::find($term_id);
+        $class_ = S5Class::find($class_id);
+        $student = Student::find($student_id);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
+       
+        $users = SubjectMark::select('student_id')->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->distinct()->get();
+        
+
+        return view('results.summative_sheet',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,'grades'=>$grades]);
+
+    }
+    
+    public function result_sheet($student_id,$term_id,$class_id){
+        $term = Term::find($term_id);
+        $class_ = S5Class::find($class_id);
+        $student = Student::find($student_id);
+        $grades = GradeSetting::all();
+        $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->first();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
+       
+        $users = SubjectMark::select('student_id')->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->distinct()->get();
+        $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
+        
+
+        return view('results.result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
+        'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment]);
+
     }
     
 

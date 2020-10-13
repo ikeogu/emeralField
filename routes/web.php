@@ -44,4 +44,6 @@ Route::get('exam/{term}/class/{class}','StudentController@exam')->name('exam');
 Route::get('grand_total/{term}/class/{class}','StudentController@grandTotal')->name('gt');
 Route::get('tca/{term}/class/{class}','StudentController@tca')->name('tca');
  Route::get('stud_in_class', 'TeacherController@sub_class')->name('stud_in_class');
-Route::view('results','results.result')->name('result');
+
+Route::get('summative/stud/{student}/term/{term}/class/{class}','StudentController@summative_sheet')->name('sum');
+Route::get('result/stud/{student}/term/{term}/class/{class}','StudentController@result_sheet')->name('result');

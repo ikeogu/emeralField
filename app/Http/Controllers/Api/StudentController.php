@@ -184,9 +184,10 @@ class StudentController extends Controller
 
       public function deleteSubject(Student $student, Subject $subject,$class_id, Term $term)
       {
-        $student->subjects()->detach($subject->id,array('term_id' => $term->id,'s5_class_id'=>$class_->id));
-        $term->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$class_->id));
+        $student->subjects()->detach($subject->id,array('term_id' => $term->id,'s5_class_id'=>$class_id));
+        $term->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$class_id));
       }
+      
 
       public function new_class($s5class,$student){
         $class = S5Class::find($s5class);
@@ -212,5 +213,6 @@ class StudentController extends Controller
              
         return  view('students/term_sheet',['student'=>$student ,'myclass'=>$class, 'term'=>$term]);
       }
+
       
 }

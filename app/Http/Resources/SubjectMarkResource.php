@@ -27,6 +27,7 @@ class SubjectMarkResource extends JsonResource
             // 'student_name' => $this->student->surname.$this->student->surname.,
             // 'subject_name' => $sub,
             // 'subject'=>$this->subject->name,
+            'id'=>$this->id,
             'student_id' => $this->student_id,
             'subject_id' => $this->subject_id,
             'TCA' => $this->TCA,

@@ -11,7 +11,9 @@ class Term extends Model
         'name',
         'session',
         'description',
-        'status'
+        'status',
+        'fee_',
+        'resumption_date'
     ];
 
     public function classes(){
@@ -27,5 +29,15 @@ class Term extends Model
 
     public function teacher(){
         return $this->belongsToMany(Teacher::class);
+    }
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
+    public function studentTerm()
+    {
+        return $this->hasMany(StudentTerm::class);
+    }
+    public function behaviour(){
+        return $this->hasMany(BehaviourChart::class);
     }
 }

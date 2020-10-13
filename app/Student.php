@@ -46,8 +46,14 @@ class Student extends Model
     {
         return $this->belongsToMany(Term::class)->withTimestamps();
     }
+    public function studentTerm()
+    {
+        return $this->hasMany(StudentTerm::class);
+    }
     
-    
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
     
     public function subjectMark(){
         return $this->belongsToMany(SubjectMark::class);
@@ -55,6 +61,10 @@ class Student extends Model
 
     public function user(){
         return $this->belongsToMany(User::class);
+    }
+
+    public function behaviour(){
+        return $this->hasOne(BehaviourChart::class);
     }
 
     public static function grade($val,$grades){
@@ -92,11 +102,12 @@ class Student extends Model
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
-            array_push($score_list,$value->Summative_test);
+          array_push($score_list,$value->Summative_test);
         }
-        
+    
         return max($score_list);
     }
+    
     public static function subject_total($subject_id,$class_id,$term_id){
         $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $sum =0;

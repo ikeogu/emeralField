@@ -9,6 +9,8 @@ use App\Http\Requests\SubjectMarkRequest;
 use Illuminate\Http\Request;
 use App\Subject;
 use App\Student;
+use App\Term;
+use App\S5Class;
 
 class SubjectMarkController extends Controller
 {
@@ -162,7 +164,7 @@ class SubjectMarkController extends Controller
      */
     public function update(SubjectMarkRequest $request)
     {
-       
+      
         $subjectMarks=  SubjectMark::whereId($request->my_id)->update($request->except(['_method','_token','my_id']));
         $subjectMarks=  SubjectMark::find($request->my_id);
         $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->summative_test;
@@ -184,6 +186,8 @@ class SubjectMarkController extends Controller
         $s->delete();
         return new SubjectMarkResource($s);
     }
+
+    
 
     
 }

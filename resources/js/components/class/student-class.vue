@@ -1,7 +1,7 @@
 <template>
 
   <div id="postsrec" class="mt-5">
-      <div class="row mt-5">
+    <div class="row mt-5">
       <div class="col-lg-12 text-right" style="margin-bottom: 20px;">
         <a href="#"
            data-target="#exampleModalCenter"
@@ -31,11 +31,7 @@
                 </div>
               </div> 
         
-              </form>
-                
-             
-
-                
+              </form> 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -139,21 +135,18 @@
                   <th>#</th>
                   <th>Surname</th>
                   <th>Other name</th>
-                  <th>Email</th>
-                  
-                  <th>Gender</th>
-                  
+                  <th>DOB</th>
+                  <th>Gender</th>              
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody v-if="s.length > 0">
                   
-                <tr v-for="st in s" :key="st.id" >
-                  <th scope="row">{{ st.roll_no }}</th>
+                <tr v-for="(st,index) in s" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
                            <td>{{ st.surname}}</td>
                             <td>{{ st.name}}</td>
-                            <td>{{ st.email}}</td> 
-                            
+                            <td>{{ st.dob| formatDate}}</td> 
                             <td>{{ st.gender}}</td>
                             
                           <td>
@@ -168,7 +161,7 @@
                        v-bind:title="st.name">Assign Subjects</a></td>
                        <td><a href="#" class="btn btn-danger text-white"
                        v-on:click="deleteId(st.id)"
-                       data-target="#exampleModal1"
+                       data-target="#exampleModal"
                        data-toggle="modal"
                        v-bind:title="st.name">Remove</a></td>
                 </tr>
@@ -178,8 +171,210 @@
             </div>
           </div>
         </div>
-
+        <br>     
       </div>
+      <div class="card">
+          <div class="card-header bg-success text-white">Student's Comment</div>
+          <div class="card-body">
+               <div class="table-responsive">
+            
+            <table class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Class Teacher</th>
+                  <th>Result Comment</th>
+                  <th>Head Academcs Remark</th>
+                  <th>created </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                  
+                <tr v-for="(st,index) in comments" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
+                  <td>{{ st.student}}</td>
+                  <td>{{ st.teacher}}</td>
+                  <td>{{ st.comment}}</td>
+                  <td>{{ st.hcomment}}</td>
+                  <td>{{ st.created_at | formatDate}}</td>                             
+
+                  <td>
+                  <a href="#" class="btn btn-success text-white"
+                       v-on:click="getId(st.id)"
+                       data-target="#exampleMod123"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Edit</a>
+                  </td>
+                       
+                </tr>
+              </tbody>
+
+            </table>
+            </div>
+          </div>
+      </div>
+
+       <div class="card">
+          <div class="card-header bg-success text-white">Student's Behavioural Chart</div>
+          <div class="card-body">
+               <div class="table-responsive">
+            
+            <table class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr v-if="myId.status === 'Year School'" :key="myId.id">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Participates in class</th>
+                  <th>Listens Attentively</th>
+                  <th>Follows instrunction First time</th>
+                  <th> Completes work on time</th>
+                  <th> Accepts new Challenges and persist with activities</th>
+                  <th> Expresses feelings and Opinions </th>
+                  <th> Shows respect and Kidness to all</th>
+                  <th>Action</th>
+                </tr>
+                <tr v-else-if="myId.status ==='High School' " :key="myId.id">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Home work culture</th>
+                  <th>Class Attendance</th>
+                  <th>Care (School property)</th>
+                  <th>Responsibilty</th>
+                  <th> Honesty</th>
+                  <th> Initiative</th>
+                  <th> Leadership Role</th>
+                  <th> Dress Code</th>
+                  <th> Obiedence</th>
+                  <th> Politiness</th>
+                  <th> Team Sport</th>
+                  <th> Sociability</th>
+                  <th> Psychomotor Skill & Physical Skill</th>
+                  <th> Sport</th>
+                  <th> Note Completion</th>
+                  <th> Spoken English</th>
+                  <th> Musical Skill</th>
+                  <th> Craft</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody v-if="myId.status === 'Year School'" :key="myId.id">
+                  
+                <tr  v-for="(st,index) in behaviour" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
+                  <td>{{ st.student}}</td>
+                  <td>{{ st.pic}}</td>
+                  <td>{{ st.la}}</td>
+                  <td>{{ st.fift}}</td>
+                  <td>{{ st.cwot}}</td>
+                  <td>{{ st.anc}}</td>
+                  <td>{{ st.efao}}</td>
+                  <td>{{ st.srk}}</td>
+                                            
+
+                  <td>
+                  <a href="#" class="btn btn-success text-white"
+                       v-on:click="bevId(st.id)"
+                       data-target="#exampleMod123"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Edit</a>
+                  </td>
+                       
+                </tr>
+              </tbody>
+              <tbody v-if="myId.status === 'High School'" :key="myId.id">
+                  
+                <tr  v-for="(st,index) in behaviour" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
+                  <td>{{ st.student}}</td>
+                  <td>{{ st.hwc}}</td>
+                  <td>{{ st.catt}}</td>
+                  <td>{{ st.care}}</td>
+                  <td>{{ st.res}}</td>
+                  <td>{{ st.Hon}}</td>
+                  <td>{{ st.init}}</td>
+                  <td>{{ st.lead}}</td>
+                  <td>{{ st.dressc}}</td>
+                  <td>{{ st.obey}}</td>
+                  <td>{{ st.pol}}</td>
+                  <td>{{ st.team}}</td>
+                  <td>{{ st.soc}}</td>
+                  <td>{{ st.psy}}</td>
+                  <td>{{ st.sport}}</td>
+                  <td>{{ st.notec}}</td>
+                  <td>{{ st.spoken}}</td>
+                  <td>{{ st.mus}}</td>
+                  <td>{{ st.craft}}</td>
+                <td>
+                  <a href="#" class="btn btn-success text-white"
+                       v-on:click="bevId(st.id)"
+                       data-target="#exampleMod123"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Edit</a>
+                  </td>
+                       
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+      </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <p>Are you sure want to delete the record? </p>
+                </div>
+                <div class="form-group text-center">
+                  <button class="btn btn-success" v-on:click="hideModal()">Cancel</button>
+                </div>
+                <div class="form-group text-center">
+                  <button class="btn btn-success" v-on:click="deleteSubject()">Ok</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleMod123" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+              </div>
+              <div class="modal-body">
+                <form  method="post" name="updateComment" id="updateComment" action="#" @submit.prevent="updateComment">
+
+                 <div class="form-group">
+                    <label for="name">Class Teachers Comment</label>
+                    <textarea name="comment" id="name" class="form-control" placeholder="" v-model="comments.comment"  cols="7" rows="5"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="father_name">Head Academic's Remark</label>
+                      <textarea name="hcomment" id="name" class="form-control" placeholder="" v-model="comments.hcomment"  cols="7" rows="5"/>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+              </div>
+
+        </div>
+        </div>
     </div>
   
 
@@ -222,7 +417,11 @@ var itemVue = Vue.component("itemTemplate", {
         actionmsg: '',
         s:{},
         query: '',
-        
+        comments:{
+          comment:'',
+          hcomment:'',
+        },
+        comment_id:'',
         T_id :'',
         chosen: '',
         item: {},
@@ -231,8 +430,8 @@ var itemVue = Vue.component("itemTemplate", {
           stud_id: '',
         },
         myId:'', 
-        
-
+        behaviour:{},
+        bev_id:'',
         waterMark : 'search student name',
         sportsData: remoteData,
         fields: {value: 'id'  },
@@ -243,26 +442,19 @@ var itemVue = Vue.component("itemTemplate", {
             },
         query: new Query().select(['name', 'id']),
       sortOrder: 'Ascending'
- 
-        
       }
     },
     
     methods: {
-
-
       studentLists(page) {
-          
-        
+                 
         if (typeof page === 'undefined') {
           page = 1
         }
         this.$http.get('http://127.0.0.1:8000/api/students?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.students = response.data
-          this.pagenumber = page
-        
-          
+          this.pagenumber = page         
         })
       },
       autoComplete(){
@@ -297,9 +489,6 @@ var itemVue = Vue.component("itemTemplate", {
           $('.modal-backdrop').remove()
         
           })
-       
-          
-        
       },
       
       unassignedSubjectsList(student,term_id) {
@@ -353,9 +542,48 @@ var itemVue = Vue.component("itemTemplate", {
         this.id = studentid
         this.deleteStudent(this.id)
       },
-      
+      fetchComment(){
+       this.$http.get('http://127.0.0.1:8000/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+          this.comments = response.data.data;
+          
+       })
+          
+      },
+      fetchBehave(){
+       this.$http.get('http://127.0.0.1:8000/api/behaviour/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+          this.behaviour = response.data.data;
+          console.log(this.behaviour)
+       })
+          
+      },
+      getId(comment) {
+        this.comment_id= comment
+        
+      },
+      updateComment() {
+        this.$http
+          .put('http://127.0.0.1:8000/api/comments/' + this.comment_id, {
+            comment_id: this.comment_id,
+            comment: this.comments.comment,
+            hcomment: this.comments.hcomment,
+          })
+          .then(data => {
+            this.succmsg = false
+            console.log(data)         
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+            this.actionmsg = 'Comment Added successfully'
+            $('#exampleMod123').modal('hide')
+            $('body')
+              .removeClass()
+              .removeAttr('style')
+            $('.modal-backdrop').remove()
+          })
+      },
       deleteStudent() {
-        this.$http.delete('http://127.0.0.1:8000/api/students/' + this.id).then(data => {
+        this.$http.delete('http://127.0.0.1:8000/api/remove_stud_in_class/student/' + this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
@@ -377,14 +605,66 @@ var itemVue = Vue.component("itemTemplate", {
           .removeClass()
           .removeAttr('style')
         $('.modal-backdrop').remove()
-      }
+      },
+
+      bevId(comment) {
+        this.bev_id= comment
+        
+      },
+      updateBehaviour() {
+        this.$http
+          .put('http://127.0.0.1:8000/api/behaviour/' + this.bev_id, {
+            behave_id: this.bev_id,
+            pic:this.behaviour.pic,
+            la:this.behaviour.la,
+            fift:this.behaviour.fift,
+            cwot:this.behaviour.cwot,
+            anc :this.behaviour.anc,
+            efao:this.behaviour.efac,
+            srk:this.behaviour.srk,
+            hwc :this.behaviour.hwk,
+            catt:this.behaviour.catt,
+            care:this.behaviour.care,
+            res :this.behaviour.res,
+            Hon:this.behaviour.Hon,
+            init:this.behaviour.init,
+            lead:this.behaviour.lead,
+            dressc :this.behaviour.dressc,
+            obey:this.behaviour.obey,
+            pol:this.behaviour.pol,
+            team:this.behaviour.team,
+            soc:this.behaviour.soc,
+            psy:this.behaviour.psy,
+            sport:this.behaviour.sport,
+            notec:this.behaviour.notec,
+            spoken:this.behaviour.spoken, 
+            mus:this.behaviour.mus,
+            craft:this.behaviour.craft,
+          })
+          .then(data => {
+            this.succmsg = false
+            console.log(data)         
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+            this.actionmsg = 'Behavioural Chart  Added successfully'
+            $('#exampleModB').modal('hide')
+            $('body')
+              .removeClass()
+              .removeAttr('style')
+            $('.modal-backdrop').remove()
+          })
+      },
     },
+    
     props:['terms','t','m'],
     mounted() {
       this.studentLists();
       this.s = this.terms,
       this.T_id =this.t,
-      this.myId = this.m
+      this.myId = this.m,
+      this.fetchComment()
       
       
       

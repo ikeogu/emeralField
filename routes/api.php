@@ -35,6 +35,8 @@ Route::namespace('Api')->group(function () {
     Route::apiResource('teachers', 'TeacherController');
     Route::apiResource('terms', 'TermController');
     Route::apiResource('subjectMark','SubjectMarkController');
+    Route::apiResource('comments','CommentController');
+    Route::apiResource('behaviour', 'BehaviourChartController');
     // assign subject for students
     Route::get('students/{student}/unassignedsubjects/class/{class}/term/{term}', 'StudentController@unassignedSubjects');
     Route::get('students/{student}/assignedsubjects/class/{class}/term/{term}', 'StudentController@assignedSubjects');
@@ -67,6 +69,7 @@ Route::namespace('Api')->group(function () {
     Route::get('terms/{term}/assignedterms', 'TermController@assignedClasses');
     Route::post('term/{term}/assignclass/{class}', 'TermController@assignClass');
     Route::delete('terms/{term}/deleteclass/{class}', 'TermController@deleteClass');
+    Route::delete('remove_stud_in_class/student/{student}/class/{class}/term/{term}','TermController@remove_stud_in_class');
     Route::get('terms_classes/{term}', 'TermController@termClasses');
     // 
     Route::get('class_terms/{class}', 'S5ClassController@term_class');
@@ -86,4 +89,9 @@ Route::namespace('Api')->group(function () {
     Route::get('student_in_class', 'TermController@term_class_t');
 
     Route::get('class_student/{class}/term/{term}', 'TermController@class_student');
+    // assign class teacher
+    Route::get('assignclassteacher/{teacher}/class/{class}/term/{term}','TeacherController@assignClassTeacher');
+    Route::get('teacher_c/{teacher}','TeacherController@t_class');
+    Route::get('comment/class/{class}/term/{term}','CommentController@my_class_comment');
+    Route::get('behave/class/{class}/term/{term}','BehaviourChartController@my_class_behave');
 });

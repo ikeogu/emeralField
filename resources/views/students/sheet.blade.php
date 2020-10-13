@@ -31,7 +31,12 @@
             </div>
             
         </div>
-       
+       <div class="row">
+         <a href="{{route('sum',[$student->id,$term->id,$class_T->id])}}" class="col-4 btn btn-block btn-success">Summative </a>
+         <div class="col-4 d-flex justify-content-end">
+         <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-4 btn btn-block btn-success ">Result </a>
+         </div>
+       </div>
         
 
     <student-record :studs_data ="{{$data}}" :s_details ="{{$student}}" :term="{{$term}}" :class_T="{{$class_T}}"></student-record>

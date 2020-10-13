@@ -2,6 +2,8 @@
    
    namespace App\Http\Controllers\Api;
 
+use App\BehaviourChart;
+use App\ClassTeacher;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\S5ClassRequest;
 use App\Term;
@@ -10,7 +12,7 @@ use App\TermClasses;
 use App\Student;
 use App\SubjectMark;
 use App\Subject;
-use App\Teacher;
+use App\Comment;
 use App\StudentTermClass;
 use App\StudentTerm;
 use DB;
@@ -210,18 +212,51 @@ class TermController extends Controller
   public function add_student_term(Student $student, Term $term, $s5class){
     $class_ = S5Class::find($s5class);
     $studentTerm = new StudentTerm();
-    $studentTerm->term_id = $term->id;
-    $studentTerm->s5_class_id = $class_->id;
-    $studentTerm->student_id = $student->id;
-    $studentTerm->save();
-     return back();
-  }
+    $comment = new Comment();
+    $behaviour = new BehaviourChart();
+    $class_teacher = ClassTeacher::where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
 
+    if($class_teacher != null) {
+      //code...
+      $studentTerm->term_id = $term->id;
+      $studentTerm->s5_class_id = $class_->id;
+      $studentTerm->student_id = $student->id;
+      // add teacher and student to Term and ...
+      
+      $comment->term_id = $term->id;
+      $comment->s5_class_id = $class_->id;
+      $comment->student_id = $student->id;
+      $comment->teacher_id = $class_teacher->teacher_id;
+      $comment->comment = '';
+      $behaviour->term_id = $term->id;
+      $behaviour->s5_class_id = $class_->id;
+      $behaviour->student_id = $student->id;
+      $behaviour->save();
+      $comment->save();
+      $studentTerm->save();
+      return $studentTerm;
+    }else {
+       return back()->with('success', 'Teacher has Not been assigned to a class');
+    }
+   
+    //  check what happens after adding a child
+  }
+  public function remove_stud_in_class($studid, $classid, $termid){
+    $student = Student::find($studid);
+    $class_ = S5Class::find($classid);
+    $term = Term::find($termid);
+    $studTerm = StudentTerm::where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
+    $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
+    $comment->delete();
+    $studTerm->delete();
+    return $studTerm;
+    
+  }
   public function class_student($classid,$term){
    
     $term_ = Term::find($term);
     $class_ = S5Class::find($classid);
-    $students = StudentTermClass::where('term_id',$term)->where('s5_class_id',$classid)->get();
+    $students = StudentTerm::where('term_id',$term)->where('s5_class_id',$classid)->get();
     $ids = [];
     
     foreach($students as $stu){

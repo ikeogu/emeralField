@@ -247,25 +247,44 @@
                 </thead>
               
                 <tbody>
-                    <tr v-for="teacher in laravelData.data" :key="teacher.id">
-                    <th scope="row">{{ teacher.id }}</th>
+                    <tr v-for="(teacher, index) in laravelData.data" :key="teacher.id">
+                    <th scope="row">{{ index +1 }}</th>
                     <td>{{ teacher.name }}</td>
-                    <td>{{ teacher.start_year }}</td>
+                    <td>{{ teacher.start_year}}</td>
                     <td>{{ teacher.email }}</td>
                     <td>{{ teacher.level }}</td>
-                    <td>{{ teacher.status }}</td>
+                    <td>{{ teacher.status }}
+                        <a href="#" class="btn btn-success text-white btn-block py-2 mb-2"
+                       v-on:click="getTeacherId(teacher.id)"
+                       data-target="#exampleModa"
+                       data-toggle="modal"
+                       v-bind:title="teacher.name">Assigned Class</a>
+                    </td>
                     <td>
-                      <a href="#" class="btn btn-success text-white"
+                      <a href="#" class="btn btn-success text-white btn-block py-2 mb-2"
                        v-on:click="unassignedSubjectList(teacher.id)"
                        data-target="#exampleModal12"
                        data-toggle="modal"
                        v-bind:title="teacher.name">Assign Subjects</a>
-                      <a href="#" class="btn btn-info text-white"
+
+                       <a href="#" class="btn btn-info text-white btn-block py-2 mb-2"
+                       v-on:click="getTeacherId(teacher.id)"
+                       data-target="#exampleModal123"
+                       data-toggle="modal"
+                       v-bind:title="teacher.name">Make Class Teacher</a>
+
+                    </td> 
+                    <td>
+                      
+                      <a href="#" class="btn btn-info text-white btn-block py-2 mb-2"
                         v-on:click="editTeacher(teacher.id)"
                         data-target="#exampleModal1"
                         data-toggle="modal"
-                        v-bind:title="teacher.name">Edit</a></td>
-                    <td><a href="#" class="btn btn-danger text-white" data-target="#exampleModal2" v-on:click="deleteId(teacher.id)" data-toggle="modal" v-bind:id="id">Delete</a></td>
+                        v-bind:title="teacher.name">Edit</a>
+                        <a href="#" class="btn btn-danger text-white" data-target="#exampleModal2" v-on:click="deleteId(teacher.id)" 
+                      data-toggle="modal" v-bind:id="id">Delete</a>
+                      
+                    </td>
                     </tr>
                 </tbody>
               
@@ -279,6 +298,92 @@
         </div>
       </div>
     </div>
+    <!-- Modal -->
+         <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Assigned Class</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body ">
+                <div class="row ">
+                 
+                    <div class="card-body">
+                      <div>
+                        <table>
+                          <thead>
+                            <th class="col">Class</th>
+                            <th class="col"> Term</th>
+                          </thead>
+                          <tbody>
+                          <tr v-for="m in mclass" :key="m.id">
+                            <td>{{m.myclass}}</td>
+                            <td>{{m.term}}</td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    <!-- Modal -->
+        <div class="modal fade" id="exampleModal123" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Assign Class Teacher</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body ">
+                <div class="row ">
+                 
+                    <div class="card-body">
+                       <form  method="post" name="classteacher" id="classteacher" action="#" @submit.prevent="classTeacher(item.teacher_id, item.class_id,item.term_id)">
+
+                        <div class="form-group">
+                          <label for="gender">Choose class</label>
+                          <select class="form-control" name="class_name" v-model="item.class_id">
+                                <option v-for="classes in laravelClassData "  :key="classes.id" v-bind:value="classes.id">
+                                {{ classes.name }} {{ classes.description }}
+                                </option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="gender">Choose Term</label>
+                          <select class="form-control" name="subject" id="subject" v-model="item.term_id">
+                                <option v-for="term in classLists"  :key="term.id" v-bind:value="term.id">{{ term.name }} | {{ term.session }}</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group text-center">
+                          <button class="btn btn-success btn-block">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
 
 </template>
@@ -298,8 +403,21 @@
           
         },
         laravelData: {},
+       classLists:{
+          //  id:'',
+          // name:'',
+          // description:''
+        },
         laravelClassData:{},
+        item:{
+          class_id:'',
+          term_id:'',
+          teacher_id:'',
+        },
+        
         id: '',
+        myclass:'',
+        mclass:{},
         unassignedSubjects:{},
         assignedSubjects:{},
         subject_id:'',
@@ -319,7 +437,7 @@
       fetchClasses() {
         this.$http.get('http://127.0.0.1:8000/api/schclasses').then(response => {
           //this.posts = response.data.data;
-          this.laravelClassData = response.data
+          this.laravelClassData = response.data.data
           
         })
       },
@@ -377,7 +495,7 @@
       },
       updateTeacher() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/teachers/' + this.id, {
+          .put('http://127.0.0.1:8000/api/teachers/' + this.id, {
             teacher_id:this.id,
             name: this.teacher.name,
             start_year: this.teacher.start_year,
@@ -461,12 +579,55 @@
             }, 3000)
           })
       },
+       classTerms() {
+
+        this.$http.get('http://127.0.0.1:8000/api/terms').then(response => {
+          //this.posts = response.data.data;
+          this.classLists = response.data.data
+          
+        })
+      },
+      getTeacherId(id){
+        this.item.teacher_id = id
+        this.teacher_(this.item.teacher_id)
+      },
+      teacher_(t){
+        this.$http.get('http://127.0.0.1:8000/api/teacher_c/'+ t)
+        .then(response => {
+          this.mclass= response.data
+          console.log(this.mclass)
+        })
+      },
+      classTeacher(teacherid, classid,termid){
+        this.$http
+          .get('http://127.0.0.1:8000/api/assignclassteacher/'+teacherid +'/class/'+classid +'/term/'+termid)
+          .then(response => {
+          this.myclass= response.data.data
+        
+        }).then(data => {
+            this.class_id = '';
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+            
+            this.actionmsg = 'Teacher has been assigned To Class'
+            $('#exampleModal123').modal('hide')
+            $('body')
+              .removeClass()
+              .removeAttr('style')
+            $('.modal-backdrop').remove()
+            
+            
+          })
+      }
     },
     // asssign a subject to teacher
 
     mounted() {
       this.fetchClasses();
       this.teacherLists()
+      this.classTerms()
       
     }
   }

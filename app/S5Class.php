@@ -22,4 +22,14 @@ class S5Class extends Model
     {
         return $this->hasMany(SubjectMark::class);
     }
+    public function classTeacher(){
+        return $this->hasOne(ClassTeacher::class);
+    }
+    public function studentTerm()
+    {
+        return $this->hasMany(StudentTerm::class);
+    }
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
 }

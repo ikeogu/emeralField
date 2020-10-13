@@ -243,7 +243,8 @@
                       </td>
 
                     <td>
-                        <a href="#" data-target="#exampleModal2" v-on:click="deleteId(term.id)" data-toggle="modal" v-bind:id="id" class="btn btn-danger">Delete</a></td>
+                        <a href="#" data-target="#exampleMod" v-on:click="deleteId(term.id)" data-toggle="modal"
+                         v-bind:id="id" class="btn btn-danger">Delete</a></td>
                   </tr>
                 </tbody>
                 
@@ -411,16 +412,20 @@
             }, 3000)
           })
       },
-      deleteClass(term, cls) {
+       deleteId(termid) {
+        this.id = termid
+        this.deleteTerm();
+      },
+      deleteClass(term_, cls_) {
         this.$http
-          .delete('http://127.0.0.1:8000/api/terms/'+term+'/deleteclass/'+cls, {
+          .delete('http://127.0.0.1:8000/api/terms/'+term_+'/deleteclass/'+cls_, {
             term_id: this.term_id,
-            class_id: this.class_id,
+            class_id: cls_,
           })
           .then(data => {
-            this.class_id = '';
-            this.assignedSubjectsList(class_id);
-            this.unassignedSubjectsList(class_id);
+            cls_ = '';
+            this.assignedClassList(cls_);
+            this.unassignedClassList(cls_);
             var self = this
             setTimeout(function() {
               self.succmsg = true
@@ -428,9 +433,7 @@
           })
       },
    
-      deleteId(termid) {
-        this.id = termid
-      },
+     
       deleteTerm() {
         this.$http.delete('http://127.0.0.1:8000/api/terms/' + this.id).then(data => {
           this.succmsg = false
@@ -440,7 +443,7 @@
           }, 3000)
 
           this.actionmsg = 'Term deleted successfully'
-          this.subjectLists(this.pagenumber)
+          this.termLists(this.pagenumber)
           $('#exampleModal2').modal('hide')
           $('body')
             .removeClass()

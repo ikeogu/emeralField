@@ -22,4 +22,10 @@ class Teacher extends Model
         public function subjects(){
             return $this->belongsToMany(Subject::class);
         }
+        public function classTeacher(){
+            return $this->hasOne(ClassTeacher::class);
+        }
+        public function comment(){
+            return $this->hasMany(Comment::class);
+        }
 }

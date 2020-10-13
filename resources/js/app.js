@@ -40,6 +40,9 @@ import students from './components/students/index.vue';
  import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
  import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 //  Vue.prototype.$userId = document.querySelector("meta[name='user_id']").getAttribute('content');
+import moment from 'moment';
+
+
 
 
 
@@ -67,6 +70,11 @@ Vue.use(VueAuthenticate, {
 //vue-toaster
 import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
+Vue.filter('formatDate', function(value) {
+    if (value) {
+      return moment(String(value)).format('DD MMM, Y')
+    }
+  });
 
 Vue.use(Toaster, {timeout: 2000});
 

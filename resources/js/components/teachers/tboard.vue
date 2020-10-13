@@ -117,7 +117,7 @@
                   <tbody v-if="student_mark != ''">
                     
                     <tr  v-for="marks in student_mark" :key="marks.id" :subject_id="marks.subject_id">
-                      <td> {{marks.student}}</td>
+                        <td> {{marks.student}}</td>
                         <td> {{marks.subject}}</td>
                         <td>{{marks.HW}}</td>
                         <td>{{marks.CW}}</td>
@@ -127,17 +127,15 @@
                           <td>{{marks.TCA}}</td>
                           <td>{{marks.Exam}}</td>
                           <td>{{marks.GT}}</td>
-                    
-                        <td>  
                           
-                            <a href="#"
+                        <td>  
+                          <a href="#"
                             v-on:click="editScore(marks.id)"
                               data-target="#exampleModalEdit"
                               data-toggle="modal"
                               v-bind:title="marks.id"
                               class="btn btn-success">Edit
-                          </a>
-                          
+                          </a> 
                       </td>
                     </tr>
                     
@@ -326,15 +324,10 @@
         },
         student_mark:{
           student_id:'',
-          student:[
-            surname=>'',
-
-
-          ],
           subname:'',
           subject_id:'',
           term_id:'',
-          
+    
           id:'',
           HA:'',
           CW:'',
@@ -403,7 +396,7 @@
         this.s_id = id
       },
      
-     mySubjectClass(class_id, term_id, subject_id){
+      mySubjectClass(class_id, term_id, subject_id){
        
         this.$http
           .get('http://127.0.0.1:8000/api/teacher/'+this.item.class_id +'/assignclass/'+this.item.term_id +'/subject/'+this.s_id)
@@ -426,7 +419,9 @@
             
           })
       },
+      
       editScore(markid) {
+        console.log(markid)
         this.$http.get('http://127.0.0.1:8000/api/subjectMark/' + markid).then(data => {
           
           this.student_mark.subject_id = data.data.data.subject_id
@@ -498,7 +493,7 @@
     props:['t_login','subjects'],
     mounted() {
       
-    console.log(this.$userId)
+    
       this.logged_in = this.t_login;
       this.mySubjects = this.subjects;
       this.fetchClass();

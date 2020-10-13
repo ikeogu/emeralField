@@ -8,7 +8,9 @@ use App\Http\Resources\Teacher as TeacherResource;
 use App\Http\Resources\TeacherResourceCollection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use App\ClassTeacher;
+use App\Http\Resources\S5ClassResource;
+use App\Http\Resources\ClassTeacherResource;
 use App\Teacher;
 use App\User;
 use App\Subject;
@@ -158,5 +160,19 @@ class TeacherController extends Controller
     $teacher->subjects()->detach($subject->id);
   }
 
+  public function assignClassTeacher($teacherid,$classid,$termid){
+  
+    $classTeacher = new ClassTeacher();
+    $classTeacher->teacher_id = $teacherid;
+    $classTeacher->s5_class_id = $classid;
+    $classTeacher->term_id = $termid;
+    $classTeacher->save();
+    return new ClassTeacherResource($classTeacher);
+
+  }
+  public function t_class($teacherid){
+    $te = Teacher::with('classTeacher')->find($teacherid);
+    return new ClassTeacherResource($te->classTeacher);
+  }
  
 }
