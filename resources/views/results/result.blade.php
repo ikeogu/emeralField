@@ -93,11 +93,11 @@
                                     <td class="pl-2">
                                         <ul>
                                             <li>days present</li>
-                                            <li class="present"><strong>103</strong></li>
+                                        <li class="present"><strong>{{$attend->dp}}</strong></li>
                                             <li>days absent</li>
-                                            <li class="absent"><strong>6</strong></li>
-                                            <li>visit days</li>
-                                            <li class="days"><strong>6</strong></li>
+                                            <li class="absent"><strong>{{$attend->da}}</strong></li>
+                                            <li>Tardy days</li>
+                                            <li class="days"><strong>{{$attend->tar}}</strong></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -125,39 +125,33 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td scope="row">Lorem ipsum dolor sit amet ?</td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td scope="row">Participates in class</td>
+                                     {{App\Student::behave($behave->pic)}}
+                           
                                 </tr>
                                 <tr>
-                                    <td scope="row">Lorem ipsum dolor sit amet ?</td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td scope="row">Listens Attentively</td>
+                                    {{App\Student::behave($behave->la)}}
                                 </tr>
                                 <tr>
-                                    <td scope="row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et minima </td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td scope="row">Follows instrunction First time </td>
+                                    {{App\Student::behave($behave->fift)}}
                                 </tr>
                                 <tr>
-                                    <td scope="row">Lorem ipsum dolor sit amet </td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td scope="row">Completes work on time</td>
+                                    {{App\Student::behave($behave->cwot)}}
                                 </tr>
                                 <tr>
-                                    <td scope="row">Lorem ipsum dolor sit amet </td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td scope="row">Accepts new Challenges and persist with activities </td>
+                                    {{App\Student::behave($behave->anc)}}
+                                </tr>
+                                <tr>
+                                    <td scope="row">Expresses feelings and Opinions </td>
+                                    {{App\Student::behave($behave->efao)}}
+                                </tr>
+                                <tr>
+                                    <td scope="row">Shows respect and Kidness to all </td>
+                                    {{App\Student::behave($behave->srk)}}
                                 </tr>
                             </tbody>
                         </table>

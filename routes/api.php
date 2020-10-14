@@ -37,6 +37,7 @@ Route::namespace('Api')->group(function () {
     Route::apiResource('subjectMark','SubjectMarkController');
     Route::apiResource('comments','CommentController');
     Route::apiResource('behaviour', 'BehaviourChartController');
+    Route::apiResource('attend', 'AttendanceController');
     // assign subject for students
     Route::get('students/{student}/unassignedsubjects/class/{class}/term/{term}', 'StudentController@unassignedSubjects');
     Route::get('students/{student}/assignedsubjects/class/{class}/term/{term}', 'StudentController@assignedSubjects');
@@ -94,4 +95,5 @@ Route::namespace('Api')->group(function () {
     Route::get('teacher_c/{teacher}','TeacherController@t_class');
     Route::get('comment/class/{class}/term/{term}','CommentController@my_class_comment');
     Route::get('behave/class/{class}/term/{term}','BehaviourChartController@my_class_behave');
+    Route::get('attendance/class/{class}/term/{term}','AttendanceController@my_class_attend');
 });

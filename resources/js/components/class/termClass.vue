@@ -41,7 +41,6 @@
                   <th>Class Description</th>
                   <th>Class Max No of Students</th>
                   <th>Class Level</th>
-                  <th>Students in this Class</th>
                   
                 
               </thead>
@@ -51,9 +50,9 @@
                   <td>{{ las.description }}</td>
                   <td>{{ las.no_of_students }}</td>
                   <td>{{ las.status }}</td>
-                  <td>
+                  <!-- <td>
                     <a :href="'http://127.0.0.1:8000/api/class_student/'+las.id+'/term/'+term.id" class="btn btn-info text-white ">view  Students</a>
-                  </td>
+                  </td> -->
                   <!-- link to student in a class -->
                   
                 </tr>

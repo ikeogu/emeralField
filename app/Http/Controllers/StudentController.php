@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Attendance;
+use App\BehaviourChart;
 use App\ClassTeacher;
 use App\Comment;
 use Illuminate\Http\Request;
@@ -172,6 +174,8 @@ class StudentController extends Controller
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
         $student = Student::find($student_id);
+        $behave = BehaviourChart::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
+        $attend = Attendance::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
         $grades = GradeSetting::all();
         $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->first();
@@ -184,7 +188,7 @@ class StudentController extends Controller
         
 
         return view('results.result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
-        'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment]);
+        'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment,'behave'=>$behave,'attend'=>$attend]);
 
     }
     

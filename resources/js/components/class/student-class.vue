@@ -219,7 +219,7 @@
        <div class="card">
           <div class="card-header bg-success text-white">Student's Behavioural Chart</div>
           <div class="card-body">
-               <div class="table-responsive">
+            <div class="table-responsive">
             
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
@@ -276,13 +276,28 @@
                   <td>
                   <a href="#" class="btn btn-success text-white"
                        v-on:click="bevId(st.id)"
-                       data-target="#exampleMod123"
+                       data-target="#exampleModbev"
                        data-toggle="modal"
                        v-bind:title="st.name">Edit</a>
                   </td>
                        
                 </tr>
               </tbody>
+              <tr>
+              </tr>
+              <tfoot>
+                <span>Keys</span>
+                <tr>
+                  
+                  <td> 1: Outstanding</td>
+                   <td> 2: Very Good</td>
+                   <td> 3: Good</td>
+                   <td>4: Needs More Improvement</td>
+                </tr>
+                
+                 
+                
+              </tfoot>
               <tbody v-if="myId.status === 'High School'" :key="myId.id">
                   
                 <tr  v-for="(st,index) in behaviour" :key="st.id" >
@@ -309,7 +324,7 @@
                 <td>
                   <a href="#" class="btn btn-success text-white"
                        v-on:click="bevId(st.id)"
-                       data-target="#exampleMod123"
+                       data-target="#exampleModbev"
                        data-toggle="modal"
                        v-bind:title="st.name">Edit</a>
                   </td>
@@ -346,7 +361,7 @@
         </div>
 
         <div class="modal fade" id="exampleMod123" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add Comment</h5>
@@ -373,7 +388,243 @@
               </div>
               </div>
 
+          </div>
         </div>
+
+        <div  v-if="myId.status === 'High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">High School Behavioural Chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+              </div>
+              <div class="modal-body">
+                <form  method="post" name="updateComment" id="updateComment" action="#" @submit.prevent="updateComment">
+
+                 <div class="form-group">
+                    <label for="name">Class Teachers Comment</label>
+                    <textarea name="comment" id="name" class="form-control" placeholder="" v-model="comments.comment"  cols="7" rows="5"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="father_name">Head Academic's Remark</label>
+                      <textarea name="hcomment" id="name" class="form-control" placeholder="" v-model="comments.hcomment"  cols="7" rows="5"/>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+              </div>
+
+          </div>
+        </div>
+
+        <div  v-if="myId.status === 'Year School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Year School Behavioural Chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+              </div>
+              <div class="modal-body">
+                <form  method="post" name="updateBehaviour" id="updateBehaviour" action="#" @submit.prevent="updateBehaviour">
+
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Participates in class</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="pic" id="subject" v-model="behaviour.pic">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Listens Attentively</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="la" id="subject" v-model="behaviour.la">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Follows instrunction First time</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="fift" id="subject" v-model="behaviour.fift">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Completes work on time</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="cwot" id="subject" v-model="behaviour.cwot">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Accepts new Challenges and persist with activities</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="anc" id="subject" v-model="behaviour.anc">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Expresses feelings and Opinions</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="efao" id="subject" v-model="behaviour.efao">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Shows respect and Kidness to all</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="srk" id="subject" v-model="behaviour.srk">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+              </div>
+
+          </div>
+        </div>
+        
+        <div class="card" v-if="myId.status === 'Year School'" :key="myId.id">
+            <div class="card-header bg-success text-white">Student's Attendance Chart</div>
+          <div class="card-body">
+            <div class="table-responsive">
+            
+            <table class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr >
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Days Present</th>
+                  <th>Days Absent</th>
+                  <th>Tardy Days</th>
+                  <th>Action</th>
+                </tr>
+                
+              </thead>
+              <tbody >
+                  
+                <tr  v-for="(st,index) in attendance" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
+                  <td>{{ st.student}}</td>
+                  <td>{{ st.dp}}</td>
+                  <td>{{ st.da}}</td>
+                  <td>{{ st.tar}}</td>                                          
+
+                  <td>
+                  <a href="#" class="btn btn-success text-white"
+                       v-on:click="attId(st.id)"
+                       data-target="#exampleModattend"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Edit</a>
+                  </td>
+                       
+                </tr>
+              </tbody>
+            
+                            
+             
+            </table>
+            </div>
+          </div>
+        </div>
+
+        <div  v-if="myId.status === 'Year School'" :key="myId.id" class="modal fade" id="exampleModattend" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Year School Attendace Chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+              </div>
+              <div class="modal-body">
+                <form  method="post" name="updateAttendance" id="updateAttendance" action="#" @submit.prevent="updateAttendance">
+
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Days Present</label>
+                  </div>
+                  <div class="col-4">
+                    <input class="form-control" name="dp" v-model="attendance.dp">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Days Absent</label>
+                  </div>
+                  <div class="col-4">
+                     <input class="form-control" name="da" v-model="attendance.dp">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Tardy Days</label>
+                  </div>
+                  <div class="col-4">
+                    <input class="form-control" name="tar" v-model="attendance.tar">
+                  </div>
+                </div>
+                
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+              </div>
+
+          </div>
         </div>
     </div>
   
@@ -431,7 +682,9 @@ var itemVue = Vue.component("itemTemplate", {
         },
         myId:'', 
         behaviour:{},
+        attendance:{},
         bev_id:'',
+        attend_id:'',
         waterMark : 'search student name',
         sportsData: remoteData,
         fields: {value: 'id'  },
@@ -550,15 +803,24 @@ var itemVue = Vue.component("itemTemplate", {
           
       },
       fetchBehave(){
-       this.$http.get('http://127.0.0.1:8000/api/behaviour/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get('http://127.0.0.1:8000/api/behave/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.behaviour = response.data.data;
-          console.log(this.behaviour)
+          
+       })
+          
+      },
+      fetchAttend(){
+       this.$http.get('http://127.0.0.1:8000/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+          this.attendance = response.data.data;
+          
        })
           
       },
       getId(comment) {
         this.comment_id= comment
-        
+      },
+      attId(comments) {
+        this.attend_id= comments
       },
       updateComment() {
         this.$http
@@ -609,18 +871,19 @@ var itemVue = Vue.component("itemTemplate", {
 
       bevId(comment) {
         this.bev_id= comment
+        console.log(this.bev_id);
         
       },
       updateBehaviour() {
         this.$http
-          .put('http://127.0.0.1:8000/api/behaviour/' + this.bev_id, {
+          .put('http://127.0.0.1:8000/api/behaviour/'+ this.bev_id, {
             behave_id: this.bev_id,
             pic:this.behaviour.pic,
             la:this.behaviour.la,
             fift:this.behaviour.fift,
             cwot:this.behaviour.cwot,
             anc :this.behaviour.anc,
-            efao:this.behaviour.efac,
+            efao:this.behaviour.efao,
             srk:this.behaviour.srk,
             hwc :this.behaviour.hwk,
             catt:this.behaviour.catt,
@@ -643,17 +906,68 @@ var itemVue = Vue.component("itemTemplate", {
           })
           .then(data => {
             this.succmsg = false
-            console.log(data)         
+            this.behaviour.pic = '';
+            this.behaviour.la = '';
+            this.behaviour.fift = '';
+            this.behaviour.cwot = '';
+            this.behaviour.anc = '';
+            this.behaviour.efao = '';
+            this.behaviour.srk = '';
+            this.behaviour.hwk = '';
+            this.behaviour.catt = '';
+            this.behaviour.care = '';
+            this.behaviour.res = '';
+            this.behaviour.Hon = '';
+            this.behaviour.init = '';
+            this.behaviour.lead = '';
+            this.behaviour.dressc = '';
+            this.behaviour.obey = '';
+            this.behaviour.pol = '';
+            this.behaviour.team = '';
+            this.behaviour.soc = '';
+            this.behaviour.psy = '';
+            this.behaviour.sport = '';
+            this.behaviour.notec = '';
+            this.behaviour.spoken = '';
+            this.behaviour.mus = '';
+            this.behaviour.craft = '';      
             var self = this
             setTimeout(function() {
               self.succmsg = true
             }, 3000)
             this.actionmsg = 'Behavioural Chart  Added successfully'
-            $('#exampleModB').modal('hide')
+            $('#exampleModbev').modal('hide')
             $('body')
               .removeClass()
               .removeAttr('style')
             $('.modal-backdrop').remove()
+            this.studentLists();
+          })
+      },
+
+      updateAttendance() {
+        this.$http
+          .put('http://127.0.0.1:8000/api/attendance/'+ this.attend_id, {
+            attend_id: this.attend_id,
+            dp:this.attendance.dp,
+            da:this.attendance.da,
+            tar:this.attendance.tar,
+           
+          })
+          .then(data => {
+            this.succmsg = false
+            
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+            this.actionmsg = 'Attendance Chart  Added successfully'
+            $('#exampleModattend').modal('hide')
+            $('body')
+              .removeClass()
+              .removeAttr('style')
+            $('.modal-backdrop').remove()
+            this.studentLists();
           })
       },
     },
@@ -665,6 +979,7 @@ var itemVue = Vue.component("itemTemplate", {
       this.T_id =this.t,
       this.myId = this.m,
       this.fetchComment()
+      this.fetchBehave()
       
       
       

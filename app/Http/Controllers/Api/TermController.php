@@ -2,6 +2,7 @@
    
    namespace App\Http\Controllers\Api;
 
+use App\Attendance;
 use App\BehaviourChart;
 use App\ClassTeacher;
 use App\Http\Controllers\Controller;
@@ -214,6 +215,7 @@ class TermController extends Controller
     $studentTerm = new StudentTerm();
     $comment = new Comment();
     $behaviour = new BehaviourChart();
+    $attend = new Attendance();
     $class_teacher = ClassTeacher::where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
 
     if($class_teacher != null) {
@@ -231,6 +233,12 @@ class TermController extends Controller
       $behaviour->term_id = $term->id;
       $behaviour->s5_class_id = $class_->id;
       $behaviour->student_id = $student->id;
+      // attendance
+      $attend->term_id = $term->id;
+      $attend->s5_class_id = $class_->id;
+      $attend->student_id = $student->id;
+
+      $attend->save();
       $behaviour->save();
       $comment->save();
       $studentTerm->save();

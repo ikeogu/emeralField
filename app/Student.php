@@ -211,4 +211,33 @@ class Student extends Model
         
         return min($score_list);
     }
+
+    public static function behave($behave){
+        if ($behave == 1){
+         echo " <td><i class='fa fa-check'></i></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>";
+        }    
+        elseif($behave == 2){
+            echo " <td></td>
+            <td><i class='fa fa-check'></i></td>
+            <td></td>
+            <td></td>
+            <td></td>";
+        }    
+        elseif($behave == 3){
+        echo " <td></td>
+            <td></td>
+            <td><i class='fa fa-check'></i></td>
+            <td></td>";
+        }
+        elseif($behave == 4){      
+        echo " <td></td>
+            <td></td>
+            <td></td>
+            <td><i class='fa fa-check'></i></td>";
+        }
+    }
 }

@@ -16,12 +16,13 @@ class BehaviourChartResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' =>$this->id,
             'pic' => $this->pic,
             'la'=>$this->la,
             'fift'=>$this->fift,
             'cwot'=>$this->cwot,
             'anc' =>$this->anc,
-            'efao'=>$this->efac,
+            'efao'=>$this->efao,
             'srk' =>$this->srk,
             'hwc' =>$this->hwk,
             'catt'=>$this->catt,
