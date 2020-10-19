@@ -286,6 +286,95 @@ class Student extends Model
         return min($score_list);
     }
 
+    public static function subject_total_cat1($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $sum =0;
+        foreach ($scores as $key => $value) {
+            # code...
+            $sum +=$value->CAT1;
+        }
+        return $sum;
+    }
+    public static function max_score_cat1($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->GT);
+        }
+        
+        return max($score_list);
+    }
+    public static function min_score_cat1($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->CAT1);
+        }
+        
+        return min($score_list);
+    }
+
+    public static function subject_total_cat2($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $sum =0;
+        foreach ($scores as $key => $value) {
+            # code...
+            $sum +=$value->CAT2;
+        }
+        return $sum;
+    }
+    public static function max_score_cat2($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->CAT2);
+        }
+        
+        return max($score_list);
+    }
+    public static function min_score_cat2($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->CAT2);
+        }
+        
+        return min($score_list);
+    }
+    public static function subject_total_msc($subject_id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$subject_id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $sum =0;
+        foreach ($scores as $key => $value) {
+            # code...
+            $sum +=$value->MSC;
+        }
+        return $sum;
+    }
+    public static function max_score_msc($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->MSC);
+        }
+        
+        return max($score_list);
+    }
+    public static function min_score_msc($id,$class_id,$term_id){
+        $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+        $score_list = [];
+        foreach ($scores as  $value) {
+            # code...
+            array_push($score_list,$value->MSC);
+        }
+        
+        return min($score_list);
+    }
+
     public static function behave($behave){
         if ($behave == 1){
          echo " <td><i class='fa fa-check'></i></td>
@@ -343,13 +432,13 @@ class Student extends Model
 
     public static function h_min_score($id,$class_id,$term_id){
         $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
-        $score_list = [];
-        foreach ($scores as  $value) {
+        $score_lt = [];
+        foreach ($scores as  $values) {
             # code...
-            array_push($score_list,$value->GT);
+            array_push($score_lt,$values->GT);
         }
         
-        return min($score_list);
+        return min($score_lt);
     }
     
     public static function h_max_score($id,$class_id,$term_id){

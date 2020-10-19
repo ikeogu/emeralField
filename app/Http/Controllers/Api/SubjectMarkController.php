@@ -175,7 +175,8 @@ class SubjectMarkController extends Controller
             $subjectMarks->save();
         }elseif($class__->status === 'High School'){
             
-            $subjectMarks->GT = $request->MSC + $request->CAT1 + $request->CAT2 + $request->Exam;
+            $subjectMarks->TCA =  $request->MSC + $request->CAT1 + $request->CAT2;
+            $subjectMarks->GT = $subjectMarks->TCA + $request->Exam;
             $subjectMarks->save();
         }
         

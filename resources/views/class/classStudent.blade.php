@@ -12,10 +12,10 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="float-left col-md-6">
-            <h3 class="h3 mb-2 text-gray-800">{{$t->name}} {{$t->session}}</h3>
+            <p class="h3 mb-2 text-gray-800">{{$t->name}} {{$t->session}}</p>
             </div>
             <div class="float-right col-md-6">
-            <h3 class="h3 mb-2 text-gray-800">{{$class_->name}} {{$class_->description}}</h3>
+            <p class="h3 mb-2 text-gray-800">{{$class_->name}} {{$class_->description}}</p>
             </div>
         </div>
         <div class="row mt-5">

@@ -79,9 +79,7 @@ class StudentController extends Controller
             # code...
             $SMT_score = $value->summative_test;
         }
-        
-        
-            
+              
         return view('results.summative',['students'=>$class_std, 'subject'=>$subject,  'grades'=>$grades,'SMT_score'=>$SMT_score,'term'=>$term,'class_'=>$class_]);
        
     }
@@ -141,16 +139,61 @@ class StudentController extends Controller
             array_push($ids, $stu->student_id);
             array_push($sub_id, $stu->subject_id);
         }
-        
         $class_std = Student::whereIn('id',$ids)->with('subjectMark','subjects')->get();
         $subject = Subject::whereIn('id',$sub_id)->get();
-        // $students[] = (array) $class_std;
-        
-            # code...
-            $TCA_score = 50;
-       
-                
+        $TCA_score = 50;
         return view('results.tca',['students'=>$class_std, 'subject'=>$subject,'TCA_score'=>$TCA_score,'grades'=>$grades,'term'=>$term,'class_'=>$class_]);
+    }
+    public function cat1s($term_id,$class_1){
+        $term = Term::find($term_id);
+        $class_= S5Class::find($class_1);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('term_id',$term->id)->where('s5_class_id',$class_->id)->get();
+        $ids = [];
+        $sub_id = [];
+        $TCA_score = 0;
+        foreach($scores as $stu){
+            array_push($ids, $stu->student_id);
+            array_push($sub_id, $stu->subject_id);
+        }
+        $class_std = Student::whereIn('id',$ids)->with('subjectMark','subjects')->get();
+        $subject = Subject::whereIn('id',$sub_id)->get();
+        $TCA_score = 20;
+        return view('results.cat1_broadsheet',['students'=>$class_std, 'subject'=>$subject,'TCA_score'=>$TCA_score,'grades'=>$grades,'term'=>$term,'class_'=>$class_]);
+    }
+    public function cat2s($term_id,$class_1){
+        $term = Term::find($term_id);
+        $class_= S5Class::find($class_1);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('term_id',$term->id)->where('s5_class_id',$class_->id)->get();
+        $ids = [];
+        $sub_id = [];
+        $TCA_score = 0;
+        foreach($scores as $stu){
+            array_push($ids, $stu->student_id);
+            array_push($sub_id, $stu->subject_id);
+        }
+        $class_std = Student::whereIn('id',$ids)->with('subjectMark','subjects')->get();
+        $subject = Subject::whereIn('id',$sub_id)->get();
+        $TCA_score = 20;
+        return view('results.cat2_broadsheet',['students'=>$class_std, 'subject'=>$subject,'TCA_score'=>$TCA_score,'grades'=>$grades,'term'=>$term,'class_'=>$class_]);
+    }
+    public function msc($term_id,$class_1){
+        $term = Term::find($term_id);
+        $class_= S5Class::find($class_1);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('term_id',$term->id)->where('s5_class_id',$class_->id)->get();
+        $ids = [];
+        $sub_id = [];
+        $TCA_score = 0;
+        foreach($scores as $stu){
+            array_push($ids, $stu->student_id);
+            array_push($sub_id, $stu->subject_id);
+        }
+        $class_std = Student::whereIn('id',$ids)->with('subjectMark','subjects')->get();
+        $subject = Subject::whereIn('id',$sub_id)->get();
+        $TCA_score = 10;
+        return view('results.msc',['students'=>$class_std, 'subject'=>$subject,'TCA_score'=>$TCA_score,'grades'=>$grades,'term'=>$term,'class_'=>$class_]);
     }
     public function summative_sheet($student_id,$term_id,$class_id){
         $term = Term::find($term_id);
@@ -165,6 +208,7 @@ class StudentController extends Controller
         return view('results.summative_sheet',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,'grades'=>$grades]);
 
     }
+    
     public function cat1($student_id,$term_id,$class_id){
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
@@ -180,12 +224,12 @@ class StudentController extends Controller
 
     }
     public function cat2($student_id,$term_id,$class_id){
-        $term = Term::find($term_id);
-        $class_ = S5Class::find($class_id);
-        $student = Student::find($student_id);
-        $grades = GradeSetting::all();
-        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
-        ->where('s5_class_id',$class_->id)->get();
+        // $term = Term::find($term_id);
+        // $class_ = S5Class::find($class_id);
+        // $student = Student::find($student_id);
+        // $grades = GradeSetting::all();
+        // $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        // ->where('s5_class_id',$class_->id)->get();
        
         $users = SubjectMark::select('student_id')->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->distinct()->get();

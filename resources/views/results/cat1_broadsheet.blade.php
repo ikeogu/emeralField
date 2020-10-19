@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
 
-@section('title', 'GRAND TOTAL BROADSHEET')
+@section('title', 'Student Result sUMMATIVE TEST')
 
 @section('content')
 
 
 <div class="container-fluid">
     <div class="card">
-    <div class="card-header bg-success text-capitalize text-white">GRAND TOTAL BROADSHEET {{$class_->name}}|   {{$class_->description}}  | {{$term->name}}|  {{$term->session}}</div>
+    <div class="card-header bg-success text-capitalize text-white">C.A.T 1 {{$class_->name}}|   {{$class_->description}}  | {{$term->name}}|  {{$term->session}}</div>
         <div class="card-body">
             <div class="col-12 table-responsive">
                 <table  class="table table-striped table-bordered m-0  text-default" style="width:100%">
@@ -25,9 +25,6 @@
                         <th class="rotate word" scope="col">{{$item->name}}</th>
                           
                     @endforeach
-                
-                
-                    
                     <th class="rotate">Total</th>
                     <th class="rotate">Average</th>  
                     <th class="rotate">Average(%)</th> 
@@ -42,9 +39,9 @@
                         <td>{{$student->name}}</td>                    
                         @foreach ($student->subjectMark as  $key => $item)
                         @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                 
-                            <td>{{$item->GT}}</td>
+                            <td>{{$item->CAT1}}</td>
                             @php
-                                $total += $item->GT;
+                                $total += $item->CAT1;
                             @endphp  
                         @endif
                         @endforeach
@@ -53,11 +50,11 @@
                         @php
                             $sum_total += $total;
                             $avg = App\Student::average($total,$subject->count());
-                            $avgPer = App\Student::averPer($avg,$GT_score);
+                            $avgPer = App\Student::averPer($avg,$TCA_score);
                             $total = 0;
                         @endphp
-                        <td>{{App\Student::averPer($avg,$GT_score)}} </td>
-                        <td>{{App\Student::grade($avgPer,$grades)}}  </td>
+                        <td>{{App\Student::averPer($avg,$TCA_score)}} </td>
+                        <td>{{App\Student::h_grade($avgPer,$grades)}}  </td>
                        
                         
                     </tr>
@@ -71,7 +68,7 @@
                         <td></td>
                         <th>Total</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::subject_total_GT($item->id,$class_->id,$term->id)}} </td>
+                        <td>{{App\Student::subject_total_cat1($item->id,$class_->id,$term->id)}} </td>
                         @endforeach
                         <td>{{$sum_total}}</td>
                         <td>{{$min_t}}</td>
@@ -82,7 +79,7 @@
                         <td></td>
                         <th>Max Score</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::max_score_GT($item->id,$class_->id,$term->id)}}</td>
+                        <td>{{App\Student::max_score_cat1($item->id,$class_->id,$term->id)}}</td>
                         @endforeach
                         
                     </tr>
@@ -90,7 +87,7 @@
                         <td></td>
                         <th>Min Score</th>
                         @foreach ($subject as $item)
-                             <td>{{App\Student::min_score_GT($item->id,$class_->id,$term->id)}}</td>
+                             <td>{{App\Student::min_score_cat1($item->id,$class_->id,$term->id)}}</td>
                         @endforeach
                         
                     </tr> 
@@ -98,7 +95,7 @@
                         <td></td>
                         <th>Class Average</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::average(App\Student::subject_total_GT($item->id,$class_->id,$term->id),$students->count())}}</td>
+                        <td>{{App\Student::average(App\Student::subject_total_cat1($item->id,$class_->id,$term->id),$students->count())}}</td>
                         @endforeach
                         
                        
@@ -107,13 +104,13 @@
                         <td></td>
                         <th>Class Performance (%)</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::average_per(App\Student::subject_total_GT($item->id,$class_->id,$term->id),($GT_score * $students->count()))}}</td>
+                        <td>{{App\Student::average_per(App\Student::subject_total_cat1($item->id,$class_->id,$term->id),($TCA_score * $students->count()))}}</td>
                         @php
-                            $cl_av += App\Student::average_per(App\Student::subject_total_GT($item->id,$class_->id,$term->id),($GT_score * $students->count()));
+                            $cl_av += App\Student::average_per(App\Student::subject_total_cat1($item->id,$class_->id,$term->id),($TCA_score * $students->count()));
                         @endphp
                         @endforeach
-                        <td>{{App\Student::average($cl_av,$subject->count())}}</td>
-                        <td>Class Average</td>
+                        {{-- <td>{{App\Student::average($cl_av,$subject->count())}}</td>
+                        <td>Class Average</td> --}}
                        
                         
                     </tr> 
@@ -121,7 +118,7 @@
                         <td></td>
                         <th>Remarks</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::grade(App\Student::average_per(App\Student::subject_total_GT($item->id,$class_->id,$term->id),($GT_score * $students->count())),$grades)}}</td>
+                        <td>{{App\Student::h_grade(App\Student::average_per(App\Student::subject_total_cat1($item->id,$class_->id,$term->id),($TCA_score * $students->count())),$grades)}}</td>
                         @endforeach
                         
                         
@@ -166,11 +163,12 @@
 .header th {
               line-height: 90px;
     }
-    th, td{
-    font-size: 12px;
-}
+
 .word th{
     word-break: break-word;
+}
+th, td{
+    font-size: 12px;
 }
 </style>
 <script>

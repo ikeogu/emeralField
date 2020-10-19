@@ -22,6 +22,7 @@
                         <th>CAT 1</th>
                         <th>CAT 2</th>
                         <th>MSC</th>
+                        <th>TCA</th>
                         <th>Exam</th>
                         <th>Grand Total</th>
                         <th>Action</th>  
@@ -33,6 +34,7 @@
                           <td>{{marks.CAT1}}</td>
                            <td>{{marks.CAT2}}</td>
                            <td>{{marks.MSC}}</td>
+                           <td>{{marks.TCA}}</td>
                             <td>{{marks.Exam}}</td>
                             <td>{{marks.GT}}</td>
                        

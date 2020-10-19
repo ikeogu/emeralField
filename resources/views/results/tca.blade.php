@@ -52,11 +52,11 @@
                         
                         <td>{{$total}}</td>
 
-                        <td>{{App\Student::average($total,$student->subjectMark->count())}}</td>
+                        <td>{{App\Student::average($total,$subject->count())}}</td>
                         @php
                             $sum_total += $total;
                             
-                            $avg = App\Student::average($total,$student->subjectMark->count());
+                            $avg = App\Student::average($total,$subject->count());
                             $avgPer = App\Student::averPer($avg,$TCA_score);
                             $total = 0;
                             $min_t +=$avg; 
@@ -177,6 +177,9 @@
 
 .word th{
     word-break: break-word;
+}
+th, td{
+    font-size: 12px;
 }
 </style>
 <script>
