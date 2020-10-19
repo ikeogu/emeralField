@@ -53,6 +53,14 @@
                     <input type="text" name="description" id="description" class="form-control" placeholder="Description" v-model="setting.description"
                     />
                   </div>
+                  <div class="form-group">
+                    <label for="description">School</label>
+                    <select class="form-control" name="status" id="status" v-model="setting.status">
+                      <option value="Early Years"> Early Years</option>
+                      <option value="High School"> High School</option>
+                      <option value="Year School">Year School</option>
+                    </select>
+                  </div>
 
                   <div class="form-group text-right">
                     <button class="btn btn-success">Submit</button>
@@ -100,6 +108,14 @@
                     <input type="text" name="description" id="description" class="form-control" placeholder="Description" v-model="setting.description"
                     />
                   </div>
+                  <div class="form-group">
+                    <label for="description">School</label>
+                    <select class="form-control" name="status" id="status" v-model="setting.status">
+                      <option value="Early Years"> Early Years</option>
+                      <option value="High School"> High School</option>
+                      <option value="Year School">Year School</option>
+                    </select>
+                  </div>
 
                   <div class="form-group text-right">
                     <button class="btn btn-success">Submit</button>
@@ -146,6 +162,7 @@
                   <th>Percentage</th>
                   <th>Grade</th>
                   <th>Description</th>
+                  <th>School</th>
                   <th colspan="2">Action</th>
                 </tr>
               </thead>
@@ -154,6 +171,7 @@
                   <td>{{ gSetting.percentage }}</td>
                   <td>{{ gSetting.grade }}</td>
                   <td>{{ gSetting.description }}</td>
+                  <td>{{ gSetting.status }}</td>
                   <td><a href="#"
                        v-on:click="editGradeSetting(gSetting.id)"
                        data-target="#exampleModal1"
@@ -211,7 +229,8 @@
           .post('http://127.0.0.1:8000/api/grades', {
             percentage: this.setting.percentage,
             grade: this.setting.grade,
-            description: this.setting.description
+            description: this.setting.description,
+            status:this.setting.status
           })
           .then(data => {
             this.succmsg = false
@@ -219,6 +238,7 @@
             this.setting.percentage = ''
             this.setting.grade = ''
             this.setting.description = ''
+             this.setting.status = ''
             var self = this
             setTimeout(function() {
               self.succmsg = true
@@ -237,6 +257,7 @@
           this.setting.percentage = data.data.data.percentage
           this.setting.grade = data.data.data.grade
           this.setting.description = data.data.data.description
+          this.setting.status = data.data.data.status
           this.id = settingid
         })
       },
@@ -245,7 +266,9 @@
           .patch('http://127.0.0.1:8000/api/grades/' + this.id, {
             percentage: this.setting.percentage,
             grade: this.setting.grade,
-            description: this.setting.description
+            description: this.setting.description,
+            status:this.setting.status
+            
           })
           .then(data => {
             this.succmsg = false

@@ -46,4 +46,8 @@ Route::get('tca/{term}/class/{class}','StudentController@tca')->name('tca');
  Route::get('stud_in_class', 'TeacherController@sub_class')->name('stud_in_class');
 
 Route::get('summative/stud/{student}/term/{term}/class/{class}','StudentController@summative_sheet')->name('sum');
+Route::get('cat/stud/{student}/term/{term}/class/{class}','StudentController@cat1')->name('cat1');
+Route::get('cat2/stud/{student}/term/{term}/class/{class}','StudentController@cat2')->name('cat2');
 Route::get('result/stud/{student}/term/{term}/class/{class}','StudentController@result_sheet')->name('result');
+
+// Route::view('high_sch', 'results.h_result')->name('res');

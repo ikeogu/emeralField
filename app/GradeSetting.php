@@ -8,7 +8,7 @@ class GradeSetting extends Model
 {
     //
     protected $guarded = [];
-    protected $fillable = ['percentage','grade','description'];
+    protected $fillable = ['percentage','grade','description','status'];
 
     protected $table = 'grade_settings';
 }

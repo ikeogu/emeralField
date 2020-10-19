@@ -16,13 +16,13 @@
 
 
 
-    <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="120" width="auto"></div>
-        <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
-        <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
-    </header>
-    <main>
+        
     <!-- details table -->
         <section class="container my-5">
+            <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="120" width="auto"></div>
+            <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
+            <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
+           
             <div class="col-12 col-md-8 p-0">
                 <table class="details-table table-sm">
                     <tr>
@@ -78,13 +78,14 @@
                             <tr>
                             <td>{{$key + 1}}</td>
                             <td>{{$item->subname}}</td>
+                            
                             <td>{{$item->Summative_test}}</td>
                             @php
                                 $total += $item->Summative_test;
                             @endphp 
-                            <td></td>
-                             {{-- <td>{{App\Student::max_score($item->id,$class_->id,$term->id)}}</td> --}}
-                            <td>{{App\Student::average(App\Student::subject_total($item->id,$class_->id,$term->id),$users->count())}}</td>
+                            
+                             <td>{{App\Student::max_score($item->subject_id,$class_->id,$term->id)}}</td>
+                            <td>{{App\Student::average(App\Student::subject_total($item->subject_id,$class_->id,$term->id),$users->count())}}</td>
                             </tr> 
                             @endforeach
                             <tr class="average">

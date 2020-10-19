@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\Average;
 use App\BehaviourChart;
 use App\ClassTeacher;
 use App\Comment;
@@ -57,7 +58,7 @@ class StudentController extends Controller
     public function averPer($avg,$scores){
         return number_format((($avg/$scores) *100),1);
     }
-
+    
     public function summative($term_id,$class_1){
         $term = Term::find($term_id);
         $class_= S5Class::find($class_1);
@@ -116,18 +117,15 @@ class StudentController extends Controller
         $scores = SubjectMark::where('term_id',$term->id)->where('s5_class_id',$class_->id)->get();
         $ids = [];
         $sub_id = [];
-        $GT_score = 0;
+        $GT_score =100;
+        $total = 0;
         foreach($scores as $stu){
             array_push($ids, $stu->student_id);
             array_push($sub_id, $stu->subject_id);
         }
-        
         $class_std = Student::whereIn('id',$ids)->with('subjectMark','subjects')->get();
-        $subject = Subject::whereIn('id',$sub_id)->get();
-        // $students[] = (array) $class_std;
+        $subject = Subject::whereIn('id',$sub_id)->get();        
         
-            $GT_score = 100;
-       
                 
         return view('results.gt',['students'=>$class_std, 'subject'=>$subject,'GT_score'=>$GT_score,'grades'=>$grades,'term'=>$term,'class_'=>$class_]);
     }
@@ -164,9 +162,34 @@ class StudentController extends Controller
        
         $users = SubjectMark::select('student_id')->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->distinct()->get();
-        
-
         return view('results.summative_sheet',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,'grades'=>$grades]);
+
+    }
+    public function cat1($student_id,$term_id,$class_id){
+        $term = Term::find($term_id);
+        $class_ = S5Class::find($class_id);
+        $student = Student::find($student_id);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
+       
+        $users = SubjectMark::select('student_id')->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->distinct()->get();
+        
+        return view('results.cat1',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,'grades'=>$grades]);
+
+    }
+    public function cat2($student_id,$term_id,$class_id){
+        $term = Term::find($term_id);
+        $class_ = S5Class::find($class_id);
+        $student = Student::find($student_id);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
+       
+        $users = SubjectMark::select('student_id')->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->distinct()->get();
+        return view('results.cat2',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,'grades'=>$grades]);
 
     }
     
@@ -174,9 +197,10 @@ class StudentController extends Controller
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
         $student = Student::find($student_id);
+        // $this->det($student_id,$class_id,$term_id);
         $behave = BehaviourChart::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
         $attend = Attendance::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
-        $grades = GradeSetting::all();
+         $grades = GradeSetting::all();
         $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->first();
         $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
@@ -186,11 +210,24 @@ class StudentController extends Controller
         ->where('s5_class_id',$class_->id)->distinct()->get();
         $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
         
+        if ($class_->status == 'Year School') {
+            # code...
+            return view('results.result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
+        'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment,'behave'=>$behave,'attend'=>$attend]);
 
-        return view('results.result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
+        }
+        return view('results.h_result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
         'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment,'behave'=>$behave,'attend'=>$attend]);
 
     }
-    
+    private function det($student_id, $class_id, $term_id){
+        $term = Term::find($term_id);
+        $class_ = S5Class::find($class_id);
+        $student = Student::find($student_id);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
+        return ['term'=>$term,'class_'=>$class_,'student'=>$student,'grades'=>$grades,'scores'=>$scores];
+    }
 
 }

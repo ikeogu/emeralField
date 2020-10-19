@@ -13,7 +13,7 @@
           <div class="card-header bg-success text-white"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
-              <div class="row" v-if="student_details.level === 'High School'">
+              <div class="row" v-if="this.class__.status === 'High School'">
                
                 <div class="col-12 table-responsive">
                   <table  class=" table-bordered table-striped" >
@@ -58,7 +58,7 @@
                   </table>
                 </div>
               </div> 
-              <div class="row" v-if="student_details.level === 'Year School'">
+              <div class="row" v-if="class__.status == 'Year School'">
                 
                 <div class="col-12 table-responsive">
                   <table  class="table tab table-bordered table-striped" >
@@ -126,7 +126,7 @@
                           </button>
               </div>
               <div class="modal-body">
-                <form method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore" v-if="student_details.level === 'High School'">
+                <form method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore" v-if="class__.status === 'High School'">
 
                    <div class="form-group">
                     <label for="roll_no">CAT 1</label>
@@ -143,14 +143,14 @@
                   </div>
                   <div class="form-group">
                     <label for="contact">Exam</label>
-                    <input type="number" name="exam"  class="form-control" placeholder="Enter MSC Score" v-model="student_mark.Exam" />
+                    <input type="number" name="exam"  class="form-control" placeholder="Enter Exam Score" v-model="student_mark.Exam" />
                   </div>
 
                   <div class="form-group text-center">
                     <button class="btn btn-success">Update</button>
                   </div>
                 </form>
-                 <form v-if="student_details.level === 'Year School'" method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore">
+                 <form v-if="class__.status === 'Year School'" method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore">
 
                    <div class="form-group">
                     <label for="roll_no">Home Work</label>
@@ -249,7 +249,8 @@
           term_id:'',
           s5_class_id:''
           
-        }
+        },
+        class__:'',
       }
     },
     
@@ -430,7 +431,7 @@
         $('.modal-backdrop').remove()
       }
     },
-    props:['studs_data','s_details','term','class_'],
+    props:['studs_data','s_details','term','class_t'],
     
     mounted() {
       
@@ -438,7 +439,8 @@
       this.student_details = this.s_details
       this.assignedMarks = this.sub_mark
       this.T = this.term
-      this.student_mark.s5_class_id = this.class_.id
+      this.class__ =this.class_t
+      this.student_mark.s5_class_id = this.class_t.id
       this.student_mark.term_id = this.term.id
       this.scoreLists(this.pagenumber)
       

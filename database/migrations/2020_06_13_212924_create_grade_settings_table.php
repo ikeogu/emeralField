@@ -18,6 +18,7 @@ class CreateGradeSettingsTable extends Migration
             $table->string('percentage', 10);
             $table->string('grade', 5);
             $table->string('description');
+            $table->string('status');
             $table->timestamps();
         });
     }

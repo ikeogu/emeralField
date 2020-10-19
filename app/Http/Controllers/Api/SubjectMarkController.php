@@ -1,6 +1,7 @@
 <?php
     namespace App\Http\Controllers\Api;
-    
+
+use App\Average;
 use App\Http\Controllers\Controller;
 use App\SubjectMark;
 use App\Http\Resources\SubjectMarkResource;
@@ -167,10 +168,18 @@ class SubjectMarkController extends Controller
       
         $subjectMarks=  SubjectMark::whereId($request->my_id)->update($request->except(['_method','_token','my_id']));
         $subjectMarks=  SubjectMark::find($request->my_id);
-        $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->summative_test;
-        $subjectMarks->GT = $subjectMarks->TCA +$request->Exam;
-        $subjectMarks->save();
-
+        $class__ = S5Class::find($subjectMarks->s5_class_id);
+        if($class__->status === 'Year School'){
+            $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->summative_test;
+            $subjectMarks->GT = $subjectMarks->TCA +$request->Exam;
+            $subjectMarks->save();
+        }elseif($class__->status === 'High School'){
+            
+            $subjectMarks->GT = $request->MSC + $request->CAT1 + $request->CAT2 + $request->Exam;
+            $subjectMarks->save();
+        }
+        
+        $this->aver_($subjectMarks->term_id,$subjectMarks->student_id,$subjectMarks->s5_class_id);
         return new SubjectMarkResource($subjectMarks);
     }
     /**
@@ -187,7 +196,28 @@ class SubjectMarkController extends Controller
         return new SubjectMarkResource($s);
     }
 
-    
+    private function aver_($term, $student, $class_){
+        $term = Term::find($term);
+        $class_= S5Class::find($class_);
+        $stud = Student::with('subjectMark')->find($student);
+        $total = 0;
+            
+           # code...
+           foreach ($stud->subjectMark as $item) {
+               # code...
+               if($item->term_id === $term->id && $item->s5_class_id === $class_->id){                
+                        $total += $item->GT;
+                }
+            }
+            // find another way to update and create new average
+            $avg = new Average();
+            $avg->aver_ = $total /$stud->subjectMark->count();
+            $avg->student_id = $stud->id;
+            $avg->s5_class_id = $class_->id;
+            $avg->term_id = $term->id;
+            $avg->save();
+        
+    }
 
     
 }

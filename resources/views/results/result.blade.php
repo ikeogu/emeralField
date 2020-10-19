@@ -93,11 +93,26 @@
                                     <td class="pl-2">
                                         <ul>
                                             <li>days present</li>
-                                        <li class="present"><strong>{{$attend->dp}}</strong></li>
+                                            @if ($attend != null)
+                                            <li class="present"><strong>{{$attend->dp}}</strong></li> 
+                                            @else
+                                            <li class="days"><strong></strong></li>
+                                            @endif
+                                            
                                             <li>days absent</li>
+                                            @if ($attend != null)
                                             <li class="absent"><strong>{{$attend->da}}</strong></li>
+                                            @else
+                                            <li class="days"><strong></strong></li>
+                                            @endif
+                                            
                                             <li>Tardy days</li>
-                                            <li class="days"><strong>{{$attend->tar}}</strong></li>
+                                            @if ($attend != null)
+                                             <li class="days"><strong>{{$attend->tar}}</strong></li> 
+                                            @else
+                                            <li class="days"><strong></strong></li>
+                                            @endif
+                                           
                                         </ul>
                                     </td>
                                 </tr>
@@ -124,6 +139,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($behave != null)
                                 <tr>
                                     <td scope="row">Participates in class</td>
                                      {{App\Student::behave($behave->pic)}}
@@ -153,6 +169,7 @@
                                     <td scope="row">Shows respect and Kidness to all </td>
                                     {{App\Student::behave($behave->srk)}}
                                 </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -201,21 +218,21 @@
                   <ul class="list-group left-list my-2">
                       <li class="list-group-item d-flex justify-content-between">
                           <h5>Highest Average:</h5>
-                           <span>75</span>
+                           <span>{{App\Student::h_aver($class_->id,$term->id)}}</span>
                       </li>
                       <li class="list-group-item d-flex justify-content-between">
                         <h5>Child's Average:</h5>
-                         <span>75</span>
+                         <span>{{number_format(App\Average::where('student_id',$student->id)->where('s5_class_id',$class_->id)->where('term_id',$term->id)->first()->aver_)}}</span>
                     </li>
                   </ul>
                   <ul class="list-group right-list my-2">
                     <li class="list-group-item d-flex justify-content-between">
                         <h5>Class Average:</h5>
-                         <span>75</span>
+                         <span>{{App\Student::total_GT($class_->id,$term->id)}}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                       <h5>Grade:</h5>
-                       <span>C+</span>
+                       <span>{{App\Student::grade(number_format(App\Average::where('student_id',$student->id)->where('s5_class_id',$class_->id)->where('term_id',$term->id)->first()->aver_),$grades)}}</span>
                   </li>
                 </ul>
                 </div>

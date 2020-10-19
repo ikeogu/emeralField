@@ -141,7 +141,7 @@
 
 @endsection
 <style>
-    .rotate {
+ .rotate {
   transform: rotate(-90deg);
 
   /* Legacy vendor prefixes that you probably don't need... */

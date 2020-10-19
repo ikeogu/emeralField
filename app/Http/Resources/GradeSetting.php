@@ -19,6 +19,7 @@ class GradeSetting extends JsonResource
             'percentage' => $this->percentage,
             'grade' => $this->grade,
             'description' => $this->description,
+            'status' =>$this->status
         ];
     }
 }
