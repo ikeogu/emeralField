@@ -23,7 +23,6 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     @yield('style')
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,6 +32,7 @@
     
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -133,7 +133,7 @@
               <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
               </div>
-        
+              
             </ul>
             <!-- End of Sidebar -->
         
@@ -147,8 +147,13 @@
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 
                         <!-- Sidebar Toggle (Topbar) -->
+                         <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                          <i class="fa fa-bars"></i>
+                        </button>
+
                         
-                        <button onclick="goBack()" class=" btn btn-warning text-white rounded-circle mr-3">Go Back</button>
+                        <button onclick="goBack()" class=" btn btn-warning text-white btn-block">Go Back</button>
 
 
                 
