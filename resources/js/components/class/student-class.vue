@@ -873,7 +873,7 @@ var itemVue = Vue.component("itemTemplate", {
 });
 
   var remoteData = new DataManager({
-    url: 'http://127.0.0.1:8000/api/allstudents',
+    url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
     adaptor: new ODataV4Adaptor,
     crossDomain: true
 });
@@ -939,7 +939,7 @@ var itemVue = Vue.component("itemTemplate", {
       autoComplete(){
           this.results = [];
           if(this.query.length > 2){
-            this.$http.get('/api/search',{params: {query: this.query}}).then(response => {
+            this.$http.get('https://emerald-field-school.herokuapp.com/api/search',{params: {query: this.query}}).then(response => {
             this.results = response.data;
             });
           }
@@ -1205,9 +1205,7 @@ var itemVue = Vue.component("itemTemplate", {
       this.T_id =this.t,
       this.myId = this.m,
       this.fetchComment()
-      this.fetchBehave()
-      
-      
+      this.fetchBehave() 
       
     }
   }
