@@ -175,7 +175,7 @@
                   <td>{{ las.status }}</td>
                   <td>
                     <!-- <a :href="'http://127.0.0.1:8000/api/studentsclass/' + las.id" class="btn btn-info text-white ">More</a> -->
-                    <a :href="'http://127.0.0.1:8000/api/class_terms/' + las.id" class="btn btn-info text-white ">More</a>
+                    <a :href="'https://emerald-field-school.herokuapp.com/api/class_terms/' + las.id" class="btn btn-info text-white ">More</a>
                   </td>
                   <!-- link to student in a class -->
                   <td><a href="#"
