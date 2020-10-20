@@ -20,7 +20,9 @@ class CreateTermsTable extends Migration
             $table->string('session', 100);
             $table->string('description', 100);
             $table->integer('status')->unsigned();
-            $table->string('fee_');
+            $table->integer('fee_h');
+            $table->integer('fee_y');
+            $table->integer('fee_e');
             $table->date('resumption_date');
             $table->timestamps();
         });

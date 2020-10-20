@@ -12,7 +12,9 @@ class Term extends Model
         'session',
         'description',
         'status',
-        'fee_',
+        'fee_h',
+        'fee_y',
+        'fee_e',
         'resumption_date'
     ];
 

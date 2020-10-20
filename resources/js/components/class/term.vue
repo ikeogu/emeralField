@@ -111,6 +111,22 @@
                     <label for="name">Session</label>
                     <input type="text" name="session" id="session" class="form-control" placeholder="2019/2020" v-model="term.session" />
                   </div>
+                  <div class="form-group">
+                    <label for="name">Fee Shedule (High School)</label>
+                    <input type="number" name="fee_h" id="session" class="form-control" placeholder="" v-model="term.fee_h" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Fee Shedule (Year School)</label>
+                    <input type="number" name="fee_y" id="session" class="form-control" placeholder="" v-model="term.fee_y" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Fee Shedule (Early Years)</label>
+                    <input type="number" name="fee_e" id="session" class="form-control" placeholder="" v-model="term.fee_e" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Resumption Date </label>
+                    <input type="number" name="resumption_date" id="session" class="form-control" placeholder="" v-model="term.resumption_date" />
+                  </div>
                   
 
 
@@ -214,6 +230,8 @@
                     <th>Description</th>
                     <th>Session</th>
                     <th>Classes</th>
+                    <th colspan="3">Fee Shedule</th>
+                    <th>Classes</th>
                     <th></th>
                     <th colspan="2">Action</th>
                   </tr>
@@ -223,6 +241,11 @@
                     <td>{{ term.name }}</td>
                     <td>{{ term.description }}</td>
                     <td>{{ term.session }}</td>
+                    
+                    <td>₦ {{ term.fee_h }} </td>
+                    <td>₦ {{ term.fee_y }}</td>
+                    <td>₦ {{ term.fee_e }}</td>
+                    <td>{{ term.resumption_date }}</td>
                     
                     <td>
                       <a :href="'https://emerald-field-school.herokuapp.com/api/terms_classes/'+term.id" class="btn btn-success text-white">view Classes</a>
