@@ -69,9 +69,9 @@ class TermController extends Controller
         $this->validate(request(),[
             'name'=> 'required|string',
         ]);
-        $term = $request->isMethod('put') ? Term::findOrFail($request->term_id) : new Term;
+        $term = $request->isMethod('put') ? Term::findOrFail($request->term_id) : new Term ();
 
-        $term->id = $request->term_id;
+        
         $term->name = $request->name;
         $term->description = $request->description;
         $term->session = $request->session;
