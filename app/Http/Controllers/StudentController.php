@@ -224,12 +224,12 @@ class StudentController extends Controller
 
     }
     public function cat2($student_id,$term_id,$class_id){
-        // $term = Term::find($term_id);
-        // $class_ = S5Class::find($class_id);
-        // $student = Student::find($student_id);
-        // $grades = GradeSetting::all();
-        // $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
-        // ->where('s5_class_id',$class_->id)->get();
+        $term = Term::find($term_id);
+        $class_ = S5Class::find($class_id);
+        $student = Student::find($student_id);
+        $grades = GradeSetting::all();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
        
         $users = SubjectMark::select('student_id')->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->distinct()->get();
