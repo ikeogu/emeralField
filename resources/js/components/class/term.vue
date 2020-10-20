@@ -62,7 +62,22 @@
                     <input type="text" name="session" id="session" class="form-control" placeholder="2019/2020" v-model="term.session" />
                   </div>
                   
-                  
+                  <div class="form-group">
+                    <label for="name">Fee Shedule (High School)</label>
+                    <input type="number" name="fee_h" id="session" class="form-control" placeholder="" v-model="term.fee_h" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Fee Shedule (Year School)</label>
+                    <input type="number" name="fee_y" id="session" class="form-control" placeholder="" v-model="term.fee_y" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Fee Shedule (Early Years)</label>
+                    <input type="number" name="fee_e" id="session" class="form-control" placeholder="" v-model="term.fee_e" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Resumption Date </label>
+                    <input type="number" name="resumption_date" id="session" class="form-control" placeholder="" v-model="term.resumption_date" />
+                  </div>
                 
                   <div class="form-group text-right">
                     <button class="btn btn-success">Submit</button>
@@ -348,6 +363,10 @@
             name: this.term.name,
             description: this.term.description,
             session: this.term.session,
+            fee_h:this.term.fee_h,
+            fee_y:this.term.fee_y,
+            fee_e:this.term.fee_e,
+            resumption_date:this.term.resumption_date
             
           })
           .then(data => {
@@ -374,7 +393,10 @@
           this.term.name = data.data.data.name
           this.term.description = data.data.data.description,
           this.term.session = data.data.data.session
-          
+          this.term.fee_h = data.data.data.fee_h,
+          this.term.fee_y = data.data.data.fee_y,
+          this.term.fee_e = data.data.data.fee_e,
+          this.term.resumption_date = data.data.data.resumption_date
           this.id = termid
         })
       },
@@ -385,6 +407,10 @@
             name: this.term.name,
             description:this.term.description,
             session:this.term.session,
+            fee_h:this.term.fee_h,
+            fee_y:this.term.fee_y,
+            fee_e:this.term.fee_e,
+            resumption_date:this.term.resumption_date
             
           })
           .then(data => {

@@ -23,6 +23,7 @@ class CreateTermsTable extends Migration
             $table->integer('fee_h');
             $table->integer('fee_y');
             $table->integer('fee_e');
+            $table->integer('status');
             $table->date('resumption_date');
             $table->timestamps();
         });

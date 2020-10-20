@@ -20,6 +20,10 @@ class TermResource extends JsonResource
             'description' => $this->description,
             'status' => $this->status,
             'session' => $this->session,
+            'fee_h' =>$this->fee_h,
+            'fee_y' =>$this->fee_y,
+            'fee_e' =>$this->fee_e,
+            'resumption_date' =>$this->resumption_date,
             
             ];
     }

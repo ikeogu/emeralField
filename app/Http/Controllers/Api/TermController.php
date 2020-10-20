@@ -76,6 +76,10 @@ class TermController extends Controller
         $term->description = $request->description;
         $term->session = $request->session;
         $term->status= 1;
+        $term->fee_h = $request->fee_h;
+        $term->fee_y = $request->fee_y;
+        $term->fee_e = $request->fee_e;
+        $term->resumption_date = $request->resumption_date;
 
         if($term->save()){
             return new TermResource($term);
