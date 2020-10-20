@@ -192,7 +192,7 @@
                   <tbody>
                     <tr v-for="classes in assignedClasses" :key="classes.id">
                       <th scope="row">{{ classes.name }}</th>
-                      <td><a href="#" data-target="#exampleModal2" v-on:click="deleteClass(term_id, classes.id)" data-toggle="modal">Delete</a></td>
+                      <td><a href="#" data-target="#exampleModal2" v-on:click="deleteClass(term_id, classes.id)" data-toggle="modal" disabled>Delete</a></td>
                     </tr>
                   </tbody>
                   
@@ -225,7 +225,7 @@
                     <td>{{ term.session }}</td>
                     
                     <td>
-                      <a :href="'https://emerald-field-school.herokuapp.com/api/terms_classes/' + term.id" class="btn btn-success text-white">view Classes</a>
+                      <a :href="'https://emerald-field-school.herokuapp.com/api/terms_classes/'+term.id" class="btn btn-success text-white">view Classes</a>
                     </td>
                     <!-- link to student in a class -->
                     <td>
