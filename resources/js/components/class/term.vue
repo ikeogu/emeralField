@@ -76,7 +76,7 @@
                   </div>
                   <div class="form-group">
                     <label for="name">Resumption Date </label>
-                    <input type="number" name="resumption_date" id="session" class="form-control" placeholder="" v-model="term.resumption_date" />
+                    <input type="date" name="resumption_date" id="session" class="form-control" placeholder="" v-model="term.resumption_date" />
                   </div>
                 
                   <div class="form-group text-right">
@@ -140,7 +140,7 @@
                   </div>
                   <div class="form-group">
                     <label for="name">Resumption Date </label>
-                    <input type="number" name="resumption_date" id="session" class="form-control" placeholder="" v-model="term.resumption_date" />
+                    <input type="date" name="resumption_date" id="session" class="form-control" placeholder="" v-model="term.resumption_date" />
                   </div>
                   
 
