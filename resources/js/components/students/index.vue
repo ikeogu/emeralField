@@ -32,7 +32,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add New Student</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -43,6 +43,10 @@
                   <div class="form-group">
                     <label for="name">First Name</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Name" v-model="student.name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Other Names</label>
+                    <input type="text" name="oname" id="name" class="form-control" placeholder="Name" v-model="student.oname" />
                   </div>
                   <div class="form-group">
                     <label for="father_name">Surname</label>
@@ -122,7 +126,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit {{student.name}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -130,8 +134,12 @@
               <div class="modal-body">
                 <form method="post" name="updatestudent" id="updatestudent" action="#" @submit.prevent="updateStudent">
                   <div class="form-group">
-                    <label for="name">Student Name</label>
+                    <label for="name">First Name</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Name" v-model="student.name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Other Name</label>
+                    <input type="text" name="oname" id="name" class="form-control" placeholder="Name" v-model="student.oname" />
                   </div>
                   <div class="form-group">
                     <label for="surname">Surname</label>
@@ -152,12 +160,9 @@
                   </div>
                    <div class="form-group">
                     <label for="roll_no">Date of Birth</label>
-                    <input type="text" name="dob" id="roll_no" class="form-control" placeholder="Roll Number" v-model="student.dob" />
+                    <input type="date" name="dob" id="roll_no" class="form-control" placeholder="Roll Number" v-model="student.dob" />
                   </div>
-                  <div class="form-group">
-                    <label for="roll_no">Roll#</label>
-                    <input type="text" name="roll_no" id="roll_no" class="form-control" placeholder="Roll Number" v-model="student.roll_no" />
-                  </div>
+
                   <div class="form-group">
                     <label for="contact">Contact</label>
                     <input type="text" name="contact" id="contact" class="form-control" placeholder="Contact" v-model="student.contact" />
@@ -247,10 +252,11 @@
                 
               </thead>
               <tbody>
-                <tr v-for="student in laravelData.data" :key="student.id">
-                  <th scope="row">{{ student.roll_no }}</th>
+                <tr v-for="(student,index) in laravelData.data" :key="student.id">
+                  <th scope="row">{{ index + 1 }}</th>
                   <td>{{ student.name }}</td>
-                  <td>{{ student.surname.slice(0,50) + "....." }}</td>
+                  <td>{{ student.oname }}</td>
+                  <td>{{ student.surname.slice(0,80) + ".." }}</td>
                   <td>{{ student.email }}</td>
                   <td>{{ student.p_email }}</td>
                   <td>{{ student.gender }}</td>
@@ -350,6 +356,7 @@
         this.$http
           .post('https://emerald-field-school.herokuapp.com/api/students', {
             name: this.student.name,
+            oname: this.student.oname,
             surname: this.student.surname,
             gender: this.student.gender,
             contact: this.student.contact,
@@ -391,6 +398,7 @@
         this.$http.get('https://emerald-field-school.herokuapp.com/api/students/' + studentid).then(data => {
           
           this.student.name = data.data.data.name
+          this.student.oname = data.data.data.oname
           this.student.surname = data.data.data.surname
           this.student.p_email = data.data.data.p_email
           this.student.gender = data.data.data.gender
@@ -407,6 +415,7 @@
           .patch('https://emerald-field-school.herokuapp.com/api/students/' + this.id, {
             student_id:this.id,
             name: this.student.name,
+            oname: this.student.oname,
             surname: this.student.surname,
             gender: this.student.gender,
             contact: this.student.contact,

@@ -47,6 +47,7 @@ class StudentController extends Controller
       $student = $request->isMethod('put') ? Student::findOrFail($request->student_id) : new Student;
       
       $student->name = $request->name;
+      $student->oname = $request->oname;
       $student->surname = $request->surname;
       $student->roll_no = Student::max('id') + 1;
       $student->email = strtolower($student->name[0].$student->surname).$student->roll_no.'@efa.sch.ng';
@@ -63,7 +64,7 @@ class StudentController extends Controller
       if($student->save()){
         $class->student()->attach($student);
         $user = new User();
-        $user->name = $student->name. $student->surname;
+        $user->name = $student->name.'.'.$student->surname;
         $user->email = $student->email;
         $user->password = Hash::make(strtolower($student->name));
         $user->isAdmin = 4;
@@ -110,6 +111,7 @@ class StudentController extends Controller
     {
       $student = Student::find($id);
       $student->name = $request->name;
+      $student->oname = $request->oname;
       $student->surname = $request->surname;
       
       $student->dob = $request->dob;

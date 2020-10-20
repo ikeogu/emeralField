@@ -13,6 +13,7 @@ class Student extends Model
        'email',
        'surname',
         'roll_no',
+        'oname',
         'dob',
         'gender',
        'p_email',
