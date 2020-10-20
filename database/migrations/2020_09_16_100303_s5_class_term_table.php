@@ -13,20 +13,20 @@ class S5ClassTermTable extends Migration
      */
     public function up()
     {
-        //
-        // Schema::disableForeignKeyConstraints();
-        // Schema::create('s5_class_term', function (Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->unsignedInteger('s5_class_id');
-        //     $table->unsignedInteger('term_id');
+        
+        
+        Schema::create('s5_class_term', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedInteger('s5_class_id');
+            $table->unsignedInteger('term_id');
 
-        //     // $table->foreign('s5_class_id')
-        //     //         ->references('id')->on('s5_classes')->onDelete('cascade');
+            // $table->foreign('s5_class_id')
+            //         ->references('id')->on('s5_classes')->onDelete('cascade');
 
-        //     // $table->foreign('term_id')
-        //     //         ->references('id')->on('terms')->onDelete('cascade');
-        //     $table->timestamps();
-        // });
+            // $table->foreign('term_id')
+            //         ->references('id')->on('terms')->onDelete('cascade');
+            $table->timestamps();
+        });
         
         // Schema::enableForeignKeyConstraints();
             
