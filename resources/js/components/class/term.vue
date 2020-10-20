@@ -321,7 +321,7 @@
       
       addTerm() {
         this.$http
-          .post('http://127.0.0.1:8000/api/terms', {
+          .post('https://emerald-field-school.herokuapp.com/api/terms', {
             name: this.term.name,
             description: this.term.description,
             session: this.term.session,
