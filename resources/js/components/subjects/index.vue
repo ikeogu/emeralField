@@ -50,22 +50,7 @@
                     <label for="name">Description</label>
                     <input type="text" name="description" id="description" class="form-control" placeholder="This subject is for ...." v-model="subject.description" />
                   </div>
-                  <div class="form-group">
-                    <label for="name">Home Work</label>
-                    <input type="number" name="home_work" id="home_work" class="form-control" placeholder="10" v-model="subject.home_work" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Class Work</label>
-                    <input type="number" name="class_work" id="class_work" class="form-control" placeholder="10" v-model="subject.class_work" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Friday Test</label>
-                    <input type="text" name="friday_test" id="name" class="form-control" placeholder="Mark for Friday Test" v-model="subject.friday_test" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Holiday Assignment</label>
-                    <input type="number" name="holiday_assignment" id="name" class="form-control"  placeholder="Mark for Holiday Assignment " v-model="subject.holiday_assignment" />
-                  </div>
+
                   <div class="form-group">
                     <select class="form-control" name="level" v-model="selected" v-on:change="getText">
                       <option>Choose Option</option>
@@ -85,6 +70,22 @@
                   </div>
                 </div>
                 <div id="year" v-if="selected === 2">
+                                    <div class="form-group">
+                    <label for="name">Home Work</label>
+                    <input type="number" name="home_work" id="home_work" class="form-control" placeholder="10" v-model="subject.home_work" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Class Work</label>
+                    <input type="number" name="class_work" id="class_work" class="form-control" placeholder="10" v-model="subject.class_work" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Friday Test</label>
+                    <input type="text" name="friday_test" id="name" class="form-control" placeholder="Mark for Friday Test" v-model="subject.friday_test" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Holiday Assignment</label>
+                    <input type="number" name="holiday_assignment" id="name" class="form-control"  placeholder="Mark for Holiday Assignment " v-model="subject.holiday_assignment" />
+                  </div>
                    <div class="form-group">
                     <label for="name">Summative Test</label>
                     <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
@@ -216,12 +217,12 @@
                   
                     <th>Subject Name</th>
                     <th>Subject Description</th>
-                    <th>Max Score Home Work</th>
+                    <!-- <th>Max Score Home Work</th>
                     <th>Max Score Class Work</th>
                     <th>Max Score Holiday Ass</th>
                     <th>Max Score CAT 1</th>
                     <th>Max Score CAT 2</th>
-                    <th>Max Score Summative Test </th>
+                    <th>Max Score Summative Test </th> -->
                     <th>Meant For</th>
                     <th>Max Score Exam</th>
                     <th colspan="2">Action</th>
@@ -231,12 +232,12 @@
                   <tr v-for="sub in laravelData.data" :key="sub.id">
                     <td>{{ sub.name }}</td>
                     <td>{{ sub.description }}</td>
-                    <td>{{ sub.home_work }}</td>
+                    <!-- <td>{{ sub.home_work }}</td>
                     <td>{{ sub.class_work}}</td>
                     <td>{{ sub.holiday_assignment }}</td>
                     <td>{{ sub.cat_1 }}</td>
                     <td>{{ sub.cat_2 }}</td>
-                    <td>{{ sub.summative_test }}</td>
+                    <td>{{ sub.summative_test }}</td> -->
                     <td>{{ sub.level}}</td>
                     <td>{{ sub.exam }}</td>
                     <td>

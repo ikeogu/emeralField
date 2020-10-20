@@ -23,7 +23,7 @@ class Teacher extends Model
             return $this->belongsToMany(Subject::class);
         }
         public function classTeacher(){
-            return $this->hasOne(ClassTeacher::class);
+            return $this->hasMany(ClassTeacher::class);
         }
         public function comment(){
             return $this->hasMany(Comment::class);
