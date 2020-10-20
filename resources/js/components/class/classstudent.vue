@@ -41,7 +41,7 @@
                             
                           <td>
 
-                            <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/class/'+classId.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
+                            <a :href="'https://emerald-field-school.herokuapp.com/api/studentSubject/'+st.id+'/class/'+classId.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
                           </td>
                   
                 </tr>

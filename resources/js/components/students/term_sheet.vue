@@ -135,7 +135,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/my_subject/'+this.student_details.id+'/term/'+this.T.id).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/my_subject/'+this.student_details.id+'/term/'+this.T.id).then(response => {
           
           this.assignedSubjects = response.data
           

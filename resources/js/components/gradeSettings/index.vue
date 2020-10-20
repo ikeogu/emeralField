@@ -218,7 +218,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/grades?page=' + page).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/grades?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -226,7 +226,7 @@
       },
       addGradeSetting() {
         this.$http
-          .post('http://127.0.0.1:8000/api/grades', {
+          .post('https://emerald-field-school.herokuapp.com/api/grades', {
             percentage: this.setting.percentage,
             grade: this.setting.grade,
             description: this.setting.description,
@@ -253,7 +253,7 @@
           })
       },
       editGradeSetting(settingid) {
-        this.$http.get('http://127.0.0.1:8000/api/grades/' + settingid).then(data => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/grades/' + settingid).then(data => {
           this.setting.percentage = data.data.data.percentage
           this.setting.grade = data.data.data.grade
           this.setting.description = data.data.data.description
@@ -263,7 +263,7 @@
       },
       updateGradeSetting() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/grades/' + this.id, {
+          .patch('https://emerald-field-school.herokuapp.com/api/grades/' + this.id, {
             percentage: this.setting.percentage,
             grade: this.setting.grade,
             description: this.setting.description,
@@ -293,7 +293,7 @@
         this.id = settingid
       },
       deleteGradeSetting() {
-        this.$http.delete('http://127.0.0.1:8000/api/grades/' + this.id).then(data => {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/grades/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

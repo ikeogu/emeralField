@@ -225,7 +225,7 @@
                     <td>{{ term.session }}</td>
                     
                     <td>
-                      <a :href="'http://127.0.0.1:8000/api/terms_classes/' + term.id" class="btn btn-success text-white">view Classes</a>
+                      <a :href="'https://emerald-field-school.herokuapp.com/api/terms_classes/' + term.id" class="btn btn-success text-white">view Classes</a>
                     </td>
                     <!-- link to student in a class -->
                     <td>
@@ -302,7 +302,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/terms?page=' + page).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -347,7 +347,7 @@
           })
       },
       editTerm(termid) {
-        this.$http.get('http://127.0.0.1:8000/api/terms/' + termid).then(data => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms/' + termid).then(data => {
           this.term.name = data.data.data.name
           this.term.description = data.data.data.description,
           this.term.session = data.data.data.session
@@ -357,7 +357,7 @@
       },
       updateTerm() {
         this.$http
-          .put('http://127.0.0.1:8000/api/terms/' + this.id, {
+          .put('https://emerald-field-school.herokuapp.com/api/terms/' + this.id, {
             term_id:this.id,
             name: this.term.name,
             description:this.term.description,
@@ -385,20 +385,20 @@
           })
       },
         unassignedClassList(term) {
-        this.$http.get('http://127.0.0.1:8000/api/terms/'+term+'/unassignedterms').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms/'+term+'/unassignedterms').then(response => {
           this.unassignedClasses = response.data;
           this.term_id = term;
           this.assignedClassList(term);
         })
       },
       assignedClassList(term) {
-        this.$http.get('http://127.0.0.1:8000/api/terms/'+term+'/assignedterms').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms/'+term+'/assignedterms').then(response => {
           this.assignedClasses = response.data
         })
       },
       assignClass(term_id, class_id){
         this.$http
-          .post('http://127.0.0.1:8000/api/term/'+term_id+'/assignclass/'+class_id, {
+          .post('https://emerald-field-school.herokuapp.com/api/term/'+term_id+'/assignclass/'+class_id, {
             term_id: this.term_id,
             class_id: this.class_id,
           })
@@ -418,7 +418,7 @@
       },
       deleteClass(term_, cls_) {
         this.$http
-          .delete('http://127.0.0.1:8000/api/terms/'+term_+'/deleteclass/'+cls_, {
+          .delete('https://emerald-field-school.herokuapp.com/api/terms/'+term_+'/deleteclass/'+cls_, {
             term_id: this.term_id,
             class_id: cls_,
           })
@@ -435,7 +435,7 @@
    
      
       deleteTerm() {
-        this.$http.delete('http://127.0.0.1:8000/api/terms/' + this.id).then(data => {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/terms/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

@@ -151,7 +151,7 @@
                             
                           <td>
 
-                            <a :href="'http://127.0.0.1:8000/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
+                            <a :href="'https://emerald-field-school.herokuapp.com/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
                             class="btn btn-warning text-white  ">View Subjects</a>
                           </td>
                   <td><a href="#" class="btn btn-success text-white"
@@ -930,7 +930,7 @@ var itemVue = Vue.component("itemTemplate", {
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/students?page=' + page).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/students?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.students = response.data
           this.pagenumber = page         
@@ -947,7 +947,7 @@ var itemVue = Vue.component("itemTemplate", {
       addStudent() {
          this.add_student.term_id  = this.T_id.id,
         this.$http
-          .post('http://127.0.0.1:8000/api/add_student_class/'+this.add_student.stud_id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
+          .post('https://emerald-field-school.herokuapp.com/api/add_student_class/'+this.add_student.stud_id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
              term_id: this.add_student.term_id ,
             student_id: this.add_student.stud_id,
             class_id:this.myId.id
@@ -971,7 +971,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       
       unassignedSubjectsList(student,term_id) {
-        this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com//api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.unassignedSubjects = response.data;
           this.student_id = student;
           
@@ -979,14 +979,14 @@ var itemVue = Vue.component("itemTemplate", {
         })
       },
       assignedSubjectsList(student,term_id) {
-        this.$http.get('http://127.0.0.1:8000/api/students/'+student+'/assignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/students/'+student+'/assignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.assignedSubjects = response.data
         })
       },
       
       assignSubject(student_id, subject_id,term_id){
         this.$http
-          .post('http://127.0.0.1:8000/api/students/'+student_id+'/assignsubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+          .post('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/assignsubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
             term_id : this.T_id.id
@@ -1003,7 +1003,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       deleteSubject(student_id, subject_id) {
         this.$http
-          .delete('http://127.0.0.1:8000/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term'+this.T_id.id, {
+          .delete('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
           })
@@ -1022,21 +1022,21 @@ var itemVue = Vue.component("itemTemplate", {
         this.deleteStudent(this.id)
       },
       fetchComment(){
-       this.$http.get('http://127.0.0.1:8000/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get('https://emerald-field-school.herokuapp.com/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.comments = response.data.data;
           
        })
           
       },
       fetchBehave(){
-       this.$http.get('http://127.0.0.1:8000/api/behave/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get('https://emerald-field-school.herokuapp.com/api/behave/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.behaviour = response.data.data;
           
        })
           
       },
       fetchAttend(){
-       this.$http.get('http://127.0.0.1:8000/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get('https://emerald-field-school.herokuapp.com/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.attendance = response.data.data;
           
        })
@@ -1050,7 +1050,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       updateComment() {
         this.$http
-          .put('http://127.0.0.1:8000/api/comments/' + this.comment_id, {
+          .put('https://emerald-field-school.herokuapp.com/api/comments/' + this.comment_id, {
             comment_id: this.comment_id,
             comment: this.comments.comment,
             hcomment: this.comments.hcomment,
@@ -1071,7 +1071,7 @@ var itemVue = Vue.component("itemTemplate", {
           })
       },
       deleteStudent() {
-        this.$http.delete('http://127.0.0.1:8000/api/remove_stud_in_class/student/' + this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/remove_stud_in_class/student/' + this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
@@ -1102,7 +1102,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       updateBehaviour() {
         this.$http
-          .put('http://127.0.0.1:8000/api/behaviour/'+ this.bev_id, {
+          .put('https://emerald-field-school.herokuapp.com/api/behaviour/'+ this.bev_id, {
             behave_id: this.bev_id,
             pic:this.behaviour.pic,
             la:this.behaviour.la,
@@ -1173,7 +1173,7 @@ var itemVue = Vue.component("itemTemplate", {
 
       updateAttendance() {
         this.$http
-          .put('http://127.0.0.1:8000/api/attendance/'+ this.attend_id, {
+          .put('https://emerald-field-school.herokuapp.com/api/attendance/'+ this.attend_id, {
             attend_id: this.attend_id,
             dp:this.attendance.dp,
             da:this.attendance.da,

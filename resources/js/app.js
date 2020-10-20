@@ -57,13 +57,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 // Vue.use(axios);
 Vue.use(VueAxios, axios);
 Vue.use(VueAuthenticate, {
-    baseUrl: 'http://localhost:8000/', // Your API domain
+    baseUrl: 'https://emerald-field-school.herokuapp.com//', // Your API domain
 
     providers: {
-        google: {
-            clientId: '519675463204-7bc7lvaqti1teo41im6e5he5lbjjvthk.apps.googleusercontent.com',
-            redirectUri: 'http://localhost:8000/' // Your client app URL
-        }
+        // google: {
+        //     clientId: '519675463204-7bc7lvaqti1teo41im6e5he5lbjjvthk.apps.googleusercontent.com',
+        //     redirectUri: 'http://localhost:8000/' // Your client app URL
+        // }
     }
 });
 

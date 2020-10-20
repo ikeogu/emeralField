@@ -144,7 +144,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{term.name}}</h5>
                       <p class="card-text">{{term.session}}</p>
-                      <a :href="'http://127.0.0.1:8000/api/my_subjects/'+logged_in.id+'/class/'+class_id+'/term/'+term.id" class="btn btn-success"  >view</a>
+                      <a :href="'https://emerald-field-school.herokuapp.com/api/my_subjects/'+logged_in.id+'/class/'+class_id+'/term/'+term.id" class="btn btn-success"  >view</a>
                     </div>
                   </div>
                 </div>
@@ -193,14 +193,14 @@
     methods: {
 
       fetchMyClass() {
-        this.$http.get('http://127.0.0.1:8000/api/myclass/' +this.logged_in.id ).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/myclass/' +this.logged_in.id ).then(response => {
           this.myClasses = response.data.data
         })
       },
      
       updateStudent() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/students/' + this.logged_in.id, {
+          .patch('https://emerald-field-school.herokuapp.com/api/students/' + this.logged_in.id, {
 
             student_id:this.logged_in.id,
             name: this.logged_in.name,
@@ -230,7 +230,7 @@
       
       ClassId(class_id){
         this.class_id = class_id,
-        this.$http.get('http://127.0.0.1:8000/api/s5class_term/' + class_id ).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/s5class_term/' + class_id ).then(response => {
           this.terms = response.data.data
         })
       },

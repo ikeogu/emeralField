@@ -355,13 +355,13 @@
         })
       },
       fetchClass(){
-        this.$http.get('http://127.0.0.1:8000/api/schclasses').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
           this.class5 = response.data.data
         })
       },
 
       fetchTerm(){
-        this.$http.get('http://127.0.0.1:8000/api/terms').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms').then(response => {
           this.terms= response.data.data
         })
       },
@@ -369,7 +369,7 @@
      
       updateTeacher() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/teachers/' + this.logged_in.id, {
+          .patch('https://emerald-field-school.herokuapp.com/api/teachers/' + this.logged_in.id, {
 
             teacher_id:this.logged_in.id,
             name: this.logged_in.name
@@ -399,7 +399,7 @@
       mySubjectClass(class_id, term_id, subject_id){
        
         this.$http
-          .get('http://127.0.0.1:8000/api/teacher/'+this.item.class_id +'/assignclass/'+this.item.term_id +'/subject/'+this.s_id)
+          .get('https://emerald-field-school.herokuapp.com/api/teacher/'+this.item.class_id +'/assignclass/'+this.item.term_id +'/subject/'+this.s_id)
           .then(response => {
           this.student_mark= response.data.data
         
@@ -422,7 +422,7 @@
       
       editScore(markid) {
         console.log(markid)
-        this.$http.get('http://127.0.0.1:8000/api/subjectMark/' + markid).then(data => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/subjectMark/' + markid).then(data => {
           
           this.student_mark.subject_id = data.data.data.subject_id
           this.student_mark.student_id = data.data.data.student_id
@@ -442,7 +442,7 @@
       },
       updateScore() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/subjectMark/' + this.student_mark.id, {
+          .patch('https://emerald-field-school.herokuapp.com/api/subjectMark/' + this.student_mark.id, {
             student_id: this.student_mark.student_id,
             subject_id: this.student_mark.subject_id,
             term_id: this.student_mark.term_id,

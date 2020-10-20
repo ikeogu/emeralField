@@ -86,13 +86,13 @@
     },
     methods: {
       subjectList() {
-        this.$http.get('http://127.0.0.1:8000/api/subjectlist').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/subjectlist').then(response => {
           this.subjects = response.data.data;
         })
       },
       subjectStudents: function(subjectid) {
         if (typeof subjectid === 'number') {
-          this.$http.get('http://127.0.0.1:8000/api/subjectstudents/subject/' + subjectid).then(response => {
+          this.$http.get('https://emerald-field-school.herokuapp.com/api/subjectstudents/subject/' + subjectid).then(response => {
             this.marks = response.data;
             if (this.marks[0].total_marks > 0) {
               this.total_marks = this.marks[0].total_marks;
@@ -116,7 +116,7 @@
         // })
         // var json = JSON.stringify(object)
         this.$http
-          .post('http://127.0.0.1:8000/api/subjectresult', this.marks)
+          .post('https://emerald-field-school.herokuapp.com//api/subjectresult', this.marks)
           .then(data => {
             this.succmsg = false
             this.seen = false

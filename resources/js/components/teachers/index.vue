@@ -435,7 +435,7 @@
     methods: {
 
       fetchClasses() {
-        this.$http.get('http://127.0.0.1:8000/api/schclasses').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
           //this.posts = response.data.data;
           this.laravelClassData = response.data.data
           
@@ -446,7 +446,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/teachers?page=' + page).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/teachers?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -454,7 +454,7 @@
       },
       addTeacher() {
         this.$http
-          .post('http://127.0.0.1:8000/api/teachers', {
+          .post('https://emerald-field-school.herokuapp.com/api/teachers', {
             
             start_year: this.teacher.start_year,
             level: this.teacher.level,
@@ -484,7 +484,7 @@
           })
       },
       editTeacher(teacherid) {
-        this.$http.get('http://127.0.0.1:8000/api/teachers/' + teacherid).then(data => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/teachers/' + teacherid).then(data => {
           
           this.teacher.name = data.data.data.name
           this.teacher.start_year = data.data.data.start_year
@@ -495,7 +495,7 @@
       },
       updateTeacher() {
         this.$http
-          .put('http://127.0.0.1:8000/api/teachers/' + this.id, {
+          .put('https://emerald-field-school.herokuapp.com/api/teachers/' + this.id, {
             teacher_id:this.id,
             name: this.teacher.name,
             start_year: this.teacher.start_year,
@@ -526,7 +526,7 @@
         this.id = teacherid
       },
       deleteteacher() {
-        this.$http.delete('http://127.0.0.1:8000/api/teachers/' + this.id).then(data => {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/teachers/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
@@ -551,7 +551,7 @@
       },
 
         unassignedSubjectList(subject) {
-        this.$http.get('http://127.0.0.1:8000/api/teachers/'+subject+'/unassignedsubjects').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/teachers/'+subject+'/unassignedsubjects').then(response => {
           this.unassignedSubjects = response.data;
           
           this.teacher.teacher_id = subject;
@@ -559,13 +559,13 @@
         })
       },
       assignedSubjectList(subject) {
-        this.$http.get('http://127.0.0.1:8000/api/teachers/'+subject+'/assignedsubjects').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/teachers/'+subject+'/assignedsubjects').then(response => {
           this.assignedSubjects = response.data
         })
       },
       assignSubject(teacher_id, subject_id){
         this.$http
-          .post('http://127.0.0.1:8000/api/teachers/'+this.teacher.teacher_id+'/assignsubject/'+subject_id, {
+          .post('https://emerald-field-school.herokuapp.com/api/teachers/'+this.teacher.teacher_id+'/assignsubject/'+subject_id, {
             teacher_id: this.teacher.teacher_id,
             subject_id: this.class_id,
           })
@@ -581,7 +581,7 @@
       },
        classTerms() {
 
-        this.$http.get('http://127.0.0.1:8000/api/terms').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms').then(response => {
           //this.posts = response.data.data;
           this.classLists = response.data.data
           
@@ -592,7 +592,7 @@
         this.teacher_(this.item.teacher_id)
       },
       teacher_(t){
-        this.$http.get('http://127.0.0.1:8000/api/teacher_c/'+ t)
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/teacher_c/'+ t)
         .then(response => {
           this.mclass= response.data
           console.log(this.mclass)
@@ -600,7 +600,7 @@
       },
       classTeacher(teacherid, classid,termid){
         this.$http
-          .get('http://127.0.0.1:8000/api/assignclassteacher/'+teacherid +'/class/'+classid +'/term/'+termid)
+          .get('https://emerald-field-school.herokuapp.com/api/assignclassteacher/'+teacherid +'/class/'+classid +'/term/'+termid)
           .then(response => {
           this.myclass= response.data.data
         

@@ -64,12 +64,12 @@ import modal from './modal';
     },
     methods: {
       studentLists() {
-        this.$http.get('http://127.0.0.1:8000/api/students').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/students').then(response => {
           this.students = response.data.data
         })
       },
       getResultofStudent(studentid) {
-        this.$http.get('http://127.0.0.1:8000/api/results/student/' + studentid).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/results/student/' + studentid).then(response => {
           this.student = response.data;
           this.showmodal = true;
         })

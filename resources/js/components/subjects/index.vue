@@ -301,7 +301,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/subjects?page=' + page).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/subjects?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -314,7 +314,7 @@
       },
       addSubject() {
         this.$http
-          .post('http://127.0.0.1:8000/api/subjects', {
+          .post('https://emerald-field-school.herokuapp.com/api/subjects', {
             name: this.subject.name,
             description: this.subject.description,
             home_work: this.subject.home_work,
@@ -355,7 +355,7 @@
           })
       },
       editSubject(subjectid) {
-        this.$http.get('http://127.0.0.1:8000/api/subjects/' + subjectid).then(data => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/subjects/' + subjectid).then(data => {
           this.subject.name = data.data.data.name,
           this.subject.description = data.data.data.description,
           this.subject.home_work = data.data.data.home_work,
@@ -372,7 +372,7 @@
       },
       updateSubject() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/subjects/' + this.id, {
+          .patch('https://emerald-field-school.herokuapp.com/api/subjects/' + this.id, {
             name: this.subject.name,
             description: this.subject.description,
             home_work: this.subject.home_work,
@@ -406,7 +406,7 @@
         this.id = subjectid
       },
       deleteSubject() {
-        this.$http.delete('http://127.0.0.1:8000/api/subjects/' + this.id).then(data => {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/subjects/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

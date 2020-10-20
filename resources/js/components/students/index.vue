@@ -320,14 +320,14 @@
     methods: {
 
       fetchClasses() {
-        this.$http.get('http://127.0.0.1:8000/api/schclasses').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
           //this.posts = response.data.data;
           this.laravelClassData = response.data
           
         })
       },
         fetchTerms() {
-        this.$http.get('http://127.0.0.1:8000/api/terms').then(responses => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/terms').then(responses => {
           //this.posts = response.data.data;
           this.laravelTerm = responses.data
           
@@ -340,7 +340,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('http://127.0.0.1:8000/api/students?page=' + page).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/students?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -348,7 +348,7 @@
       },
       addStudent() {
         this.$http
-          .post('http://127.0.0.1:8000/api/students', {
+          .post('https://emerald-field-school.herokuapp.com/api/students', {
             name: this.student.name,
             surname: this.student.surname,
             gender: this.student.gender,
@@ -388,7 +388,7 @@
           })
       },
       editStudent(studentid) {
-        this.$http.get('http://127.0.0.1:8000/api/students/' + studentid).then(data => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/students/' + studentid).then(data => {
           
           this.student.name = data.data.data.name
           this.student.surname = data.data.data.surname
@@ -404,7 +404,7 @@
       },
       updateStudent() {
         this.$http
-          .patch('http://127.0.0.1:8000/api/students/' + this.id, {
+          .patch('https://emerald-field-school.herokuapp.com/api/students/' + this.id, {
             student_id:this.id,
             name: this.student.name,
             surname: this.student.surname,
@@ -441,7 +441,7 @@
         this.id = studentid
       },
       deleteStudent() {
-        this.$http.delete('http://127.0.0.1:8000/api/students/' + this.id).then(data => {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/students/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
