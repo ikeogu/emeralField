@@ -16,16 +16,16 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30);
-            $table->string('description');
-            $table->integer('home_work');
-            $table->integer('class_work');
-            $table->integer('friday_test');
-            $table->integer('holiday_assignment');
+            $table->string('description')->nullable();
+            $table->integer('home_work')->nullable();
+            $table->integer('class_work')->nullable();
+            $table->integer('friday_test')->nullable();
+            $table->integer('holiday_assignment')->nullable();
             $table->string('level');
             $table->integer('summative_test')->nullable();
             $table->integer('cat_1')->nullable();
             $table->integer('cat_2')->nullable();
-            $table->integer('exam');
+            $table->integer('exam')->nullable();
             $table->timestamps();
         });
     }

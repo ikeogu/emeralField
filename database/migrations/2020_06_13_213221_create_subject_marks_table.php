@@ -19,6 +19,7 @@ class CreateSubjectMarksTable extends Migration
             $table->bigInteger('subject_id');
             $table->bigInteger('term_id');
             $table->bigInteger('s5_class_id');
+            $table->string('subname');
             $table->double('HW', 15, 8)->nullable();
             $table->double('CW', 15, 8)->nullable();
             $table->double('FT', 15, 8)->nullable();

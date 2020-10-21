@@ -762,7 +762,7 @@
           </div>
         </div>
         
-        <div class="card" v-if="myId.status =='Year School'" :key="myId.id">
+        <div class="card" v-if="myId.status ==='Year School'" :key="myId.id">
             <div class="card-header bg-success text-white">Student's Attendance Chart</div>
           <div class="card-body">
             <div class="table-responsive">
@@ -1038,7 +1038,7 @@ var itemVue = Vue.component("itemTemplate", {
       fetchAttend(){
        this.$http.get('https://emerald-field-school.herokuapp.com/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.attendance = response.data.data;
-          
+          console.log(this.attendance)
        })
           
       },
