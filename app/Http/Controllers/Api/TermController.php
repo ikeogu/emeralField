@@ -227,7 +227,7 @@ class TermController extends Controller
       $studentTerm->term_id = $term->id;
       $studentTerm->s5_class_id = $class_->id;
       $studentTerm->student_id = $student->id;
-      $studentTerm->subject_id = '';
+      $studentTerm->subject_id = 17;
       // add teacher and student to Term and ...
       
       $comment->term_id = $term->id;
