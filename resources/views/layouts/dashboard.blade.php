@@ -39,9 +39,9 @@
 </head>
 
 <body id="page-top">
-    
+  <div id="app"> 
   <div id="wrapper">
-    <div id="app">
+   
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   
