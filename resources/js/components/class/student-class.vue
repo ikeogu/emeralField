@@ -223,7 +223,7 @@
             
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
-                <tr v-if="myId.status === 'Year School'" :key="myId.id">
+                <tr v-if="myId.status =='Year School'" :key="myId.id">
                   <th>#</th>
                   <th>Name</th>
                   <th>Participates in class</th>
@@ -235,7 +235,7 @@
                   <th> Shows respect and Kidness to all</th>
                   <th>Action</th>
                 </tr>
-                <tr v-else-if="myId.status ==='High School' " :key="myId.id">
+                <tr v-else-if="myId.status =='High School'" :key="myId.id">
                   <th>#</th>
                   <th>Name</th>
                   <th>Home work culture</th>
@@ -259,7 +259,7 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody v-if="myId.status === 'Year School'" :key="myId.id">
+              <tbody v-if="myId.status =='Year School'" :key="myId.id">
                   
                 <tr  v-for="(st,index) in behaviour" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
