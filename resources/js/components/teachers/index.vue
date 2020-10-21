@@ -248,7 +248,7 @@
               
                 <tbody>
                     <tr v-for="(teacher, index) in laravelData.data" :key="teacher.id">
-                    <th scope="row">{{ index +1 }}</th>
+                    <th scope="row">{{ index + 1 }}</th>
                     <td>{{ teacher.name }}</td>
                     <td>{{ teacher.start_year}}</td>
                     <td>{{ teacher.email }}</td>
@@ -319,7 +319,8 @@
                             <th class="col"> Term</th>
                           </thead>
                           <tbody>
-                          <tr v-for="m in mclass" :key="m.id">
+                          <tr v-for="(m,index) in mclass" :key="m.id">
+                          <td>{{index + 1}}</td>
                             <td>{{m.myclass}}</td>
                             <td>{{m.term}}</td>
                           </tr>
