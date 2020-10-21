@@ -17,7 +17,7 @@ class StudentSubjectTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('subject_id');
-
+            $table->unsignedInteger('s5_class_id');
             // $table->foreign('student_id')
             //         ->references('id')->on('students')->onDelete('cascade');
 
