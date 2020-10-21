@@ -45,9 +45,9 @@
           </div> 
         @else
         <div class="row">
-            <a href="{{route('sum',[$student->id,$term->id,$class_T->id])}}" class="col-4 col-sm-6 btn btn-block btn-success">Summative </a>
-            <div class="col-4 d-flex justify-content-end">
-            <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-4  col-sm-6 btn btn-block btn-success ">Result </a>
+            <a href="{{route('sum',[$student->id,$term->id,$class_T->id])}}" class="col-6 col-sm-6 btn btn-block btn-success">Summative </a>
+            <div class="col-6 d-flex justify-content-end">
+            <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-6  col-sm-6 btn btn-block btn-success ">Result </a>
             </div>
           </div> 
         @endif

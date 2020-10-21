@@ -83,7 +83,7 @@ class SubjectMarkController extends Controller
             $subjectMark->CW = $request->CW;
             $subjectMark->FT = $request->FT;
             $subjectMark->HA = $request->HA;
-            $subjectMark->Summative_test = $request->summative_test;
+            $subjectMark->Summative_test = $request->Summative_test;
             $subjectMark->Exam = $request->exam;
             $subjectMark->MSC = 0;
             $subjectMark->CAT1 = 0;
@@ -104,7 +104,7 @@ class SubjectMarkController extends Controller
             $subjectMark->CW = $request->CW;
             $subjectMark->FT = $request->FT;
             $subjectMark->HA = $request->HA;
-            $subjectMark->Summative_test = $request->summative_test;
+            $subjectMark->Summative_test = $request->Summative_test;
             $subjectMark->Exam = $request->exam;
             $subjectMark->TCA =$subjectMark->HA +   $subjectMark->HW + $subjectMark->CW + $subjectMark->FT + $subjectMark->Summative_test;
             $subjectMark->GT = $subjectMark->TCA +  $subjectMark->Exam;
@@ -170,7 +170,8 @@ class SubjectMarkController extends Controller
         $subjectMarks=  SubjectMark::find($request->my_id);
         $class__ = S5Class::find($subjectMarks->s5_class_id);
         if($class__->status === 'Year School'){
-            $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->summative_test;
+            
+            $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->Summative_test;
             $subjectMarks->GT = $subjectMarks->TCA +$request->Exam;
             $subjectMarks->save();
         }elseif($class__->status === 'High School'){
