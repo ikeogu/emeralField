@@ -256,7 +256,7 @@
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ student.name }}</td>
                   <td>{{ student.oname }}</td>
-                  <td>{{ student.surname.slice(0,80) + ".." }}</td>
+                  <td>{{ student.surname.slice(0,50) + ".." }}</td>
                   <td>{{ student.email }}</td>
                   <td>{{ student.p_email }}</td>
                   <td>{{ student.gender }}</td>

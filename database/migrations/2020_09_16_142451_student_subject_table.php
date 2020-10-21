@@ -18,11 +18,8 @@ class StudentSubjectTable extends Migration
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('subject_id');
             $table->unsignedInteger('s5_class_id');
-            // $table->foreign('student_id')
-            //         ->references('id')->on('students')->onDelete('cascade');
-
-            // $table->foreign('subject_id')
-            //         ->references('id')->on('subjects')->onDelete('cascade');
+            $table->unsignedInteger('term_id');
+            
             $table->timestamps();
         });
     }
