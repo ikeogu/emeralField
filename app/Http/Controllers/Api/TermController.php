@@ -210,7 +210,7 @@ class TermController extends Controller
       array_push($ids,$id->student_id);
     } 
     $students = Student::whereIn('id',$ids)->get();
-    return view('class/studentClass2',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
+    return view('class/classStudent2',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
 }
   public function term_class_t($class_id, $term,$subject_id){
    //visit here later if there is any future modification to make 
