@@ -175,10 +175,6 @@ class TeacherController extends Controller
     $ct = ClassTeacher::where('teacher_id',$te->id)->get();
     return  json_encode($ct);
   }
-  public function classt($id){
-    $te = Teacher::find($id);
-    $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-    return view('teacher.classteacher',['classt'=>$ct]);
-  }
+  
  
 }
