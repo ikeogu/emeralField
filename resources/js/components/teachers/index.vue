@@ -594,7 +594,7 @@
       teacher_(t){
         this.$http.get('https://emerald-field-school.herokuapp.com/api/teacher_c/'+ t)
         .then(response => {
-          this.mclass= response.data
+          this.mclass= response.data.data
           console.log(this.mclass)
         })
       },
