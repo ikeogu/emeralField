@@ -172,7 +172,7 @@ class TeacherController extends Controller
   }
   public function t_class($teacherid){
     $te = Teacher::find($teacherid);
-    $ct = ClassTeacher::where('teacher_id',$te)->get();
+    $ct = ClassTeacher::where('teacher_id',$te->id)->get();
     return  ClassTeacherResource::collection($ct);
   }
  
