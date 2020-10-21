@@ -18,9 +18,9 @@ class CreateAttendancesTable extends Migration
             $table->integer('student_id');
             $table->integer('term_id');
             $table->integer('s5_class_id');
-            $table->integer('da');
-            $table->integer('dp');
-            $table->integer('tar');
+            $table->integer('da')->nullable();
+            $table->integer('dp')->nullable();
+            $table->integer('tar')->nullable();
             $table->timestamps();
         });
     }
