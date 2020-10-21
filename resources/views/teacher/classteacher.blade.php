@@ -24,7 +24,7 @@
                 <td>{{$item->term}}</td>
                 <td>{{$item->myclass}}</td>
                 <td>
-                <a type="button" href="https://emerald-field-school.herokuapp.com/api/students_in_term/{{$item->term_id}}/class/{{$item->s5_class_id}}" class="btn btn-success btn-block">View</a>
+                <a type="button" href="https://emerald-field-school.herokuapp.com/api/students_in_term2/{{$item->term_id}}/class/{{$item->s5_class_id}}" class="btn btn-success btn-block">View</a>
                 </td>
             </tr>
             @endforeach

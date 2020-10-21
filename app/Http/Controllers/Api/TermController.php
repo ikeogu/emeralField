@@ -200,6 +200,18 @@ class TermController extends Controller
         $students = Student::whereIn('id',$ids)->get();
         return view('class/studentClass',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
   }
+  public function students_in_term2($id,$class_id){
+
+    $term = Term::find($id);
+    $class_T = S5Class::find($class_id);
+    $student_id = StudentTerm::where('s5_class_id', $class_id)->where('term_id',$id)->get();
+    $ids = array();
+    foreach($student_id as $id){
+      array_push($ids,$id->student_id);
+    } 
+    $students = Student::whereIn('id',$ids)->get();
+    return view('class/studentClass2',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
+}
   public function term_class_t($class_id, $term,$subject_id){
    //visit here later if there is any future modification to make 
       $term = Term::find($term);

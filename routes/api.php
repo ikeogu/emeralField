@@ -77,6 +77,8 @@ Route::namespace('Api')->group(function () {
     Route::get('class_terms/{class}', 'S5ClassController@term_class');
     //
     Route::get('students_in_term/{term}/class/{class}', 'TermController@students_in_term');
+    
+    Route::get('students_in_term2/{term}/class/{class}', 'TermController@students_in_term2');
     Route::get('term_students/{term}', 'TermController@term_students');
     Route::post('add_student_class/{student}/term/{term}/class/{class}', 'TermController@add_student_term');
     Route::get('s5class_term/{term}', 'S5ClassController@terms_class');

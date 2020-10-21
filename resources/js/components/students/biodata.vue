@@ -140,7 +140,7 @@
               </div>
               <div class="modal-body ">
                 <div class="row ">
-                 <div v-for="term in terms"  :key="term.id" class="card col-4 p-3 " style="width: 15rem; height: 10rem;" >
+                 <div v-for="term in terms"  :key="term.id" class="card col-4 p-3 " style="width: 14rem; height: 9rem;" >
                     <div class="card-body">
                       <h5 class="card-title">{{term.name}}</h5>
                       <p class="card-text">{{term.session}}</p>
