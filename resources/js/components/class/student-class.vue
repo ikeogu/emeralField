@@ -971,7 +971,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       
       unassignedSubjectsList(student,term_id) {
-        this.$http.get('https://emerald-field-school.herokuapp.com//api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.unassignedSubjects = response.data;
           this.student_id = student;
           

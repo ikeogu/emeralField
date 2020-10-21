@@ -230,24 +230,26 @@ class TermController extends Controller
       $studentTerm->subject_id = 17;
       // add teacher and student to Term and ...
       
-      $comment->term_id = $term->id;
-      $comment->s5_class_id = $class_->id;
-      $comment->student_id = $student->id;
+      $comment->term_id = $studentTerm->term_id;
+      $comment->s5_class_id = $studentTerm->s5_class_id;
+      $comment->student_id = $studentTerm->student_id;
       $comment->teacher_id = $class_teacher->teacher_id;
       $comment->comment = '';
       $comment->hcomment = '';
-      $behaviour->term_id = $term->id;
-      $behaviour->s5_class_id = $class_->id;
-      $behaviour->student_id = $student->id;
+      $behaviour->term_id = $studentTerm->term_id;
+      $behaviour->s5_class_id = $studentTerm->s5_class_id;
+      $behaviour->student_id = $studentTerm->student_id;
       // attendance
-      $attend->term_id = $term->id;
-      $attend->s5_class_id = $class_->id;
-      $attend->student_id = $student->id;
+      $attend->term_id = $studentTerm->term_id;
+      $attend->s5_class_id = $studentTerm->s5_class_id;
+      $attend->student_id = $studentTerm->student_id;
 
-      $attend->save();
-      $behaviour->save();
-      $comment->save();
-      $studentTerm->save();
+      
+      if($studentTerm->save()){
+        $attend->save();
+        $behaviour->save();
+        $comment->save();
+      }
       return $studentTerm;
     }else {
        return back()->with('success', 'Teacher has Not been assigned to a class');
