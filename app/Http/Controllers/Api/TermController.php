@@ -234,6 +234,7 @@ class TermController extends Controller
       $comment->student_id = $student->id;
       $comment->teacher_id = $class_teacher->teacher_id;
       $comment->comment = '';
+      $comment->hcomment = '';
       $behaviour->term_id = $term->id;
       $behaviour->s5_class_id = $class_->id;
       $behaviour->student_id = $student->id;

@@ -19,8 +19,8 @@ class CreateCommentsTable extends Migration
             $table->integer('term_id');
             $table->integer('s5_class_id');
             $table->integer('student_id');
-            $table->mediumText('comment');
-            $table->mediumText('hcomment');
+            $table->mediumText('comment')->nullable();
+            $table->mediumText('hcomment')->nullable();
             $table->timestamps();
         });
     }

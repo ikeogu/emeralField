@@ -18,7 +18,7 @@ class CreateAveragesTable extends Migration
             $table->integer('student_id');
             $table->integer('term_id');
             $table->integer('s5_class_id');
-            $table->double('aver_');
+            $table->double('aver_')->nullable();
             $table->timestamps();
         });
     }
