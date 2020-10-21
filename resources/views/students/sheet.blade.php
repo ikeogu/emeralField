@@ -12,9 +12,9 @@
         <!-- Page Heading -->
         <div class="row">
 
-            <div class="col-4">
-                <p class="h4 mb-2  text-success text-capitalize">{{$term->name}}</p>
-                <p class="h4 mb-2 text-success text-success">{{$term->session}}</p>
+            <div class="col-4 col-sm-4">
+                <p class="mb-2  text-success text-capitalize">{{$term->name}}</p>
+                <p class="mb-2 text-success text-success">{{$term->session}}</p>
             </div>
             <div class="col-4 justify-content-left flaot" >
                 <p class=" mb-2  text-success">CLASS: {{$class_T->name}} </p>
@@ -27,7 +27,7 @@
         <div class="row">
 
             <div class="col-4 justify-content-center">
-                <p class="h4 mb-2 text-white btn btn-success">{{$student->surname}} {{$student->name}} </p>
+                <p class=" mb-2 text-white btn btn-success">{{$student->surname}} {{$student->name}} </p>
             </div>
             
         </div>

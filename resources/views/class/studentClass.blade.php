@@ -11,11 +11,11 @@
 
         <div class="row">
 
-            <div class="col-6">
+            <div class="col-6 col-sm-6">
                 <p class=" mb-2  text-success text-capitalize">{{$t->name}}</p>
                 <p class=" mb-2 text-success text-success">{{$t->session}}</p>
             </div>
-            <div class="col-6 " >
+            <div class="col-6 col-sm-6" >
                 <p class=" mb-2  text-success">CLASS: {{$class_T->name}} </p>
                 <p class=" mb-2  text-success">NAME: {{$class_T->description}} </p>
             </div>
@@ -23,7 +23,7 @@
         </div>
         @if ($class_T->status === 'High School')
         <div class="row mt-5">
-            <div class="col-md-2 mb-2">
+            <div class="col-md-2 mb-2 ">
                 <a href="{{route('cat1s',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 1</a>
             </div>
             <div class="col-md-2 mb-2">
