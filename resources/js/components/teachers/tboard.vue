@@ -237,7 +237,7 @@
                     <button class="btn btn-success">Update</button>
                   </div>
                 </form>
-                 <form v-if="logged_in.level === 'Year School'" method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore">
+                 <form v-if="logged_in.level ==='Year School'" method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore">
 
                    <div class="form-group">
                     <label for="roll_no">Home Work</label>
@@ -350,7 +350,7 @@
     methods: {
 
       fetchMyClass() {
-        this.$http.get('http://127.0.0.1:8000/api/myclass/' +this.logged_in.id ).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/myclass/' +this.logged_in.id ).then(response => {
           this.myClasses = response.data.data
         })
       },

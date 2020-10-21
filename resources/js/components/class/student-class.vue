@@ -298,7 +298,7 @@
                  
                 
               </tfoot>
-              <tbody v-if="myId.status === 'High School'" :key="myId.id">
+              <tbody v-if="myId.status ==='High School'" :key="myId.id">
                   
                 <tr  v-for="(st,index) in behaviour" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
@@ -762,7 +762,7 @@
           </div>
         </div>
         
-        <div class="card" v-if="myId.status === 'Year School'" :key="myId.id">
+        <div class="card" v-if="myId.status =='Year School'" :key="myId.id">
             <div class="card-header bg-success text-white">Student's Attendance Chart</div>
           <div class="card-body">
             <div class="table-responsive">
@@ -806,7 +806,7 @@
           </div>
         </div>
 
-        <div  v-if="myId.status === 'Year School'" :key="myId.id" class="modal fade" id="exampleModattend" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div  v-if="myId.status =='Year School'" :key="myId.id" class="modal fade" id="exampleModattend" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">

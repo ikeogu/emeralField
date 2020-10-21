@@ -17,6 +17,7 @@ class CreateSubjectTermTable extends Migration
             $table->id();
             $table->biginteger('term_id');
             $table->bigInteger('subject_id');
+            $table->bigInteger('student_id');
             $table->bigInteger('s5_class_id');
             $table->timestamps();
         });

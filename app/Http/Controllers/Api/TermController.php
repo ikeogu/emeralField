@@ -263,7 +263,11 @@ class TermController extends Controller
     $term = Term::find($termid);
     $studTerm = StudentTerm::where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
     $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
+    $att = Attendance::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
+    $behave = BehaviourChart::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
     $comment->delete();
+    $behave->delete();
+    $att->delete();
     $studTerm->delete();
     return $studTerm;
     

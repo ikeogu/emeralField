@@ -83,11 +83,11 @@
                     <span>Biodata</span></a>
                 </li>
               
-              {{-- <li class="nav-item">
-              <a class="nav-link" href="">
+              <li class="nav-item">
+              <a class="nav-link" href="{{route('classt',[{{Auth::user()->teacher_id}}])}}">
                   <i class="fas fa-fw fa-chart-area"></i>
-                  <span>Current Class</span></a>
-              </li> --}}
+                  <span>Class Teacher</span></a>
+              </li>
               <!-- Nav Item - Tables -->
               {{-- <li class="nav-item">
                 <a class="nav-link" href="{{route('teachers.index')}}">

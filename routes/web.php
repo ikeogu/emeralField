@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -53,5 +55,5 @@ Route::get('cat/stud/{student}/term/{term}/class/{class}','StudentController@cat
 Route::get('cat2/stud/{student}/term/{term}/class/{class}','StudentController@cat2')->name('cat2');
 // Route::get('msc/stud/{student}/term/{term}/class/{class}','StudentController@msc')->name('msc');
 Route::get('result/stud/{student}/term/{term}/class/{class}','StudentController@result_sheet')->name('result');
-
+Route::get('class_teacher/{teacher}','TeacherController@classt')->name('classt');
 // Route::view('high_sch', 'results.h_result')->name('res');

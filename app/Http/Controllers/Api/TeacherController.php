@@ -52,7 +52,7 @@ class TeacherController extends Controller
        $teacher->name = $request->name;
        $teacher->start_year = $request->start_year;
        $name = explode(' ',trim($teacher->name ));
-       $teacher->email = strtolower($teacher->name[0].$name[1]).'@EFS.com';
+       $teacher->email = strtolower($teacher->name[0].$name[1]).'@EFS.edu.ng';
        $teacher->status = $request->status;
        $teacher->level = $request->level;
         if($teacher->save()){
@@ -173,7 +173,12 @@ class TeacherController extends Controller
   public function t_class($teacherid){
     $te = Teacher::find($teacherid);
     $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-    return  ClassTeacherResource::collection($ct);
+    return  json_encode($ct);
+  }
+  public function classt($id){
+    $te = Teacher::find($id);
+    $ct = ClassTeacher::where('teacher_id',$te->id)->get();
+    return view('teacher.classteacher',['classt'=>$ct]);
   }
  
 }
