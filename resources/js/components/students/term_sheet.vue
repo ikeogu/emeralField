@@ -68,7 +68,7 @@
                            <td>{{marks.CW}}</td>
                            <td>{{marks.HA}}</td>
                             <td>{{marks.FT}}</td>
-                            <td>{{marks.Summative_test}}</td>
+                            <td>{{marks.summative_test}}</td>
                             <td>{{marks.TCA}}</td>
                             <td>{{marks.Exam}}</td>
                             <td>{{marks.GT}}</td>
@@ -107,6 +107,7 @@
         student_id: '',
         T:'',
         sub_id: '',
+        myClass:'',
         student_details :'',
         succmsg: true,
         showmodal: false,
@@ -135,7 +136,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/my_subject/'+this.student_details.id+'/term/'+this.T.id).then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/my_subject/'+this.student_details.id+'/class/'+this.myClass.id+'/term/'+this.T.id).then(response => {
           
           this.assignedSubjects = response.data
           
@@ -146,12 +147,13 @@
     
     },
       
-    props:['s_details','term'],
+    props:['s_details','term','class_T'],
     
     mounted() {
       
       this.student_details = this.s_details
       this.T = this.term
+      this.myClass = this.class_T
       
       this.scoreLists()
       
