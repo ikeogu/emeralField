@@ -63,7 +63,7 @@ Route::namespace('Api')->group(function () {
     Route::get('studentsclass/{id}','S5ClassController@stud_classes');
     Route::get('studentSubject/{id}/term/{term}/class/{class}','SubjectController@studentsubjects');
     Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
-    Route::get('my_subject/{id}/term/{term}','SubjectController@my_subjects');
+    Route::get('my_subject/{id}/class/{class}/term/{term}','SubjectController@my_subjects');
     // term structuring
     Route::post('term_class','TermController@term_class');
     // assignclass to term

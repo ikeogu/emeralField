@@ -214,7 +214,7 @@ class StudentController extends Controller
         $term = Term::find($term_id);
         $class = S5Class::find($class_id);
              
-        return  view('students/term_sheet',['student'=>$student ,'myclass'=>$class, 'term'=>$term]);
+        return  view('students/term_sheet',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);
       }
 
       

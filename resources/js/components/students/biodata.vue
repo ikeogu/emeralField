@@ -39,7 +39,7 @@
                 <div class="card-body">
                 <!-- Nested Row within Card Body -->
                     <div class="row p-5 mt-3">
-                      <div class="col-6">
+                      <div class="col-lg-6">
                         <form  class="user" method="post" name="updatestudent" id="updatestudent" action="#" @submit.prevent="updateStudent">
                             <div class="form-group row ">
                                 <div class="col-4">
@@ -108,7 +108,7 @@
                       </div>
                       <div class="col-1 vertical">
                       </div>
-                      <div class="col-5">
+                      <div class="col-lg-5">
 
                         <div v-for="cla in myClasses"  :key="cla.id" class="card" style="width: 12rem; height: 12rem;" >
                           <div class="card-body">
