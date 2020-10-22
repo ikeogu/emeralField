@@ -71,10 +71,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
   
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          
-        </div>
+        
         @auth
             
         
@@ -119,7 +116,7 @@
           <a class="nav-link" href="{{route('subjects.index')}}">
               <i class="fas fa-fw fa-book"></i>
               <span>Subjects</span></a>
-          </li>
+        </li>
           
         <!-- Nav Item - Tables -->
         <li class="nav-item">
@@ -132,18 +129,7 @@
               <i class="fas fa-fw fa-setting-o"></i>
               <span>Grade Settings</span></a>
         </li>
-  
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-  
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-          <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-        
-      </ul>
-      <!-- End of Sidebar -->
-      @elseif(Auth::user()->isAdmin === 3)
+        @elseif(Auth::user()->isAdmin === 3)
         <li class="nav-item">
           <a class="nav-link" href="{{route('teacher.dashboard')}}">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -158,7 +144,18 @@
         </li>
         @endif
         
-      @endif
+        @endif
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+  
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+        
+      </ul>
+      <!-- End of Sidebar -->
+      
       
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
