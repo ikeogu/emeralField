@@ -25,16 +25,16 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-            if(Auth::user()->isAdmin == 1){
+            if(Auth::user()->isAdmin === 1){
                return redirect(route('term')); 
             }
-            if(Auth::user()->isAdmin == 4){
+            if(Auth::user()->isAdmin === 4){
                 return redirect(route('student.dashboard'));
             }
-            if(Auth::user()->isAdmin == 3){
+            if(Auth::user()->isAdmin === 3){
                 return redirect(route('teacher.dashboard'));
             }
-            
+            return redirect('/login');
         }
         return redirect('/login');
     }

@@ -16,8 +16,8 @@
 
               <div class="row" v-if="student_details.level === 'High School'">
                
-                <div class="col-12">
-                  <table  class="table-wrapper" >
+                <div class="col-12 table-responsive">
+                  <table  class="table-wrapper table table-striped" >
                     <thead >
                       <th>Subject</th>
                         <th>CAT 1</th>
@@ -46,8 +46,8 @@
               </div> 
               <div class="row" v-if="student_details.level === 'Year School'">
                 
-                <div class="col-12">
-                  <table  class="" >
+                <div class="col-12 table-responsive">
+                  <table  class="table table-bordered table-striped" >
                     <thead >
                       <th>Subject</th>
                         <th>Hw</th>

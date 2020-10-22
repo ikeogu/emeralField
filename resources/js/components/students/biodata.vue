@@ -39,6 +39,19 @@
                 <div class="card-body">
                 <!-- Nested Row within Card Body -->
                     <div class="row p-3 mt-2">
+                    <div class="col-lg-5 col-md-6">
+
+                        <div v-for="cla in myClasses"  :key="cla.id"  class="row">
+                        <div class="card col-lg-4 col-md-" style="width: 9rem; height: 9rem;">
+                          <div class="card-body">
+                            <p class="card-title" style="font-size:8px;">{{cla.name}}</p>
+                            <p class="card-text" style="font-size:8px;">{{cla.description}}</p>
+                            <a href="#" class="btn btn-success" v-on:click="ClassId(cla.id)"  v-bind:id="cla.id" data-toggle="modal" data-target="#exampleModalCenter">view</a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                       <div class="col-lg-6 col-md-6">
                         <form  class="user" method="post" name="updatestudent" id="updatestudent" action="#" @submit.prevent="updateStudent">
                             <div class="form-group row ">
@@ -107,19 +120,7 @@
                         </form>
                       </div>
                       
-                      <div class="col-lg-5 col-md-6">
-
-                        <div v-for="cla in myClasses"  :key="cla.id"  class="row">
-                        <div class="card col-lg-4 col-md-" style="width: 9rem; height: 9rem;">
-                          <div class="card-body">
-                            <p class="card-title" style="font-size:8px;">{{cla.name}}</p>
-                            <p class="card-text" style="font-size:8px;">{{cla.description}}</p>
-                            <a href="#" class="btn btn-success" v-on:click="ClassId(cla.id)"  v-bind:id="cla.id" data-toggle="modal" data-target="#exampleModalCenter">view</a>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
+                      
                 </div>
             
               </div>
