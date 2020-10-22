@@ -24,7 +24,7 @@ class CreateSubjectMarksTable extends Migration
             $table->double('CW', 15, 8)->nullable();
             $table->double('FT', 15, 8)->nullable();
             $table->double('HA', 15, 8)->nullable();
-            $table->double('Summative_test', 15, 8)->nullable();
+            $table->double('summative_test', 15, 8)->nullable();
             $table->double('CAT1', 15, 8)->nullable();
             $table->double('CAT2', 15, 8)->nullable();
             $table->double('MSC', 15, 8)->nullable();

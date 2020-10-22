@@ -16,7 +16,7 @@ class SubjectMark extends Model
         'CW',
         'FT',
         'HA',
-        'Summative_test',
+        'summative_test',
         'Exam',
         'MSC',
         'GT',

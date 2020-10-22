@@ -84,7 +84,7 @@
                            <td class="td2">{{marks.CW}}</td>
                            <td class="td2">{{marks.HA}}</td>
                             <td class="td2">{{marks.FT}}</td>
-                            <td class="td2">{{marks.Summative_test}}</td>
+                            <td class="td2">{{marks.summative_test}}</td>
                             <td class="td2">{{marks.TCA}}</td>
                             <td class="td2">{{marks.Exam}}</td>
                             <td class="td2">{{marks.GT}}</td>
@@ -172,7 +172,7 @@
                   </div>
                   <div class="form-group">
                     <label for="roll_no">Summative Test</label>
-                    <input type="number" name="Summative_test" class="form-control"  v-model="student_mark.Summative_test" >
+                    <input type="number" name="summative_test" class="form-control"  v-model="student_mark.summative_test" >
                   </div>
                   
                   <div class="form-group">
@@ -286,7 +286,7 @@
               CW:this.student_mark.CW,
               HW:this.student_mark.HW,
               FT:this.student_mark.FT,
-              Summative_test:this.student_mark.Summative_test,
+              summative_test:this.student_mark.summative_test,
               CAT1:this.student_mark.CAT1,
               CAT2:this.student_mark.CAT2,
               exam:this.student_mark.exam,
@@ -321,7 +321,7 @@
           this.student_mark.CW = data.data.data.CW
           this.student_mark.FT = data.data.data.FT
           this.student_mark.HA = data.data.data.HA
-          this.student_mark.Summative_test = data.data.data.Summative_test
+          this.student_mark.summative_test = data.data.data.summative_test
           this.student_mark.CAT1 = data.data.data.CAT1
           this.student_mark.CAT2 = data.data.data.CAT2
           this.student_mark.MSC = data.data.data.MSC
@@ -341,7 +341,7 @@
               CW:this.student_mark.CW,
               HW:this.student_mark.HW,
               FT:this.student_mark.FT,
-              Summative_test:this.student_mark.Summative_test,
+              summative_test:this.student_mark.summative_test,
               CAT1:this.student_mark.CAT1,
               CAT2:this.student_mark.CAT2,
               MSC:this.student_mark.MSC,

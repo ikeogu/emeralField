@@ -43,9 +43,9 @@
                         <td>{{$student->name}}</td>                    
                         @foreach ($student->subjectMark as  $keys => $item)
                         @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                  
-                            <td>{{$item->Summative_test}}</td>
+                            <td>{{$item->summative_test}}</td>
                             @php
-                                $total += $item->Summative_test;
+                                $total += $item->summative_test;
                             @endphp  
                         @endif
                         @endforeach

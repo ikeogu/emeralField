@@ -79,9 +79,9 @@
                             <td>{{$key + 1}}</td>
                             <td>{{$item->subname}}</td>
                             
-                            <td>{{$item->Summative_test}}</td>
+                            <td>{{$item->summative_test}}</td>
                             @php
-                                $total += $item->Summative_test;
+                                $total += $item->summative_test;
                             @endphp 
                             
                              <td>{{App\Student::max_score($item->subject_id,$class_->id,$term->id)}}</td>

@@ -107,7 +107,7 @@ class Student extends Model
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
-            array_push($score_list,$value->Summative_test);
+            array_push($score_list,$value->summative_test);
         }
         
         return min($score_list);
@@ -118,7 +118,7 @@ class Student extends Model
         $score_list = [];
         foreach ($scores as  $value) {
             # code...
-          array_push($score_list,$value->Summative_test);
+          array_push($score_list,$value->summative_test);
         }
     
         return max($score_list);
@@ -169,7 +169,7 @@ class Student extends Model
         $sum =0;
         foreach ($scores as $key => $value) {
             # code...
-            $sum +=$value->Summative_test;
+            $sum +=$value->summative_test;
         }
         return $sum;
     }
