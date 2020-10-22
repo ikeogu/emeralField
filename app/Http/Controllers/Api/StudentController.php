@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentRequest;
+use App\Http\Resources\S5ClassResource;
 use App\Http\Resources\Student as StudentResource;
 use App\Http\Resources\StudentCollection;
 use App\Http\Resources\s5ClassResourceCollection;
@@ -199,7 +200,7 @@ class StudentController extends Controller
       }
       public function myClasses($id){
         $imstudent = Student::find($id);
-        return new S5ClassResourceCollection($imstudent->s5class);
+        return  S5ClassResource::collection($imstudent->s5class);
       }
 
       public function search(Request $request){
