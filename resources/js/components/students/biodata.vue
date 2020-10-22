@@ -106,11 +106,11 @@
                             </div>
                         </form>
                       </div>
-                      <div class="col-1 vertical">
-                      </div>
+                      
                       <div class="col-lg-5 col-md-6">
 
-                        <div v-for="cla in myClasses"  :key="cla.id" class="card" style="width: 9rem; height: 9rem;" >
+                        <div v-for="cla in myClasses"  :key="cla.id"  class="row">
+                        <div class="card col-lg-4 col-md-" style="width: 9rem; height: 9rem;">
                           <div class="card-body">
                             <p class="card-title" style="font-size:8px;">{{cla.name}}</p>
                             <p class="card-text" style="font-size:8px;">{{cla.description}}</p>
@@ -140,11 +140,11 @@
               </div>
               <div class="modal-body ">
                 <div class="row ">
-                 <div v-for="term in terms"  :key="term.id" class="card col-4 p-3 " style="width: 14rem; height: 9rem;" >
+                 <div v-for="term in terms"  :key="term.id" class="card col-lg-4  col-md-4 p-3 " style="width: 9rem; height: 9rem;" >
                     <div class="card-body">
-                      <h5 class="card-title">{{term.name}}</h5>
-                      <p class="card-text">{{term.session}}</p>
-                      <a :href="'https://emerald-field-school.herokuapp.com/api/my_subjects/'+logged_in.id+'/class/'+class_id+'/term/'+term.id" class="btn btn-success"  >view</a>
+                      <h5 class="card-title" style=" font-size:9px;">{{term.name}}</h5>
+                      <p class="card-text" style=" font-size:9px;">{{term.session}}</p>
+                      <a :href="'https://emerald-field-school.herokuapp.com/api/my_subjects/'+logged_in.id+'/class/'+class_id+'/term/'+term.id" class="btn btn-success btn-sm"  >view</a>
                     </div>
                   </div>
                 </div>
