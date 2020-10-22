@@ -39,8 +39,8 @@
 </head>
 
 <body id="page-top">
-  <div id="app"> 
-  <div id="wrapper">
+  
+    <div id="wrapper">
    
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -198,7 +198,9 @@
           
               </nav>
               <main>
+                <div id="app"> 
                   @yield('content')
+                </div>
               </main>
           </div>
           <!-- End of Main Content -->
@@ -219,7 +221,8 @@
     </div>
     <!-- End of Page Wrapper -->
     @endauth
-  </div>
+
+  
       
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
@@ -258,13 +261,5 @@
         window.history.back();
       }
     </script>
-
-      
-      
-        
-  <!-- Page Wrapper -->
- 
-        <!-- End of Topbar -->
-    </body>
-      
-    </html>
+</body>
+</html>
