@@ -75,6 +75,9 @@
         <div class="sidebar-heading">
           
         </div>
+        @auth
+            
+        
        @if(Auth::user()->isAdmin === 1)
          
       
@@ -156,6 +159,7 @@
         @endif
         @endif
       @endif
+      @endauth
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
   
