@@ -75,7 +75,9 @@
         <div class="sidebar-heading">
           
         </div>
-  
+       @if(Auth::user()->isAdmin === 1)
+         
+      
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -138,7 +140,22 @@
         
       </ul>
       <!-- End of Sidebar -->
-  
+      @elseif(Auth::user()->isAdmin === 3)
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('teacher.dashboard')}}">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Biodata</span></a>
+          </li>
+        @if (Auth::check()) 
+         @if(App\ClassTeacher::where('teacher_id',Auth::user()->teacher_id))
+        <li class="nav-item">
+        <a class="nav-link" href="{{route('classt',[Auth::user()->teacher_id])}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Class Teacher</span></a>
+        </li>
+        @endif
+        @endif
+      @endif
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
   
