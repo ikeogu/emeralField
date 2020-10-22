@@ -422,7 +422,7 @@
 																</tr>
 																<tr>
 																	<td colspan="5" class="text-left text-bold text-uppercase">
-																		School Fee: {{$term->hfee_}}
+																		School Fee: {{$term->fee_h}}
 																	</td>
 																</tr>
 																<tr>
