@@ -37,7 +37,8 @@ class TeacherController extends Controller
     }
     public function classt($id){
         $te = Teacher::find($id);
-        $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-        return view('teacher.classteacher',['classt'=> ClassTeacherResource::collection($ct)]);
+        
+        // $ct = ClassTeacher::where('teacher_id',$te->id)->get();
+        return view('teacher.classteacher',['classt'=> ClassTeacherResource::collection($te->classTeacher)]);
       }
 }

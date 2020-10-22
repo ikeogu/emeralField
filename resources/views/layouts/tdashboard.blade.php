@@ -82,12 +82,15 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Biodata</span></a>
                 </li>
-              
+              @if (Auth::check()) 
+               @if(App\ClassTeacher::where('teacher_id',Auth::user()->teacher_id))
               <li class="nav-item">
               <a class="nav-link" href="{{route('classt',[Auth::user()->teacher_id])}}">
                   <i class="fas fa-fw fa-chart-area"></i>
                   <span>Class Teacher</span></a>
               </li>
+              @endif
+              @endif
               <!-- Nav Item - Tables -->
               {{-- <li class="nav-item">
                 <a class="nav-link" href="{{route('teachers.index')}}">

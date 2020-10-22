@@ -29,6 +29,7 @@ class CreateSubjectMarksTable extends Migration
             $table->double('CAT2', 15, 8)->nullable();
             $table->double('MSC', 15, 8)->nullable();
             $table->double('Exam', 15, 8)->nullable();
+            $table->double('TCA', 15, 8)->nullable();
             $table->double('GT', 15, 8)->nullable();
             
             $table->timestamps();

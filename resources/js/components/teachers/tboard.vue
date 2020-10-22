@@ -123,7 +123,7 @@
                         <td>{{marks.CW}}</td>
                         <td>{{marks.HA}}</td>
                           <td>{{marks.FT}}</td>
-                          <td>{{marks.Summative_test}}</td>
+                          <td>{{marks.summative_test}}</td>
                           <td>{{marks.TCA}}</td>
                           <td>{{marks.Exam}}</td>
                           <td>{{marks.GT}}</td>
