@@ -24,9 +24,26 @@
         <!-- Button trigger modal -->
 
         <!-- Modal -->
+        <div class="card shadow mb-4 ">
+          <div class="card-header py-3 row">
+            <div class=" col-6">
+              <h6 class="m-0 font-weight-bold text-primary " >Classes</h6>
+            </div>
+          </div> 
+          <div class="card-body">
+              <div v-for="cla in myClasses"  :key="cla.id"  class="row">
+                <div class="card col-lg-4 col-md-" style="width: 9rem; height: 9rem;">
+                  <div class="card-body">
+                    <p class="card-title" style="font-size:8px;">{{cla.name}}</p>
+                    <p class="card-text" style="font-size:8px;">{{cla.description}}</p>
+                    <a href="#" class="btn btn-success" v-on:click="ClassId(cla.id)"  v-bind:id="cla.id" data-toggle="modal" data-target="#exampleModalCenter">view</a>
+                  </div>
+                </div>
 
-
-
+              </div>
+            
+          </div>
+        </div>
         <div class="card shadow mb-4 ">
           <div class="card-header py-3 row">
             <div class=" col-6">
@@ -36,92 +53,75 @@
               <h6 class="m-0 font-weight-bold text-primary " >Class</h6>
             </div>
           </div> 
-                <div class="card-body">
-                <!-- Nested Row within Card Body -->
-                    <div class="row p-3 mt-2">
-                    <div class="col-lg-5 col-md-6">
-
-                        <div v-for="cla in myClasses"  :key="cla.id"  class="row">
-                        <div class="card col-lg-4 col-md-" style="width: 9rem; height: 9rem;">
-                          <div class="card-body">
-                            <p class="card-title" style="font-size:8px;">{{cla.name}}</p>
-                            <p class="card-text" style="font-size:8px;">{{cla.description}}</p>
-                            <a href="#" class="btn btn-success" v-on:click="ClassId(cla.id)"  v-bind:id="cla.id" data-toggle="modal" data-target="#exampleModalCenter">view</a>
+          <div class="card-body">
+            <div class="">
+                  <form  class="user" method="post" name="updatestudent" id="updatestudent" action="#" @submit.prevent="updateStudent">
+                      <div class="form-group row ">
+                          <div class="col-lg-4 col-md-4">
+                              <label for="name">Surname</label>
                           </div>
-                        </div>
-
+                          <div class="col-lg-8 col-md-8">
+                              <input type="text" name="surname" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.surname">
+                          </div>
                       </div>
-                    </div>
-                      <div class="col-lg-6 col-md-6">
-                        <form  class="user" method="post" name="updatestudent" id="updatestudent" action="#" @submit.prevent="updateStudent">
-                            <div class="form-group row ">
-                                <div class="col-lg-4 col-md-4">
-                                    <label for="name">Surname</label>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <input type="text" name="surname" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.surname">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                            <div class="col-lg-4 ">
-                                    <label for="name">First Name</label>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.name">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                               <div class="col-lg-4 col-md-4">
-                                    <label for="name">Gender</label>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <input type="text" name="gender" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.gender">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                               <div class="col-lg-4 col-md-4">
-                                    <label for="name">DOB</label>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <input type="text" name="dob" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.dob">
-                                </div>
-                            </div>
-                            
-
-                            <div class="form-group row">
-                                <div class="col-lg-4 col-md-4">
-                                    <label for="name">Parent Email</label>
-                                </div>
-                                <div class="col-lg-8 col-md-4">
-                                    <input type="text" name="p_email" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.p_email">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4 col-md-4">
-                                    <label for="name">Contact</label>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <input type="text" name="contact" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.contact">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4 col-md-4">
-                                    <label for="name">Address</label>
-                                </div>
-                                <div class="col-lg-8 col-md-8">
-                                    <input type="text" name="address" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.address">
-                                </div>
-                            </div>
-                            <div class="form-group text-right">
-                                <button class="btn btn-success">Update</button>
-                            </div>
-                        </form>
+                      <div class="form-group row">
+                      <div class="col-lg-4 ">
+                              <label for="name">First Name</label>
+                          </div>
+                          <div class="col-lg-8 col-md-8">
+                              <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.name">
+                          </div>
                       </div>
                       
+                      <div class="form-group row">
+                          <div class="col-lg-4 col-md-4">
+                              <label for="name">Gender</label>
+                          </div>
+                          <div class="col-lg-8 col-md-8">
+                              <input type="text" name="gender" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.gender">
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <div class="col-lg-4 col-md-4">
+                              <label for="name">DOB</label>
+                          </div>
+                          <div class="col-lg-8 col-md-8">
+                              <input type="text" name="dob" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.dob">
+                          </div>
+                      </div>
                       
-                </div>
+
+                      <div class="form-group row">
+                          <div class="col-lg-4 col-md-4">
+                              <label for="name">Parent Email</label>
+                          </div>
+                          <div class="col-lg-8 col-md-4">
+                              <input type="text" name="p_email" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.p_email">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <div class="col-lg-4 col-md-4">
+                              <label for="name">Contact</label>
+                          </div>
+                          <div class="col-lg-8 col-md-8">
+                              <input type="text" name="contact" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.contact">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <div class="col-lg-4 col-md-4">
+                              <label for="name">Address</label>
+                          </div>
+                          <div class="col-lg-8 col-md-8">
+                              <input type="text" name="address" id="name" class="form-control form-control-user" placeholder="Name" v-model="logged_in.address">
+                          </div>
+                      </div>
+                      <div class="form-group text-right">
+                          <button class="btn btn-success">Update</button>
+                      </div>
+                  </form>
+            </div>   
+          </div>
             
               </div>
         </div>
