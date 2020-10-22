@@ -39,7 +39,7 @@
 </head>
 
 <body id="page-top">
-  
+  <div id="app">
     <div id="wrapper">
    
       <!-- Sidebar -->
@@ -63,11 +63,6 @@
             <span>Dashboard</span></a>
         </li>
   
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-  
-        
-        
         <!-- Divider -->
         <hr class="sidebar-divider">
   
@@ -145,6 +140,7 @@
         @endif
         
         @endif
+        @endauth
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
   
@@ -198,9 +194,9 @@
           
               </nav>
               <main>
-                <div id="app"> 
+                
                   @yield('content')
-                </div>
+                
               </main>
           </div>
           <!-- End of Main Content -->
@@ -220,7 +216,7 @@
 
     </div>
     <!-- End of Page Wrapper -->
-    @endauth
+  
 
   
       
@@ -247,6 +243,7 @@
             </div>
           </div>
         </div>
+  </div> 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
