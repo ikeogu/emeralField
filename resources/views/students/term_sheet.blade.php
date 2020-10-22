@@ -14,11 +14,14 @@
                 <h2 class=" mb-2 text-gray-800"> Session: {{$term->session}} {{$term->name}} </h2>
             </div>
             <div class="col-3" style="float:right;">
-                <h5 class=" mb-2 text-gray-800 ">Class: {{$myclass->name}} </h5>
+                <h5 class=" mb-2 text-gray-800 ">Class: {{$class_T->name}} </h5>
             </div>
-            
+           
         </div>
         <div class="row">
+            <div  style="float:right;">
+                <h5 class=" mb-2 text-gray-800 ">Name: {{$student->name}} {{$student->oname}} {{$student->surname}} </h5>
+            </div>
             
         </div>
         @if ($class_T->status === 'High School')
