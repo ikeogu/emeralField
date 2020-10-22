@@ -1037,7 +1037,7 @@ var itemVue = Vue.component("itemTemplate", {
       },
       fetchAttend(){
        this.$http.get('https://emerald-field-school.herokuapp.com/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
-          this.attendance = response.data.data;
+          this.attendance = response.data;
           console.log(this.attendance)
        })
           
