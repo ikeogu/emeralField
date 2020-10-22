@@ -170,7 +170,7 @@ class SubjectMarkController extends Controller
         $subjectMarks=  SubjectMark::find($request->my_id);
         $class__ = S5Class::find($subjectMarks->s5_class_id);
         if($class__->status === 'Year School'){
-            
+            $subjectMarks->Summative_test = $request->Summative_test;
             $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->Summative_test;
             $subjectMarks->GT = $subjectMarks->TCA +$request->Exam;
             $subjectMarks->save();

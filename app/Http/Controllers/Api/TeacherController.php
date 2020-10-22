@@ -167,7 +167,7 @@ class TeacherController extends Controller
     $classTeacher->s5_class_id = $classid;
     $classTeacher->term_id = $termid;
     $classTeacher->save();
-    return new ClassTeacherResource($classTeacher);
+    return  ClassTeacherResource::collection(ClassTeacher::where('teacher_id',$classTeacher->teacher_id)->get());
 
   }
   public function t_class($teacherid){
