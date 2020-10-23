@@ -14,6 +14,7 @@ use App\Http\Resources\ClassTeacherResource;
 use App\Teacher;
 use App\User;
 use App\Subject;
+use Illuminate\Support\Str;
 class TeacherController extends Controller
 {
   
@@ -56,11 +57,12 @@ class TeacherController extends Controller
        $teacher->status = $request->status;
        $teacher->level = $request->level;
         if($teacher->save()){
-
+            $pass = Str::random(8);
             $user = new User();
             $user->name = $teacher->name;
             $user->email = $teacher->email;
-            $user->password = Hash::make(strtolower($name[0]));
+            $user->keep_track = $pass;
+            $user->password = Hash::make($pass);
             $user->isAdmin = 3;
             $user->teacher_id = $teacher->id;
             $user->save();

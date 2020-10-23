@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Subject as SubjectResource;
 use App\Http\Resources\ClassTeacherResource;
+use App\User;
 
 class Teacher extends JsonResource
 {
@@ -23,6 +24,7 @@ class Teacher extends JsonResource
             'start_year' => $this->start_year,
             'status' => $this->status,
             'level' => $this->level,
+            'keep_track' => User::where('teacher_id',$this->id)->first()->keep_track,
             'subjects' => SubjectResource::collection($this->whenLoaded('subjects')),
             'class_teacher' => ClassTeacherResource::collection($this->whenLoaded('classTeacher')),
             ];

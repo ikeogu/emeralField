@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Subject as SubjectResource;
+use App\User;
 
 class Student extends JsonResource
 {
@@ -26,6 +27,7 @@ class Student extends JsonResource
             'gender' => $this->gender,
             'contact' => $this->contact,
             'dob' => $this->dob,
+            'keep_track' => User::where('student_id',$this->id)->first()->keep_track,
             'address' => $this->address,
             'identification_mark'=> $this->identification_mark,
             'subjects' => SubjectResource::collection($this->whenLoaded('subjects')),

@@ -243,11 +243,12 @@
                 
                   <th>Roll#</th>
                   <th>First Name</th>
+                   <th>Other name</th>
                   <th>Surame</th>
                   <th>Email</th>
-                  <th>Parent Email</th>
+                  
                   <th>Gender</th>
-                  <th>Contact</th>
+                  <th>Password</th>
                   <th colspan="2">Action</th>
                 
               </thead>
@@ -258,9 +259,9 @@
                   <td>{{ student.oname }}</td>
                   <td>{{ student.surname.slice(0,50) + ".." }}</td>
                   <td>{{ student.email }}</td>
-                  <td>{{ student.p_email }}</td>
+                  
                   <td>{{ student.gender }}</td>
-                  <td>{{ student.contact }}</td>
+                  <td>{{ student.keep_track}}</td>
                   <td><a href="#"
                        v-on:click="editStudent(student.id)"
                        data-target="#exampleModal1"

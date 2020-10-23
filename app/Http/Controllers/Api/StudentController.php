@@ -9,6 +9,7 @@ use App\Http\Resources\Student as StudentResource;
 use App\Http\Resources\StudentCollection;
 use App\Http\Resources\s5ClassResourceCollection;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\Student;
 use App\Subject;
 use App\StudentsClass;
@@ -63,11 +64,13 @@ class StudentController extends Controller
        $student->level = $class->status;
       $student->identification_mark = $request->identification_mark;
       if($student->save()){
+        $pass = Str::random(8);
         $class->student()->attach($student);
         $user = new User();
         $user->name = $student->name.'.'.$student->surname;
         $user->email = $student->email;
-        $user->password = Hash::make(strtolower($student->name));
+        $user->keep_track = $pass;
+        $user->password = Hash::make($pass);
         $user->isAdmin = 4;
         $user->student_id =$student->id;
         $user->save();

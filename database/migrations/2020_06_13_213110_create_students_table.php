@@ -22,14 +22,14 @@ class CreateStudentsTable extends Migration
 
             $table->string('surname');
             $table->string('email');
-            $table->string('p_email');
-            $table->integer('roll_no');
+            $table->string('p_email')->nullable();
+            $table->integer('roll_no')->nullable();
             $table->date('dob')->nullable();
             $table->smallInteger('gender')->nullable();
             
             $table->string('identification_mark')->nullable();
-            $table->string('contact');
-            $table->string('address');
+            $table->string('contact')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
