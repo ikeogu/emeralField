@@ -70,26 +70,15 @@
                   </div>
                 </div>
                 <div id="year" v-if="selected === 2">
-                                    <div class="form-group">
+                  <div class="form-group">
                     <label for="name">Home Work</label>
-                    <input type="number" name="home_work" id="home_work" class="form-control" placeholder="10" v-model="subject.home_work" />
+                    <input type="number" name="home_work" id="home_work" class="form-control" value="10" v-model="subject.home_work" />
                   </div>
                   <div class="form-group">
                     <label for="name">Class Work</label>
-                    <input type="number" name="class_work" id="class_work" class="form-control" placeholder="10" v-model="subject.class_work" />
+                    <input type="number" name="class_work" id="class_work" class="form-control" value="10" v-model="subject.class_work" />
                   </div>
-                  <div class="form-group">
-                    <label for="name">Friday Test</label>
-                    <input type="text" name="friday_test" id="name" class="form-control" placeholder="Mark for Friday Test" v-model="subject.friday_test" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Holiday Assignment</label>
-                    <input type="number" name="holiday_assignment" id="name" class="form-control"  placeholder="Mark for Holiday Assignment " v-model="subject.holiday_assignment" />
-                  </div>
-                   <div class="form-group">
-                    <label for="name">Summative Test</label>
-                    <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
-                  </div>
+                  
                 </div>
                 <div id="early" v-if="selected === 3">
                    <div class="form-group">
@@ -223,7 +212,7 @@
                     <th>Max Score CAT 1</th>
                     <th>Max Score CAT 2</th>
                     <th>Max Score Summative Test </th> -->
-                    <th>Meant For</th>
+                    <!-- <th>Meant For</th> -->
                   
                     <th colspan="2">Action</th>
                   
@@ -238,7 +227,7 @@
                     <td>{{ sub.cat_1 }}</td>
                     <td>{{ sub.cat_2 }}</td>
                     <td>{{ sub.summative_test }}</td> -->
-                    <td>{{ sub.level}}</td>
+                    <!-- <td>{{ sub.level}}</td> -->
                     
                     <td>
                       <a href="#"

@@ -74,7 +74,7 @@
                   <div class="form-group">
                     <label for="gender">Assigned Subjects</label>
                     <select class="form-control" name="subject" id="subject" v-model="subject_id">
-                          <option v-for="subject in unassignedSubjects"  :key="subject.id" v-bind:value="subject.id">{{ subject.name }}</option>
+                          <option v-for="subject in unassignedSubjects"  :key="subject.id" v-bind:value="subject.id">{{ subject.name }} {{ subject.description}}</option>
                     </select>
                   </div>
 
@@ -94,21 +94,14 @@
                         <thead>
                           <tr>
                             <th>Subjects</th>
-                            <th>Home Work</th>
-                            <th>Holiday Assignment</th>
-                            <th>Summative Test</th>
-                            <th>Exam</th>
-                            
+                            <th>Description</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr v-for="subject in assignedSubjects" :key="subject.id">
                             <th scope="row">{{ subject.name }}</th>
-                            <td>{{subject.home_work}}</td>
-                            <td>{{subject.holiday_assignment}}</td>
-                            <td>{{subject.summative_test}}</td>
-                            <td>{{subject.exam}}</td>
+                            <td>{{subject.description}}</td>
                             <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSubject(student_id, subject.id)" data-toggle="modal">Delete</a></td>
                           </tr>
                         </tbody>
