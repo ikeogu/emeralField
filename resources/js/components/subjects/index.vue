@@ -224,7 +224,7 @@
                     <th>Max Score CAT 2</th>
                     <th>Max Score Summative Test </th> -->
                     <th>Meant For</th>
-                    <th>Max Score Exam</th>
+                  
                     <th colspan="2">Action</th>
                   
                 </thead>
@@ -239,7 +239,7 @@
                     <td>{{ sub.cat_2 }}</td>
                     <td>{{ sub.summative_test }}</td> -->
                     <td>{{ sub.level}}</td>
-                    <td>{{ sub.exam }}</td>
+                    
                     <td>
                       <a href="#"
                         v-on:click="editSubject(sub.id)"
