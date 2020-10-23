@@ -253,7 +253,7 @@
                     <td>{{ teacher.name }}</td>
                     <td>{{ teacher.start_year}}</td>
                     <td>{{ teacher.email }}</td>
-                    <td>{{ teacher.keep_track }}</td>
+                    <td>{{ teacher.keep_track}}</td>
                     <td>{{ teacher.level }}</td>
                     <td>{{ teacher.status }}
                         <a href="#" class="btn btn-success text-white btn-block py-2 mb-2"

@@ -32,10 +32,38 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SubjectRequest $request, Subject $subject)
+    public function store(SubjectRequest $request)
     {
-        $data = $request->all();
-        $subject = $subject->create($data);
+                
+        $subject = new Subject();
+        if($request->level === 'Year School'){
+            $subject->name = $request->name;
+            $subject->description = $request->description;
+            $subject->home_work = $request->home_work;
+            $subject->class_work = $request->class_work;
+            $subject->friday_test = $request->friday_test;
+            $subject->holiday_assignment = $request->holiday_assignment;
+            $subject->level = $request->level;
+            $subject->summative_test= $request->summative_test;
+            $subject->exam = $request->exam;
+        }
+        if ($request->level === 'High School') {
+            # code...
+            $subject->name = $request->name;
+            $subject->description = $request->description;
+            $subject->home_work = '';
+            $subject->class_work = '';
+            $subject->friday_test = '';
+            $subject->holiday_assignment = '';
+            $subject->level = $request->level;
+            $subject->summative_test= '';
+            $subject->cat_1 = $request->cat_1;
+            $subject->cat_2 = $request->cat_2;
+            $subject->exam = $request->exam;
+        }
+        
+
+        $subject->save();
 
         return new SubjectResource($subject);
     }
