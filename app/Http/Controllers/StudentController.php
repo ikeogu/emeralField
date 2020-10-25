@@ -246,7 +246,7 @@ class StudentController extends Controller
         'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
         }
-        return view('results.h_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        return view('results.h_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
         'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
     }
