@@ -12,9 +12,8 @@ use App\Http\Resources\AttandanceCollection;
 
 class AttendanceController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function __construct(){
+
     }
     /**
      * Display a listing of the resource.

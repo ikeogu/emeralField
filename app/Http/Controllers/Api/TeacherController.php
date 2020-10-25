@@ -17,10 +17,7 @@ use App\Subject;
 use Illuminate\Support\Str;
 class TeacherController extends Controller
 {
-    public function __construct()
-      {
-          $this->middleware('auth');
-      }
+  
     /**
      * Display a listing of the resource.
      *
