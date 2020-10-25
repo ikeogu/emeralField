@@ -17,7 +17,12 @@ use App\Term;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
 class SubjectController extends Controller
-{
+{   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,6 +53,7 @@ class SubjectController extends Controller
             $subject->level = $request->level;
             $subject->summative_test= $request->summative_test;
             $subject->exam = $request->exam;
+            $subject->status = $request->status;
         }
         if ($request->level === 'High School') {
             # code...
@@ -62,6 +68,7 @@ class SubjectController extends Controller
             $subject->cat_1 = $request->cat_1;
             $subject->cat_2 = $request->cat_2;
             $subject->exam = $request->exam;
+            $subject->status = $request->status;
         }
         
 

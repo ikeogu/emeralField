@@ -15,6 +15,15 @@ class CreateSubSubjectsTable extends Migration
     {
         Schema::create('sub_subjects', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('student_id');
+            $table->integer('subject_id')->nullable();
+            $table->integer('subject_id1')->nullable();
+            $table->integer('subject_id2')->nullable();
+            $table->integer('subject_id3')->nullable();
+            $table->integer('term_id');
+            $table->integer('s5_class_id');
+            $table->integer('aveg');
             $table->timestamps();
         });
     }

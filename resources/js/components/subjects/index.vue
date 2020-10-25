@@ -32,72 +32,72 @@
              aria-labelledby="exampleModalLabel"
              aria-hidden="true"
              v-bind:class="{ showmodal:showmodal }">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add a Subject</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                <form method="post" name="addsubject" id="addsubject" action="#" @submit.prevent="addSubject">
-                  <div class="form-group">
-                    <label for="name">Subject Name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" v-model="subject.name" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Description</label>
-                    <input type="text" name="description" id="description" class="form-control" placeholder="This subject is for ...." v-model="subject.description" />
-                  </div>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add a Subject</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <form method="post" name="addsubject" id="addsubject" action="#" @submit.prevent="addSubject">
+                    <div class="form-group">
+                      <label for="name">Subject Name</label>
+                      <input type="text" name="name" id="name" class="form-control" placeholder="Name" v-model="subject.name" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Description</label>
+                      <input type="text" name="description" id="description" class="form-control" placeholder="This subject is for ...." v-model="subject.description" />
+                    </div>
 
+                    <div class="form-group">
+                      <select class="form-control" name="level" v-model="selected" v-on:change="getText">
+                        <option>Choose Option</option>
+                        <option v-for="option in options" v-bind:value="option.value" :key="option.value">
+                            {{option.text}}
+                        </option>
+                      </select>
+                  </div>
+                  <div id="high" v-if="selected === 1">
                   <div class="form-group">
-                    <select class="form-control" name="level" v-model="selected" v-on:change="getText">
-                      <option>Choose Option</option>
-                      <option v-for="option in options" v-bind:value="option.value" :key="option.value">
-                          {{option.text}}
-                      </option>
-                    </select>
-                </div>
-                <div id="high" v-if="selected === 1">
-                 <div class="form-group">
-                    <label for="name">CAT 1</label>
-                    <input type="number" name="cat_1" id="name" class="form-control"  placeholder="Mark for CAT 1" v-model="subject.cat_1" />
+                      <label for="name">CAT 1</label>
+                      <input type="number" name="cat_1" id="name" class="form-control"  placeholder="Mark for CAT 1" v-model="subject.cat_1" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">CAT 2</label>
+                      <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="name">CAT 2</label>
-                    <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
+                  <div id="year" v-if="selected === 2">
+                    <div class="form-group">
+                      <label for="name">Home Work</label>
+                      <input type="number" name="home_work" id="home_work" class="form-control" value="10" v-model="subject.home_work" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Class Work</label>
+                      <input type="number" name="class_work" id="class_work" class="form-control" value="10" v-model="subject.class_work" />
+                    </div>
+                    
                   </div>
-                </div>
-                <div id="year" v-if="selected === 2">
-                  <div class="form-group">
-                    <label for="name">Home Work</label>
-                    <input type="number" name="home_work" id="home_work" class="form-control" value="10" v-model="subject.home_work" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Class Work</label>
-                    <input type="number" name="class_work" id="class_work" class="form-control" value="10" v-model="subject.class_work" />
-                  </div>
-                  
-                </div>
-                <div id="early" v-if="selected === 3">
-                   <div class="form-group">
-                    <label for="name">Summative Test</label>
-                    <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
-                  </div>
-                </div> 
-                <div class="form-group">
-                    <label for="name">Exam</label>
-                    <input type="number" name="exam" id="name" class="form-control"  placeholder="Mark for Exams " v-model="subject.exam" />
+                  <div id="early" v-if="selected === 3">
+                    <div class="form-group">
+                      <label for="name">Summative Test</label>
+                      <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
+                    </div>
                   </div> 
-                  <div class="form-group text-right">
-                    <button class="btn btn-success">Submit</button>
-                  </div>
-                </form>
-              </div>
+                  <div class="form-group">
+                      <label for="name">Exam</label>
+                      <input type="number" name="exam" id="name" class="form-control"  placeholder="Mark for Exams " v-model="subject.exam" />
+                    </div> 
+                    <div class="form-group text-right">
+                      <button class="btn btn-success">Submit</button>
+                    </div>
+                  </form>
+                </div>
 
+              </div>
             </div>
-          </div>
         </div>
 
         <div class="modal fade"
@@ -125,36 +125,42 @@
                     <label for="name">Description</label>
                     <input type="text" name="description" id="description" class="form-control" placeholder="This subject is for ...." v-model="subject.description" />
                   </div>
+                    
+                    <div class="form-group">
+                      <select class="form-control" name="level" v-model="selected" v-on:change="getText">
+                        <option>Choose Option</option>
+                        <option v-for="option in options" v-bind:value="option.value" :key="option.value">
+                            {{option.text}}
+                        </option>
+                      </select>
+                  </div>
+                  <div id="high" v-if="selected === 1">
                   <div class="form-group">
-                    <label for="name">Home Work</label>
-                    <input type="number" name="home_work" id="home_work" class="form-control" placeholder="10" v-model="subject.home_work" />
+                      <label for="name">CAT 1</label>
+                      <input type="number" name="cat_1" id="name" class="form-control"  placeholder="Mark for CAT 1" v-model="subject.cat_1" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">CAT 2</label>
+                      <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="name">Class Work</label>
-                    <input type="number" name="class_work" id="class_work" class="form-control" placeholder="10" v-model="subject.class_work" />
+                  <div id="year" v-if="selected === 2">
+                    <div class="form-group">
+                      <label for="name">Home Work</label>
+                      <input type="number" name="home_work" id="home_work" class="form-control" value="10" v-model="subject.home_work" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Class Work</label>
+                      <input type="number" name="class_work" id="class_work" class="form-control" value="10" v-model="subject.class_work" />
+                    </div>
+                    
                   </div>
-                  <div class="form-group">
-                    <label for="name">Friday Test</label>
-                    <input type="text" name="friday_test" id="name" class="form-control" placeholder="Mark for Friday Test" v-model="subject.friday_test" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Holiday Assignment</label>
-                    <input type="number" name="holiday_assignment" id="name" class="form-control"  placeholder="Mark for Holiday Assignment " v-model="subject.holiday_assignment" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">CAT 1</label>
-                    <input type="number" name="cat_1" id="name" class="form-control"  placeholder="Mark for CAT 1" v-model="subject.cat_1" />
-                  </div>
-                  <div class="form-group">
-                    <label for="name">CAT 2</label>
-                    <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
-                  </div>
-                
-                
-                   <div class="form-group">
-                    <label for="name">Summative Test</label>
-                    <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
-                  </div>
+                  <div id="early" v-if="selected === 3">
+                    <div class="form-group">
+                      <label for="name">Summative Test</label>
+                      <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
+                    </div>
+                  </div> 
                    <div class="form-group">
                     <label for="name">Exam</label>
                     <input type="number" name="exam" id="name" class="form-control"  placeholder="Mark for Exams " v-model="subject.exam" />
@@ -203,7 +209,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  
+                    <th>#</th>
                     <th>Subject Name</th>
                     <th>Subject Description</th>
                     <!-- <th>Max Score Home Work</th>
@@ -218,7 +224,8 @@
                   
                 </thead>
                 <tbody>
-                  <tr v-for="sub in laravelData.data" :key="sub.id">
+                  <tr v-for="(sub,index) in laravelData.data" :key="sub.id">
+                  <td>{{ index + 1 }}</td>
                     <td>{{ sub.name }}</td>
                     <td>{{ sub.description }}</td>
                     <!-- <td>{{ sub.home_work }}</td>

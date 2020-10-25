@@ -15,7 +15,10 @@ use App\S5Class;
 
 class SubjectMarkController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

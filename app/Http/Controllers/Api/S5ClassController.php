@@ -15,6 +15,11 @@ use App\Student;
 
 class S5ClassController extends Controller
 {   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
