@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('css/result.css')}}">
     <style>
+		body{
+			font-style: normal;
+			font-weight:bolder;
+			color:black;
+		}
         .rotate {
          transform: rotate(-90deg);
      
@@ -31,18 +36,18 @@
              .table { font-size: 1.25rem; }
      }
      @media (min-width: 576px) {
-.table { font-size: 1.25rem; }
-    }
+	.table { font-size: 1.25rem; }
+		}
    
     .header th {
-								line-height: 130px;
-								font-size: 8px;
-								font-weight: bolder;
-								white-space: nowrap;
-								overflow: hidden;
-								text-overflow: ellipsis;
-						
-								padding: 0px !important;
+				line-height: 130px;
+				font-size: 8px;
+				font-weight: bolder;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+		
+				padding: 0px !important;
              
             }
 
