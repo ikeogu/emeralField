@@ -242,12 +242,12 @@ class StudentController extends Controller
         
         if ($dets['class_']->status == 'Year School') {
             # code...
-            return view('results.result',['student'=>$dets[2],'term'=>$dets[0],'class_'=>$$dets[1],'scores'=>$dets[4],'users'=>$dets[5],
-        'grades'=>$dets[4],'classTeacher'=>$dets[6],'comment'=>$dets[9],'behave'=>$dets[7],'attend'=>$dets[8]]);
+            return view('results.result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
         }
-        return view('results.h_result',['student'=>$dets[2],'term'=>$dets[0],'class_'=>$$dets[1],'scores'=>$dets[4],'users'=>$dets[5],
-        'grades'=>$dets[4],'classTeacher'=>$dets[6],'comment'=>$dets[9],'behave'=>$dets[7],'attend'=>$dets[8]]);
+        return view('results.h_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
     }
     private function det($student_id, $class_id, $term_id){
