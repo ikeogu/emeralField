@@ -211,8 +211,9 @@
         selected:"Choose Options",
         options: [
                 { value: 1, text: 'High School' },
-                { value: 2, text: 'Year School' },
-                { value: 3, text: 'Early Years' }
+                { value: 2, text: 'Junior High School' },
+                { value: 3, text: 'Year School' },
+                { value: 4, text: 'Early Years' }
             ],
         classes: {
           name: '',

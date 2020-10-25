@@ -238,30 +238,16 @@ class StudentController extends Controller
     }
     
     public function result_sheet($student_id,$term_id,$class_id){
-        $term = Term::find($term_id);
-        $class_ = S5Class::find($class_id);
-        $student = Student::find($student_id);
-        // $this->det($student_id,$class_id,$term_id);
-        $behave = BehaviourChart::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
-        $attend = Attendance::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
-         $grades = GradeSetting::all();
-        $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)
-        ->where('s5_class_id',$class_->id)->first();
-        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
-        ->where('s5_class_id',$class_->id)->get();
-       
-        $users = SubjectMark::select('student_id')->where('term_id',$term->id)
-        ->where('s5_class_id',$class_->id)->distinct()->get();
-        $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
+        $dets = $this->det($student_id,$term_id,$class_id);
         
-        if ($class_->status == 'Year School') {
+        if ($dets[1]->status == 'Year School') {
             # code...
-            return view('results.result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
-        'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment,'behave'=>$behave,'attend'=>$attend]);
+            return view('results.result',['student'=>$dets[2],'term'=>$dets[0],'class_'=>$$dets[1],'scores'=>$dets[4],'users'=>$dets[5],
+        'grades'=>$dets[4],'classTeacher'=>$dets[6],'comment'=>$dets[9],'behave'=>$dets[7],'attend'=>$dets[8]]);
 
         }
-        return view('results.h_result',['student'=>$student,'term'=>$term,'class_'=>$class_,'scores'=>$scores,'users'=>$users,
-        'grades'=>$grades,'classTeacher'=>$te,'comment'=>$comment,'behave'=>$behave,'attend'=>$attend]);
+        return view('results.h_result',['student'=>$dets[2],'term'=>$dets[0],'class_'=>$$dets[1],'scores'=>$dets[4],'users'=>$dets[5],
+        'grades'=>$dets[4],'classTeacher'=>$dets[6],'comment'=>$dets[9],'behave'=>$dets[7],'attend'=>$dets[8]]);
 
     }
     private function det($student_id, $class_id, $term_id){
@@ -271,7 +257,14 @@ class StudentController extends Controller
         $grades = GradeSetting::all();
         $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->get();
-        return ['term'=>$term,'class_'=>$class_,'student'=>$student,'grades'=>$grades,'scores'=>$scores];
+        $users = SubjectMark::select('student_id')->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->distinct()->get();
+        $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
+        $behave = BehaviourChart::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
+        $attend = Attendance::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
+        $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->first();
+        return ['term'=>$term,'class_'=>$class_,'student'=>$student,'grades'=>$grades,'scores'=>$scores,'users'=>$users,'te'=>$te,'behave'=>$behave,'attend'=>$attend,'comment'=>$comment];
     }
 
 }
