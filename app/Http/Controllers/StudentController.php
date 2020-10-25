@@ -239,7 +239,7 @@ class StudentController extends Controller
     
     public function result_sheet($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
-        dd($dets);
+        
         if ($dets['class_']->status == 'Year School') {
             # code...
             return view('results.result',['student'=>$dets[2],'term'=>$dets[0],'class_'=>$$dets[1],'scores'=>$dets[4],'users'=>$dets[5],
