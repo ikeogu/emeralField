@@ -68,6 +68,14 @@
                       <label for="name">CAT 2</label>
                       <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
                     </div>
+                     <div class="form-group">
+                      <label for="name">Home Work</label>
+                      <input type="hidden" name="home_work" id="home_work" class="form-control" value="10" v-model="subject.home_work" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Class Work</label>
+                      <input type="hidden" name="class_work" id="class_work" class="form-control" value="10" v-model="subject.class_work" />
+                    </div>
                   </div>
                   <div id="year" v-if="selected === 2">
                     <div class="form-group">
@@ -78,7 +86,10 @@
                       <label for="name">Class Work</label>
                       <input type="number" name="class_work" id="class_work" class="form-control" value="10" v-model="subject.class_work" />
                     </div>
-                    
+                    <div class="form-group">
+                      <label for="name">Summative Test</label>
+                      <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
+                    </div>
                   </div>
                   <div id="early" v-if="selected === 3">
                     <div class="form-group">
@@ -212,30 +223,16 @@
                     <th>#</th>
                     <th>Subject Name</th>
                     <th>Subject Description</th>
-                    <!-- <th>Max Score Home Work</th>
-                    <th>Max Score Class Work</th>
-                    <th>Max Score Holiday Ass</th>
-                    <th>Max Score CAT 1</th>
-                    <th>Max Score CAT 2</th>
-                    <th>Max Score Summative Test </th> -->
-                    <!-- <th>Meant For</th> -->
-                  
+                
                     <th colspan="2">Action</th>
                   
                 </thead>
                 <tbody>
                   <tr v-for="(sub,index) in laravelData.data" :key="sub.id">
-                  <td>{{ index + 1 }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ sub.name }}</td>
                     <td>{{ sub.description }}</td>
-                    <!-- <td>{{ sub.home_work }}</td>
-                    <td>{{ sub.class_work}}</td>
-                    <td>{{ sub.holiday_assignment }}</td>
-                    <td>{{ sub.cat_1 }}</td>
-                    <td>{{ sub.cat_2 }}</td>
-                    <td>{{ sub.summative_test }}</td> -->
-                    <!-- <td>{{ sub.level}}</td> -->
-                    
+                                      
                     <td>
                       <a href="#"
                         v-on:click="editSubject(sub.id)"
