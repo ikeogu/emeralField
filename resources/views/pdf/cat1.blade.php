@@ -80,7 +80,7 @@
                             @endphp 
                             
                              <td>{{App\Student::c1_max_score($item->subject_id,$data['class_']->id,$data['term']->id)}}</td> 
-                            <td>{{App\Student::average(App\Student::subAver($item->subject_id,$data['class_']->id,$data['term']->id),$users->count())}}</td>
+                            <td>{{App\Student::average(App\Student::subAver($item->subject_id,$data['class_']->id,$data['term']->id),$data['users']->count())}}</td>
                             </tr> 
                             @endforeach
                             <tr class="average">
@@ -94,7 +94,7 @@
                             <tr class="average">
                                 <td></td>
                                 <td>average (100%)</td>
-                                <td>{{App\Student::averPer(App\Student::average($total,$scores->count()),20)}}</td>
+                                <td>{{App\Student::averPer(App\Student::average($total,$data['scores']->count()),20)}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -102,7 +102,7 @@
                                 <td></td>
 
                                 <td>remarks</td>
-                                <td>{{App\Student::h_grade(App\Student::averPer(App\Student::average($total,$scores->count()),20),$data['grades'])}}</td>
+                                <td>{{App\Student::h_grade(App\Student::averPer(App\Student::average($total,$data['scores']->count()),20),$data['grades'])}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>

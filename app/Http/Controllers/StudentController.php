@@ -180,6 +180,6 @@ class StudentController extends Controller
         $data =$this->det($student_id,$term_id,$class_1);
 
         $pdf = PDF::loadView('pdf.cat1',['data'=>$data]);        
-        return $pdf->stream($data['student']->surname.'.pdf');;
+        return $pdf->stream($data['student']->surname.'_'.$data['student']->name.'_'.$data['term']->name.'_'.$data['class_']->name.'.pdf');;
     }
 }
