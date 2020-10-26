@@ -180,6 +180,6 @@ class StudentController extends Controller
         $data =$this->det($student_id,$term_id,$class_1);
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadView('pdf.cat1', compact($data));        
-        return $pdf->download('cat1.pdf');
+        return $pdf->download('cat1.pdf',compact($data));
     }
 }
