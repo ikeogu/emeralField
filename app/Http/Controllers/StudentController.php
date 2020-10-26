@@ -176,4 +176,9 @@ class StudentController extends Controller
         $pdf = PDF::loadView('pdf.summative', $data);
         return $pdf->download('summative.pdf');
     }
+    public function download_cat1($student_id,$term_id,$class_1){
+        $data =$this->det($student_id,$term_id,$class_1);
+        $pdf = PDF::loadView('pdf.cat1', $data);
+        return $pdf->download('cat1.pdf');
+    }
 }

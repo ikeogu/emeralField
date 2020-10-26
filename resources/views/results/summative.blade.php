@@ -6,7 +6,9 @@
 
 
 <div class="container-fluid" > 
-    <a href="{{route('ds',[$student->id,$term->id,$class_->id])}}" class="btn-success btn-block">Download</a>
+    <div class="d-fles justify-content-end">
+    <a href="{{route('ds',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
+    </div>
    <div class="card">
         <div class="card-header bg-success text-white">SUMMATIVE TEST {{$class_->name}}| {{$class_->description}}     {{$term->name}} ||  {{$term->session}}</div>
         <div class="card-body">

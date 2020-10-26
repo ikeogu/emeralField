@@ -14,9 +14,6 @@
 @section('content')
 
         <section class="container my-5">
-            <div class="d-fles justify-content-end">
-            <a href="{{route('dcat1',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
-            </div>
             <div class="d-flex justify-content-center "><img src="{{asset('img/logo2.png')}}" height="80" width="auto"></div>
             <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
             <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST I</strong>
@@ -27,9 +24,9 @@
                         <th>SESSION:</th>
                         <td>
                             <ul>
-                            <li>{{$term->session}}</li>
+                            <li>{{$data['term']->session}}</li>
                                 <li>Term:</li>
-                            <li>{{$term->name}}</li>
+                            <li>{{$data['term']->name}}</li>
                             </ul>
                         </td>
                     </tr>
@@ -37,7 +34,7 @@
                         <th>NAME:</th>
                         <td>
                             <ul>
-                            <li>{{$student->name}} {{$student->surname}}</li>
+                            <li>{{$data['student']->name}} {{$data['student']->surname}}</li>
                             </ul>
                         </td>
                     </tr>
@@ -45,7 +42,7 @@
                         <th>CLASS:</th>
                         <td>
                             <ul>
-                            <li>{{$class_->name}} {{$class_->description}}</li>
+                            <li>{{$data['class_']->name}} {{$data['class_']->description}}</li>
                             </ul>
                         </td>
                     </tr>
@@ -72,7 +69,7 @@
                         
                     @endphp  
                         <tbody>
-                            @foreach ($scores as $key=> $item)
+                            @foreach ($data['scores'] as $key=> $item)
                             <tr>
                             <td>{{$key + 1}}</td>
                             <td>{{$item->subname}}</td>
@@ -82,8 +79,8 @@
                                 $total += $item->CAT1;
                             @endphp 
                             
-                             <td>{{App\Student::c1_max_score($item->subject_id,$class_->id,$term->id)}}</td> 
-                            <td>{{App\Student::average(App\Student::subAver($item->subject_id,$class_->id,$term->id),$users->count())}}</td>
+                             <td>{{App\Student::c1_max_score($item->subject_id,$data['class_']->id,$data['term']->id)}}</td> 
+                            <td>{{App\Student::average(App\Student::subAver($item->subject_id,$data['class_']->id,$data['term']->id),$users->count())}}</td>
                             </tr> 
                             @endforeach
                             <tr class="average">
@@ -105,7 +102,7 @@
                                 <td></td>
 
                                 <td>remarks</td>
-                                <td>{{App\Student::h_grade(App\Student::averPer(App\Student::average($total,$scores->count()),20),$grades)}}</td>
+                                <td>{{App\Student::h_grade(App\Student::averPer(App\Student::average($total,$scores->count()),20),$data['grades'])}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
