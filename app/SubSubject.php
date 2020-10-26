@@ -12,7 +12,10 @@ class SubSubject extends Model
         'student_id',
         's5_class_id',
         'term_id',
-        'subject_id'
+        'subject_id',
+        'subject_id1',
+        'subject_id2',
+        'subject_id3'
     ];
 
     public function subject(){

@@ -6,6 +6,7 @@
 
 
 <div class="container-fluid" > 
+    <a href="{{route('ds',[$student->id,$term->id,$class_->id])}}" class="btn-success btn-block">Download</a>
    <div class="card">
         <div class="card-header bg-success text-white">SUMMATIVE TEST {{$class_->name}}| {{$class_->description}}     {{$term->name}} ||  {{$term->session}}</div>
         <div class="card-body">
@@ -40,7 +41,7 @@
                     <tr>
                         
                         <td>{{$key + 1}}</td>
-                        <td>{{$student->name}}</td>                    
+                        <<td>{{$student->surname}} {{$student->name}}  {{$student->oname}}</td>                   
                         @foreach ($student->subjectMark as  $keys => $item)
                         @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                  
                             <td>{{$item->summative_test}}</td>

@@ -57,3 +57,4 @@ Route::get('cat2/stud/{student}/term/{term}/class/{class}','StudentController@ca
 Route::get('result/stud/{student}/term/{term}/class/{class}','StudentController@result_sheet')->name('result');
 Route::get('class_teacher/{teacher}','TeacherController@classt')->name('classt');
 // Route::view('high_sch', 'results.h_result')->name('res');
+Route::get('download_summative/{student}/term/{term}/class/{class}','StudentController@download_summative')->name('ds');

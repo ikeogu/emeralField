@@ -160,6 +160,4 @@ class SubjectController extends Controller
         return  $marks;
         
     }
-
-    
 }

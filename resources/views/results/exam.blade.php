@@ -43,7 +43,7 @@
                             
                        
                         <td>{{$key + 1}}</td>
-                        <td>{{$student->name}}</td>                    
+                        <td>{{$student->surname}} {{$student->name}}  {{$student->oname}}</td>                   
                         @foreach ($student->subjectMark as  $keys => $item)
                         @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                  
                             <td>{{$item->Exam}}</td>

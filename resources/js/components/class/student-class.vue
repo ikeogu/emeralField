@@ -126,8 +126,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Surname</th>
-                  <th>Other name</th>
+                  <th colspan="3">Name</th>
                   <th>DOB</th>
                   <th>Gender</th>              
                   <th>Action</th>
@@ -137,8 +136,8 @@
                   
                 <tr v-for="(st,index) in s" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
-                           <td>{{ st.surname}}</td>
-                            <td>{{ st.name}}</td>
+                           <td>{{ st.surname}} {{st.name}} {{ st.oname}}</td>
+
                             <td>{{ st.dob| formatDate}}</td> 
                             <td>{{ st.gender}}</td>
                             

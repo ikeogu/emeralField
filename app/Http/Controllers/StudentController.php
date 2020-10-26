@@ -16,6 +16,7 @@ use App\Term;
 use App\S5Class;
 use App\SubjectMark;
 use App\GradeSetting;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
@@ -76,8 +77,7 @@ class StudentController extends Controller
         foreach ($dets['subject'] as $value) {
             # code...
             $EXAM_score = $value->exam;
-        }
-                
+        }       
         return view('results.exam',['students'=>$dets['students'], 'subject'=>$dets['subject'],'EXAM_score'=>$EXAM_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
     }
     public function grandTotal($term_id,$class_1){
@@ -169,5 +169,11 @@ class StudentController extends Controller
         $class_std = Student::whereIn('id',$ids)->with('subjectMark','subjects')->get();
         $subject = Subject::whereIn('id',$sub_id)->get();
         return ['students'=>$class_std, 'subject'=>$subject,'grades'=>$grades,'term'=>$term,'class_'=>$class_];
+    }
+
+    public function download_summative($student_id,$term_id,$class_1){
+        $data =$this->det($student_id,$term_id,$class_1);
+        $pdf = PDF::loadView('pdf.summative', $data);
+        return $pdf->download('summative.pdf');
     }
 }
