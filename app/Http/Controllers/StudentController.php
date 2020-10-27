@@ -178,7 +178,7 @@ class StudentController extends Controller
     }
     public function download_cat1($student_id,$term_id,$class_1){
         $data =$this->det($student_id,$term_id,$class_1);
-
+        dd($data);
         $pdf = PDF::loadView('pdf.cat1',compact($data));        
         return $pdf->stream($data['student']->surname.'_'.$data['student']->name.'_'.$data['term']->name.'_'.$data['class_']->name.'.pdf');;
     }
