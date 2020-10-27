@@ -57,7 +57,7 @@ return array(
          * The temporary directory is required to download remote images and when
          * using the PFDLib back end.
          */
-         "temp_dir" => "/temp",
+         "temp_dir" => "https://emerald-field-school.herokuapp.com/temp",
         
 
         /**
