@@ -1,4 +1,4 @@
-{{-- @extends('layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('title', 'Student Result SUMMATIVE TEST')
 
@@ -153,5 +153,4 @@
             </div>
         </section>
     </main>
-@endsection --}}
-<h1>{{$d}}</h1>
+@endsection
