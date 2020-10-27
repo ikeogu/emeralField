@@ -16,7 +16,7 @@ use App\Term;
 use App\S5Class;
 use App\SubjectMark;
 use App\GradeSetting;
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
