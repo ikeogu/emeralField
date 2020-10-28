@@ -1,24 +1,17 @@
-@extends('layouts.dashboard')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Student Result SUMMATIVE TEST')
-
-@section('style')
-
+<head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('css/sumative.css')}}">
-
-@endsection  
-@section('content')
-
-
-
-
-        
+</head>
+<body>
     <!-- details table -->
-        <section class="container my-5">
+        <section class="container">
             <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="90" width="auto"></div>
             <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
             <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
@@ -157,5 +150,5 @@
                 </div>
             </div>
         </section>
-    </main>
-@endsection
+</body>
+</html>

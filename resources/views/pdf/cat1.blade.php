@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/sumative.css')}}">
 </head>
 <body>
-    <section class="container my-5">
+    <section class="container">
         <div class="d-flex justify-content-center "><img src="{{asset('img/logo2.png')}}" height="80" width="auto"></div>
         <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
         <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST I</strong>
