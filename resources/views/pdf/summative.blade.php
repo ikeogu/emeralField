@@ -7,14 +7,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/font-awesome.css">
-    <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/sumative.css">
+    <title>Summative Test</title>
+    <style>
+            @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'Nunito sans', sans-serif;
+        }
+
+        header{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        header p{
+            line-height: 0.4;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .details-table{
+            width: 100%;
+        }
+
+        .details-table th{
+            width: 60px;  
+        }
+
+        .details-table ul{
+            border: 1px solid #ccc;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+        }
+
+        .details-table ul li{
+            list-style: none;
+            line-height: 2.5;
+            padding: 0 10px;
+            text-transform: uppercase;
+        }
+
+        .details-table ul li:nth-child(2){
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            /* padding: 0 20px; */
+            text-align: center;
+        }
+
+        .main-result-table th{
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .main-result-table td{
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        .main-result-table td:nth-child(1){
+            width: 40%;
+            text-align: center;
+        }
+
+        .main-result-table td:nth-child(3){
+            text-align: center;
+        }
+
+        .main-result-table td:nth-child(4){
+            text-align: center;
+        }
+
+        .main-result-table td:nth-child(5){
+            text-align: center;
+        }
+
+        .average td:nth-child(1){
+            text-align: left;
+        }
+
+        .average td:nth-child(2){
+            text-align: center;
+        }
+
+        .remarks td:nth-child(1){
+            text-align: left;
+        }
+
+        .remarks td:nth-child(2){
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <!-- details table -->
+    <header id="header">
+        <div class="d-flex justify-content-center py-4 mb-2"><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="90" width="auto"></div>
+        <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
+        <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
+    </header>
+    <main>
         <section class="container-fluid">
-            <div class="d-flex justify-content-center py-4 mb-2"><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="90" width="auto"></div>
-            <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
-            <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
            
             <div class="col-12 col-md-8 p-0 table-responsive">
                 <table class="details-table table-sm ">
@@ -150,5 +252,6 @@
                 </div>
             </div>
         </section>
+    </main>
 </body>
 </html>
