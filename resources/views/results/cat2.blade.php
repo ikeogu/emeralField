@@ -20,6 +20,9 @@
     
     <!-- details table -->
         <section class="container my-5">
+            <div class="d-flex justify-content-end">
+				<a href="{{route('cat2',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
+			</div>
             <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="80" width="auto"></div>
             <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
             <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST II</strong>

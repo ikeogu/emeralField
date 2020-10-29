@@ -14,7 +14,7 @@
 @section('content')
 
     <div class="d-flex justify-content-end">
-        <a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
+        <a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
     </div>
     <header id="header ">
       <div class="row">

@@ -66,7 +66,7 @@
     <!-- details table -->
         <section class="container my-5">
             <div class="d-flex justify-content-end">
-				<a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
+				<a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
 			</div>
             <!-- main result table -->
             <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="120" width="auto"></div>
