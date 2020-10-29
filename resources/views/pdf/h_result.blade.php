@@ -88,7 +88,7 @@
                         <p class="text-uppercase text-bold">student's name :</p>
                         </div>
                         <div class="col-4">
-                        <p class="text-uppercase text-bold">{{$tstudent->surname}} {{$student->name}}</p>
+                        <p class="text-uppercase text-bold">{{$student->surname}} {{$student->name}}</p>
                         </div>
                         <div class="col-3">
                             <p class="text-uppercase text-bold">Academic year:</p>
