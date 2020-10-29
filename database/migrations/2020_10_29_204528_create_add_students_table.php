@@ -13,7 +13,7 @@ class CreateAddStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::table('students', function (Blueprint $table) {
             $table->string('reg_no');
             
         });
@@ -26,6 +26,8 @@ class CreateAddStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::table('students', function($table) {
+            $table->dropColumn('reg_no');
+        });
     }
 }
