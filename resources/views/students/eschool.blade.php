@@ -15,32 +15,35 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     
-                      <th>Roll#</th>
-                      <th>First Name</th>
-                      <th>Surame</th>
-                      <th>Email</th>
-                      <th>Parent Email</th>
-                      <th>Gender</th>
-                      <th>Contact</th>
+                    <th>Roll#</th>
+                    <th>Reg.No</th>
+                    <th>First Name</th>
+                    <th>Other Name</th>
+                    <th>Surame</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
                     
-                    
-                  </thead>
-                  <tbody>
-                    <tr>
-                    @foreach ($h as $item)
-                    <tr>
-                    <th scope="row">{{ $item->roll_no }}</th>
+                  
+                  
+                </thead>
+                <tbody>
+                  @foreach ($h as $key => $item)
+                  <tr>
+                    <th>{{$key + 1}}</th>
+                    <th scope="row">{{ $item->reg_no }}</th>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->surname}}</td>
+                    <td>{{ $item->surname }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>{{ $item->p_email }}</td>
+                    <td>{{ App\User::where('student_id',$item->id)->first()->keep_track }}</td>
                     <td>{{ $item->gender }}</td>
-                    <td>{{ $item->contact }}</td>
-                    
-                    </tr>
-                      @endforeach
-                    
-                  </tbody>
+                    <td>{{ date('jS F, Y', strtotime($item->dob)) }}</td>
+                  
+                  </tr>
+                  @endforeach
+                  
+                </tbody>
                 
                 </table>
               </div>

@@ -16,25 +16,29 @@
                   <thead>
                     
                       <th>Roll#</th>
+                      <th>Reg.No</th>
                       <th>First Name</th>
+                      <th>Other Name</th>
                       <th>Surame</th>
                       <th>Email</th>
-                      <th>Parent Email</th>
+                      <th>Password</th>
                       <th>Gender</th>
-                      <th>Contact</th>
+                      <th>DOB</th>
+                      
                     
                     
                   </thead>
                   <tbody>
-                    @foreach ($h as $item)
+                    @foreach ($h as $key => $item)
                     <tr>
-                      <th scope="row">{{ $item->roll_no }}</th>
+                      <th>{{$key + 1}}</th>
+                      <th scope="row">{{ $item->reg_no }}</th>
                       <td>{{ $item->name }}</td>
                       <td>{{ $item->surname }}</td>
                       <td>{{ $item->email }}</td>
-                      <td>{{ $item->p_email }}</td>
+                      <td>{{ App\User::where('student_id',$item->id)->first()->keep_track }}</td>
                       <td>{{ $item->gender }}</td>
-                      <td>{{ $item->contact }}</td>
+                      <td>{{ date('jS F, Y', strtotime($item->dob)) }}</td>
                     
                     </tr>
                     @endforeach

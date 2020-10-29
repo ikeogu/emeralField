@@ -72,7 +72,7 @@ import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
 Vue.filter('formatDate', function(value) {
     if (value) {
-      return moment(String(value)).format('DD MMM, Y')
+      return moment(String(value)).format('DD MMMM, Y')
     }
   });
 
