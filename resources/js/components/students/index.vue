@@ -251,7 +251,7 @@
                    <th>Other name</th>
                   <th>Surame</th>
                   <th>Email</th>
-                  
+                  <th>DOB</th>
                   <th>Gender</th>
                   <th>Password</th>
                   <th colspan="2">Action</th>
@@ -265,7 +265,7 @@
                   <td>{{ student.oname }}</td>
                   <td>{{ student.surname.slice(0,50) + ".." }}</td>
                   <td>{{ student.email }}</td>
-                  
+                  <td>{{ student.dob| formatDate}}</td> 
                   <td>{{ student.gender }}</td>
                   <td>{{ student.keep_track}}</td>
                   <td><a href="#"
