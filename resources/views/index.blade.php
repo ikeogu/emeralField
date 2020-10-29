@@ -44,7 +44,7 @@
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an text logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><h4 style="color:darkgreen; font-weight:bolder" >EmeraldField Schs</h4></a>
+        <a href="#intro" class="scrollto"><h4 style="color:darkgreen; font-weight:bolder" >EmeraldField Schools</h4></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
@@ -87,7 +87,7 @@
       </div>
 
       <div class="intro-info">
-        <h2>EmeraldField<br><span>Schools</span><br>Academy</h2>
+        <h2>EmeraldField<br><span>Schools</span></h2>
         <h4>School Portal</h4>
         <div>
           <a href="/login" class="btn-get-started scrollto">Get Started</a>
