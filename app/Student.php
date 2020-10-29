@@ -101,7 +101,22 @@ class Student extends Model
     public static function averPer($avg,$scores){
         return number_format((($avg/$scores) *100),1);
     }
-
+    // private function submark($id,$class_id,$term_id,$val){
+    //     $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
+    //     $score_list = [];
+    //     foreach ($scores as  $value) {
+    //         # code...
+    //         if($val == 1){
+    //             array_push($score_list,$value->summative_test);
+    //         }elseif($val == 2){
+    //             array_push($score_list,$value->CAT1);
+    //         }elseif($val == 3){
+    //             array_push($score_list,$value->CAT);
+    //         }
+            
+    //     }
+    //     return $score_list;
+    // }
     public static function min_score($id,$class_id,$term_id){
         $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $score_list = [];

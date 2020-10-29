@@ -49,12 +49,12 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
       $student = $request->isMethod('put') ? Student::findOrFail($request->student_id) : new Student;
-      
+      $no = Student::max('id') + 1;
       $student->name = $request->name;
       $student->oname = $request->oname;
       $student->surname = $request->surname;
-      $student->roll_no = Student::max('id') + 1;
-      $student->email = strtolower($student->name[0].$student->surname).$student->roll_no.'@efa.sch.ng';
+      $student->roll_no = $request->roll_no;
+      $student->email = strtolower($student->name[0].$student->surname).$no.'@efa.sch.ng';
       $student->dob = $request->dob;
       $student->p_email = $request->p_email;
       $student->gender = $request->gender;

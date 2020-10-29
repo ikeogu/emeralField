@@ -65,12 +65,12 @@
 
 
     <!-- details table -->
-		<section class="container my-5">
+		<section class="container-fluid">
 				
 				<!-- main result table -->
 				<div class="d-flex justify-content-center py-4 mb-2"><img src="/img/logo2.png" height="120" width="auto"></div>
 				<div class="col-12 col-md-12 my-4 mx-auto p-0">
-						<div class="table-responsive " style="border: 2px solid black;">
+						<div class="table-responsive " style="border: 1px solid black;">
 								<div class="d-flex justify-content-center" style="border: 1px solid black;"> 
 										<h3 class="text-uppercase text-bold">EmeraldField High School</h3>
 										

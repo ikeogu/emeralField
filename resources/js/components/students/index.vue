@@ -66,10 +66,10 @@
                     <input type="date" name="date" id="roll_no" class="form-control" placeholder="Roll Number" v-model="student.dob" />
 
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="roll_no">Roll#</label>
-                    <input type="text" name="roll_no" id="roll_no" class="form-control" placeholder="Roll Number" v-model="student.roll_no" />
-                  </div> -->
+                  <div class="form-group">
+                    <label for="contact">Reg.No</label>
+                    <input type="text" name="roll_no" id="contact" class="form-control" placeholder="Reg.no" v-model="student.roll_no" />
+                  </div>
                   <div class="form-group">
                     <label for="contact">Contact</label>
                     <input type="text" name="contact" id="contact" class="form-control" placeholder="Contact" v-model="student.contact" />
@@ -158,6 +158,10 @@
                           <option value="3">Other</option>
                         </select>
                   </div>
+                  <div class="form-group">
+                    <label for="contact">Reg.No</label>
+                    <input type="text" name="roll_no" id="contact" class="form-control" placeholder="Reg.no" v-model="student.roll_no" />
+                  </div>
                    <div class="form-group">
                     <label for="roll_no">Date of Birth</label>
                     <input type="date" name="dob" id="roll_no" class="form-control" placeholder="Roll Number" v-model="student.dob" />
@@ -241,7 +245,8 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 
-                  <th>Roll#</th>
+                  <th>#</th>
+                  <th>Reg.No</th>
                   <th>First Name</th>
                    <th>Other name</th>
                   <th>Surame</th>
@@ -255,6 +260,7 @@
               <tbody>
                 <tr v-for="(student,index) in laravelData.data" :key="student.id">
                   <th scope="row">{{ index + 1 }}</th>
+                   <td>{{ student.roll_no }}</td>
                   <td>{{ student.name }}</td>
                   <td>{{ student.oname }}</td>
                   <td>{{ student.surname.slice(0,50) + ".." }}</td>
@@ -358,6 +364,7 @@
           .post('https://emerald-field-school.herokuapp.com/api/students', {
             name: this.student.name,
             oname: this.student.oname,
+            roll_no: this.student.roll_no,
             surname: this.student.surname,
             gender: this.student.gender,
             contact: this.student.contact,
@@ -399,6 +406,7 @@
         this.$http.get('https://emerald-field-school.herokuapp.com/api/students/' + studentid).then(data => {
           
           this.student.name = data.data.data.name
+          this.student.roll_no = data.data.data.roll_no
           this.student.oname = data.data.data.oname
           this.student.surname = data.data.data.surname
           this.student.p_email = data.data.data.p_email
@@ -416,6 +424,7 @@
           .patch('https://emerald-field-school.herokuapp.com/api/students/' + this.id, {
             student_id:this.id,
             name: this.student.name,
+            roll_no: this.student.roll_no,
             oname: this.student.oname,
             surname: this.student.surname,
             gender: this.student.gender,
