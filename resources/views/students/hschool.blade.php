@@ -34,6 +34,7 @@
                       <th>{{$key + 1}}</th>
                       <th scope="row">{{ $item->reg_no }}</th>
                       <td>{{ $item->name }}</td>
+                      <td>{{ $item->oname }}</td>
                       <td>{{ $item->surname }}</td>
                       <td>{{ $item->email }}</td>
                       <td>{{ App\User::where('student_id',$item->id)->first()->keep_track }}</td>
