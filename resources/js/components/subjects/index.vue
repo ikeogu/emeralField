@@ -331,7 +331,7 @@
             this.subject.friday_test = ''
             this.subject.holiday_assignment = ''
              this.subject.cat_1 = ''
-            this.subject.cat_1 = ''
+            this.subject.cat_2 = ''
             this.subject.summative_test = ''
             this.subject.exam = ''
             this.subject.level = ''
@@ -383,6 +383,17 @@
             this.succmsg = false
             console.log(data)
             this.subject.name = ''
+            this.subject.name = ''
+            this.subject.description = ''
+             this.subject.home_work = ''
+            this.subject.class_work = ''
+            this.subject.friday_test = ''
+            this.subject.holiday_assignment = ''
+             this.subject.cat_1 = ''
+            this.subject.cat_2 = ''
+            this.subject.summative_test = ''
+            this.subject.exam = ''
+            this.subject.level = ''
             var self = this
             setTimeout(function() {
               self.succmsg = true

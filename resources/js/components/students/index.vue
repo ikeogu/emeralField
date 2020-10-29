@@ -381,13 +381,17 @@
             this.succmsg = false
             console.log(data)
             this.student.name = ''
+            this.student.oname = ''
+            this.student.dob = ''
+            this.student.term_id = ''
             this.student.surname = ''
             this.student.gender = ''
-            this.student.roll_no = ''
+            this.student.reg_no = ''
             this.student.contact = ''
             this.student.address = ''
             this.student.p_email = ''
             this.student.s_class= ''
+            this.student.identification_mark = ''
             var self = this
             setTimeout(function() {
               self.succmsg = true
@@ -438,11 +442,17 @@
             this.succmsg = false
             console.log(data)
             this.student.name = ''
-            this.student.father_name = ''
+            this.student.oname = ''
+            this.student.dob = ''
+            this.student.term_id = ''
+            this.student.surname = ''
             this.student.gender = ''
-            this.student.roll_no = ''
+            this.student.reg_no = ''
             this.student.contact = ''
             this.student.address = ''
+            this.student.p_email = ''
+            this.student.s_class= ''
+            this.student.identification_mark = ''
             var self = this
             setTimeout(function() {
               self.succmsg = true
