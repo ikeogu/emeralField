@@ -27,7 +27,11 @@ class S5ClassController extends Controller
         //
         return new S5ClassResourceCollection(S5Class::paginate(10));
     }
-
+    public function all_class()
+    {
+        //
+        return new S5ClassResourceCollection(S5Class::all());
+    }
     /**
      * Show the form for creating a new resource.
      *

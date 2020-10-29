@@ -23,7 +23,7 @@ class Student extends JsonResource
             'email' => $this->email,
             'p_email' => $this->p_email,
             'surname' => $this->surname,
-            'roll_no' => $this->roll_no,
+            'reg_no' => $this->reg_no,
             'gender' => $this->gender,
             'contact' => $this->contact,
             'dob' => $this->dob,

@@ -68,7 +68,7 @@
                   </div>
                   <div class="form-group">
                     <label for="contact">Reg.No</label>
-                    <input type="text" name="roll_no" id="contact" class="form-control" placeholder="Reg.no" v-model="student.roll_no" />
+                    <input type="text" name="reg_no" id="contact" class="form-control" placeholder="Reg.no" v-model="student.reg_no" />
                   </div>
                   <div class="form-group">
                     <label for="contact">Contact</label>
@@ -160,7 +160,7 @@
                   </div>
                   <div class="form-group">
                     <label for="contact">Reg.No</label>
-                    <input type="text" name="roll_no" id="contact" class="form-control" placeholder="Reg.no" v-model="student.roll_no" />
+                    <input type="text" name="reg_no" id="contact" class="form-control" placeholder="Reg.no" v-model="student.reg_no" />
                   </div>
                    <div class="form-group">
                     <label for="roll_no">Date of Birth</label>
@@ -260,7 +260,7 @@
               <tbody>
                 <tr v-for="(student,index) in laravelData.data" :key="student.id">
                   <th scope="row">{{ index + 1 }}</th>
-                   <td>{{ student.roll_no }}</td>
+                   <td>{{ student.reg_no }}</td>
                   <td>{{ student.name }}</td>
                   <td>{{ student.oname }}</td>
                   <td>{{ student.surname.slice(0,50) + ".." }}</td>
@@ -333,7 +333,7 @@
     methods: {
 
       fetchClasses() {
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/classes_all').then(response => {
           //this.posts = response.data.data;
           this.laravelClassData = response.data
           
@@ -364,7 +364,7 @@
           .post('https://emerald-field-school.herokuapp.com/api/students', {
             name: this.student.name,
             oname: this.student.oname,
-            roll_no: this.student.roll_no,
+            reg_no: this.student.reg_no,
             surname: this.student.surname,
             gender: this.student.gender,
             contact: this.student.contact,
@@ -406,7 +406,7 @@
         this.$http.get('https://emerald-field-school.herokuapp.com/api/students/' + studentid).then(data => {
           
           this.student.name = data.data.data.name
-          this.student.roll_no = data.data.data.roll_no
+          this.student.reg_no = data.data.data.reg_no
           this.student.oname = data.data.data.oname
           this.student.surname = data.data.data.surname
           this.student.p_email = data.data.data.p_email
@@ -424,7 +424,7 @@
           .patch('https://emerald-field-school.herokuapp.com/api/students/' + this.id, {
             student_id:this.id,
             name: this.student.name,
-            roll_no: this.student.roll_no,
+            reg_no: this.student.reg_no,
             oname: this.student.oname,
             surname: this.student.surname,
             gender: this.student.gender,

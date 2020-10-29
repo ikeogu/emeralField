@@ -40,6 +40,7 @@ Route::namespace('Api')->group(function () {
     Route::apiResource('behaviour', 'BehaviourChartController');
     Route::apiResource('attend', 'AttendanceController');
     // assign subject for students
+    Route::get('classes_all','S5ClassController@all_class');
     Route::get('students/{student}/unassignedsubjects/class/{class}/term/{term}', 'StudentController@unassignedSubjects');
     Route::get('students/{student}/assignedsubjects/class/{class}/term/{term}', 'StudentController@assignedSubjects');
     Route::post('students/{student}/assignsubject/{subject}/class/{class}/term/{term}', 'StudentController@assignSubject');
