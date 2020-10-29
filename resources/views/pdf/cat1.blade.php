@@ -112,17 +112,17 @@
     
         <section class="container-fluid">
             <div class="d-flex justify-content-center "><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="80" width="auto"></div>
-            <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
-            <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST I</strong>
+            <strong class="d-flex justify-content-center" style="text-align: center">EMERALD FIELD SCHOOLS</strong>
+            <strong class="d-flex justify-content-center " style="text-align: center">CONTINUOUS ASSESSMENT TEST I</strong>
                 <div class="col-12 col-md-8 p-0">
                 <table class="details-table table-sm">
                     <tr>
                         <th>SESSION:</th>
                         <td>
                             <ul>
-                            <li>{{$data['term']->session}}</li>
-                                <li>Term:</li>
-                            <li>{{$data['term']->name}}</li>
+                            <li style="border: 1px solid black; text-align:left">{{$data['term']->session}}</li>
+                                <li style="border: 1px solid black;">Term:</li>
+                            <li style="border: 1px solid black; text-align:right">{{$data['term']->name}}</li>
                             </ul>
                         </td>
                     </tr>
@@ -130,7 +130,7 @@
                         <th>NAME:</th>
                         <td>
                             <ul>
-                            <li>{{$data['student']->name}} {{$data['student']->surname}}</li>
+                            <li style="border: 1px solid black; text-align:left">{{$data['student']->name}} {{$data['student']->surname}}</li>
                             </ul>
                         </td>
                     </tr>
@@ -138,7 +138,7 @@
                         <th>CLASS:</th>
                         <td>
                             <ul>
-                            <li>{{$data['class_']->name}} {{$data['class_']->description}}</li>
+                            <li style="border: 1px solid black; text-align:left">{{$data['class_']->name}} {{$data['class_']->description}}</li>
                             </ul>
                         </td>
                     </tr>
