@@ -32,8 +32,8 @@ class StudentRequest extends FormRequest
           'gender' => 'nullable|integer|between:1,3',
         //   'cnic' => 'nullable|regex:[^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$]',
           'identification_mark' => 'nullable|string',
-          'contact' => 'required|between:10,20|regex:[^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$]',
-          'address' => 'required|string',
+          // 'contact' => 'required|between:10,20|regex:[^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$]',
+          // 'address' => 'required|string',
         ];
     }
 }

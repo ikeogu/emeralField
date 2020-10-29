@@ -28,8 +28,8 @@ class SubjectRequest extends FormRequest
             'name' => 'required|string',
            'description' => 'required|string',
            'level' => 'required',
-           'class_work' => 'required',
-           'home_work' => 'required',
+        //    'class_work' => 'required',
+        //    'home_work' => 'required',
         ];
     }
 }
