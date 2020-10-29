@@ -109,15 +109,13 @@
     </style>
 </head>
 <body>
-    <!-- details table -->
-    <header id="header">
-        <div class="d-flex justify-content-center py-4 mb-2"><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="90" width="auto"></div>
-        <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
-        <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
-    </header>
-    <main>
+    
+        
         <section class="container-fluid">
-           
+            <div class="d-flex justify-content-center py-4 mb-2"><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="90" width="auto"></div>
+            <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
+            <strong class="d-flex justify-content-center ">SUMMATIVE TEST RESULT</strong>
+        
             <div class="col-12 col-md-8 p-0 table-responsive">
                 <table class="details-table table-sm ">
                     <tr>
@@ -252,6 +250,6 @@
                 </div>
             </div>
         </section>
-    </main>
+   
 </body>
 </html>

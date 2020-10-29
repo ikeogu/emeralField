@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/font-awesome.css">
-    <title>Summative Test</title>
+    <title>Continuous Assessment Test</title>
     <style>
             @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 
@@ -109,15 +109,12 @@
     </style>
 </head>
 <body>
-    <header id="header">
-        <div class="d-flex justify-content-center "><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="80" width="auto"></div>
-        <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
-        <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST I</strong>
-    </header>
-    <main>
+    
         <section class="container-fluid">
-            
-            <div class="col-12 col-md-8 p-0">
+            <div class="d-flex justify-content-center "><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="80" width="auto"></div>
+            <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
+            <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST I</strong>
+                <div class="col-12 col-md-8 p-0">
                 <table class="details-table table-sm">
                     <tr>
                         <th>SESSION:</th>
@@ -156,8 +153,8 @@
                                 <th scope="col">S/N</th>
                                 <th scope="col">SUBJECT</th>
                                 <th scope="col">SCORE (20)</th>
-                                <th scope="col">SUBJECT MAX SCORE (20)</th>
-                                <th scope="col">SUBJECT AVERAGE SCORE (20)</th>
+                                <th scope="col">SUBJECT<br> MAX SCORE<br> (20)</th>
+                                <th scope="col">SUBJECT <br>AVERAGE <br>SCORE (20)</th>
                             </tr>
                         </thead>
                         @php
@@ -171,15 +168,15 @@
                             @foreach ($data['scores'] as $key=> $item)
                             <tr>
                             <td>{{$key + 1}}</td>
-                            <td>{{$item->subname}}</td>
+                            <td style="text-align:left;">{{$item->subname}}</td>
                             
-                            <td>{{$item->CAT1}}</td>
+                            <td style="text-align:left;">{{$item->CAT1}}</td>
                             @php
                                 $total += $item->CAT1;
                             @endphp 
                             
-                                <td>{{App\Student::c1_max_score($item->subject_id,$data['class_']->id,$data['term']->id)}}</td> 
-                            <td>{{App\Student::average(App\Student::subAver($item->subject_id,$data['class_']->id,$data['term']->id),$data['users']->count())}}</td>
+                                <td style="text-align:left;">{{App\Student::c1_max_score($item->subject_id,$data['class_']->id,$data['term']->id)}}</td> 
+                            <td style="text-align:left;">{{App\Student::average(App\Student::subAver($item->subject_id,$data['class_']->id,$data['term']->id),$data['users']->count())}}</td>
                             </tr> 
                             @endforeach
                             <tr class="average">
