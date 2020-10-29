@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>NewBiz Bootstrap Template - Index</title>
+  <title>EmeraldFieldSchools Portal</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -44,12 +44,12 @@
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an text logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><h3 style="color:darkgreen; font-weight:bolder" >EmeraldField Schools</h3></a>
+        <a href="#intro" class="scrollto"><h4 style="color:darkgreen; font-weight:bolder" >EmeraldField Schs</h4></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          {{-- <li class="active"><a href="#intro">Login</a></li> --}}
+          <li class="active"><a href="/login">Login</a></li>
           {{-- <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
@@ -104,7 +104,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 footer-info">
+          {{-- <div class="col-lg-4 col-md-6 footer-info">
             <h3>NewBiz</h3>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
           </div>
@@ -138,7 +138,7 @@
               <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
 
-          </div>
+          </div> --}}
 
           {{-- <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
