@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://emerald-field-school.herokuapp.com/css/font-awesome.css">
-    <title>Summative Test</title>
+    <title>Continuous Assessment Test</title>
     <style>
             @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 
@@ -110,14 +110,12 @@
 </head>
 <body>
     
-        
         <section class="container-fluid">
-            <div class="d-flex justify-content-center py-4 mb-2"><img src="/img/logo2.png" height="90" width="auto"></div>
-            <strong class="d-flex justify-content-center"style="text-align: center">EMERALD FIELD SCHOOLS</strong>
-            <strong class="d-flex justify-content-center " style="text-align: center">SUMMATIVE TEST RESULT</strong>
-        
-            <div class="col-12 col-md-8 p-0 table-responsive">
-                <table class="details-table table-sm ">
+            <div class="d-flex justify-content-center "><img src="/img/logo2.png" height="80" width="auto"></div>
+            <strong class="d-flex justify-content-center" style="text-align: center">EMERALD FIELD SCHOOLS</strong>
+            <strong class="d-flex justify-content-center " style="text-align: center">CONTINUOUS ASSESSMENT TEST II</strong>
+            <div class="col-12 col-md-8 p-0">
+                <table class="details-table table-sm">
                     <tr>
                         <th>SESSION:</th>
                         <td>
@@ -155,8 +153,8 @@
                                 <th scope="col">S/N</th>
                                 <th scope="col">SUBJECT</th>
                                 <th scope="col">SCORE (20)</th>
-                                <th scope="col">SUBJECT MAX SCORE (20)</th>
-                                <th scope="col">SUBJECT AVERAGE SCORE (20)</th>
+                                <th scope="col">SUBJECT<br> MAX SCORE<br> (20)</th>
+                                <th scope="col">SUBJECT <br>AVERAGE <br>SCORE (20)</th>
                             </tr>
                         </thead>
                         @php
@@ -167,18 +165,18 @@
                         
                     @endphp  
                         <tbody>
-                            @foreach ($$data['scores'] as $key=> $item)
+                            @foreach ($data['scores'] as $key=> $item)
                             <tr>
                             <td>{{$key + 1}}</td>
                             <td>{{$item->subname}}</td>
                             
-                            <td>{{$item->summative_test}}</td>
+                            <td>{{$item->CAT2}}</td>
                             @php
-                                $total += $item->summative_test;
+                                $total += $item->CAT2;
                             @endphp 
                             
-                             <td>{{App\Student::max_score($item->subject_id,$data['class_']->id,$data['term']->id)}}</td>
-                            <td>{{App\Student::average(App\Student::subject_total($item->subject_id,$data['class_']->id,$data['term']->id),$users->count())}}</td>
+                             <td>{{App\Student::c2_max_score($item->subject_id,$data['class_']->id,$data['term']->id)}}</td>
+                            <td>{{App\Student::average(App\Student::subAver($item->subject_id,$data['class_']->id,$data['term']->id),$data['users']->count())}}</td>
                             </tr> 
                             @endforeach
                             <tr class="average">
@@ -192,7 +190,7 @@
                             <tr class="average">
                                 <td></td>
                                 <td>average (100%)</td>
-                                <td>{{App\Student::averPer(App\Student::average($total,$data['scores']->count()),$SMT_score)}}</td>
+                                <td>{{App\Student::averPer(App\Student::average($total,$data['scores']->count()),20)}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -200,7 +198,7 @@
                                 <td></td>
 
                                 <td>remarks</td>
-                                <td>{{App\Student::grade(App\Student::averPer(App\Student::average($total,$scores->count()),$SMT_score),$data['grades'])}}</td>
+                                <td>{{App\Student::h_grade(App\Student::averPer(App\Student::average($total,$data['scores']->count()),20),$data['grades'])}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -213,35 +211,35 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left"><span>a+ (95 - 100%)</span> <span class="pl-3">a (90 - 94%)</span></td>
+                                <td class="text-left"><span>a1 (86 - 100%)</span> <span class="pl-3">b2 (80 - 85%)</span></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left">a+ <span>(95 - 100%)</span> <span class="pl-3">a (90 - 94%)</span></td>
+                                <td class="text-left">b3 <span>(76 - 79%)</span> <span class="pl-3">c4 (70 - 75%)</span></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left"><span>c+ (75 - 79%)</span> <span class="pl-3">c (61 - 74%)</span></td>
+                                <td class="text-left"><span>c5 (66 - 69%)</span> <span class="pl-3">c6 (60 - 65%)</span></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left">d (50 - 60%)</td>
+                                <td class="text-left"><span>d7 (46 - 59%) <span class="pl-3">e8 (40 - 45%)</span></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td colspan="2" class="text-left">needs improvement (49% & below) </td>
+                                <td colspan="2" class="text-left">f9 (0 - 39%) </td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -250,6 +248,6 @@
                 </div>
             </div>
         </section>
-   
+    </main>
 </body>
 </html>

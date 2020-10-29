@@ -1,8 +1,11 @@
-@extends('layouts.dashboard')
 
-@section('title', 'Student Result')
-@section('style')
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -39,37 +42,36 @@
 	.table { font-size: 1.25rem; }
 		}
    
-    .header th {
-				line-height: 130px;
-				font-size: 8px;
-				font-weight: bolder;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-		
-				padding: 0px !important;
-             
-            }
+        .header th {
+                    line-height: 130px;
+                    font-size: 8px;
+                    font-weight: bolder;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+            
+                    padding: 0px !important;
+                
+                }
 
-    .word th{
-            word-break: inherit;
-    }
-    td{
-        font-size: 8px;
-        font-weight: bolder;
-        text-align: center;
-    }
-</style>
-@endsection  
-@section('content')
+        .word th{
+                word-break: inherit;
+        }
+        td{
+            font-size: 8px;
+            font-weight: bolder;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
 
     <!-- details table -->
         <section class="container my-5">
-            <div class="d-flex justify-content-end">
-				<a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
-			</div>
+            
             <!-- main result table -->
-            <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="120" width="auto"></div>
+            <div class="d-flex justify-content-center py-4 mb-2"><img src="/img/logo2.png" height="120" width="auto"></div>
             <div class="col-12 col-md-12 my-4 mx-auto p-0">
                 <div class="table-responsive " style="border: 2px solid black;">
                     <div class="d-flex justify-content-center" style="border: 1px solid black;"> 
@@ -86,7 +88,7 @@
                         <p class="text-uppercase text-bold">student's name :</p>
                         </div>
                         <div class="col-4">
-                        <p class="text-uppercase text-bold">{{$student->surname}} {{$student->name}}</p>
+                        <p class="text-uppercase text-bold">{{$tstudent->surname}} {{$student->name}}</p>
                         </div>
                         <div class="col-3">
                             <p class="text-uppercase text-bold">Academic year:</p>
@@ -447,4 +449,5 @@
                 </div>
             </div>
         </section>
-    @endsection
+</body>
+</html>

@@ -171,11 +171,6 @@ class StudentController extends Controller
         return ['students'=>$class_std, 'subject'=>$subject,'grades'=>$grades,'term'=>$term,'class_'=>$class_];
     }
 
-    // public function download_summative($student_id,$term_id,$class_1){
-    //     $data =$this->det($student_id,$term_id,$class_1);
-    //     $pdf = PDF::loadView('pdf.summative', $data);
-    //     return $pdf->download('summative.pdf');
-    // }
     public function download_cat1($student_id,$term_id,$class_1){
         $data =$this->det($student_id,$term_id,$class_1);
         $pdf = PDF::loadView('pdf.cat1',['data'=>$this->det($student_id,$term_id,$class_1)]);        
@@ -190,5 +185,21 @@ class StudentController extends Controller
         $data =$this->det($student_id,$term_id,$class_1);
         $pdf = PDF::loadView('pdf.summative',['data'=>$this->det($student_id,$term_id,$class_1)]);        
         return $pdf->download($data['student']->surname.'_'.$data['student']->name.'_'.$data['term']->name.'_'.$data['class_']->name.'.pdf');
+    }
+
+    public function download_result($student_id,$term_id,$class_1){
+        $dets = $this->det($student_id,$term_id,$class_1);
+        
+        if ($dets['class_']->status == 'Year School') {
+            # code...
+         $pdf = PDF::loadView('pdf.y_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
+        return $pdf->download($dets['student']->surname.'_'.$dets['student']->name.'_'.$dets['term']->name.'_'.$dets['class_']->name.'.pdf');
+
+        }
+        $pdf = PDF::loadView('pdf.h_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
+        return $pdf->download($dets['student']->surname.'_'.$dets['student']->name.'_'.$dets['term']->name.'_'.$dets['class_']->name.'.pdf');
+
     }
 }

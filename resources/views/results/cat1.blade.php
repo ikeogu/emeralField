@@ -14,7 +14,7 @@
 @section('content')
 
         <section class="container my-5">
-            <div class="d-fles justify-content-end">
+            <div class="d-flex justify-content-end">
             <a href="{{route('dcat1',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
             </div>
             <div class="d-flex justify-content-center "><img src="{{asset('img/logo2.png')}}" height="80" width="auto"></div>

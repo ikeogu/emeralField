@@ -59,3 +59,4 @@ Route::get('class_teacher/{teacher}','TeacherController@classt')->name('classt')
 // Route::view('high_sch', 'results.h_result')->name('res');
 Route::get('download_summative/{student}/term/{term}/class/{class}','StudentController@download_summative')->name('ds');
 Route::get('download_cat1/{student}/term/{term}/class/{class}','StudentController@download_cat1')->name('dcat1');
+Route::get('download_result/{student}/term/{term}/class/{class}','StudentController@download_result')->name('dr');

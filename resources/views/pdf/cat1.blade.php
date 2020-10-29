@@ -111,7 +111,7 @@
 <body>
     
         <section class="container-fluid">
-            <div class="d-flex justify-content-center "><img src="https://emerald-field-school.herokuapp.com/img/logo2.png" height="80" width="auto"></div>
+            <div class="d-flex justify-content-center "><img src="/img/logo2.png" height="80" width="auto"></div>
             <strong class="d-flex justify-content-center" style="text-align: center">EMERALD FIELD SCHOOLS</strong>
             <strong class="d-flex justify-content-center " style="text-align: center">CONTINUOUS ASSESSMENT TEST I</strong>
                 <div class="col-12 col-md-8 p-0">
@@ -121,7 +121,7 @@
                         <td>
                             <ul>
                             <li style="border: 1px solid black; text-align:left">{{$data['term']->session}}</li>
-                                <li style="border: 1px solid black;">Term:</li>
+                            <li style="border: 1px solid black; text-align:center">Term:</li>
                             <li style="border: 1px solid black; text-align:right">{{$data['term']->name}}</li>
                             </ul>
                         </td>

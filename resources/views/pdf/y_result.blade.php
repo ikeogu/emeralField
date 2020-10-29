@@ -1,21 +1,22 @@
-@extends('layouts.dashboard')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Student Result')
-@section('style')
-
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('css/result.css')}}">
+    <meta charset="UTF-8">
+    <title>Student Result</title>
+</head>
+<body>
 
-@endsection  
-@section('content')
 
-    <div class="d-flex justify-content-end">
-        <a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
-    </div>
     <header id="header ">
       <div class="row">
           <div class="col-3 py-4 mb-2 justify-content-between">
@@ -318,4 +319,5 @@
         </div>
         <footer id="footer"></footer>
     
-@endsection
+    </body>
+</html>

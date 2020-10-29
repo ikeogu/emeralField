@@ -6,7 +6,7 @@
 
 
 <div class="container-fluid" > 
-    <div class="d-fles justify-content-end">
+    <div class="d-flex justify-content-end">
     <a href="{{route('ds',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
     </div>
    <div class="card">
