@@ -26,7 +26,7 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        return new TeacherResourceCollection(Teacher::paginate(10));
+        return new TeacherResourceCollection(Teacher::paginate(15));
     }
 
     /**

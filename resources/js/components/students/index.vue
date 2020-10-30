@@ -263,7 +263,7 @@
                    <td>{{ student.reg_no }}</td>
                   <td>{{ student.name }}</td>
                   <td>{{ student.oname }}</td>
-                  <td>{{ student.surname.slice(0,50) + ".." }}</td>
+                  <td>{{ student.surname }}</td>
                   <td>{{ student.email }}</td>
                   <td>{{ student.dob| formatDate}}</td> 
                   <td>{{ student.gender }}</td>

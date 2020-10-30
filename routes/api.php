@@ -85,7 +85,9 @@ Route::namespace('Api')->group(function () {
         Route::get('comment/class/{class}/term/{term}','CommentController@my_class_comment');
         Route::get('behave/class/{class}/term/{term}','BehaviourChartController@my_class_behave');
         Route::get('attendance/class/{class}/term/{term}','AttendanceController@my_class_attend');
-        
+        Route::get('terms_classes/{term}', 'TermController@termClasses');
+        // 
+
     Route::middleware('auth:api', 'throttle:60,1')->group(function () {
        
         Route::get('results/students', 'ResultController@students');
@@ -100,8 +102,7 @@ Route::namespace('Api')->group(function () {
         Route::get('studentSubject/{id}/term/{term}/class/{class}','SubjectController@studentsubjects');
         Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
         
-        Route::get('terms_classes/{term}', 'TermController@termClasses');
-        // 
+        
         Route::get('class_terms/{class}', 'S5ClassController@term_class');
         //
         Route::get('students_in_term/{term}/class/{class}', 'TermController@students_in_term');

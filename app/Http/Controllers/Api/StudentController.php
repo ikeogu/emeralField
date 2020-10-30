@@ -33,7 +33,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return new StudentCollection(Student::paginate(10));
+        return new StudentCollection(Student::paginate(25));
     }
     public function index2()
     {
