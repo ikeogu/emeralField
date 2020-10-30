@@ -28,8 +28,9 @@ Route::group(['middleware' => ['auth.jwt']], function () {
 
     Route::get('/auth/logout', 'AuthController@logout');
 });
+
+Route::middleware('auth:api', 'throttle:60,1')->group(function () {
 Route::namespace('Api')->group(function () {
-    Route::middleware('auth:api', 'throttle:60,1')->group(function () {
         Route::apiResource('students', 'StudentController');
         Route::apiResource('subjects', 'SubjectController');
         Route::apiResource('grades', 'GradeSettingController');
