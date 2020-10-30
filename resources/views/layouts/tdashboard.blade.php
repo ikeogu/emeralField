@@ -8,8 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <meta name="description" content="">
-  <meta name="author" content="">
+   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="description" content="EmeraldField School Portals; for result computation made by ikeogu Emmanuel Chidera">
+  <meta name="author" content="EmeraldField School">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
