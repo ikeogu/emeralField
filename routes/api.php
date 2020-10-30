@@ -29,7 +29,6 @@ Route::group(['middleware' => ['auth.jwt']], function () {
     Route::get('/auth/logout', 'AuthController@logout');
 });
 
-Route::middleware('auth:api', 'throttle:60,1')->group(function () {
 Route::namespace('Api')->group(function () {
         Route::apiResource('students', 'StudentController');
         Route::apiResource('subjects', 'SubjectController');
@@ -42,6 +41,9 @@ Route::namespace('Api')->group(function () {
         Route::apiResource('behaviour', 'BehaviourChartController');
         Route::apiResource('attend', 'AttendanceController');
         // assign subject for students
+
+    
+    Route::middleware('auth:api', 'throttle:60,1')->group(function () {
         Route::get('classes_all','S5ClassController@all_class');
         Route::get('students/{student}/unassignedsubjects/class/{class}/term/{term}', 'StudentController@unassignedSubjects');
         Route::get('students/{student}/assignedsubjects/class/{class}/term/{term}', 'StudentController@assignedSubjects');
