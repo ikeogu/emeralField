@@ -24,20 +24,20 @@ class Student extends Model
        's_class'
     ];
    
-    public function setGenderAttribute($gender)
-    {
-        return $this->attributes['gender'] = ($gender === 1) ? 'male' : 'female';
-    }
+    // public function setGenderAttribute($gender)
+    // {
+    //     return $this->attributes['gender'] = ($gender === 1) ? 'male' : 'female';
+    // }
 
-    /**
-     * Returns the gender with an uppercase.
-     *
-     * @return string
-     */
-    public function getGenderAttribute()
-    {
-        return ucfirst($this->attributes['gender']);
-    }
+    // /**
+    //  * Returns the gender with an uppercase.
+    //  *
+    //  * @return string
+    //  */
+    // public function getGenderAttribute()
+    // {
+    //     return ucfirst($this->attributes['gender']);
+    // }
 
 
     /**
