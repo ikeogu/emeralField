@@ -55,7 +55,7 @@ class StudentController extends Controller
       $student->surname = $request->surname;
       $student->roll_no = Student::max('id') + 1;
       $student->reg_no = $request->reg_no;
-      $student->email = strtolower($student->name[0].trim($student->surname)).$student->roll_no.'@efa.sch.ng';
+      $student->email = strtolower($student->name[0].str_ireplace (' ', '', $student->surname)).$student->roll_no.'@efa.sch.ng';
       $student->dob = $request->dob;
       $student->p_email = $request->p_email;
       $student->gender = $request->gender;
