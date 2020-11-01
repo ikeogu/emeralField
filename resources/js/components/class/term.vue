@@ -244,7 +244,7 @@
                     <th> Name</th>
                     <th>Description</th>
                     <th>Session</th>
-                    <th>Classes</th>
+                    
                     <th colspan="3">Fee Shedule</th>
                     <th>Classes</th>
                     <th></th>

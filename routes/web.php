@@ -40,6 +40,7 @@ Route::get('/logout', 'HomeController@logout')->name('logout');
  Route::get('hschool_students', 'StudentController@hschool')->name('hschool');
  Route::get('eschool_students', 'StudentController@eschool')->name('eschool');  
  Route::get('yschool_students', 'StudentController@yschool')->name('yschool');
+ Route::get('jhschool_students', 'StudentController@jhschool')->name('jhschool');
 //  Get Broad Sheet Ready
 Route::get('summative_test/{term}/class/{class}','StudentController@summative')->name('summative');
 Route::get('exam/{term}/class/{class}','StudentController@exam')->name('exam');

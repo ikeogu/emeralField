@@ -34,6 +34,10 @@ class StudentController extends Controller
         $h = Student::where('level','=','High School')->get();
         return view('students/hschool',['h'=>$h]);
     }
+    public function jhschool(){
+        $h = Student::where('level','=','Junior High School')->get();
+        return view('students/jhschool',['h'=>$h]);
+    }
     public function yschool(){
         $h = Student::where('level','=','Year School')->get();
         return view('students/yschool',['h'=>$h]);
