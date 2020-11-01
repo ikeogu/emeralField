@@ -29,7 +29,7 @@ class Student extends Model
             1 => 'Male',
             2 => 'Female',
             3 => 'Other',
-        ][$attribute];
+        ];
     }
 
     /**
