@@ -23,14 +23,22 @@ class Student extends Model
        'address',
        's_class'
     ];
-    public function getGenderAttribute($attribute)
+   
+    public function setGenderAttribute($gender)
     {
-        return [
-            1 => 'Male',
-            2 => 'Female',
-            3 => 'Other',
-        ][$attribute];
+        return $this->attributes['gender'] = ($gender === 1) ? 'male' : 'female';
     }
+
+    /**
+     * Returns the gender with an uppercase.
+     *
+     * @return string
+     */
+    public function getGenderAttribute()
+    {
+        return ucfirst($this->attributes['gender']);
+    }
+
 
     /**
      * subjects that belong to the student.
