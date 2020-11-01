@@ -38,7 +38,12 @@
                       <td>{{ $item->surname }}</td>
                       <td>{{ $item->email }}</td>
                       <td>{{ App\User::where('student_id',$item->id)->first()->keep_track }}</td>
-                      <td>{{ $item->gender }}</td>
+                      <td> @if($item->gender == 1)
+                            MALE
+                            @else
+                            FEMALE
+                            @endif                    
+                        </td>
                       <td>{{ date('jS F, Y', strtotime($item->dob)) }}</td>
                     
                     </tr>

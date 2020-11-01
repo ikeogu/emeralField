@@ -266,7 +266,8 @@
                   <td>{{ student.surname }}</td>
                   <td>{{ student.email }}</td>
                   <td>{{ student.dob| formatDate}}</td> 
-                  <td>{{ student.gender }}</td>
+                  <td v-if="student.gender == 1"> MALE</td>
+                  <td v-else> FEMALE</td>
                   <td>{{ student.keep_track}}</td>
                   <td><a href="#"
                        v-on:click="editStudent(student.id)"
