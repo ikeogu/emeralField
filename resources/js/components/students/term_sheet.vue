@@ -80,6 +80,42 @@
                   </table>
                 </div>
               </div> 
+              <div class="row" v-if="student_details.level === 'Early Years'">
+                
+                <div class="col-12 table-responsive">
+                  <table  class="table table-bordered table-striped" >
+                    <thead >
+                      <th>Subject</th>
+                        <th>Hw</th>
+                        <th>CW</th>
+                        <th>HA</th>
+                        <th>FT</th>
+                        <th>S.T</th>
+                        <th>TCA</th>
+                        <th>Exam</th>
+                        <th>Grand Total</th>
+                         
+                    </thead>
+                    <tbody>
+        
+                      <tr v-for="marks in assignedSubjects" :key="marks.id" :subject_id="marks.subject_id">
+                          <td> {{marks.subname}}</td>
+                          <td>{{marks.HW}}</td>
+                           <td>{{marks.CW}}</td>
+                           <td>{{marks.HA}}</td>
+                            <td>{{marks.FT}}</td>
+                            <td>{{marks.summative_test}}</td>
+                            <td>{{marks.TCA}}</td>
+                            <td>{{marks.Exam}}</td>
+                            <td>{{marks.GT}}</td>
+                       
+                         
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div> 
               <!-- Still need to do table for creche -->
             </div>
           </div>

@@ -75,21 +75,20 @@
               <thead>
                 <tr>
                   <th>Roll#</th>
-                  <th>First Name</th>
-                  <th>Surname</th>
+                  <th>Reg No</th>
+                  <th>Name</th>
+                  <th>Email</th>
                   <th>Gender</th>
-                  <th>Class</th>
-                  
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="s in students.data" :key="s.id">
-                  <th scope="row">{{ s.roll_no }}</th>
-                           <td>{{ s.surname}}</td>
-                            <td>{{ s.name}}</td>
+                <tr v-for="(s,index) in students.data" :key="s.id">
+                      <td scope="row">{{ index + 1}}</td>
+                            <td scope="row">{{ s.reg_no }}</td>
+                              <td>{{ s.name}} {{ s.oname}} {{ s.surname}}</td> 
                             <td>{{ s.email}}</td> 
-                            <td>{{ s.dob}}</td>
+                            <td>{{ s.dob | formatDate}}</td>
                             <td>{{ s.gender}}</td>
                            
                   <td><a href="#"

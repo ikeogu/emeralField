@@ -13,35 +13,7 @@
     <title>Student Result</title>
 </head>
 <body>
-
-
-    <header id="header ">
-      <div class="row">
-          <div class="col-3 py-4 mb-2 justify-content-between">
-            <img src="/img/logo.jpg" height="98" width="auto">
-          </div>
-        
-          
-          <div class=" col-5 det  main">
-            <div class="outer-mask">
-                <div class="inner-mask">
-                    <div class="content justify-content-center">
-                      <h4 >EmeraldField Schools</h3>
-                        <h6 class="d">2 Ekorinim Road, Off Murtala Mohammed Highway,<br> Ekorinim, Calabar, Cross River State. </h6>
-                        <h6 class="d">+234(0) 809 909 9434  +234 (0) 812 247 6390</h6>
-                        <h6 class="d">Website: www.emeraldfieldschool.com Email:info@efs.com</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-          <div class="col-3 py-4 mb-2">
-              <strong class="text-dark font-weight-bold">YEAR CLASSES</strong><br>
-              <strong class="text-dark font-weight-bold">REPORT CARD</strong><br>
-          <strong class="text-danger font-weight-bold text-uppercase "> {{$term->name}}</strong>
-          </div>
-        </div>
-    </header>
+    
     <!-- top-left table -->
     <div class="container mt-5">
         <div class="row top-section">
@@ -215,31 +187,31 @@
                         </table>
                     </div>
                 </div>
-               <div class="summary d-flex justify-content-between mb-4">
-                  <ul class="list-group left-list my-2">
+                <div class="summary d-flex justify-content-between mb-4">
+                    <ul class="list-group left-list my-2">
                       <li class="list-group-item d-flex justify-content-between">
                           <h5>Highest Average:</h5>
                            <span>{{App\Student::h_aver($class_->id,$term->id)}}</span>
                       </li>
-                      <li class="list-group-item d-flex justify-content-between">
+                        <li class="list-group-item d-flex justify-content-between">
                         <h5>Child's Average:</h5>
                          <span>{{number_format(App\Average::where('student_id',$student->id)->where('s5_class_id',$class_->id)->where('term_id',$term->id)->first()->aver_)}}</span>
-                    </li>
-                  </ul>
-                  <ul class="list-group right-list my-2">
-                    <li class="list-group-item d-flex justify-content-between">
-                        <h5>Class Average:</h5>
-                         <span>{{App\Student::total_GT($class_->id,$term->id)}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                      <h5>Grade:</h5>
-                       <span>{{App\Student::grade(number_format(App\Average::where('student_id',$student->id)->where('s5_class_id',$class_->id)->where('term_id',$term->id)->first()->aver_),$grades)}}</span>
-                  </li>
-                </ul>
+                       </li>
+                    </ul>
+                    <ul class="list-group right-list my-2">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <h5>Class Average:</h5>
+                            <span>{{App\Student::total_GT($class_->id,$term->id)}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                        <h5>Grade:</h5>
+                        <span>{{App\Student::grade(number_format(App\Average::where('student_id',$student->id)->where('s5_class_id',$class_->id)->where('term_id',$term->id)->first()->aver_),$grades)}}</span>
+                     </li>
+                    </ul>
                 </div>
-               </div>
-               <div class="col-12 col-md-12 col-lg-5 bottom-right p-0">
-                   <div class="bottom-right-card">
+            </div>
+            <div class="col-12 col-md-12 col-lg-5 bottom-right p-0">
+                <div class="bottom-right-card">
                     <div class="table-responsive">
                         <table class="table  bottom-right-table table-bordered bg-success text-light text-center">
                             <thead>
@@ -307,15 +279,20 @@
                         <p>{{$term->fee_}}</p>
                     </div>
                     <div class="py-4 mb-2 d-flex justify-content-center">
-                      <img src="/img/logo2.png" height="190" width="auto">
+                    <img src="/img/logo2.png" height="190" width="auto">
                     </div>
-                   </div>
-                   
-               </div>
-               
+                </div>
+                
             </div>
+               
         </div>
-        <footer id="footer"></footer>
+        <footer class="row">
+            <div class="">
+                <img src="img/footer.png" height="30" width="1090">
+              </div>
+            </div>
+        </footer>
+    </div>
     
-    </body>
+</body>
 </html>

@@ -215,6 +215,18 @@
             
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
+                <tr v-if="myId.status =='Early Years'" :key="myId.id">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Participates in class</th>
+                  <th>Listens Attentively</th>
+                  <th>Follows instrunction First time</th>
+                  <th> Completes work on time</th>
+                  <th> Accepts new Challenges and persist with activities</th>
+                  <th> Expresses feelings and Opinions </th>
+                  <th> Shows respect and Kidness to all</th>
+                  <th>Action</th>
+                </tr>
                 <tr v-if="myId.status =='Year School'" :key="myId.id">
                   <th>#</th>
                   <th>Name</th>
@@ -251,6 +263,30 @@
                   <th>Action</th>
                 </tr>
               </thead>
+              <tbody v-if="myId.status =='Early Years'" :key="myId.id">
+                  
+                <tr  v-for="(st,index) in behaviour" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
+                  <td>{{ st.student}}</td>
+                  <td>{{ st.pic}}</td>
+                  <td>{{ st.la}}</td>
+                  <td>{{ st.fift}}</td>
+                  <td>{{ st.cwot}}</td>
+                  <td>{{ st.anc}}</td>
+                  <td>{{ st.efao}}</td>
+                  <td>{{ st.srk}}</td>
+                                            
+
+                  <td>
+                  <a href="#" class="btn btn-success text-white"
+                       v-on:click="bevId(st.id)"
+                       data-target="#exampleModbev"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Edit</a>
+                  </td>
+                       
+                </tr>
+              </tbody>
               <tbody v-if="myId.status =='Year School'" :key="myId.id">
                   
                 <tr  v-for="(st,index) in behaviour" :key="st.id" >
@@ -753,6 +789,121 @@
 
           </div>
         </div>
+
+        <div  v-if="myId.status === 'Early Years'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Year School Behavioural Chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+              </div>
+              <div class="modal-body">
+                <form  method="post" name="updateBehaviour" id="updateBehaviour" action="#" @submit.prevent="updateBehaviour">
+
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Participates in class</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="pic" id="subject" v-model="behaviour.pic">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Listens Attentively</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="la" id="subject" v-model="behaviour.la">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Follows instrunction First time</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="fift" id="subject" v-model="behaviour.fift">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Completes work on time</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="cwot" id="subject" v-model="behaviour.cwot">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Accepts new Challenges and persist with activities</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="anc" id="subject" v-model="behaviour.anc">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Expresses feelings and Opinions</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="efao" id="subject" v-model="behaviour.efao">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-8">
+                    <label for="name">Shows respect and Kidness to all</label>
+                  </div>
+                  <div class="col-4">
+                    <select class="form-control" name="srk" id="subject" v-model="behaviour.srk">
+                      <option value="1"> Outstanding</option>
+                      <option value="2"> Very Good</option>
+                      <option value="3"> Good</option>
+                      <option value="4"> Needs More Improvement</option>
+                    </select>
+                  </div>
+                </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+              </div>
+
+          </div>
+        </div>
+        
         
         <div class="card" v-if="myId.status ==='Year School'" :key="myId.id">
             <div class="card-header bg-success text-white">Student's Attendance Chart</div>

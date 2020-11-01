@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-header, footer{
+#header, #footer{
     height: 140px;
     color: #eee;
     background: linear-gradient(to right, green 40%, yellow 70%);
@@ -16,7 +16,9 @@ footer{
     color: #eee;
     background: linear-gradient(to right, green, yellow);
 }
-
+.yellow{
+    background-color: yellow;
+}
 body{
     font-family: "Nunito Sans", sans-serif;
 }

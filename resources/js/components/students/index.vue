@@ -58,7 +58,7 @@
                     <select class="form-control" name="gender" id="gender" v-model="student.gender">
                       <option value="1">Male</option>
                       <option value="2">Female</option>
-                      <option value="3">Other</option>
+                      
                     </select>
                   </div>
                   <div class="form-group">
@@ -155,7 +155,7 @@
                     <select class="form-control" name="gender" id="gender" v-model="student.gender">
                           <option value="1">Male</option>
                           <option value="2">Female</option>
-                          <option value="3">Other</option>
+                          
                         </select>
                   </div>
                   <div class="form-group">

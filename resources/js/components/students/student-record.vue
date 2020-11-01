@@ -104,6 +104,51 @@
                     </tbody>
                   </table>
                 </div>
+              </div>
+              <div class="row" v-if="class__.status == 'Early Years'">
+                
+                <div class="col-12 table-responsive">
+                  <table  class="table tab table-bordered table-striped" >
+                    <thead >
+                      <th>Subject</th>
+                        <th>Hw</th>
+                        <th>CW</th>
+                        <th>HA</th>
+                        <th>FT</th>
+                        <th>S.T</th>
+                        <th>TCA</th>
+                        <th>Exam</th>
+                        <th>Grand Total</th>
+                        <th>Action</th>  
+                    </thead>
+                    <tbody>
+        
+                      <tr v-for="marks in assignedSubjects" :key="marks.id" :subject_id="marks.subject_id">
+                          <td class="td"> {{marks.subname}}</td>
+                          <td class="td2">{{marks.HW}}</td>
+                           <td class="td2">{{marks.CW}}</td>
+                           <td class="td2">{{marks.HA}}</td>
+                            <td class="td2">{{marks.FT}}</td>
+                            <td class="td2">{{marks.summative_test}}</td>
+                            <td class="td2">{{marks.TCA}}</td>
+                            <td class="td2">{{marks.Exam}}</td>
+                            <td class="td2">{{marks.GT}}</td>
+                       
+                          <td>  
+                             <a href="#"
+                               v-on:click="editScore(marks.id)"
+                                data-target="#exampleModalEdit"
+                                data-toggle="modal"
+                                v-bind:title="marks.id"
+                                class="btn btn-success">Edit
+                            </a>
+                            
+                          </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
               </div> 
               <!-- Still need to do table for creche -->
             </div>
@@ -184,7 +229,38 @@
                     <button class="btn btn-success">Update</button>
                   </div>
                 </form>
-               
+                <form v-if="class__.status === 'Early Years'" method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore">
+
+                   <div class="form-group">
+                    <label for="roll_no">Home Work</label>
+                    <input type="number" name="HW"  class="form-control"  v-model="student_mark.HW" />
+                  </div>
+                  <div class="form-group">
+                    <label for="roll_no">Class Work</label>
+                    <input type="number" name="CW" class="form-control" placeholder="" v-model="student_mark.CW" />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact">Friday Assignment</label>
+                    <input type="number" name="FT"  class="form-control" v-model="student_mark.FT" />
+                  </div>
+                  <div class="form-group">
+                    <label for="roll_no">Holiday Assignment</label>
+                    <input type="number" name="HA"  class="form-control"  v-model="student_mark.HA" />
+                  </div>
+                  <div class="form-group">
+                    <label for="roll_no">Summative Test</label>
+                    <input type="number" name="summative_test" class="form-control"  v-model="student_mark.summative_test" >
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="contact">Exam</label>
+                    <input type="number" name="exam"  class="form-control" v-model="student_mark.Exam" />
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Update</button>
+                  </div>
+                </form>
                <span v-else></span>
               </div>
 

@@ -95,6 +95,38 @@
                             </table>
                             </div>
                         </div> 
+                        <div class="row" v-if="logged_in.level === 'Early Years'">
+                           
+                            <div class="col-8">
+                            <table  class="" >
+                                <thead >
+                                  <th>Subject</th>
+                                    <th>Hw</th>
+                                    <th>CW</th>
+                                    <th>HA</th>
+                                    <th>FT</th>
+                                    <th>S.T</th>
+                                    <th>TCA</th>
+                                    <th>Exam</th>
+                                    <th>Grand Total</th>
+                                    
+                                </thead>
+                                <tbody>
+                                <tr v-for="marks in scores" :key="marks.id" :subject_id="marks.subject_id">
+                                    <td>{{marks.subject.name}}</td>
+                                    <td>{{marks.HW}}</td>
+                                    <td>{{marks.CW}}</td>
+                                    <td>{{marks.HA}}</td>
+                                        <td>{{marks.FT}}</td>
+                                        <td>{{marks.Summative_test}}</td>
+                                        <td>{{marks.FT + marks.Summative_test +marks.HA + marks.CW +marks.HW}}</td>
+                                        <td>{{marks.Exam}}</td>
+                                        <td>{{marks.GT}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div> 
            
                     </div>
                 </div>
