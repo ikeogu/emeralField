@@ -142,17 +142,17 @@ class StudentController extends Controller
         'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
     }
-    private function det($student_id, $class_id, $term_id){
+    private function det($student_id, $term_id, $class_id){
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
         $student = Student::find($student_id);
         $grades = GradeSetting::all();
-        $scores = SubjectMark::where('student_id',$student_id)->where('term_id',$term_id)
-        ->where('s5_class_id',$class_id)->get();
+        $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_->id)->get();
         
         $users = SubjectMark::select('student_id')->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->distinct()->get();
-        $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
+        $te = ClassTeacher::with('teacher')->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
         $behave = BehaviourChart::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
         $attend = Attendance::where('term_id',$term->id)->where('s5_class_id',$class_->id)->where('student_id',$student->id)->first();
         $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)
