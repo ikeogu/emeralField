@@ -260,88 +260,119 @@
 																			</td>
 	
 																</tr>
+																
 																<tr>
 																	<td class=" text-uppercase text-left"> Home Work Culture</td>
-																	{{App\Student::h_behave($behave->hwt)}}
+
+																		@if ($behave != null)
+																		{{App\Student::h_behave($behave->hwt)}}
+																		@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Class Attendance</td>
-																	{{App\Student::h_behave($behave->catt)}}
+																	@if ($behave != null)
+																		{{App\Student::h_behave($behave->catt)}}
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Care (School Property)</td>
-																	{{App\Student::h_behave($behave->care)}}
+																		@if ($behave != null)
+																		{{App\Student::h_behave($behave->care)}}
+																		@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Responsibility</td>
-																	{{App\Student::h_behave($behave->res)}}
+																		@if ($behave != null)
+																		{{App\Student::h_behave($behave->res)}}
+																		@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Honesty</td>
-																	{{App\Student::h_behave($behave->Hon)}}
+																		@if ($behave != null)
+																		{{App\Student::h_behave($behave->Hon)}}
+																		@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Initiative</td>
+																	@if ($behave != null)
 																	{{App\Student::h_behave($behave->init)}}
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Leadership Role</td>
-																	{{App\Student::h_behave($behave->lead)}}
+																	@if ($behave != null)
+																		{{App\Student::h_behave($behave->lead)}}
+																	@endif
 																	
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Dress Code</td>
+																	@if ($behave != null)
 																	{{App\Student::h_behave($behave->dressc)}}
+																	@endif
 																	</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Obedience</td>
+																	@if ($behave != null)
 																	{{App\Student::h_behave($behave->obey)}}
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Politiness</td>
+																	@if ($behave != null)
 																	{{App\Student::h_behave($behave->pol)}}
 																		
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Team Spirit</td>
 																		
+																	@if($behave != null)
 																	{{App\Student::h_behave($behave->team)}}
-																		
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Socialbility</td>
+																	@if($behave != null)
 																	{{App\Student::h_behave($behave->soc)}}
-
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> PSYCHOMOTOR SKILLS
 																		&  PHYSICAL SKILLS</td>
+																		@if($behave != null)
 																		{{App\Student::h_behave($behave->psy)}}
-
+																		@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Sport</td>
+																	@if($behave != null)
 																	{{App\Student::h_behave($behave->sport)}}
-
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Notes Completion</td>
+																	@if($behave != null)
 																	{{App\Student::h_behave($behave->notec)}}
-
+																	@endif
 																</tr>
 																<tr>
-																	<td class=" text-uppercase text-left"> Spoken English
+																	<td class=" text-uppercase text-left"> Spoken English</td>
+																		@if($behave != null)
 																		{{App\Student::h_behave($behave->spoken)}}
-
+																		@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Musical Skill</td>
+																	@if($behave != null)
 																	{{App\Student::h_behave($behave->mus)}}
+																	@endif
 																</tr>
 																<tr>
 																	<td class=" text-uppercase text-left"> Craft</td>
+																	@if($behave != null)
 																	{{App\Student::h_behave($behave->craft)}}
-																		
+																	@endif	
 							
 																</tr>
 																<tr >
