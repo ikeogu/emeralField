@@ -108,13 +108,24 @@ class Student extends Model
         
     }
     public static function average($total,$object){
-        return number_format(($total/$object),1);
+        
+        if($total != null && $object != null){
+            return number_format(($total/$object),1);
+        }else{
+            return back()->with('success','no score');
+        }
+        
     }
 
     public static function averPer($avg,$scores){
-        return number_format((($avg/$scores) *100),1);
+        if($avg != null && $scores != null){
+            return number_format((($avg/$scores) *100),1);
+        }else{
+            return back()->with('success','no score');
+        }
     }
-   
+          
+    
     public static function min_score($id,$class_id,$term_id){
         $scores = SubjectMark::where('subject_id',$id)->where('term_id',$term_id)->where('s5_class_id',$class_id)->get();
         $score_list = [];
