@@ -177,7 +177,7 @@
 																 <td colspan="8">{{App\Student::average($total,$scores->count())}}</td>			
 															</tr>
 															<tr>
-																<td class="text-uppercase">Summary of Result</td>
+																{{-- <td class="text-uppercase">Summary of Result</td>
 																 <td >3C4</td>
 																 <td >2F9</td>
 																 <td >3C5</td>
@@ -185,7 +185,7 @@
 																 <td ></td>
 																 <td ></td>
 																 <td ></td>
-																 <td ></td>
+																 <td ></td> --}}
 																
 															</tr>
 
