@@ -87,21 +87,6 @@ Route::namespace('Api')->group(function () {
         Route::get('attendance/class/{class}/term/{term}','AttendanceController@my_class_attend');
         Route::get('terms_classes/{term}', 'TermController@termClasses');
         // 
-
-    Route::middleware('auth:api', 'throttle:60,1')->group(function () {
-       
-        Route::get('results/students', 'ResultController@students');
-        Route::get('results/student/{student}', 'ResultController@result');
-       
-        Route::post('subjectresult', 'MarksController@store');
-        // route newly added
-        // Route::resource('class', 'S5ClassController');
-        
-        Route::get('myclass/{id}','StudentController@myClasses');
-        Route::get('studentsclass/{id}','S5ClassController@stud_classes');
-        Route::get('studentSubject/{id}/term/{term}/class/{class}','SubjectController@studentsubjects');
-        Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
-        
         
         Route::get('class_terms/{class}', 'S5ClassController@term_class');
         //
@@ -112,6 +97,22 @@ Route::namespace('Api')->group(function () {
         Route::get('s5class_term/{term}', 'S5ClassController@terms_class');
     
         Route::get('class_student/{class}/term/{term}', 'TermController@class_student');
+        Route::get('myclass/{id}','StudentController@myClasses');
+        Route::get('studentsclass/{id}','S5ClassController@stud_classes');
+        Route::get('studentSubject/{id}/term/{term}/class/{class}','SubjectController@studentsubjects');
+        Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
+        
+        
+    Route::middleware('auth:api', 'throttle:60,1')->group(function () {
+       
+        Route::get('results/students', 'ResultController@students');
+        Route::get('results/student/{student}', 'ResultController@result');
+       
+        Route::post('subjectresult', 'MarksController@store');
+        // route newly added
+        // Route::resource('class', 'S5ClassController');
+        
+      
 
     });
 });
