@@ -22,7 +22,10 @@
               <div class="row">
                 <div class="md-form active-purple active-purple-2 mb-3 col-9">
                   <input class="form-control" type="hidden" placeholder="Search" aria-label="Search" v-model="add_student.term_id">
-                 <ejs-autocomplete :dataSource='sportsData' :fields='fields' sortOrder='sortOrder' :query='query'  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px" ></ejs-autocomplete>
+                 <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
+                 :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
+                 :highlights='true' allowFiltering="true"
+                 :ignoreCase="false" filterType="Contains" autoFill="true"></ejs-autocomplete>
                                     
                 </div>
                 <div class="col-3">
@@ -1087,7 +1090,7 @@ var itemVue = Vue.component("itemTemplate", {
                 };
             },
         query: new Query().select(['name', 'id']),
-      sortOrder: 'Ascending'
+      
       }
     },
     
