@@ -49,7 +49,7 @@ class StudentController extends Controller
     public function grade($val,$grades){
         $remarks = '';
         $per = (int) ($val);
-        if($per !=null){
+        if($per){
             foreach($grades as $grade) {
                 $arr = explode('-', $grade->percentage);
                 if ($per >= $arr[0] && $per <= $arr[1]) {
@@ -61,19 +61,15 @@ class StudentController extends Controller
         
     }
     public function average($total,$object){
-        if($total != null ){
+        if($total){
             return number_format(($total/$object),1);
-        }else{
-            return back()->with('success','no score');
         }
         
     }
     public function averPer($avg,$scores){
         
-        if($avg != null){
+        if($avg){
             return number_format((($avg/$scores) *100),1);
-        }else{
-            return back()->with('success','no score');
         }
     }
     
