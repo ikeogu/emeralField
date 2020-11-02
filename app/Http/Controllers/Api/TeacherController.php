@@ -175,7 +175,7 @@ class TeacherController extends Controller
   public function t_class($teacherid){
     $te = Teacher::find($teacherid);
     $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-    return  json_encode($ct);
+    return  ClassTeacherResource::collection($ct);
   }
   
  

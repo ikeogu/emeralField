@@ -24,10 +24,11 @@ class TeacherController extends Controller
 
     public function my_subject_student(){
 
-        Auth::check();
-        if( $stud = Teacher::find(Auth::user()->teacher_id)){
-            $subjects = $stud->subjects;
-            return view('teacher/dashboard',['teacher'=>$stud,'subjects'=>$subjects]);
+        if(Auth::check()){
+            if( $stud = Teacher::find(Auth::user()->teacher_id)){
+                $subjects = $stud->subjects;
+                return view('teacher/dashboard',['teacher'=>$stud,'subjects'=>$subjects]);
+            }
         }
         return redirect(route('login'));
     }

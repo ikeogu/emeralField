@@ -253,7 +253,7 @@
                     <td>{{ teacher.name }}</td>
                     <td>{{ teacher.start_year}}</td>
                     <td>{{ teacher.email }}</td>
-                    <td>{{ teacher.keep_track}}</td>
+                    <td>{{ teacher.track}}</td>
                     <td>{{ teacher.level }}</td>
                     <td>{{ teacher.status }}
                         <a href="#" class="btn btn-success text-white btn-block py-2 mb-2"
@@ -595,7 +595,7 @@
         this.teacher_(this.item.teacher_id)
       },
       teacher_(t){
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/teacher_c/'+ t)
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/teacher_c/'+t)
         .then(response => {
           this.mclass= response.data.data
           console.log(this.mclass)
