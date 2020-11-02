@@ -58,10 +58,20 @@ class StudentController extends Controller
         
     }
     public function average($total,$object){
-        return number_format(($total/$object),1);
+        if($total != null && $object != null){
+            return number_format(($total/$object),1);
+        }else{
+            return back()->with('success','no score');
+        }
+        
     }
     public function averPer($avg,$scores){
-        return number_format((($avg/$scores) *100),1);
+        
+        if($avg != null && $scores != null){
+            return number_format((($avg/$scores) *100),1);
+        }else{
+            return back()->with('success','no score');
+        }
     }
     
     public function summative($term_id,$class_1){

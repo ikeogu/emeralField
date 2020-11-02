@@ -80,6 +80,7 @@ class Student extends Model
     public static function grade($val,$grades){
         $remarks = '';
         $per = (int) ($val);
+         if($grades != null){
             foreach($grades as $grade) {
                 if($grade->status == 'Year School'){
                     $arr = explode('-', $grade->percentage);
@@ -88,11 +89,13 @@ class Student extends Model
                     }
                 }
             }
+         }
         
     }
     public static function h_grade($val,$grades){
         $remarks = '';
         $per = (int) ($val);
+        if($grades != null){
             foreach($grades as $grade) {
                 if($grade->status == 'High School'){
                     $arr = explode('-', $grade->percentage);
@@ -101,6 +104,7 @@ class Student extends Model
                     }
                 }
             }
+        }
         
     }
     public static function average($total,$object){
