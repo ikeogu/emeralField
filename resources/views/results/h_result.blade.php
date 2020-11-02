@@ -197,7 +197,7 @@
 															</tr>
 															<tr style="">
 																	<td colspan="8">
-																		@if($comment->comment)
+																		@if($comment != null)
 																		{{$comment->comment}}</td>
 																		@endif
 																		
@@ -208,7 +208,7 @@
 															</tr>
 															<tr style="border-right: hidden;">
 																	<td colspan="8" >
-																		@if ($comment->hcomment)
+																		@if($comment != null)
 																		{{$comment->hcomment}}</td>
 																		@endif
 																		
