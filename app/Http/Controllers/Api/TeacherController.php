@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\Teacher as TeacherResource;
-use App\Http\Resources\TeacherResourceCollection;
+// use App\Http\Resources\TeacherCollection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\ClassTeacher;
@@ -26,7 +26,7 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        return new TeacherResourceCollection(Teacher::paginate(15));
+        return TeacherResource::collection(Teacher::paginate(30));
     }
 
     /**
