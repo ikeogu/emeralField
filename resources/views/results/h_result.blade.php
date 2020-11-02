@@ -197,7 +197,10 @@
 															</tr>
 															<tr style="">
 																	<td colspan="8">
+																		@if($comment->comment)
 																		{{$comment->comment}}</td>
+																		@endif
+																		
 															</tr>
 															
 															<tr>
@@ -205,7 +208,10 @@
 															</tr>
 															<tr style="border-right: hidden;">
 																	<td colspan="8" >
+																		@if ($comment->hcomment)
 																		{{$comment->hcomment}}</td>
+																		@endif
+																		
 															</tr>
 															<tr>
 																<td style="border: hidden;" class="text-uppercase text-bold text-left" colspan="5"> Date and Stamp:</td>
