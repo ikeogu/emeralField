@@ -26,7 +26,7 @@ class CommentResource extends JsonResource
             'hcomment'=> $this->hcomment,
             'created_at'=>$this->created_at,
             'teacher' => Teacher::where('id',$this->teacher_id)->first()->name,
-            'student' => Student::where('id',$this->student_id)->first()->surname. ' '.Student::where('id',$this->student_id)->first()->name,
+            'student' => Student::where('id',$this->student_id)->first()->name.' '.Student::where('id',$this->student_id)->first()->oname.' '.Student::where('id',$this->student_id)->first()->surname,
         ];
     }
 }

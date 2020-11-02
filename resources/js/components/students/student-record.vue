@@ -25,7 +25,7 @@
                         <th>TCA</th>
                         <th>Exam</th>
                         <th>Grand Total</th>
-                        <th>Action</th>  
+                         
                     </thead>
                     <tbody>
         
@@ -44,14 +44,14 @@
                                 data-toggle="modal"
                                 v-on:click="getSubjectID(subject.id)"
                                 class="btn btn-success" >Add Score
-                            </a> -->
+                            </a> 
                               <a href="#"
                                v-on:click="editScore(marks.id)"
                                 data-target="#exampleModalEdit"
                                 data-toggle="modal"
                                 v-bind:title="marks.subject_id"
                                 class="btn btn-success">Edit
-                            </a>
+                            </a>-->
                             
                         </td>
                       </tr>
@@ -74,7 +74,7 @@
                         <th>TCA</th>
                         <th>Exam</th>
                         <th>Grand Total</th>
-                        <th>Action</th>  
+                        
                     </thead>
                     <tbody>
         
@@ -89,14 +89,14 @@
                             <td class="td2">{{marks.Exam}}</td>
                             <td class="td2">{{marks.GT}}</td>
                        
-                          <td>  
+                          <td><!-- 
                              <a href="#"
                                v-on:click="editScore(marks.id)"
                                 data-target="#exampleModalEdit"
                                 data-toggle="modal"
                                 v-bind:title="marks.id"
                                 class="btn btn-success">Edit
-                            </a>
+                            </a>-->
                             
                           </td>
                       </tr>
@@ -134,14 +134,15 @@
                             <td class="td2">{{marks.Exam}}</td>
                             <td class="td2">{{marks.GT}}</td>
                        
-                          <td>  
+                          <td> 
+                          <!-- 
                              <a href="#"
                                v-on:click="editScore(marks.id)"
                                 data-target="#exampleModalEdit"
                                 data-toggle="modal"
                                 v-bind:title="marks.id"
                                 class="btn btn-success">Edit
-                            </a>
+                            </a> -->
                             
                           </td>
                       </tr>

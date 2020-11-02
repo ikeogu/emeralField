@@ -212,7 +212,7 @@ class StudentController extends Controller
 
       public function search(Request $request){
          $query = $request->input('query');
-        $users = Student::where('name','ilike','%'.$query.'%')->orWhere('surname','ilike','%'.$query.'%')->get();
+        $users = Student::where('name','ilike','%'.$query.'%')->orWhere('oname','ilike','%'.$query.'%')->orWhere('surname','ilike','%'.$query.'%')->get();
         return response()->json($users);
       }
 

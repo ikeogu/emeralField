@@ -42,8 +42,8 @@ class BehaviourChartResource extends JsonResource
             'spoken' =>$this->spoken, 
             'mus' =>$this->mus,
             'craft'=>$this->craft,
-            'student'=>Student::where('id',$this->student_id)->first()->surname.''.Student::where('id',$this->student_id)->first()->name,
-            
+            'student'=>Student::where('id',$this->student_id)->first()->name.' '.
+            Student::where('id',$this->student_id)->first()->oname.' '.Student::where('id',$this->student_id)->first()->surname,
         ];
     }
 }

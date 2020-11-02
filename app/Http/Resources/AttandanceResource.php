@@ -17,7 +17,7 @@ class AttandanceResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'student'=>Student::where('id',$this->student_id)->first()->surname.''.Student::where('id',$this->student_id)->first()->name,
+            'student'=>Student::where('id',$this->student_id)->first()->name.' '.Student::where('id',$this->student_id)->first()->oname.' '.Student::where('id',$this->student_id)->first()->surname,
             'dp'=>$this->dp,
             'da' =>$this->da,
             'tar'=>$this->tar,

@@ -136,7 +136,7 @@
                   
                 <tr v-for="(st,index) in s" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
-                           <td>{{ st.surname}} {{st.name}} {{ st.oname}}</td>
+                           <td> {{st.name}} {{ st.oname}} {{ st.surname}}  </td>
 
                             <td>{{ st.dob| formatDate}}</td> 
                             <td>{{ st.gender}}</td>
@@ -152,8 +152,8 @@
                        data-toggle="modal"
                        v-bind:title="st.name">Assign Subjects</a></td>
                        <td><a href="#" class="btn btn-danger text-white"
-                       v-on:click="deleteId(st.id)"
-                       data-target="#exampleModal"
+                       v-on:click="re_move(st.id)"
+                       data-target="#delModal12"
                        data-toggle="modal"
                        v-bind:title="st.name">Remove</a></td>
                 </tr>
@@ -364,6 +364,30 @@
           </div>
       </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <p>Are you sure want to delete the record? </p>
+                </div>
+                <div class="form-group text-center">
+                  <button class="btn btn-success" v-on:click="hideModal()">Cancel</button>
+                </div>
+                <div class="form-group text-center">
+                  <button class="btn btn-success" v-on:click="deleteSubject()">Ok</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="delModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -1007,7 +1031,7 @@ import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 import Vue from 'vue';
 Vue.use(ButtonPlugin);
 var itemVue = Vue.component("itemTemplate", {
-  template: `<span><span class='surname'> {{data.surname}} </span><span class ='name'> {{data.name}}</span></span>`,
+  template: `<span><span class ='name'> {{data.name}}</span> <span class ='name'> {{data.oname}}</span> <span class='surname'> {{data.surname}} </span></span>`,
   data() {
     return {
       data: {}
@@ -1160,9 +1184,9 @@ var itemVue = Vue.component("itemTemplate", {
             }, 3000)
           })
       },
-      deleteId(studentid) {
+      re_move(studentid) {
         this.id = studentid
-        this.deleteStudent(this.id)
+        this.removeStudent(this.id)
       },
       fetchComment(){
        this.$http.get('https://emerald-field-school.herokuapp.com/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
@@ -1213,17 +1237,17 @@ var itemVue = Vue.component("itemTemplate", {
             $('.modal-backdrop').remove()
           })
       },
-      deleteStudent() {
-        this.$http.delete('https://emerald-field-school.herokuapp.com/api/remove_stud_in_class/student/' + this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
+      removeStudent(id) {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/remove_stud_in_class/student/'+id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
             self.succmsg = true
           }, 3000)
 
-          this.actionmsg = 'Data deleted successfully'
+          this.actionmsg = 'Student taken off Class.'
           this.studentLists(this.pagenumber)
-          $('#exampleModal2').modal('hide')
+          $('#delModal2').modal('hide')
           $('body')
             .removeClass()
             .removeAttr('style')
