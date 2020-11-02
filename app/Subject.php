@@ -8,7 +8,8 @@ class Subject extends Model
 {
     //
     protected $guarded = [];
-    protected $fillable = ['name','description','home_work','class_work','friday_test','holiday_assignment','level','summative_test','cat_1','cat_2','exam','status'];
+    protected $fillable = ['name','description','home_work','class_work','friday_test',
+    'holiday_assignment','level','summative_test','cat_1','cat_2','exam','status'];
 
     /**
      * students that belong to the subject.
