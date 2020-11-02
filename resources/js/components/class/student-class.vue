@@ -25,7 +25,7 @@
                  <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
                  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
                  :highlights='true' allowFiltering="true"
-                 :ignoreCase="false" filterType="Contains" autoFill="true"></ejs-autocomplete>
+                 :ignoreCase="false" :autoFill="true"></ejs-autocomplete>
                                     
                 </div>
                 <div class="col-3">
