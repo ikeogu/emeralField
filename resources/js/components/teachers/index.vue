@@ -229,7 +229,7 @@
         <!-- End of modal -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-success">Teachers </h6>
+            <h6 class="m-0 font-weight-bold text-success"> {{(laravelData.data).length}}Teachers </h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -317,14 +317,15 @@
                       <div>
                         <table>
                           <thead>
+                          <th class="col">#</th>
                             <th class="col">Class</th>
                             <th class="col"> Term</th>
                           </thead>
                           <tbody>
                           <tr v-for="(m,index) in mclass" :key="m.id">
-                          <td>{{index + 1}}</td>
-                            <td>{{m.myclass}}</td>
-                            <td>{{m.term}}</td>
+                           <td class="col">{{index + 1}}</td>
+                            <td class="col">{{m.myclass}}</td>
+                            <td class="col">{{m.term}}</td>
                           </tr>
                           </tbody>
                         </table>
@@ -452,6 +453,7 @@
         this.$http.get('https://emerald-field-school.herokuapp.com/api/teachers?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
+          console.log(this.laravelData)
           this.pagenumber = page
         })
       },
