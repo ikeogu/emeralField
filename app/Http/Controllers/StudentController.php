@@ -146,10 +146,10 @@ class StudentController extends Controller
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
         $student = Student::find($student_id);
-        dd($student->id);
         $grades = GradeSetting::all();
         $scores = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->get();
+        dd($scores);
         $users = SubjectMark::select('student_id')->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->distinct()->get();
         $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
