@@ -149,7 +149,7 @@ class StudentController extends Controller
         $grades = GradeSetting::all();
         $scores = SubjectMark::where('student_id',$student_id)->where('term_id',$term_id)
         ->where('s5_class_id',$class_id)->get();
-        dd($scores);
+        
         $users = SubjectMark::select('student_id')->where('term_id',$term->id)
         ->where('s5_class_id',$class_->id)->distinct()->get();
         $te = ClassTeacher::with('teacher')->where('term_id',$term_id)->where('s5_class_id',$class_id)->first();
