@@ -24,8 +24,8 @@
                   <input class="form-control" type="hidden" placeholder="Search" aria-label="Search" v-model="add_student.term_id">
                  <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
                  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
-                 :highlights='true' allowFiltering="true"
-                 :ignoreCase="false" :autoFill="true"></ejs-autocomplete>
+                 :highlights='true' :allowFiltering="true" :filterType='filterType' :minLength='minLength'
+                 :ignoreCase='ignoreCase' :autoFill="autofill"></ejs-autocomplete>
                                     
                 </div>
                 <div class="col-3">
@@ -447,7 +447,7 @@
         </div>
 
         <div  v-if="myId.status === 'High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
-         <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">High School Behavioural Chart</h5>
@@ -617,7 +617,7 @@
                  <div class="form-group row">
                   <div class="col-8">
                     <label for="name">PSYCHOMOTOR SKILLS
-&  PHYSICAL SKILLS</label>
+                &  PHYSICAL SKILLS</label>
                   </div>
                   <div class="col-4">
                     <select class="form-control" name="psy" id="subject" v-model="behaviour.psy">
@@ -1081,7 +1081,8 @@ var itemVue = Vue.component("itemTemplate", {
         attendance:{},
         bev_id:'',
         attend_id:'',
-        waterMark : 'search student name',
+
+        waterMark : 'Search Student\'s name',
         sportsData: remoteData,
         fields: {value: 'id'  },
          iTemplate: function(e) {
@@ -1090,7 +1091,11 @@ var itemVue = Vue.component("itemTemplate", {
                 };
             },
         query: new Query().select(['name', 'id']),
-      
+      sortOrder: 'Ascending',
+      filterType: 'StartsWith',
+      minLength: 3,
+            ignoreCase: false,
+            autofill: true
       }
     },
     
