@@ -151,7 +151,7 @@ class StudentController extends Controller
         'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
     }
-    private function det($student_id, $term_id, $class_id){
+    private function det($student_id, $class_id,$term_id){
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
         $student = Student::find($student_id);
