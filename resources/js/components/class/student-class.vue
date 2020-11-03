@@ -22,10 +22,8 @@
               <div class="row">
                 <div class="md-form active-purple active-purple-2 mb-3 col-9">
                   <input class="form-control" type="hidden" placeholder="Search" aria-label="Search" v-model="add_student.term_id">
-                 <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
-                 :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
-                 :highlights='true' allowFiltering="true" :filterType='filterType' 
-                 ignoreCase='ignoreCase' :autoFill="autofill" sortOrder='sortOrder'></ejs-autocomplete>
+                 <ejs-autocomplete :dataSource='sportsData' :fields='fields' sortOrder='sortOrder' :query='query'  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
+                 :autoFill="autofill" filterType='filterType' ></ejs-autocomplete>
                                     
                 </div>
                 <div class="col-3">
@@ -1037,7 +1035,7 @@ import Vue from 'vue';
 Vue.use(ButtonPlugin);
 Vue.use(AutoCompletePlugin);
 var itemVue = Vue.component("itemTemplate", {
-  template: `<span><span class ='name'> {{data.name}}</span> <span class ='name'> {{data.oname}}</span> <span class='surname'> {{data.surname}} </span></span>`,
+  template: `<span><span class ='name'> {{data.name}}</span> <span class ='oname'> {{data.oname}}</span> <span class='surname'> {{data.surname}}</span></span>`,
   data() {
     return {
       data: {}
