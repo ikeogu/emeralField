@@ -25,7 +25,7 @@
                  <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
                  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
                  :highlights='true' allowFiltering="true" :filterType='filterType' 
-                 ignoreCase='ignoreCase' :autoFill="autofill"></ejs-autocomplete>
+                 ignoreCase='ignoreCase' :autoFill="autofill" sortOrder='sortOrder'></ejs-autocomplete>
                                     
                 </div>
                 <div class="col-3">
@@ -1028,9 +1028,10 @@
 </template>
 
 <script>
-import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
 import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
+
+import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
 
 import Vue from 'vue';
 Vue.use(ButtonPlugin);
