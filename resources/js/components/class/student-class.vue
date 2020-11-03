@@ -26,14 +26,14 @@
                   <input class="form-control  form-control-sm ml-3 w-7" type="text" placeholder="search Student's name" aria-label="Search" v-model="query" 
                   v-on:keyup="autoComplete">
                   <div class="panel-footer "  style="position:relative; z-index:1000; background-color:white;" v-for="s in results" v-bind:key="s.id">
-                   <div class="row d-flex justify-content-center">
-                      <div class="col-8">
+                   <div class="row ">
+                      <div class="col-md-10 ">
                         <b>{{s.name}} {{s.oname}} {{s.surname}}</b> 
                       </div>
-                      <div class="col-4 d-flex justify-content-end">
+                      <div class="col-md-2 d-flex justify-content-end">
                           <a href="#"
                        v-on:click="addbutton(s.id)"
-                       v-bind:title="s.name" class="btn btn-outline-success text-white ">Add</a>
+                       v-bind:title="s.name" class="btn btn-success text-white ">Add</a>
                       </div>
                    </div>
                   </div>         
