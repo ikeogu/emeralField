@@ -20,7 +20,7 @@
             <div class="modal-body">
               <form method="post" name="addStudent" id="addStudent" action="#" @submit.prevent="addStudent">
               <div class="row">
-                <div class="md-form active-purple active-purple-2 mb-3 col-9">
+                <div class="md-form active-purple active-purple-2 mb-3 col-9 autocomplete">
                   <input class="form-control" type="hidden" placeholder="Search" aria-label="Search" v-model="add_student.term_id">
                  <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
                  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
@@ -1028,11 +1028,13 @@
 </template>
 
 <script>
-import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
+import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
+import { Query, DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 
 import Vue from 'vue';
 Vue.use(ButtonPlugin);
+Vue.use(AutoCompletePlugin);
 var itemVue = Vue.component("itemTemplate", {
   template: `<span><span class ='name'> {{data.name}}</span> <span class ='name'> {{data.oname}}</span> <span class='surname'> {{data.surname}} </span></span>`,
   data() {
@@ -1044,7 +1046,7 @@ var itemVue = Vue.component("itemTemplate", {
 
   var remoteData = new DataManager({
     url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
-    adaptor: new ODataV4Adaptor,
+    adaptor: new WebApiAdaptor,
     crossDomain: true
 });
   export default {
@@ -1090,7 +1092,7 @@ var itemVue = Vue.component("itemTemplate", {
                     template: itemVue
                 };
             },
-        query: new Query().select(['name', 'id']),
+        query: new Query().select(['name', 'id']).take(5).requiresCount(),
       sortOrder: 'Ascending',
       filterType: 'StartsWith',
       minLength: 3,
