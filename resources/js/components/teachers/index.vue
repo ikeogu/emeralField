@@ -628,14 +628,15 @@
       },
       deleteSubject(teacher_id, subid){
           this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/teachers/'+teacher_id+'/deletesubject/'+sub_id, {
-            student_id: this.student_id,
-            subject_id: this.subject_id,
+          .delete('https://emerald-field-school.herokuapp.com/api/teachers/'+teacher_id+'/deletesubject/'+subid, {
+            teacher_id: this.teacher_id,
+            subject_id: this.subid,
           })
           .then(data => {
             this.subject_id = '';
-            this.assignedSubjectsList(student_id);
-            this.unassignedSubjectsList(student_id);
+            this.teacher_id = '';
+            this.assignedSubjectsList(this.teacher.teacher_id);
+            this.unassignedSubjectsList(this.teacher.teacher_id);
             var self = this
             setTimeout(function() {
               self.succmsg = true
