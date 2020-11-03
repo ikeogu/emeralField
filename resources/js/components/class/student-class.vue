@@ -22,14 +22,19 @@
               <div class="row">
                 <div class="md-form active-purple active-purple-2 mb-3 col-9">
                   <input class="form-control" type="hidden" placeholder="Search" aria-label="Search" v-model="add_student.term_id">
-                 <ejs-autocomplete :dataSource='sportsData' :fields='fields' sortOrder='sortOrder' :query='query'  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
-                 :autoFill="autofill" filterType='filterType' ></ejs-autocomplete>
-                                    
+                 
+                  <input class="form-control" type="text" placeholder="search Student's name" aria-label="Search" v-model="query" 
+                  v-on:Keyup="autoComplete">
+                  <div class="panel-footer" v-if="results.length" style="position:relative; z-index:1000; border:1px solid #333; background-color:white;">
+                    <p v-for="s in results" v-bind:key="s.id">
+                    <b>{{s.name}} {{s.oname}} {{s.oname}}</b> 
+                    <a href="#"
+                       v-on:click="addbutton(s.id)"
+                       v-bind:title="s.name" class="btn btn-success text-white ">Add</a>
+                    </p>
+                  </div>  
                 </div>
-                <div class="col-3">
-                    <ejs-button  class="btn btn-success">Add</ejs-button>
-              
-                </div>
+                
               </div> 
         
               </form> 
@@ -166,7 +171,7 @@
         </div>
         <br>     
       </div>
-      <div class="card">
+       <div class="card">
           <div class="card-header bg-success text-white">Student's Comment</div>
           <div class="card-body">
                <div class="table-responsive">
@@ -209,7 +214,7 @@
           </div>
       </div>
 
-       <div class="card">
+        <div class="card">
           <div class="card-header bg-success text-white">Student's Behavioural Chart</div>
           <div class="card-body">
             <div class="table-responsive">
@@ -1026,23 +1031,23 @@
 </template>
 
 <script>
-import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
-import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
+// import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
+// import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 
-import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
+// import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
 
-import Vue from 'vue';
-Vue.use(AutoCompletePlugin);
-Vue.use(ButtonPlugin);
+// import Vue from 'vue';
+// Vue.use(AutoCompletePlugin);
+// Vue.use(ButtonPlugin);
 
-var itemVue = Vue.component("itemTemplate", {
-  template: `<span><span class ='name'> {{data.name}}</span> <span class ='oname'> {{data.oname}}</span> <span class='surname'> {{data.surname}}</span></span>`,
-});
-var remoteData = new DataManager({
-    url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
-    adaptor: new ODataV4Adaptor,
-    crossDomain: true
-});
+// var itemVue = Vue.component("itemTemplate", {
+//   template: `<span><span class ='name'> {{data.name}}</span> <span class ='oname'> {{data.oname}}</span> <span class='surname'> {{data.surname}}</span></span>`,
+// });
+// var remoteData = new DataManager({
+//     url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
+//     adaptor: new ODataV4Adaptor,
+//     crossDomain: true
+// });
   export default {
       
     data() {
@@ -1077,21 +1082,23 @@ var remoteData = new DataManager({
         attendance:{},
         bev_id:'',
         attend_id:'',
+        query:'',
+        results:{},
 
-        waterMark : 'Search Student name',
-        sportsData: remoteData,
-        fields: {value: 'id'  },
-         iTemplate: function(e) {
-                return {
-                    template: itemVue
-                };
-            },
-        query: new Query().select(['name', 'id']),
-      sortOrder: 'Ascending',
-      filterType: 'StartsWith',
+      //   waterMark : 'Search Student name',
+      //   sportsData: remoteData,
+      //   fields: {value: 'id'  },
+      //    iTemplate: function(e) {
+      //           return {
+      //               template: itemVue
+      //           };
+      //       },
+      //   query: new Query().select(['name', 'id']),
+      // sortOrder: 'Ascending',
+      // filterType: 'StartsWith',
       
-            ignoreCase: false,
-            autofill: true
+      //       ignoreCase: false,
+      //       autofill: true
       }
     },
     
@@ -1108,24 +1115,28 @@ var remoteData = new DataManager({
         })
       },
       autoComplete(){
-          this.results = [];
-          if(this.query.length > 2){
-            this.$http.get('https://emerald-field-school.herokuapp.com/api/search',{params: {query: this.query}}).then(response => {
+                   
+            this.$http.get('https://emerald-field-school.herokuapp.com/api/search',{query: this.query}).then(response => {
             this.results = response.data;
-            });
-          }
+            });  
       },
-      addStudent() {
+      addbutton(studentid){
+        this.add_student.stud_id =studentid
+        this.addStudent(this.add_student.stud_id)
+
+      },
+      addStudent(id) {
          this.add_student.term_id  = this.T_id.id,
         this.$http
-          .post('https://emerald-field-school.herokuapp.com/api/add_student_class/'+this.add_student.stud_id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
+          .post('https://emerald-field-school.herokuapp.com/api/add_student_class/'+id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
              term_id: this.add_student.term_id ,
             student_id: this.add_student.stud_id,
             class_id:this.myId.id
           })
           .then(data => {
-            this.student_id = '';
-            
+            this.student_id = ''
+            this.add_student.stud_id =''
+                       
             var self = this
             setTimeout(function() {
               self.succmsg = true
