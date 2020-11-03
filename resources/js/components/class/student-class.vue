@@ -1116,7 +1116,7 @@
       },
       autoComplete(){
                    
-            this.$http.get('https://emerald-field-school.herokuapp.com/api/search',{query: this.query}).then(response => {
+            this.$http.post('https://emerald-field-school.herokuapp.com/api/search',{query: this.query}).then(response => {
             this.results = response.data;
             console.log(this.results);
             });  

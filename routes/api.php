@@ -72,7 +72,7 @@ Route::namespace('Api')->group(function () {
         Route::get('subjectMarks/{student}','SubjectMarkController@show_Mark');
         //  update SubjectMark
         // search student
-        Route::get('/search','StudentController@search');
+        Route::post('/search','StudentController@search');
         Route::get('allstudents','StudentController@index2'); 
         // select term and class
         Route::get('teacher/{term}/assignclass/{class}/subject/{subject}', 'TermController@term_class_t')->name('tct');
