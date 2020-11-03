@@ -1092,7 +1092,7 @@ var itemVue = Vue.component("itemTemplate", {
                     template: itemVue
                 };
             },
-        query: new Query().select(['name','oname','surname', 'id']).take(5).requiresCount(),
+        query: new Query().select(['name', 'id']).take(5).requiresCount(),
       sortOrder: 'Ascending',
       filterType: 'StartsWith',
       
