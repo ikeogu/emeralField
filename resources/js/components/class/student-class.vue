@@ -132,7 +132,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th colspan="3">Name</th>
+                  <th >Name</th>
                   <th>DOB</th>
                   <th>Gender</th>              
                   <th>Action</th>
@@ -145,7 +145,11 @@
                            <td> {{st.name}} {{ st.oname}} {{ st.surname}}  </td>
 
                             <td>{{ st.dob| formatDate}}</td> 
-                            <td>{{ st.gender}}</td>
+                            <td >
+                              <p v-if="s.gender ==1">Male</p>
+                              
+                              <p v-if="s.gender ==2">Female</p>
+                            </td>
                             
                           <td>
 
@@ -397,20 +401,20 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Remove Student from Class</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
               </div>
               <div class="modal-body">
                 <div class="form-group">
-                  <p>Are you sure want to delete the record? </p>
+                  <p>Are you sure want to remove student from class? </p>
                 </div>
                 <div class="form-group text-center">
                   <button class="btn btn-success" v-on:click="hideModal()">Cancel</button>
                 </div>
                 <div class="form-group text-center">
-                  <button class="btn btn-success" v-on:click="deleteSubject()">Ok</button>
+                  <button class="btn btn-success" v-on:click="removeStudent()">Ok</button>
                 </div>
               </div>
 
@@ -1084,21 +1088,6 @@
         attend_id:'',
         query:'',
         results:{},
-
-      //   waterMark : 'Search Student name',
-      //   sportsData: remoteData,
-      //   fields: {value: 'id'  },
-      //    iTemplate: function(e) {
-      //           return {
-      //               template: itemVue
-      //           };
-      //       },
-      //   query: new Query().select(['name', 'id']),
-      // sortOrder: 'Ascending',
-      // filterType: 'StartsWith',
-      
-      //       ignoreCase: false,
-      //       autofill: true
       }
     },
     
@@ -1157,7 +1146,6 @@
         this.$http.get('https://emerald-field-school.herokuapp.com/api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.unassignedSubjects = response.data;
           this.student_id = student;
-          
           this.assignedSubjectsList(student);
         })
       },
@@ -1202,7 +1190,7 @@
       },
       re_move(studentid) {
         this.id = studentid
-        this.removeStudent(this.id)
+      
       },
       fetchComment(){
        this.$http.get('https://emerald-field-school.herokuapp.com/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
@@ -1253,8 +1241,8 @@
             $('.modal-backdrop').remove()
           })
       },
-      removeStudent(id) {
-        this.$http.delete('https://emerald-field-school.herokuapp.com/api/remove_stud_in_class/student/'+id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
+      removeStudent() {
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/remove_stud_in_class/student/'+this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

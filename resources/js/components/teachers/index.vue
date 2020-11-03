@@ -213,7 +213,7 @@
                           <tr v-for="subject in assignedSubjects" :key="subject.id">
                             <th scope="row">{{ subject.name }}</th>
                            
-                            <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSubject(student_id, subject.id)" data-toggle="modal">Delete</a></td>
+                            <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSubject(teacher_id, subject.id)" data-toggle="modal">Delete</a></td>
                           </tr>
                         </tbody>
                         
@@ -624,6 +624,22 @@
             $('.modal-backdrop').remove()
             
             
+          })
+      },
+      deleteSubject(teacher_id, subid){
+          this.$http
+          .delete('https://emerald-field-school.herokuapp.com/api/teachers/'+teacher_id+'/deletesubject/'+sub_id, {
+            student_id: this.student_id,
+            subject_id: this.subject_id,
+          })
+          .then(data => {
+            this.subject_id = '';
+            this.assignedSubjectsList(student_id);
+            this.unassignedSubjectsList(student_id);
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
           })
       }
     },
