@@ -1029,7 +1029,7 @@
 
 <script>
 import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
-import { Query, DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 
 import Vue from 'vue';
@@ -1046,7 +1046,7 @@ var itemVue = Vue.component("itemTemplate", {
 
   var remoteData = new DataManager({
     url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
-    adaptor: new WebApiAdaptor,
+    adaptor: new ODataV4Adaptor,
     crossDomain: true
 });
   export default {
@@ -1092,7 +1092,7 @@ var itemVue = Vue.component("itemTemplate", {
                     template: itemVue
                 };
             },
-        query: new Query().select(['name', 'id']).take(5).requiresCount(),
+        query: new Query().select(['name','oname','surname', 'id']).take(5).requiresCount(),
       sortOrder: 'Ascending',
       filterType: 'StartsWith',
       minLength: 3,
