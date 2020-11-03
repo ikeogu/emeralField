@@ -25,7 +25,7 @@
                  
                   <input class="form-control" type="text" placeholder="search Student's name" aria-label="Search" v-model="query" 
                   v-on:keyup="autoComplete">
-                  <div class="panel-footer" v-if="results.length" style="position:relative; z-index:1000; border:1px solid #333; background-color:white;">
+                  <div class="panel-footer"  style="position:relative; z-index:1000; border:1px solid #333; background-color:white;">
                     <p v-for="s in results" v-bind:key="s.id">
                     <b>{{s.name}} {{s.oname}} {{s.oname}}</b> 
                     <a href="#"
