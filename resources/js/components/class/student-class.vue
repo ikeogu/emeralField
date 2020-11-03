@@ -24,8 +24,8 @@
                   <input class="form-control" type="hidden" placeholder="Search" aria-label="Search" v-model="add_student.term_id">
                  <ejs-autocomplete :dataSource='sportsData' :fields='fields'  :query='query'  
                  :placeholder="waterMark" :itemTemplate='iTemplate'  v-model="add_student.stud_id" popupHeight="450px"
-                 :highlights='true' :allowFiltering="true" filterType='filterType' 
-                 :ignoreCase='ignoreCase' autoFill="autofill"></ejs-autocomplete>
+                 :highlights='true' allowFiltering="true" :filterType='filterType' 
+                 ignoreCase='ignoreCase' :autoFill="autofill"></ejs-autocomplete>
                                     
                 </div>
                 <div class="col-3">
@@ -1092,7 +1092,7 @@ var itemVue = Vue.component("itemTemplate", {
                     template: itemVue
                 };
             },
-        query: new Query().select(['name', 'id']),
+        query: new Query().select(['name', 'id']).take(7).requiresCount(),
       sortOrder: 'Ascending',
       filterType: 'StartsWith',
       
