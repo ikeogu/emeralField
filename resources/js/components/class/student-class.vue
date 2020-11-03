@@ -1086,7 +1086,7 @@ var remoteData = new DataManager({
                     template: itemVue
                 };
             },
-        query: new Query().select(['name', 'id']).take(7).requiresCount(),
+        query: new Query().select(['name', 'id']),
       sortOrder: 'Ascending',
       filterType: 'StartsWith',
       
