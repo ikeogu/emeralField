@@ -1032,18 +1032,13 @@ import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
 
 import Vue from 'vue';
-Vue.use(ButtonPlugin);
 Vue.use(AutoCompletePlugin);
+Vue.use(ButtonPlugin);
+
 var itemVue = Vue.component("itemTemplate", {
   template: `<span><span class ='name'> {{data.name}}</span> <span class ='oname'> {{data.oname}}</span> <span class='surname'> {{data.surname}}</span></span>`,
-  data() {
-    return {
-      data: {}
-    };
-  }
 });
-
-  var remoteData = new DataManager({
+var remoteData = new DataManager({
     url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
     adaptor: new ODataV4Adaptor,
     crossDomain: true
@@ -1083,7 +1078,7 @@ var itemVue = Vue.component("itemTemplate", {
         bev_id:'',
         attend_id:'',
 
-        waterMark : 'Search Student\'s name',
+        waterMark : 'Search Student name',
         sportsData: remoteData,
         fields: {value: 'id'  },
          iTemplate: function(e) {
