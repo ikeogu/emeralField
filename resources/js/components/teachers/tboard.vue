@@ -269,6 +269,38 @@
                     <button class="btn btn-success">Update</button>
                   </div>
                 </form>
+                 <form v-if="logged_in.level ==='Early Years'" method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore">
+
+                   <div class="form-group">
+                    <label for="roll_no">Home Work</label>
+                    <input type="number" name="HW"  class="form-control"  v-model="student_mark.HW" />
+                  </div>
+                  <div class="form-group">
+                    <label for="roll_no">Class Work</label>
+                    <input type="number" name="CW" class="form-control" placeholder="" v-model="student_mark.CW" />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact">Friday Assignment</label>
+                    <input type="number" name="FT"  class="form-control" v-model="student_mark.FT" />
+                  </div>
+                  <div class="form-group">
+                    <label for="roll_no">Holiday Assignment</label>
+                    <input type="number" name="HA"  class="form-control"  v-model="student_mark.HA" />
+                  </div>
+                  <div class="form-group">
+                    <label for="roll_no">Summative Test</label>
+                    <input type="number" name="summative_test" class="form-control"  v-model="student_mark.summative_test" >
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="contact">Exam</label>
+                    <input type="number" name="exam"  class="form-control" v-model="student_mark.Exam"  value=""/>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Update</button>
+                  </div>
+                </form>
                
                
               </div>
