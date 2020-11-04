@@ -828,7 +828,7 @@
          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Year School Behavioural Chart</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Early Years Behavioural Chart</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -1008,7 +1008,7 @@
                     <label for="name">Days Absent</label>
                   </div>
                   <div class="col-4">
-                     <input class="form-control" name="da" v-model="attendance.dp">
+                     <input class="form-control" name="da" v-model="attendance.da">
                   </div>
                 </div>
                 <div class="form-group row">

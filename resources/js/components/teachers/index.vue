@@ -439,7 +439,7 @@
     methods: {
 
       fetchClasses() {
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/classes_all').then(response => {
           //this.posts = response.data.data;
           this.laravelClassData = response.data.data
           
