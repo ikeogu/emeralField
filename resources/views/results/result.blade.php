@@ -307,12 +307,12 @@
                 </div>
                    
             </div>
-            <footer class="row">
+            <div class="row">
                 <div class="">
-                    <img src="/img/footer.png" height="30" width="1090">
+                    <img src="/img/footer.png" height="30" width="800">
                     </div>
                 </div>
-            </footer>  
+            </div>  
         </div>
         
     </div>
