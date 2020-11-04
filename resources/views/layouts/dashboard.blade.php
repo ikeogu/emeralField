@@ -91,7 +91,7 @@
                     <span> All Students</span></a>
                     <a class="collapse-item" href="{{route('eschool')}}">Early Year</a>
                     <a class="collapse-item" href="{{route('hschool')}}">High School Students</a>
-                <a class="collapse-item" href="{{route('jhschool')}}">Junior High School Students</a>
+                <a class="collapse-item" href="{{route('jhschool')}}">Junior High School</a>
               <a class="collapse-item" href="{{route('yschool')}}">Year School Students</a>
               
               <div class="collapse-divider"></div>

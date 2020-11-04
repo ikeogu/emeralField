@@ -132,7 +132,7 @@ class TeacherController extends Controller
       }
 
       $subjects = Subject::whereNotIn('id', $ids)->where('level','=',$t->level)->get();
-
+  
       return $subjects;
 
     }
