@@ -7,7 +7,7 @@
 
 <div class="container-fluid" > 
     <div class="d-flex justify-content-end">
-    <a href="{{route('ds',[$term->id,$class_->id])}}" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
+        <a href="#" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
     </div>
    <div class="card">
         <div class="card-header bg-success text-white">SUMMATIVE TEST {{$class_->name}}| {{$class_->description}}     {{$term->name}} ||  {{$term->session}}</div>
