@@ -1174,7 +1174,7 @@
       },
       deleteSubject(student_id, subject_id) {
         this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term'+this.T_id.id, {
+          .delete('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
           })
