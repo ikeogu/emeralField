@@ -355,7 +355,7 @@
         })
       },
       fetchClass(){
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/all_class').then(response => {
           this.class5 = response.data.data
         })
       },
