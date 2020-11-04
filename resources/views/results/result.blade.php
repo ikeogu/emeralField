@@ -22,7 +22,7 @@
         <header >
             <div class="row">
                 <div class="col-8 yellow ">
-                  <img src="img/header.png" height="120" width="650">
+                  <img src="/img/header.png" height="120" width="650">
                 </div>
                 <div class="col-4 yellow" >
                     
@@ -58,7 +58,13 @@
                                         <ul>
                                             <li>{{date("j F, Y",strtotime($student->dob))}}</li>
                                             <li class="gender">gender</li>
-                                        <li><strong>{{$student->gender}}</strong></li>
+                                        <li>
+                                            @if ($student->gender ==1 )
+                                            <strong>M</strong>
+                                            @else
+                                            <strong>F</strong>
+                                            @endif
+                                            </li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -301,14 +307,14 @@
                 </div>
                    
             </div>
-               
-        </div>
-        <footer class="row">
-            <div class="">
-                <img src="/img/footer.png" height="30" width="1090">
+            <footer class="row">
+                <div class="">
+                    <img src="/img/footer.png" height="30" width="1090">
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>  
+        </div>
+        
     </div>
         
     
