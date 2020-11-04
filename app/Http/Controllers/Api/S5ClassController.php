@@ -25,7 +25,7 @@ class S5ClassController extends Controller
     public function index()
     {
         //
-        return new S5ClassResourceCollection(S5Class::all(10));
+        return new S5ClassResourceCollection(S5Class::paginate(10));
     }
     public function all_class()
     {

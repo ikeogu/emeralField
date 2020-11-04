@@ -231,12 +231,14 @@
       }
     },
     methods: {
-      classLists() {
-       
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses').then(response => {
+      classLists(page) {
+        if (typeof page === 'undefined') {
+          page = 1
+        }
+        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
-         
+          this.pagenumber = page
         })
       },
       getText () {
