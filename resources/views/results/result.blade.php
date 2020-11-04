@@ -30,7 +30,7 @@
                         <strong class="text-dark font-weight-bold">REPORT CARD</strong><br>
                     <strong class="text-danger font-weight-bold text-uppercase "> {{$term->name}}</strong>
                    
-                  </div>
+                </div>
             </div>
         </header>
         <div class="row top-section">
@@ -316,6 +316,6 @@
         </div>
         
     </div>
-        
+ </div> 
     
 @endsection
