@@ -211,15 +211,14 @@ class StudentController extends Controller
         
         if ($dets['class_']->status == 'Year School') {
             # code...
-         $pdf = PDF::loadView('pdf.y_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+         $pdf = PDF::loadView('pdf.y_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
         'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
         return $pdf->download($dets['student']->surname.'_'.$dets['student']->name.'_'.$dets['term']->name.'_'.$dets['class_']->name.'.pdf');
 
         }
         if ($dets['class_']->status == 'Early Years') {
             # code...
-         $pdf = PDF::loadView('pdf.e_years                                                                                                                                                                                                                                                                                                                                               ',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
-        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
+         $pdf = PDF::loadView('pdf.e_years',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
         return $pdf->download($dets['student']->surname.'_'.$dets['student']->name.'_'.$dets['term']->name.'_'.$dets['class_']->name.'.pdf');
 
         }

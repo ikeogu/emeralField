@@ -307,9 +307,9 @@
                 </div>
                    
             </div>
-            <div class="row">
-                <div class="">
-                    <img src="/img/footer.png" height="30" width="800">
+               <div class="row">
+                   <div class="">
+                    <img src="/img/footer.png" height="30" width="1090">
                     </div>
                 </div>
             </div>  

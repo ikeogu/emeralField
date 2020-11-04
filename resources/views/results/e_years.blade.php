@@ -22,7 +22,7 @@
         <header >
             <div class="row">
                 <div class="col-8 yellow ">
-                  <img src="img/header.png" height="120" width="650">
+                  <img src="/img/header.png" height="120" width="650">
                 </div>
                 <div class="col-4 yellow" >
                     
@@ -697,15 +697,15 @@
                 </div>
                    
             </div>
-               
-        </div>
-        <footer class="row">
-            <div class="">
-                <img src="/img/footer.png" height="30" width="1090">
+            <div class="row">
+                <div class="">
+                    <img src="/img/footer.png" height="30" width="1090">
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </div> 
+        </div>
+
     </div>
-        
+</div> 
     
 @endsection
