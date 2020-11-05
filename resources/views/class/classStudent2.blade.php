@@ -21,7 +21,7 @@
             </div>
             
         </div>
-        @if ($class_T->status === 'High School')
+        @if ($class_T->status === 'Junior High School' || 'Senior High School')
         <div class="row mt-5">
             <div class="col-md-2 mb-2 ">
                 <a href="{{route('cat1s_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 1</a>
