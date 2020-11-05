@@ -77,6 +77,7 @@ class StudentController extends Controller
         $dets = $this->details($term_id,$class_1);
         if($dets['class_']->level == 'Years School') {
             $SMT_score = $dets['term']->y_summative;
+            dd($SMT_score);
             return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
             'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
        
@@ -127,6 +128,7 @@ class StudentController extends Controller
         $dets = $this->det($student_id,$term_id,$class_id);
         if($dets['class_']->level == 'Year School'){
             $SMT_score = $dets['term']->y_summative;
+            dd($SMT_score);
             return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
             'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
             'grades'=>$dets['grades']]);
