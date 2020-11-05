@@ -223,7 +223,7 @@
                     <th>#</th>
                     <th>Subject Name</th>
                     <th>Subject Description</th>
-                
+                    <th>School</th>
                     <th colspan="2">Action</th>
                   
                 </thead>
@@ -232,6 +232,7 @@
                     <td>{{ index + 1 }}</td>
                     <td>{{ sub.name }}</td>
                     <td>{{ sub.description }}</td>
+                    <td>{{ sub.level }}</td>
                                       
                     <td>
                       <a href="#"
