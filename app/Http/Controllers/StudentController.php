@@ -127,22 +127,22 @@ class StudentController extends Controller
     }
     public function summative_sheet($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
-        dd([$dets['term']->y_summative,$dets['class_']->level]);
-        if($dets['class_']->level == 'Year School'){
+        
+        if($dets['class_']->status == 'Year School'){
             $SMT_score = $dets['term']->y_summative;
-            dd($SMT_score);
+            
             return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
             'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
             'grades'=>$dets['grades']]);
         }
-        if($dets['class_']->level == 'Early Years'){
+        if($dets['class_']->status == 'Early Years'){
             $SMT_score = $dets['term']->e_summative;
             return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
             'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
             'grades'=>$dets['grades']]);
         }
        
-        return 'no class found';
+        
     }
     
     public function cat1($student_id,$term_id,$class_id){
@@ -215,13 +215,13 @@ class StudentController extends Controller
     // class Teacher Function
     public function summative_ct($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        if($dets['class_']->level == 'Years School') {
+        if($dets['class_']->status == 'Years School') {
             $SMT_score = $dets['term']->y_summative;
             return view('teacher.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
             'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
        
         } 
-        if($dets['class_']->level == 'Early Years') {
+        if($dets['class_']->status == 'Early Years') {
             $SMT_score = $dets['term']->e_summative;
         return view('teacher.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],'SMT_score'=>$SMT_score,
         'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
@@ -265,13 +265,13 @@ class StudentController extends Controller
     }
     public function summative_sheet_ct($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
-        if($dets['class_']->level == 'Year School'){
+        if($dets['class_']->status == 'Year School'){
             $SMT_score = $dets['term']->y_summative;
             return view('teacher.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
             'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
             'grades'=>$dets['grades']]);
         }
-        if($dets['class_']->level == 'Early Years'){
+        if($dets['class_']->status == 'Early Years'){
             $SMT_score = $dets['term']->e_summative;
             return view('teacher.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
             'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
