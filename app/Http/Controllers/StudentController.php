@@ -75,7 +75,7 @@ class StudentController extends Controller
     
     public function summative($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        if($dets['class_']->level == 'Years School') {
+        if($dets['class_']->level == 'Year School') {
             $SMT_score = $dets['term']->y_summative;
             dd($SMT_score);
             return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
