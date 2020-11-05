@@ -75,6 +75,7 @@ class StudentController extends Controller
     
     public function summative($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
+        dd([$dets['term']->y_summative,$dets['class_']->level]);
         if($dets['class_']->level == 'Year School') {
             $SMT_score = $dets['term']->y_summative;
             dd($SMT_score);
@@ -126,6 +127,7 @@ class StudentController extends Controller
     }
     public function summative_sheet($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
+        dd([$dets['term']->y_summative,$dets['class_']->level]);
         if($dets['class_']->level == 'Year School'){
             $SMT_score = $dets['term']->y_summative;
             dd($SMT_score);
@@ -140,7 +142,7 @@ class StudentController extends Controller
             'grades'=>$dets['grades']]);
         }
        
-
+        return 'no class found';
     }
     
     public function cat1($student_id,$term_id,$class_id){
