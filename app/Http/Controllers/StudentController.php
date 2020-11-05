@@ -75,15 +75,15 @@ class StudentController extends Controller
     
     public function summative($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        dd([$dets['term']->y_summative,$dets['class_']->level]);
-        if($dets['class_']->level == 'Year School') {
+       
+        if($dets['class_']->status == 'Year School') {
             $SMT_score = $dets['term']->y_summative;
             dd($SMT_score);
             return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
             'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
        
         } 
-        if($dets['class_']->level == 'Early Years') {
+        if($dets['class_']->status == 'Early Years') {
             $SMT_score = $dets['term']->e_summative;
         return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],'SMT_score'=>$SMT_score,
         'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
