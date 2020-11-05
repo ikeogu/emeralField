@@ -88,6 +88,54 @@
             </div>
           </div>
         </div>
+        <!-- cat scores -->
+        <div class="modal fade"
+             id="exampleModalScore"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true"
+             v-bind:class="{ showmodal:showmodal }">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fix Point</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form method="post" name="fixPoint" id="addclass" action="#" @submit.prevent="fixPoint">
+                  
+                  <div class="form-group">
+                    <label for="name">C.A.T.1</label>
+                    <input type="number" name="h_cat1" id="description" class="form-control" placeholder="Mark for C.A.T 1" v-model="term.h_cat1" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">C.A.T 2</label>
+                    <input type="number" name="h_cat2" id="session" class="form-control" placeholder="Mark for C.A.T.2" v-model="term.h_cat2" />
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="name">Year School Summative</label>
+                    <input type="number" name="y_summative" id="session" class="form-control" placeholder="" v-model="term.y_summative" />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Early Years Summative</label>
+                    <input type="number" name="e_summative" id="session" class="form-control" placeholder="" v-model="term.e_summative" />
+                  </div>
+                  
+                
+                  <div class="form-group text-right">
+                    <button class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- end cat scores-->
 
         <div class="modal fade"
              id="exampleModal1"
@@ -246,9 +294,9 @@
                     <th>Session</th>
                     
                     <th colspan="3">Fee Shedule</th>
-                    <th>Classes</th>
-                    <th></th>
-                    <th colspan="2">Action</th>
+                    <th>Resumption</th>
+                    <th>Details</th>
+                    <th colspan="3">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -267,6 +315,7 @@
                     </td>
                     <!-- link to student in a class -->
                     <td>
+
                         <a class="btn btn-info text-white" 
                         v-on:click="unassignedClassList(term.id)"
                         data-target="#exampleModal23"
@@ -277,6 +326,11 @@
                         data-target="#exampleModal1"
                         data-toggle="modal"
                         v-bind:title="term.name" class="btn btn-warning">Edit</a>
+                         <a class="btn btn-info text-white" 
+                        v-on:click="getTerm(term.id)"
+                        data-target="#exampleModalScore"
+                        data-toggle="modal"
+                        v-bind:title="term.name" > Fix point</a>
                         
                       </td>
 
@@ -322,13 +376,15 @@
           },
         selected:"Choose Options",
         options: [
-                { value: 1, text: 'Term 1' },
-                { value: 2, text: 'Term 2' },
-                { value: 3, text: 'Term 3' }
+                { value: 1, text: 'Term I' },
+                { value: 2, text: 'Term II' },
+                { value: 3, text: 'Term III' }
         ],
         laravelData: {},
         
         id: '',
+         
+        id_n: '',
         succmsg: true,
         showmodal: false,
         pagenumber: 1,
@@ -345,8 +401,6 @@
           this.laravelData = response.data
           this.pagenumber = page
         })
-
-       
               
       },
         
@@ -426,6 +480,44 @@
             }, 3000)
             this.actionmsg = 'Term updated successfully'
             $('#exampleModal1').modal('hide')
+            $('body')
+              .removeClass()
+              .removeAttr('style')
+            $('.modal-backdrop').remove()
+            this.termLists(this.pagenumber)
+          })
+      },
+      getTerm(id){
+        this.id_ = id
+
+      },
+      fixPoint() {
+        this.$http
+          .put('https://emerald-field-school.herokuapp.com/api/terms/' + this.id_, {
+            term_id:this.id_,
+            h_cat1: this.term.h_cat1,
+            h_cat2:this.term.h_cat2,
+            y_summative:this.term.y_summative,
+            e_summative:this.term.e_summative,
+             
+          })
+          .then(data => {
+            this.succmsg = false
+            console.log(data)
+            
+            this.term.h_cat1 = ''
+            this.term.h_cat2 = ''
+            this.term.y_summative = ''
+            this.term.e_summative = ''
+            this.id_ = ''
+            
+            
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+            this.actionmsg = 'Fix Point set successfully'
+            $('#exampleModalScore').modal('hide')
             $('body')
               .removeClass()
               .removeAttr('style')

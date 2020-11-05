@@ -1,23 +1,26 @@
-@extends('layouts.dashboard')
+@extends('layouts.tdashboard')
 
-@section('title', 'Student Result SUMMATIVE TEST')
+@section('title', 'CAT 2 BROADSHEET')
 
 @section('content')
 
 
-<div class="container-fluid" > 
-    <div class="d-flex justify-content-end">
-        <a href="#" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
-    </div>
-   <div class="card">
-        <div class="card-header bg-success text-white">SUMMATIVE TEST {{$class_->name}}| {{$class_->description}}     {{$term->name}} ||  {{$term->session}}</div>
+<div class="container-fluid">
+    <div class="card">
+    <div class="card-header bg-success text-capitalize text-white">MSC {{$class_->name}}|   {{$class_->description}}  | {{$term->name}}|  {{$term->session}}</div>
         <div class="card-body">
             <div class="col-12 table-responsive">
-                <table  class="table table-striped table-bordered  text-default">
+                <table  class="table table-striped table-bordered m-0  text-default" style="width:100%">
                 <thead class="header">
                     <th class="rotate">S/No</th>
                     <th >Name</th>
-                    
+                    @php
+                    $total = 0;
+                     $sum_total = 0;
+                     $min_t = 0;
+                     $min_t_per = 0;
+                     $cl_av = 0;
+                    @endphp     
                     @foreach ($subject as  $key => $item)
                         <th class="rotate word" scope="col">{{$item->name}}</th>
                           
@@ -30,49 +33,37 @@
                     <th class="rotate">Average(%)</th> 
                     <th class="rotate">Remarks</th> 
                 </thead>
-                <tbody>  
-                     @php
-                        $total = 0;
-                        $sum_total = 0;
-                        $min_t = 0;
-                        $min_t_per = 0;
-                        
-                    @endphp                       
+                                     
                     @foreach ($students as $key =>$student)
                     
                     <tr>
                         
                         <td>{{$key + 1}}</td>
-                        <td> {{$student->name}}  {{$student->oname}} {{$student->surname}}</td>                   
-                        @foreach ($student->subjectMark as  $keys => $item)
-                        @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                  
-                            <td>{{$item->summative_test}}</td>
+                        <td>{{$student->surname}} {{$student->name}}  {{$student->oname}}</td>                  
+                        @foreach ($student->subjectMark as  $key => $item)
+                        @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                 
+                            <td>{{$item->MSC}}</td>
                             @php
-                                $total += $item->summative_test;
+                                $total += $item->MSC;
                             @endphp  
                         @endif
                         @endforeach
                         <td>{{$total}}</td>
-
                         <td>{{App\Student::average($total,$subject->count())}}</td>
                         @php
                             $sum_total += $total;
-                            
                             $avg = App\Student::average($total,$subject->count());
-                            $avgPer = App\Student::averPer($avg,$SMT_score);
+                            $avgPer = App\Student::averPer($avg,$TCA_score);
                             $total = 0;
-                            $min_t +=$avg; 
-                            $min_t_per +=$avgPer; 
                         @endphp
-                        <td>{{App\Student::averPer($avg,$SMT_score)}} </td>
-                        <td>{{App\Student::grade($avgPer,$grades)}}  </td>
+                        <td>{{App\Student::averPer($avg,$TCA_score)}} </td>
+                        <td>{{App\Student::h_grade($avgPer,$grades)}}  </td>
                        
                         
                     </tr>
                     
                     @endforeach
-                    
-                     <tr>
+                    <tr>
                         <th></th>
                     </tr> 
                    
@@ -80,7 +71,7 @@
                         <td></td>
                         <th>Total</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::subject_total($item->id,$class_->id,$term->id)}} </td>
+                        <td>{{App\Student::subject_total_msc($item->id,$class_->id,$term->id)}} </td>
                         @endforeach
                         <td>{{$sum_total}}</td>
                         <td>{{$min_t}}</td>
@@ -91,7 +82,7 @@
                         <td></td>
                         <th>Max Score</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::max_score($item->id,$class_->id,$term->id)}}</td>
+                        <td>{{App\Student::max_score_msc($item->id,$class_->id,$term->id)}}</td>
                         @endforeach
                         
                     </tr>
@@ -99,24 +90,25 @@
                         <td></td>
                         <th>Min Score</th>
                         @foreach ($subject as $item)
-                             <td>{{App\Student::min_score($item->id,$class_->id,$term->id)}}</td>
+                             <td>{{App\Student::min_score_msc($item->id,$class_->id,$term->id)}}</td>
                         @endforeach
                         
                     </tr> 
                     <tr>
                         <td></td>
-                        <th>Subject Average</th>
+                        <th>Class Average</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::average(App\Student::subject_total($item->id,$class_->id,$term->id),$students->count())}}</td>
+                        <td>{{App\Student::average(App\Student::subject_total_msc($item->id,$class_->id,$term->id),$students->count())}}</td>
                         @endforeach
                         
                        
                     </tr> 
                     <tr>
                         <td></td>
-                        <th>Subject Average (%)</th>
+                        <th>Class Performance (%)</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::average_per(App\Student::subject_total($item->id,$class_->id,$term->id),($SMT_score * $students->count()))}}</td>
+                        <td>{{App\Student::average_per(App\Student::subject_total_msc($item->id,$class_->id,$term->id),($TCA_score * $students->count()))}}</td>
+                        
                         @endforeach
                         
                        
@@ -126,25 +118,20 @@
                         <td></td>
                         <th>Remarks</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::grade(App\Student::average_per(App\Student::subject_total($item->id,$class_->id,$term->id),($SMT_score * $students->count())),$grades)}}</td>
+                        <td>{{App\Student::h_grade(App\Student::average_per(App\Student::subject_total_msc($item->id,$class_->id,$term->id),($TCA_score * $students->count())),$grades)}}</td>
                         @endforeach
                         
                         
                     </tr>   
-                    
                 </tbody>
-                
                 </table>
             </div>
         </div>
-    </div> 
-{{-- <summative-test :students="{{$students}}" :subject="{{$subject}}" :grades="{{$grades}}" :SMT_score="{{$SMT_score}}"></summative-test> --}}
-
+    </div>
 </div>
-
 @endsection
 <style>
- .rotate {
+    .rotate {
   transform: rotate(-90deg);
 
   /* Legacy vendor prefixes that you probably don't need... */
@@ -174,9 +161,10 @@
     .table { font-size: 2rem; }
 } */ 
 .header th {
-              line-height: 120px;
+              line-height: 90px;
+              font-size: 12px;
     }
-    th, td{
+th, td{
     font-size: 12px;
 }
 .word th{

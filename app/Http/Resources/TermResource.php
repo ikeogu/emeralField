@@ -24,6 +24,10 @@ class TermResource extends JsonResource
             'fee_y' =>$this->fee_y,
             'fee_e' =>$this->fee_e,
             'resumption_date' =>$this->resumption_date,
+            'y_summative' =>$this->y_summative,
+            'e_summative' =>$this->e_summative,
+            'h_cat1' =>$this->h_cat1,
+            'h_cat2' =>$this->h_cat2,
             
             ];
     }

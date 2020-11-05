@@ -15,7 +15,7 @@ class AddStatusSubjectTable extends Migration
     {
         //
         Schema::table('subjects', function (Blueprint $table) {
-            $table->string('status')->nullable();
+            // $table->string('status')->nullable();
             
         });
     }
@@ -29,7 +29,7 @@ class AddStatusSubjectTable extends Migration
     {
         //
         Schema::table('subjects', function (Blueprint $table) {
-            $table->string('status');
+            // $table->string('status');
             
         });
     }

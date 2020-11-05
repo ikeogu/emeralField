@@ -69,14 +69,6 @@
   
         <!-- Divider -->
         <hr class="sidebar-divider">
-  
-        
-        @auth
-            
-        
-        @if(Auth::user()->isAdmin === 1)
-         
-      
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -129,23 +121,8 @@
               <i class="fas fa-fw fa-setting-o"></i>
               <span>Grade Settings</span></a>
         </li>
-        @elseif(Auth::user()->isAdmin === 3)
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('teacher.dashboard')}}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Biodata</span></a>
-        </li>
-        
-         @if(App\ClassTeacher::where('teacher_id',Auth::user()->teacher_id))
-        <li class="nav-item">
-        <a class="nav-link" href="{{route('classt',[Auth::user()->teacher_id])}}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Class Teacher</span></a>
-        </li>
-        @endif
-        
-        @endif
-        @endauth
+       
+      
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
   

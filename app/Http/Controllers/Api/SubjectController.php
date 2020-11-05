@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Subject;
 use App\Student;
-use App\Http\Requests\SubjectRequest;
+use Illuminate\Http\Request;
 use App\Http\Resources\Subject as SubjectResource;
 use App\Http\Resources\SubjectCollection;
 use App\Http\Resources\StudentCollection;
@@ -36,10 +36,22 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SubjectRequest $request)
+    public function store(Request $request)
     {
                 
         $subject = new Subject();
+        if($request->level === 'Early Years'){
+            $subject->name = $request->name;
+            $subject->description = $request->description;
+            $subject->home_work = $request->home_work;
+            $subject->class_work = $request->class_work;
+            $subject->friday_test = $request->friday_test;
+            $subject->holiday_assignment = $request->holiday_assignment;
+            $subject->level = $request->level;
+            $subject->summative_test= $request->summative_test;
+            $subject->exam = $request->exam;
+            // $subject->status = $request->status;
+        }
         if($request->level === 'Year School'){
             $subject->name = $request->name;
             $subject->description = $request->description;
@@ -68,6 +80,7 @@ class SubjectController extends Controller
             // $subject->status = $request->status;
         }
         
+        
 
         $subject->save();
 
@@ -92,12 +105,11 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(SubjectRequest $request, Subject $subject)
+    public function update(Request $request)
     {
-        $data = $request->all();
-        $subject->update($data);
+        $sub= Subject::whereId($request->subject_id)->update($request->except(['_method','_token','subject_id']));
 
-        return new SubjectResource($subject);
+        // return new SubjectResource($subject);
     }
 
     /**

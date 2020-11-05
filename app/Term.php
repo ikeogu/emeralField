@@ -15,7 +15,11 @@ class Term extends Model
         'fee_h',
         'fee_y',
         'fee_e',
-        'resumption_date'
+        'resumption_date',
+        'h_cat1',
+        'h_cat2',
+        'y_summative',
+        'e_summative'
     ];
 
     public function classes(){

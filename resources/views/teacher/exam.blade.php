@@ -1,16 +1,13 @@
-@extends('layouts.dashboard')
+@extends('layouts.tdashboard')
 
-@section('title', 'Student Result SUMMATIVE TEST')
+@section('title', 'Student Result Exam ')
 
 @section('content')
 
 
-<div class="container-fluid" > 
-    <div class="d-flex justify-content-end">
-        <a href="#" type="button" class="btn btn-outline-danger"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
-    </div>
-   <div class="card">
-        <div class="card-header bg-success text-white">SUMMATIVE TEST {{$class_->name}}| {{$class_->description}}     {{$term->name}} ||  {{$term->session}}</div>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header bg-success text-capitalize text-white">EXAM BROADSHEET {{$class_->name}}|  {{$class_->description}}  | {{$term->name}} |  {{$term->session}}</div>
         <div class="card-body">
             <div class="col-12 table-responsive">
                 <table  class="table table-striped table-bordered  text-default">
@@ -37,20 +34,23 @@
                         $min_t = 0;
                         $min_t_per = 0;
                         
-                    @endphp                       
+                    @endphp  
+                                        
                     @foreach ($students as $key =>$student)
                     
                     <tr>
-                        
+                       
+                            
+                       
                         <td>{{$key + 1}}</td>
-                        <td> {{$student->name}}  {{$student->oname}} {{$student->surname}}</td>                   
+                        <td>{{$student->surname}} {{$student->name}}  {{$student->oname}}</td>                   
                         @foreach ($student->subjectMark as  $keys => $item)
                         @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                  
-                            <td>{{$item->summative_test}}</td>
+                            <td>{{$item->Exam}}</td>
                             @php
-                                $total += $item->summative_test;
-                            @endphp  
-                        @endif
+                                $total += $item->Exam;
+                            @endphp 
+                        @endif 
                         @endforeach
                         <td>{{$total}}</td>
 
@@ -59,17 +59,17 @@
                             $sum_total += $total;
                             
                             $avg = App\Student::average($total,$subject->count());
-                            $avgPer = App\Student::averPer($avg,$SMT_score);
+                            $avgPer = App\Student::averPer($avg,$EXAM_score);
                             $total = 0;
                             $min_t +=$avg; 
                             $min_t_per +=$avgPer; 
                         @endphp
-                        <td>{{App\Student::averPer($avg,$SMT_score)}} </td>
+                        <td>{{App\Student::averPer($avg,$EXAM_score)}} </td>
                         <td>{{App\Student::grade($avgPer,$grades)}}  </td>
                        
-                        
+                         
                     </tr>
-                    
+                   
                     @endforeach
                     
                      <tr>
@@ -80,7 +80,7 @@
                         <td></td>
                         <th>Total</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::subject_total($item->id,$class_->id,$term->id)}} </td>
+                        <td>{{App\Student::subject_total_E($item->id,$class_->id,$term->id)}} </td>
                         @endforeach
                         <td>{{$sum_total}}</td>
                         <td>{{$min_t}}</td>
@@ -91,7 +91,7 @@
                         <td></td>
                         <th>Max Score</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::max_score($item->id,$class_->id,$term->id)}}</td>
+                        <td>{{App\Student::max_score_E($item->id,$class_->id,$term->id)}}</td>
                         @endforeach
                         
                     </tr>
@@ -99,7 +99,7 @@
                         <td></td>
                         <th>Min Score</th>
                         @foreach ($subject as $item)
-                             <td>{{App\Student::min_score($item->id,$class_->id,$term->id)}}</td>
+                             <td>{{App\Student::min_score_E($item->id,$class_->id,$term->id)}}</td>
                         @endforeach
                         
                     </tr> 
@@ -107,7 +107,7 @@
                         <td></td>
                         <th>Subject Average</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::average(App\Student::subject_total($item->id,$class_->id,$term->id),$students->count())}}</td>
+                        <td>{{App\Student::average(App\Student::subject_total_E($item->id,$class_->id,$term->id),$students->count())}}</td>
                         @endforeach
                         
                        
@@ -116,7 +116,7 @@
                         <td></td>
                         <th>Subject Average (%)</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::average_per(App\Student::subject_total($item->id,$class_->id,$term->id),($SMT_score * $students->count()))}}</td>
+                        <td>{{App\Student::average_per(App\Student::subject_total_E($item->id,$class_->id,$term->id),($EXAM_score * $students->count()))}}</td>
                         @endforeach
                         
                        
@@ -126,7 +126,7 @@
                         <td></td>
                         <th>Remarks</th>
                         @foreach ($subject as $item)
-                        <td>{{App\Student::grade(App\Student::average_per(App\Student::subject_total($item->id,$class_->id,$term->id),($SMT_score * $students->count())),$grades)}}</td>
+                        <td>{{App\Student::grade(App\Student::average_per(App\Student::subject_total_E($item->id,$class_->id,$term->id),($EXAM_score * $students->count())),$grades)}}</td>
                         @endforeach
                         
                         
@@ -137,14 +137,11 @@
                 </table>
             </div>
         </div>
-    </div> 
-{{-- <summative-test :students="{{$students}}" :subject="{{$subject}}" :grades="{{$grades}}" :SMT_score="{{$SMT_score}}"></summative-test> --}}
-
+    </div>
 </div>
-
 @endsection
 <style>
- .rotate {
+    .rotate {
   transform: rotate(-90deg);
 
   /* Legacy vendor prefixes that you probably don't need... */
@@ -174,7 +171,7 @@
     .table { font-size: 2rem; }
 } */ 
 .header th {
-              line-height: 120px;
+              line-height: 90px;
     }
     th, td{
     font-size: 12px;

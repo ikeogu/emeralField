@@ -75,14 +75,19 @@ class StudentController extends Controller
     
     public function summative($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        foreach ($dets['subject'] as $value) {
-            # code...
-            $SMT_score = $value->summative_test;
-        }
-        return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+        if($dets['class_']->level == 'Years School') {
+            $SMT_score = $dets['term']->y_summative;
+            return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
+            'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
        
+        } 
+        if($dets['class_']->level == 'Early Years') {
+            $SMT_score = $dets['term']->e_summative;
+        return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],'SMT_score'=>$SMT_score,
+        'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+        }   
+        
     }
-
     
     public function exam($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
@@ -105,12 +110,12 @@ class StudentController extends Controller
     }
     public function cat1s($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        $TCA_score = 20;
+        $TCA_score = $dets['term']->h_cat1;
         return view('results.cat1_broadsheet',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
     }
     public function cat2s($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        $TCA_score = 20;
+        $TCA_score = $dets['term']->h_cat2;
         return view('results.cat2_broadsheet',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
     }
     public function msc($term_id,$class_1){
@@ -120,8 +125,19 @@ class StudentController extends Controller
     }
     public function summative_sheet($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
-        return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
-        'grades'=>$dets['grades']]);
+        if($dets['class_']->level == 'Year School'){
+            $SMT_score = $dets['term']->y_summative;
+            return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
+            'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
+            'grades'=>$dets['grades']]);
+        }
+        if($dets['class_']->level == 'Early Years'){
+            $SMT_score = $dets['term']->e_summative;
+            return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
+            'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
+            'grades'=>$dets['grades']]);
+        }
+       
 
     }
     
@@ -156,6 +172,7 @@ class StudentController extends Controller
         'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
 
     }
+    // job worker that feeeds other functions
     private function det($student_id,$term_id, $class_id){
         $term = Term::find($term_id);
         $class_ = S5Class::find($class_id);
@@ -190,6 +207,108 @@ class StudentController extends Controller
         return ['students'=>$class_std, 'subject'=>$subject,'grades'=>$grades,'term'=>$term,'class_'=>$class_];
     }
 
+
+    // class Teacher Function
+    public function summative_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        if($dets['class_']->level == 'Years School') {
+            $SMT_score = $dets['term']->y_summative;
+            return view('teacher.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
+            'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+       
+        } 
+        if($dets['class_']->level == 'Early Years') {
+            $SMT_score = $dets['term']->e_summative;
+        return view('teacher.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],'SMT_score'=>$SMT_score,
+        'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+        }   
+        
+    }
+    
+    public function exam_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        // $students[] = (array) $class_std;
+        foreach ($dets['subject'] as $value) {
+            # code...
+            $EXAM_score = $value->exam;
+        }       
+        return view('teacher.exam',['students'=>$dets['students'], 'subject'=>$dets['subject'],'EXAM_score'=>$EXAM_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+    }
+    public function grandTotal_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        $GT_score =100;             
+        return view('teacher.gt',['students'=>$dets['students'], 'subject'=>$dets['subject'],'GT_score'=>$GT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+    }
+    public function tca_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        $TCA_score = 50;
+        return view('teacher.tca',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+    }
+    public function cat1s_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        $TCA_score = $dets['term']->h_cat1;
+        return view('teacher.cat1_broadsheet',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+    }
+    public function cat2s_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        $TCA_score = $dets['term']->h_cat2;
+        return view('teacher.cat2_broadsheet',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+    }
+    public function msc_ct($term_id,$class_1){
+        $dets = $this->details($term_id,$class_1);
+        $TCA_score = 10;
+        return view('teacher.msc',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
+    }
+    public function summative_sheet_ct($student_id,$term_id,$class_id){
+        $dets = $this->det($student_id,$term_id,$class_id);
+        if($dets['class_']->level == 'Year School'){
+            $SMT_score = $dets['term']->y_summative;
+            return view('teacher.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
+            'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
+            'grades'=>$dets['grades']]);
+        }
+        if($dets['class_']->level == 'Early Years'){
+            $SMT_score = $dets['term']->e_summative;
+            return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
+            'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
+            'grades'=>$dets['grades']]);
+        }
+       
+
+    }
+    
+    public function cat1_ct($student_id,$term_id,$class_id){
+        $dets = $this->det($student_id,$term_id,$class_id);
+        return view('teacher.cat1',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades']]);
+
+    }
+    public function cat2_ct($student_id,$term_id,$class_id){
+        $dets = $this->det($student_id,$term_id,$class_id);
+        return view('teacher.cat2',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades']]);
+
+    }
+    
+    public function result_sheet_ct($student_id,$term_id,$class_id){
+        $dets = $this->det($student_id,$term_id,$class_id);
+        
+        if ($dets['class_']->status == 'Year School') {
+            # code...
+            return view('teacher.result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
+        }
+        if ($dets['class_']->status == 'Early Years') {
+            # code...
+            return view('teacher.e_years',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
+
+        }
+        return view('results.h_result',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'],'classTeacher'=>$dets['te'],'comment'=>$dets['comment'],'behave'=>$dets['behave'],'attend'=>$dets['attend']]);
+
+    }
+//    download functions
     public function download_cat1($student_id,$term_id,$class_1){
         $data =$this->det($student_id,$term_id,$class_1);
         $pdf = PDF::loadView('pdf.cat1',['data'=>$this->det($student_id,$term_id,$class_1)]);        

@@ -24,37 +24,37 @@
         @if ($class_T->status === 'High School')
         <div class="row mt-5">
             <div class="col-md-2 mb-2 ">
-                <a href="{{route('cat1s',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 1</a>
+                <a href="{{route('cat1s_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 1</a>
             </div>
             <div class="col-md-2 mb-2">
-                <a href="{{route('cat2s',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 2</a>
+                <a href="{{route('cat2s_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 2</a>
             </div>
             <div class="col-md-2 mb-2">
-                <a href="{{route('msc',[$t->id,$class_T->id])}}"  class="btn btn-success">MSC</a>
+                <a href="{{route('msc_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">MSC</a>
             </div>
             <div class="col-md-2 mb-2">
-                <a href="{{route('tca',[$t->id,$class_T->id])}}"  class="btn btn-success">T.C.A</a>
+                <a href="{{route('tca_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">T.C.A</a>
             </div>
             <div class=" col-md-2 mb-2">
-                <a href="{{route('exam',[$t->id,$class_T->id])}}"  class="btn btn-success">Exam </a>
+                <a href="{{route('exam_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Exam </a>
             </div>
             <div class="col-md-2">
-                <a href="{{route('gt',[$t->id,$class_T->id])}}"  class="btn btn-success">Grand Total</a>
+                <a href="{{route('gt_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Grand Total</a>
             </div>
         </div>
         @else
         <div class="row mt-5">
             <div class="col-md-3">
-                <a href="{{route('summative',[$t->id,$class_T->id])}}"  class="btn btn-success">Summative </a>
+                <a href="{{route('summative_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Summative </a>
             </div>
             <div class="col-md-3">
-                <a href="{{route('tca',[$t->id,$class_T->id])}}"  class="btn btn-success">TCA BroadSheet</a>
+                <a href="{{route('tca_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">TCA BroadSheet</a>
             </div>
             <div class=" col-md-3 py-3">
-                <a href="{{route('exam',[$t->id,$class_T->id])}}"  class="btn btn-success">Exam BroadSheet</a>
+                <a href="{{route('exam_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Exam BroadSheet</a>
             </div>
             <div class="col-md-3">
-                <a href="{{route('gt',[$t->id,$class_T->id])}}"  class="btn btn-success">Grand Total BroadSheet</a>
+                <a href="{{route('gt_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Grand Total BroadSheet</a>
             </div>
         </div>
         @endif

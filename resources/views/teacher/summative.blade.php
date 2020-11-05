@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.tdashboard')
 
 @section('title', 'Student Result SUMMATIVE TEST')
 

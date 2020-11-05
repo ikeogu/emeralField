@@ -61,3 +61,16 @@ Route::get('class_teacher/{teacher}','TeacherController@classt')->name('classt')
 Route::get('download_summative/{student}/term/{term}/class/{class}','StudentController@download_summative')->name('ds');
 Route::get('download_cat1/{student}/term/{term}/class/{class}','StudentController@download_cat1')->name('dcat1');
 Route::get('download_result/{student}/term/{term}/class/{class}','StudentController@download_result')->name('dr');
+// because of class teachers oooo
+Route::get('ct_summative_test/{term}/class/{class}','StudentController@summative_ct')->name('summative_ct');
+Route::get('ct_exam/{term}/class/{class}','StudentController@exam_ct')->name('exam_ct');
+Route::get('ct_cat1s/{term}/class/{class}','StudentController@cat1s_ct')->name('cat1s_ct');
+Route::get('ct_cat2s/{term}/class/{class}','StudentController@cat2s_ct')->name('cat2s_ct');
+Route::get('ct_msc_sheet/{term}/class/{class}','StudentController@msc_ct')->name('msc_ct');
+Route::get('ct_grand_total/{term}/class/{class}','StudentController@grandTotal_ct')->name('gt_ct');
+Route::get('ct_tca/{term}/class/{class}','StudentController@tca_ct')->name('tca_ct');
+Route::get('ct_summative/stud/{student}/term/{term}/class/{class}','StudentController@summative_sheet_ct')->name('sum_Ct');
+Route::get('ct_cat/stud/{student}/term/{term}/class/{class}','StudentController@cat1_ct')->name('cat1_ct');
+Route::get('ct_cat2/stud/{student}/term/{term}/class/{class}','StudentController@cat2_ct')->name('cat2_ct');
+// Route::get('msc/stud/{student}/term/{term}/class/{class}','StudentController@msc')->name('msc');
+Route::get('ct_result/stud/{student}/term/{term}/class/{class}','StudentController@result_sheet_ct')->name('result_ct');
