@@ -269,7 +269,7 @@ class StudentController extends Controller
         }
         if($dets['class_']->level == 'Early Years'){
             $SMT_score = $dets['term']->e_summative;
-            return view('results.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
+            return view('teacher.summative_sheet',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],
             'scores'=>$dets['scores'],'users'=>$dets['users'],'SMT_score'=>$SMT_score,
             'grades'=>$dets['grades']]);
         }

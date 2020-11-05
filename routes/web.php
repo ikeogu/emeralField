@@ -20,7 +20,8 @@ Route::get('/', function () {
 //     return view('welcome');
 // });
 Auth::routes();
-
+Route::middleware('auth:api', 'throttle:60,1')->group(function () {
+       
 Route::view('students', 'students.index')->name('students.index');
 Route::view('studentsubjects', 'students.subjects')->name('student.subjects');
 Route::view('subjects', 'subjects.index')->name('subjects.index');
@@ -74,3 +75,4 @@ Route::get('ct_cat/stud/{student}/term/{term}/class/{class}','StudentController@
 Route::get('ct_cat2/stud/{student}/term/{term}/class/{class}','StudentController@cat2_ct')->name('cat2_ct');
 // Route::get('msc/stud/{student}/term/{term}/class/{class}','StudentController@msc')->name('msc');
 Route::get('ct_result/stud/{student}/term/{term}/class/{class}','StudentController@result_sheet_ct')->name('result_ct');
+}
