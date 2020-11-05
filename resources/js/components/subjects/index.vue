@@ -145,6 +145,7 @@
                         </option>
                       </select>
                   </div>
+                  <!--
                   <div id="high" v-if="selected === 1">
                   <div class="form-group">
                       <label for="name">CAT 1</label>
@@ -155,7 +156,17 @@
                       <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
                     </div>
                   </div>
-                  <div id="year" v-if="selected === 2">
+                  <div id="high" v-if="selected === 2">
+                  <div class="form-group">
+                      <label for="name">CAT 1</label>
+                      <input type="number" name="cat_1" id="name" class="form-control"  placeholder="Mark for CAT 1" v-model="subject.cat_1" />
+                    </div>
+                    <div class="form-group">
+                      <label for="name">CAT 2</label>
+                      <input type="number" name="cat_2" id="name" class="form-control"  placeholder="Mark for CAT 2 " v-model="subject.cat_2" />
+                    </div>
+                  </div>
+                  <div id="year" v-if="selected === 3">
                     <div class="form-group">
                       <label for="name">Home Work</label>
                       <input type="number" name="home_work" id="home_work" class="form-control" value="10" v-model="subject.home_work" />
@@ -166,7 +177,7 @@
                     </div>
                     
                   </div>
-                  <div id="early" v-if="selected === 3">
+                  <div id="early" v-if="selected === 4">
                     <div class="form-group">
                       <label for="name">Summative Test</label>
                       <input type="number" name="summative_test" id="name" class="form-control"  placeholder="Mark for Summative Test " v-model="subject.summative_test" />
@@ -175,7 +186,7 @@
                    <div class="form-group">
                     <label for="name">Exam</label>
                     <input type="number" name="exam" id="name" class="form-control"  placeholder="Mark for Exams " v-model="subject.exam" />
-                  </div>
+                  </div>-->
                 
                   <div class="form-group text-right">
                     <button class="btn btn-success">Submit</button>
@@ -371,14 +382,14 @@
           .patch('https://emerald-field-school.herokuapp.com/api/subjects/' + this.id, {
             name: this.subject.name,
             description: this.subject.description,
-            home_work: this.subject.home_work,
-            class_work: this.subject.class_work,
-            friday_test: this.subject.friday_test,
-            holiday_assignment: this.subject.holiday_assignment,
-            cat_1: this.subject.cat_1,
-            cat_2: this.subject.cat_1,
-            summative_test: this.subject.summative_test,
-            exam: this.subject.exam,
+            // home_work: this.subject.home_work,
+            // class_work: this.subject.class_work,
+            // friday_test: this.subject.friday_test,
+            // holiday_assignment: this.subject.holiday_assignment,
+            // cat_1: this.subject.cat_1,
+            // cat_2: this.subject.cat_1,
+            // summative_test: this.subject.summative_test,
+            subject_id: this.id,
             level:this.subject.level
           })
           .then(data => {

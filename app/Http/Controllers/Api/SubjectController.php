@@ -107,7 +107,8 @@ class SubjectController extends Controller
      */
     public function update(Request $request)
     {
-        $sub= Subject::whereId($request->subject_id)->update($request->except(['_method','_token','subject_id']));
+        
+        $sub=Subject::whereId($request->subject_id)->update($request->except(['_method','_token','subject_id']));
 
         // return new SubjectResource($subject);
     }
