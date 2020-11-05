@@ -78,7 +78,7 @@ class StudentController extends Controller
        
         if($dets['class_']->status == 'Year School') {
             $SMT_score = $dets['term']->y_summative;
-            dd($SMT_score);
+            
             return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],
             'SMT_score'=>$SMT_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
        
