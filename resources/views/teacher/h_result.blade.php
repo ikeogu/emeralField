@@ -149,7 +149,7 @@
 																
 																	@foreach ($scores as $item)
 																	<tr>	
-																    <td class="text-uppercase text-bold text-left">{{$item->subname}}</td>
+																    <td class="text-lowercase text-bold text-left">{{$item->subname}}</td>
 																		<td>{{$item->CAT1}}</</td>
 																		<td>{{$item->CAT2}}</</td>
 																		<td>{{$item->MSC}}</</td>

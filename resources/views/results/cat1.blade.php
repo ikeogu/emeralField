@@ -75,7 +75,7 @@
                             @foreach ($scores as $key=> $item)
                             <tr>
                             <td>{{$key + 1}}</td>
-                            <td>{{$item->subname}}</td>
+                            <td class="text-lowercase">{{$item->subname}}</td>
                             
                             <td>{{$item->CAT1}}</td>
                             @php

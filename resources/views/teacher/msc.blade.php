@@ -22,7 +22,7 @@
                      $cl_av = 0;
                     @endphp     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word" scope="col">{{$item->name}}</th>
+                        <th class="rotate word text-lowercase" scope="col">{{$item->name}}</th>
                           
                     @endforeach
                 
@@ -39,7 +39,7 @@
                     <tr>
                         
                         <td>{{$key + 1}}</td>
-                        <td>{{$student->surname}} {{$student->name}}  {{$student->oname}}</td>                  
+                        <td> {{$student->name}}  {{$student->oname}} {{$student->surname}}</td>                  
                         @foreach ($student->subjectMark as  $key => $item)
                         @if($item->term_id === $term->id && $item->s5_class_id === $class_->id)                 
                             <td>{{$item->MSC}}</td>

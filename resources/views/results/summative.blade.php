@@ -19,7 +19,7 @@
                     <th >Name</th>
                     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word" scope="col">{{$item->name}}</th>
+                        <th class="rotate word text-lowercase" scope="col">{{$item->name}}</th>
                           
                     @endforeach
                 

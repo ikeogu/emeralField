@@ -34,7 +34,7 @@
                      <!-- Nested Row within Card Body -->
                     <div class="row p-5 mt-3">
                         
-                        <div class="row" v-if="logged_in.level === 'High School'">
+                        <div class="row" v-if="logged_in.level == 'Senior High School' || 'Junior High School' ">
                             
                           <div class="col-12 table-responsive">
                             <table  class="table-wrapper" >

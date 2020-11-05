@@ -249,7 +249,7 @@
                   <div class="form-group">
                     <label for="gender">Assign Class</label>
                     <select class="form-control" name="class_id"  v-model="class_id">
-                          <option v-for="classes in unassignedClasses"  :key="classes.id" v-bind:value="classes.id">{{ classes.name }}</option>
+                          <option v-for="classes in unassignedClasses"  :key="classes.id" v-bind:value="classes.id">{{ classes.name }} {{ classes.description }}</option>
                     </select>
                   </div>
 
@@ -270,7 +270,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="classes in assignedClasses" :key="classes.id">
-                      <th scope="row">{{ classes.name }}</th>
+                      <th scope="row">{{ classes.name }} {{ classes.description }}</th>
                       <td><a href="#" data-target="#exampleModal2" v-on:click="deleteClass(term_id, classes.id)" data-toggle="modal" disabled>Delete</a></td>
                     </tr>
                   </tbody>

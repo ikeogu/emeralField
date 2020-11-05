@@ -146,9 +146,9 @@
 
                             <td>{{ st.dob| formatDate}}</td> 
                             <td >
-                              <p v-if="s.gender ==1">Male</p>
+                              <p v-if="st.gender == 1">Male</p>
                               
-                              <p v-if="s.gender ==2">Female</p>
+                              <p v-if="st.gender == 2">Female</p>
                             </td>
                             
                           <td>
@@ -161,7 +161,8 @@
                        data-target="#exampleModal1"
                        data-toggle="modal"
                        v-bind:title="st.name">Assign Subjects</a></td>
-                       <td><a href="#" class="btn btn-danger text-white"
+                       <td>
+                       <a href="#" class="btn btn-danger text-white"
                        v-on:click="re_move(st.id)"
                        data-target="#delModal12"
                        data-toggle="modal"
@@ -249,7 +250,7 @@
                   <th> Shows respect and Kidness to all</th>
                   <th>Action</th>
                 </tr>
-                <tr v-else-if="myId.status =='High School'" :key="myId.id">
+                <tr v-else-if="myId.status =='Senior High School' || 'Junior High School'" :key="myId.id">
                   <th>#</th>
                   <th>Name</th>
                   <th>Home work culture</th>
@@ -260,8 +261,8 @@
                   <th> Initiative</th>
                   <th> Leadership Role</th>
                   <th> Dress Code</th>
-                  <th> Obiedence</th>
-                  <th> Politiness</th>
+                  <th> Obeidence</th>
+                  <th> Politeness</th>
                   <th> Team Sport</th>
                   <th> Sociability</th>
                   <th> Psychomotor Skill & Physical Skill</th>
@@ -439,7 +440,7 @@
                     <textarea name="comment" id="name" class="form-control" placeholder="" v-model="comments.comment"  cols="7" rows="5"/>
                   </div>
                   <div class="form-group">
-                    <label for="father_name">Head Academic's Remark</label>
+                    <label for="father_name">President's Remark</label>
                       <textarea name="hcomment" id="name" class="form-control" placeholder="" v-model="comments.hcomment"  cols="7" rows="5"/>
                   </div>
 
@@ -453,7 +454,7 @@
           </div>
         </div>
 
-        <div  v-if="myId.status === 'High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div  v-if="myId.status === 'Senior High School' || 'Junior High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">

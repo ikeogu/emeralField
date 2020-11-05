@@ -148,11 +148,11 @@ class StudentController extends Controller
           $ids = [];
           $marks = SubjectMark::where('student_id','=',$student->id)->where('term_id','=',$term->id)->where('s5_class_id',$class_id)
           ->get();
+          $class = S5Class::find($class_id);
           foreach ($marks as $subject) {
             array_push($ids, $subject->subject_id);
           }
-
-          $subjects = Subject::whereNotIn('id', $ids)->get();
+          $subjects = Subject::whereNotIn('id', $ids)->where('level','=',$class->status)->get();
 
           return $subjects;
 

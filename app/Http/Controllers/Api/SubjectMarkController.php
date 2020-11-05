@@ -169,12 +169,12 @@ class SubjectMarkController extends Controller
         $subjectMarks=  SubjectMark::whereId($request->my_id)->update($request->except(['_method','_token','my_id']));
         $subjectMarks=  SubjectMark::find($request->my_id);
         $class__ = S5Class::find($subjectMarks->s5_class_id);
-        if($class__->status === 'Year School'){
+        if($class__->status === 'Year School' || 'Early Years'){
             $subjectMarks->summative_test = $request->summative_test;
             $subjectMarks->TCA =  $request->HA + $request->HW + $request->CW + $request->FT + $request->summative_test;
             $subjectMarks->GT = $subjectMarks->TCA +$request->Exam;
             $subjectMarks->save();
-        }elseif($class__->status === 'High School'){
+        }elseif($class__->status === 'Junior High School' || 'Senior High School'){
             
             $subjectMarks->TCA =  $request->MSC + $request->CAT1 + $request->CAT2;
             $subjectMarks->GT = $subjectMarks->TCA + $request->Exam;

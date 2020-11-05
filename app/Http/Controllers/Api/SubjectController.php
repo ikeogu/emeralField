@@ -64,7 +64,7 @@ class SubjectController extends Controller
             $subject->exam = $request->exam;
             // $subject->status = $request->status;
         }
-        if ($request->level === 'High School') {
+        if ($request->level === 'Junior High School' || 'Senior High School') {
             # code...
             $subject->name = $request->name;
             $subject->description = $request->description;

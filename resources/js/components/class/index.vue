@@ -159,10 +159,10 @@
             <table class="table table-striped table-bordered" style="width:100%">
               <thead>
                 <tr>
-                  <th>Class Name</th>
-                  <th>Class Description</th>
-                  <th>Class Max No of Students</th>
-                  <th>Class Level</th>
+                  <th>Class</th>
+                  <th>Description</th>
+                  <th>Max in Class</th>
+                  <th>Level</th>
                   <th>More</th>
                   <th colspan="2">Action</th>
                 </tr>
@@ -210,7 +210,7 @@
       return {
         selected:"Choose Options",
         options: [
-                { value: 1, text: 'High School' },
+                { value: 1, text: 'Senior High School' },
                 { value: 2, text: 'Junior High School' },
                 { value: 3, text: 'Year School' },
                 { value: 4, text: 'Early Years' }
