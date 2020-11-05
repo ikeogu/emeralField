@@ -296,7 +296,7 @@
                     <th colspan="3">Fee Shedule</th>
                     <th>Resumption</th>
                     <th>Details</th>
-                    <th colspan="3">Action</th>
+                    <th colspan="4">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -326,12 +326,16 @@
                         data-target="#exampleModal1"
                         data-toggle="modal"
                         v-bind:title="term.name" class="btn btn-warning">Edit</a>
+                       
+
+                        
+                      </td>
+                      <td>  
                          <a class="btn btn-info text-white" 
                         v-on:click="getTerm(term.id)"
                         data-target="#exampleModalScore"
                         data-toggle="modal"
                         v-bind:title="term.name" > Fix point</a>
-                        
                       </td>
 
                     <td>
