@@ -61,9 +61,9 @@
                             <tr>
                                 <th scope="col">S/N</th>
                                 <th scope="col">SUBJECT</th>
-                                <th scope="col">SCORE ({{$term}})</th>
-                                <th scope="col">SUBJECT MAX SCORE (20)</th>
-                                <th scope="col">SUBJECT AVERAGE SCORE (20)</th>
+                                <th scope="col">SCORE ({{$SMT_score}})</th>
+                                <th scope="col">SUBJECT MAX SCORE ({{$SMT_score}})</th>
+                                <th scope="col">SUBJECT AVERAGE SCORE ({{$SMT_score}})</th>
                             </tr>
                         </thead>
                         @php
