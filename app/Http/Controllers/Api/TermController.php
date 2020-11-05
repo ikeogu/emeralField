@@ -281,9 +281,7 @@ class TermController extends Controller
     $comment->delete();
     $behave->delete();
     $att->delete();
-    $studTerm->delete();
-    return $studTerm;
-    
+    $studTerm->delete();    
   }
   public function class_student($classid,$term){
    

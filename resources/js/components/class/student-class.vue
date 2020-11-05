@@ -1251,12 +1251,14 @@
           }, 3000)
 
           this.actionmsg = 'Student taken off Class.'
-          this.studentLists(this.pagenumber)
+          this.id = ''
+          
           $('#delModal2').modal('hide')
           $('body')
             .removeClass()
             .removeAttr('style')
           $('.modal-backdrop').remove()
+          this.studentLists(this.pagenumber)
         })
       },
       hideModal() {
