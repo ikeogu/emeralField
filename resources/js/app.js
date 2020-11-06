@@ -26,7 +26,7 @@ import students from './components/students/index.vue';
  
 
  import studentclass from  './components/class/student-class.vue';
- import studentclassT from  './components/class/student-class-ct.vue';
+ import student_class_T from  './components/class/student-class-ct.vue';
  import studentRecord from './components/students/student-record.vue';
  import termclasses from './components/class/termClass.vue';
  import studClass from './components/class/studClass.vue';
@@ -143,7 +143,7 @@ new Vue({
         'teachers':teachers,
         'classes':classes,
         'student-class':studentclass,
-        'student-class-ct':studentclassT,
+        
         'stud_class':studClass,
         'student-record':studentRecord,
         'term':term,
@@ -153,6 +153,7 @@ new Vue({
         'stud':Stud,
         'class-student':classStudent,
         'summative-test':Summative,
+        'class-ct':student_class_T,
     },
     
 });

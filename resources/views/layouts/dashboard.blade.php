@@ -81,8 +81,8 @@
       
       <!-- Nav Item - Pages Collapse Menu -->
      
-        
-      
+        @if(Auth::user()->isAdmin == 1)
+              
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -134,7 +134,15 @@
         <a class="nav-link" href="{{route('grades.index')}}">
             <i class="fas fa-fw fa-setting-o"></i>
             <span>Grade Settings</span></a>
-      </li>
+      </li> 
+        @else
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('student.dashboard')}}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Biodata</span></a>
+            </li> 
+        @endif
+      
      
     
       <!-- Divider -->
