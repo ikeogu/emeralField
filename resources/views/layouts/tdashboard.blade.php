@@ -48,7 +48,7 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
         
               <!-- Sidebar - Brand -->
               <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -122,9 +122,7 @@
                         <i class="fa fa-bars"></i>
                       </button>
 
-                      <!-- Topbar Search -->
-                      <button onclick="goBack()" class=" btn btn-warning text-white btn-block btn-sm">Go Back</button>
-
+                      
                       <!-- Topbar Navbar -->
                       <ul class="navbar-nav ml-auto">
 
@@ -133,11 +131,11 @@
                           
                           <!-- Dropdown - Messages -->
                           <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                            <button onclick="goBack()" class=" btn btn-warning text-white btn-block btn-sm">Go Back</button>
+                            <p id="demo"></p>
                           </div>
                         </li>
                         <!-- Topbar Navbar -->
-                        <p id="demo"></p>
+                        
 
                         <ul class="navbar-nav ml-auto">
   
@@ -239,11 +237,11 @@
       if (curHr >= 0 && curHr < 6) {
           document.getElementById("demo").innerHTML = 'What are you doing that early?';
       } else if (curHr >= 6 && curHr < 12) {
-          document.getElementById("demo").innerHTML = 'Good Morning';
+          document.getElementById("demo").innerHTML = 'Good Morning!';
       } else if (curHr >= 12 && curHr < 17) {
-          document.getElementById("demo").innerHTML = 'Good Afternoon';
+          document.getElementById("demo").innerHTML = 'Good Afternoon!';
       } else {
-          document.getElementById("demo").innerHTML = 'Good Evening';
+          document.getElementById("demo").innerHTML = 'Good Evening!';
       }
   
   </script>
