@@ -2,7 +2,7 @@
 
 @section('title', '{{$tudent->name}}')
 
-@section('content')
+@section('tboard')
 
 
 

@@ -174,11 +174,7 @@ class SubjectController extends Controller
         ->get();
         $student = Student::find($id);
         $term = Term::find($term_id);
-        $class_T = S5Class::find($class_id);   
-        
-        // return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
-        
-        
+        $class_T = S5Class::find($class_id);          
        return  view('teacher/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
         
     }

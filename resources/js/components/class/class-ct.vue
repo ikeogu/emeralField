@@ -1040,23 +1040,7 @@
 </template>
 
 <script>
-// import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
-// import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 
-// import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
-
-// import Vue from 'vue';
-// Vue.use(AutoCompletePlugin);
-// Vue.use(ButtonPlugin);
-
-// var itemVue = Vue.component("itemTemplate", {
-//   template: `<span><span class ='name'> {{data.name}}</span> <span class ='oname'> {{data.oname}}</span> <span class='surname'> {{data.surname}}</span></span>`,
-// });
-// var remoteData = new DataManager({
-//     url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
-//     adaptor: new ODataV4Adaptor,
-//     crossDomain: true
-// });
   export default {
       
     data() {

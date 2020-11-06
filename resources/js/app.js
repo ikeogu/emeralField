@@ -26,7 +26,7 @@ import students from './components/students/index.vue';
  
 
  import studentclass from  './components/class/student-class.vue';
- import student_class_T from  './components/class/student-class-ct.vue';
+ 
  import studentRecord from './components/students/student-record.vue';
  import termclasses from './components/class/termClass.vue';
  import studClass from './components/class/studClass.vue';
@@ -44,7 +44,7 @@ import students from './components/students/index.vue';
  import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 //  Vue.prototype.$userId = document.querySelector("meta[name='user_id']").getAttribute('content');
 import moment from 'moment';
-
+import student_class_T from  './components/class/class-ct.vue';
 
 
 

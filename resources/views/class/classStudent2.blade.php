@@ -21,7 +21,7 @@
             </div>
             
         </div>
-        @if ($class_T->status === 'Junior High School')
+        @if ($class_T->status =='Junior High School')
         <div class="row mt-5">
             <div class="col-md-2 mb-2 ">
                 <a href="{{route('cat1s_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 1</a>
@@ -43,7 +43,7 @@
             </div>
         </div>
         @endif
-        @if($class_T->status ==='Senior High School')
+        @if($class_T->status =='Senior High School')
         <div class="row mt-5">
             <div class="col-md-2 mb-2 ">
                 <a href="{{route('cat1s_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">C.A.T 1</a>
@@ -65,7 +65,7 @@
             </div>
         </div>
         @endif
-        @if($class_T->status ==='Year School')
+        @if($class_T->status == 'Year School')
         <div class="row mt-5">
             <div class="col-md-3">
                 <a href="{{route('summative_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Summative </a>
@@ -81,7 +81,7 @@
             </div>
         </div>
         @endif
-        @if($class_T->status ==='Early Years')
+        @if($class_T->status == 'Early Years')
         <div class="row mt-5">
             <div class="col-md-3">
                 <a href="{{route('summative_ct',[$t->id,$class_T->id])}}"  class="btn btn-success">Summative </a>
