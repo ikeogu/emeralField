@@ -40,6 +40,7 @@
       <div class="card-body">
         <p>Oops!!    <span class="emoji">&#128512;</span></p>
         <p class="mb-0">Currently not a class Teacher.</p>
+        <p> Complain to Mr. Emmanuel, Okay!</p>
       </div>
     </div>
     @endif
