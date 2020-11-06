@@ -45,10 +45,10 @@
 </head>
 
 <body id="page-top">
-   
+  <div id="app">
   <!-- Page Wrapper -->
   <div id="wrapper">
-    <div id="app">
+    
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
