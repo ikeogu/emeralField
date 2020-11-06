@@ -65,7 +65,22 @@ class SubjectController extends Controller
             $subject->exam = $request->exam;
             // $subject->status = $request->status;
         }
-        if ($request->level === 'Junior High School' || 'Senior High School') {
+        if ($request->level === 'Junior High School') {
+            # code...
+            $subject->name = $request->name;
+            $subject->description = $request->description;
+            $subject->home_work = '';
+            $subject->class_work = '';
+            $subject->friday_test = '';
+            $subject->holiday_assignment = '';
+            $subject->level = $request->level;
+            $subject->summative_test= '';
+            $subject->cat_1 = $request->cat_1;
+            $subject->cat_2 = $request->cat_2;
+            $subject->exam = $request->exam;
+            // $subject->status = $request->status;
+        }
+        if ($request->level === 'Senior High School') {
             # code...
             $subject->name = $request->name;
             $subject->description = $request->description;
