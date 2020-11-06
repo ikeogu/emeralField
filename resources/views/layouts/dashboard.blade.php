@@ -45,12 +45,12 @@
 </head>
 
 <body id="page-top">
-
+   <div id="app">
   <!-- Page Wrapper -->
-  <div id="wrapper app">
+  <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       
@@ -276,7 +276,7 @@
         window.history.back();
       }
     </script>
-
+   </div>
 </body>
 
 </html>
