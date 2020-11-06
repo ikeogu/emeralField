@@ -561,7 +561,7 @@
           .then((response) => {
           this.student_mark= response.data.student
            this.class_ = response.data.t_class
-        }).then(data => {
+          }).then(data => {
             this.class_id = '';
             var self = this
             setTimeout(function() {
