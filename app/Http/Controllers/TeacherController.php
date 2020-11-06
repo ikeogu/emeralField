@@ -38,6 +38,6 @@ class TeacherController extends Controller
     }
     public function classt($id){
         $te = Teacher::find($id);
-        return view('teacher.classteacher',['classt'=> ClassTeacherResource::collection($te->classTeacher)]);
+        return view('teacher.classteacher',['classt'=> json_decode( ClassTeacherResource::collection($te->classTeacher))]);
     }
 }
