@@ -36,7 +36,7 @@
             <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-4 btn col-sm-4 btn-block btn-success ">Result </a>
             </div>
           </div> 
-        @elseif($class_T->status === 'Junior High School')
+        @elseif($class_T->status === 'Senior High School')
         <div class="row">
             <div class="col-4 d-flex ">
             <a href="{{route('cat1',[$student->id,$term->id,$class_T->id])}}" class="col-4 col-sm-4 btn btn-block btn-success">C.A.T 1</a>
