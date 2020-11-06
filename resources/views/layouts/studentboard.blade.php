@@ -46,7 +46,7 @@
       <div id="wrapper">
 
           <!-- Sidebar -->
-          <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+          <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
       
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -85,20 +85,7 @@
                   <i class="fas fa-fw fa-chart-area"></i>
                   <span>Biodata</span></a>
               </li>
-            
-            {{-- <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Current Class</span></a>
-            </li> --}}
-            <!-- Nav Item - Tables -->
-            {{-- <li class="nav-item">
-              <a class="nav-link" href="{{route('teachers.index')}}">
-                  <i class="fas fa-fw fa-table"></i>
-                  <span>Previous Class</span></a>
-              </li>
-              --}}
-              
+                        
             
       
             <!-- Divider -->
@@ -120,28 +107,23 @@
       
                   <!-- Topbar -->
                   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-              
-                      <!-- Sidebar Toggle (Topbar) -->
-                      
-                      <button onclick="goBack()" class=" btn btn-warning text-white rounded-circle mr-3">Go Back</button>
-
-
-              
-                      
-              
-                      <!-- Topbar Navbar -->
+                     <!-- Topbar Navbar -->
                       <ul class="navbar-nav ml-auto">
-              
-                          <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                          <li class="nav-item dropdown no-arrow d-sm-none">
-                          <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fas fa-search fa-fw"></i>
-                          </a>
-                          
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                          <i class="fa fa-bars"></i>
+                        </button>
+  
                         
-              
-                          
-                              
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+  
+                          <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                          <li class="nav-item">
+                            
+                            <!-- Dropdown - Messages -->
+                            <p id="demo" class="m-o text-bold"></p>
+                          </li>
+                          <!-- Topbar Navbar -->
               
                           <div class="topbar-divider d-none d-sm-block"></div>
               
@@ -233,7 +215,22 @@
       }
       </script>
 
-      
+<script>
+
+  var today = new Date()
+  var curHr = today.getHours()
+
+  if (curHr >= 0 && curHr < 6) {
+      document.getElementById("demo").innerHTML = 'What are you doing that early?';
+  } else if (curHr >= 6 && curHr < 12) {
+      document.getElementById("demo").innerHTML = 'Good Morning!';
+  } else if (curHr >= 12 && curHr < 17) {
+      document.getElementById("demo").innerHTML = 'Good Afternoon!';
+  } else {
+      document.getElementById("demo").innerHTML = 'Good Evening!';
+  }
+
+</script>
       
         
   <!-- Page Wrapper -->
