@@ -94,11 +94,8 @@ class StudentController extends Controller
     
     public function exam($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        // $students[] = (array) $class_std;
-        foreach ($dets['subject'] as $value) {
-            # code...
-            $EXAM_score = $value->exam;
-        }       
+        $EXAM_score = 50;
+              
         return view('results.exam',['students'=>$dets['students'], 'subject'=>$dets['subject'],'EXAM_score'=>$EXAM_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
     }
     public function grandTotal($term_id,$class_1){
@@ -123,7 +120,7 @@ class StudentController extends Controller
     }
     public function msc($term_id,$class_1){
         $dets = $this->details($term_id,$class_1);
-        $TCA_score = 10;
+        $TCA_score = 20;
         return view('results.msc',['students'=>$dets['students'], 'subject'=>$dets['subject'],'TCA_score'=>$TCA_score,'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
     }
     public function summative_sheet($student_id,$term_id,$class_id){
