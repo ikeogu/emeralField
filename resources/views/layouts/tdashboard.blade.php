@@ -39,7 +39,7 @@
     {{-- <!-- Styles -->
     
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -172,9 +172,9 @@
                         </ul>
                 
                     </nav>
-                    <main>
+                    <div id="app">
                         @yield('tboard')
-                    </main>
+                    </div>
                 </div>
                 <!-- End of Main Content -->
             
@@ -217,16 +217,22 @@
             </div>
           </div>
         </div>
-    </div> 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+        <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+      
+        <!-- Core plugin JavaScript-->
+        <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+      
+        <!-- Custom scripts for all pages-->
+        <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+      
+        <!-- Page level plugins -->
+        <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
+      
+        <!-- Page level custom scripts -->
+        <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
+        <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
     <script>
       function goBack() {
         window.history.back();
