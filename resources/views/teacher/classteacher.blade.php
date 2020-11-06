@@ -38,11 +38,17 @@
         <h6 class="m-0 font-weight-bold text-success">Notice</h6>
       </div>
       <div class="card-body">
-        <p>Oops!!</p>
+        <p>Oops!!    <span class="emoji">&#128512;</span></p>
         <p class="mb-0">Currently not a class Teacher.</p>
       </div>
     </div>
     @endif
 </div>
-
+ <style>
+   span.emoji {
+  font-size: 30px;
+  vertical-align: middle;
+  line-height: 2;
+}
+ </style>
 @endsection

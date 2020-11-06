@@ -127,12 +127,10 @@
                       <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
+                        <li class="nav-item">
                           
                           <!-- Dropdown - Messages -->
-                          <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                            <p id="demo"></p>
-                          </div>
+                          <p id="demo" class="m-o text-bold"></p>
                         </li>
                         <!-- Topbar Navbar -->
                         
