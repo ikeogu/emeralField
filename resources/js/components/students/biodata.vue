@@ -2,13 +2,13 @@
 
   <div id="postsrec" class="mt-5">
 
-    <div class="row jumbotron" style="margin-bottom: 20px;">
+    <div class="row jumbotron" style="margin-bottom: 10px;">
       
         <div class="col-lg-6">  
-            <h3>Welcome!</h3>
+            <h5>Welcome!</h5>
         </div>
         <div class="col-lg-6"> 
-             <h3>{{logged_in.surname}} {{logged_in.name}}</h3>
+             <h5>{{logged_in.surname}} {{logged_in.name}}</h5>
         </div>
         
       
