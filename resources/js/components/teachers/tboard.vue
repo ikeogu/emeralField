@@ -99,7 +99,7 @@
               <h6 class="m-0 font-weight-bold text-success">Subject Offered By Students</h6>
             </div>
             <div class="card-body">          
-              <div class="col-12 table-responsive" >
+              <div class="col-12 table-responsive" v-if="" >
                 <table  class="table" id="hide" v-if="seen">
                   <thead >
                     <th scope="col">Student</th>
@@ -140,6 +140,7 @@
                     </tr>
                     
                   </tbody>
+                  <span v-else> Students has not been assigned Your Subject.<br>Kindly meet The Class Teacher to assign your subject to students.</span>
                 </table>
               </div>
            </div>
@@ -434,7 +435,7 @@
           .get('https://emerald-field-school.herokuapp.com/api/teacher/'+this.item.class_id +'/assignclass/'+this.item.term_id +'/subject/'+this.s_id)
           .then(response => {
           this.student_mark= response.data.data
-        
+         console.log(this.student_mark)
         }).then(data => {
             this.class_id = '';
             var self = this

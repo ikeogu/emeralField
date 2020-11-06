@@ -221,9 +221,8 @@ class TermController extends Controller
       $students = SubjectMark::with('student','subject')->
       where('subject_id', $subject->id)->where('term_id', $term->id)->
       where('s5_class_id', $classes->id)->get();
-      return  SubjectMarkResource::collection($students);  
-      // return view('teacher/student_in_class',['students'=>json_encode($students),'t'=>$term,'classes'=>$classes]); 
-     
+      $data = ['student'=> SubjectMarkResource::collection($students),'t_class'=>$classes];
+      return  $data;
   
   }
  //Add student to their appropiate class and Term
