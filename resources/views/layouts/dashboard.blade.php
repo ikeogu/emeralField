@@ -81,7 +81,7 @@
       
       <!-- Nav Item - Pages Collapse Menu -->
      
-        @if(Auth::user()->isAdmin == 1)
+        @if(\Auth::user()->isAdmin == 1)
               
       <!-- Nav Item - Charts -->
       <li class="nav-item">
