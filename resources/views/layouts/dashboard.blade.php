@@ -50,7 +50,7 @@
   <div id="wrapper">
     
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       
@@ -80,7 +80,7 @@
 
       
       <!-- Nav Item - Pages Collapse Menu -->
-      @if(Auth::user()->isAdmin == 1)
+     
         
       
       <!-- Nav Item - Charts -->
@@ -136,7 +136,7 @@
             <span>Grade Settings</span></a>
       </li>
      
-      @endif
+    
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

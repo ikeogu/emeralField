@@ -207,7 +207,13 @@ class StudentController extends Controller
       }
       public function myClasses($id){
         $imstudent = Student::find($id);
-        return  S5ClassResource::collection($imstudent->s5class);
+        $stc = StudentTermClass::where('student_id',$imstudent->id)->get();
+        $arr = [];
+        foreach($stc as $class){
+          array_push($arr,$class->s5_class_id);
+        }
+        $myclass = S5Class::whereIn('id',$arr)->get();
+        return  S5ClassResource::collection($myclass);
       }
 
       public function search(Request $request){
