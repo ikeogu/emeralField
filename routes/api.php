@@ -100,6 +100,7 @@ Route::namespace('Api')->group(function () {
         Route::get('myclass/{id}','StudentController@myClasses');
         Route::get('studentsclass/{id}','S5ClassController@stud_classes');
         Route::get('studentSubject/{id}/term/{term}/class/{class}','SubjectController@studentsubjects');
+        Route::get('studentSubject_ct/{id}/term/{term}/class/{class}','SubjectController@studentsubjects_ct');
         Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
         
         

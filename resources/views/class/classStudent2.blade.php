@@ -99,7 +99,7 @@
         @endif
        
 
-    <student-class :terms="{{$terms}}" :t="{{$t}}" :m="{{$class_T}}"></student-class>
+    <student-class-ct :terms="{{$terms}}" :t="{{$t}}" :m="{{$class_T}}"></student-class-ct>
 
     </div>
 
