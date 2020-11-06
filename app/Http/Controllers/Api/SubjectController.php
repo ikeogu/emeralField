@@ -168,7 +168,7 @@ class SubjectController extends Controller
             return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
         }
         elseif(Auth::user()->isAdmin == 3){
-            return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
+            return  view('teacher/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
         }
         }
         
