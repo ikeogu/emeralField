@@ -7,8 +7,8 @@
 
 
 <div class="container-fluid table-responsive">
-
-    <table class="table table-bordered table-striped">
+     @if($classt->count() > 0)
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -31,8 +31,18 @@
           
           
         </tbody>
-      </table>
-
+     </table>
+     @else
+     <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-success">Notice</h6>
+      </div>
+      <div class="card-body">
+        <p>Oops!!</p>
+        <p class="mb-0">Currently not a class Teacher.</p>
+      </div>
+    </div>
+    @endif
 </div>
 
 @endsection
