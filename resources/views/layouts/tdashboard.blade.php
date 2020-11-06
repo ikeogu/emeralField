@@ -118,17 +118,17 @@
                 
                         <!-- Sidebar Toggle (Topbar) -->
                         <!-- Sidebar Toggle (Topbar) -->
-                      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                      <button id="sidebarToggleTop" class="btn btn-success d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                       </button>
-
+                      <button onclick="goBack()" class=" btn btn-warning text-white btn-block btn-sm">Go Back</button>
                       
                       <!-- Topbar Navbar -->
                       <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item">
-                          
+                          <button onclick="goBack()" class=" btn btn-warning text-white btn-block btn-sm">Go Back</button>
                           <!-- Dropdown - Messages -->
                           <p id="demo" class="m-o text-bold"></p>
                         </li>
