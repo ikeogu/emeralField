@@ -560,7 +560,7 @@
           .get('https://emerald-field-school.herokuapp.com/api/teacher/'+this.item.class_id +'/assignclass/'+this.item.term_id +'/subject/'+this.s_id)
           .then((response) => {
           this.student_mark= response.data.student
-           this.class_ = res.data.t_class
+           this.class_ = response.data.t_class
         }).then(data => {
             this.class_id = '';
             var self = this
