@@ -80,6 +80,8 @@
 
       
       <!-- Nav Item - Pages Collapse Menu -->
+      @if(Auth::user()->isAdmin == 1)
+        
       
       <!-- Nav Item - Charts -->
       <li class="nav-item">
@@ -134,7 +136,7 @@
             <span>Grade Settings</span></a>
       </li>
      
-
+      @endif
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

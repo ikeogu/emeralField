@@ -32,7 +32,7 @@
           </div> 
           <div class="card-body">
               <div v-for="cla in myClasses"  :key="cla.id"  class="row">
-                <div class="card col-lg-4 col-md-" style="width: 9rem; height: 9rem;">
+                <div class="card col-lg-4 col-md-4" style="width: 9rem; height: 9rem;">
                   <div class="card-body">
                     <p class="card-title" style="font-size:8px;">{{cla.name}}</p>
                     <p class="card-text" style="font-size:8px;">{{cla.description}}</p>
@@ -47,11 +47,9 @@
         <div class="card shadow mb-4 ">
           <div class="card-header py-3 row">
             <div class=" col-6">
-            <h6 class="m-0 font-weight-bold text-primary">Biodata</h6>
+            <h6 class="m-0 font-weight-bold text-success">Biodata</h6>
             </div>
-            <div class=" col-6">
-              <h6 class="m-0 font-weight-bold text-primary " >Class</h6>
-            </div>
+            
           </div> 
           <div class="card-body">
             <div class="">
