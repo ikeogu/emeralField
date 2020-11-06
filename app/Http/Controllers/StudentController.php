@@ -87,7 +87,8 @@ class StudentController extends Controller
             $SMT_score = $dets['term']->e_summative;
         return view('results.summative',['students'=>$dets['students'], 'subject'=>$dets['subject'],'SMT_score'=>$SMT_score,
         'grades'=>$dets['grades'],'term'=>$dets['term'],'class_'=>$dets['class_']]);
-        }   
+        }  
+        return back()->with('success', 'No class'); 
         
     }
     
@@ -146,16 +147,37 @@ class StudentController extends Controller
     }
     
     public function cat1($student_id,$term_id,$class_id){
+        if(Auth::check()){
         $dets = $this->det($student_id,$term_id,$class_id);
-        return view('results.cat1',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
-        'grades'=>$dets['grades']]);
+        $SMT_score = $dets['term']->h_cat1;
+        if(Auth::user()->isAdmin == 1){
+            return view('results.cat1',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'], 'SMT_score'=>$SMT_score]);
 
+        }
+        if(Auth::user()->isAdmin == 4){
+            return view('student.cat1',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+        'grades'=>$dets['grades'], 'SMT_score'=>$SMT_score]);
+
+        }
+      }
+        
     }
     public function cat2($student_id,$term_id,$class_id){
-        $dets = $this->det($student_id,$term_id,$class_id);
-        return view('results.cat2',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
-        'grades'=>$dets['grades']]);
+        if(Auth::check()){
+            $dets = $this->det($student_id,$term_id,$class_id);
+            $SMT_score = $dets['term']->h_cat2;
+            if(Auth::user()->isAdmin == 1){
+                return view('results.cat2',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+            'grades'=>$dets['grades'], 'SMT_score'=>$SMT_score]);
 
+            }
+            if(Auth::user()->isAdmin == 4){
+                return view('student.cat2',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
+            'grades'=>$dets['grades'], 'SMT_score'=>$SMT_score]);
+
+            }
+        }
     }
     
     public function result_sheet($student_id,$term_id,$class_id){
@@ -283,14 +305,16 @@ class StudentController extends Controller
     
     public function cat1_ct($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
+        $SMT_score = $dets['term']->h_cat1;
         return view('teacher.cat1',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
-        'grades'=>$dets['grades']]);
+        'grades'=>$dets['grades'],'SMT_score'=>$SMT_score]);
 
     }
     public function cat2_ct($student_id,$term_id,$class_id){
         $dets = $this->det($student_id,$term_id,$class_id);
+        $SMT_score = $dets['term']->h_cat2;
         return view('teacher.cat2',['student'=>$dets['student'],'term'=>$dets['term'],'class_'=>$dets['class_'],'scores'=>$dets['scores'],'users'=>$dets['users'],
-        'grades'=>$dets['grades']]);
+        'grades'=>$dets['grades'],'SMT_score'=>$SMT_score]);
 
     }
     

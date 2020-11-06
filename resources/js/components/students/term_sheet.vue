@@ -14,7 +14,7 @@
           <div class="card-header"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
-              <div class="row" v-if="student_details.level === 'High School'">
+              <div class="row" v-if="student_details.level === 'Junior High School'|| 'Senior High School'">
                
                 <div class="col-12 table-responsive">
                   <table  class="table-wrapper table table-striped" >

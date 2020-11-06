@@ -1,4 +1,4 @@
-@extends('layouts.studentboard')
+@extends('layouts.dashboard')
 
 @section('title', 'My term sheet')
 
@@ -45,7 +45,7 @@
           </div> 
         @endif
        
-            <term-sheet :s_details ="{{$student}}" :term="{{$term}}" :class_T="{{$class_T}}"></term-sheet>
+    <term-sheet :s_details ="{{$student}}" :term="{{$term}}" :class_T="{{$class_T}}"></term-sheet>
 
 </div>
 

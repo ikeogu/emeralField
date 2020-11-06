@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.studentboard')
 
 @section('title', 'Student Result SUMMATIVE TEST')
 
@@ -13,13 +13,19 @@
 @endsection  
 @section('content')
 
+
+
+
+       
+    
+    <!-- details table -->
         <section class="container my-5">
             <div class="d-flex justify-content-end">
-            <a href="{{route('dcat1',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
-            </div>
-            <div class="d-flex justify-content-center "><img src="{{asset('img/logo2.png')}}" height="80" width="auto"></div>
+				<a href="{{route('cat2',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i>Download</a>
+			</div>
+            <div class="d-flex justify-content-center py-4 mb-2"><img src="{{asset('img/logo2.png')}}" height="80" width="auto"></div>
             <strong class="d-flex justify-content-center">EMERALD FIELD SCHOOLS</strong>
-            <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST I</strong>
+            <strong class="d-flex justify-content-center ">CONTINUOUS ASSESSMENT TEST II</strong>
     
             <div class="col-12 col-md-8 p-0">
                 <table class="details-table table-sm">
@@ -66,7 +72,9 @@
                         </thead>
                         @php
                         $total = 0;
-                        $sum_total = 0;                      
+                        $sum_total = 0;
+                        
+                        
                         
                     @endphp  
                         <tbody>
@@ -75,12 +83,12 @@
                             <td>{{$key + 1}}</td>
                             <td class="text-lowercase">{{$item->subname}}</td>
                             
-                            <td>{{$item->CAT1}}</td>
+                            <td>{{$item->CAT2}}</td>
                             @php
-                                $total += $item->CAT1;
+                                $total += $item->CAT2;
                             @endphp 
                             
-                             <td>{{App\Student::c1_max_score($item->subject_id,$class_->id,$term->id)}}</td> 
+                             <td>{{App\Student::c2_max_score($item->subject_id,$class_->id,$term->id)}}</td>
                             <td>{{App\Student::average(App\Student::subAver($item->subject_id,$class_->id,$term->id),$users->count())}}</td>
                             </tr> 
                             @endforeach

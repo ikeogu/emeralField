@@ -13,7 +13,7 @@
           <div class="card-header bg-success text-white"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
-              <div class="row" v-if="this.class__.status === 'High School'">
+              <div class="row" v-if="this.class__.status === 'Junior High School' || 'Senior High School'">
                
                 <div class="col-12 table-responsive">
                   <table  class=" table-bordered table-striped" >

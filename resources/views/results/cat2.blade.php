@@ -73,7 +73,7 @@
                         @php
                         $total = 0;
                         $sum_total = 0;
-                        $SMT_score = 20;
+                        
                         
                         
                     @endphp  
