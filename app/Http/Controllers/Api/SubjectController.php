@@ -14,6 +14,7 @@ use App\SubjectMark;
 use App\Marks;
 use App\S5Class;
 use App\Term;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
 class SubjectController extends Controller
