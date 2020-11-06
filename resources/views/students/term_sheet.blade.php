@@ -24,7 +24,7 @@
             </div>
             
         </div>
-        @if ($class_T->status === 'High School')
+        @if ($class_T->status === 'Junior High School'||'Senior High School')
         <div class="row">
             <div class="col-4 d-flex ">
             <a href="{{route('cat1',[$student->id,$term->id,$class_T->id])}}" class="col-4 col-sm-4 btn btn-block btn-success">C.A.T 1</a>
@@ -39,7 +39,7 @@
         @else
         <div class="row">
             <a href="{{route('sum',[$student->id,$term->id,$class_T->id])}}" class="col-6 col-sm-6 btn btn-block btn-success">Summative </a>
-            <div class="col-6 d-flex justify-content-end">
+            <div class="col-md-6">
             <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-6  col-sm-6 btn btn-block btn-success ">Result </a>
             </div>
           </div> 
