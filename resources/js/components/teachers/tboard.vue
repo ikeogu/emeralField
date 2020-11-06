@@ -99,7 +99,7 @@
               <h6 class="m-0 font-weight-bold text-success">Subject Offered By Students in {{class_.name}} {{class_.description}}</h6>
             </div>
             <div class="card-body">          
-              <div class="col-12 table-responsive" v-if="class_.level =='Year School'" >
+              <div class="col-12 table-responsive" v-if="class_.status =='Year School'" >
                 <table  class="table" id="hide" v-if="seen">
                   <thead >
                     <th scope="col">Student</th>
@@ -143,7 +143,7 @@
                   <span v-else> Students has not been assigned Your Subject.<br>Kindly meet The Class Teacher to assign your subject to students.</span>
                 </table>
               </div>
-               <div class="col-12 table-responsive" v-if="class_.level =='Early Years'" >
+               <div class="col-12 table-responsive" v-if="class_.status =='Early Years'" >
                 <table  class="table" id="hide" v-if="seen">
                   <thead >
                     <th scope="col">Student</th>
@@ -187,7 +187,7 @@
                   <span v-else> Students has not been assigned Your Subject.<br>Kindly meet The Class Teacher to assign your subject to students.</span>
                 </table>
               </div>
-               <div class="col-12 table-responsive" v-if="class_.level =='Junior High School'" >
+               <div class="col-12 table-responsive" v-if="class_.status =='Junior High School'" >
                 <table  class="table" id="hide" v-if="seen">
                   <thead >
                     <th scope="col">Student</th>
@@ -227,7 +227,7 @@
                   <span v-else> Students has not been assigned Your Subject.<br>Kindly meet The Class Teacher to assign your subject to students.</span>
                 </table>
               </div>
-              <div class="col-12 table-responsive" v-if="class_.level =='Senior High School'" >
+              <div class="col-12 table-responsive" v-if="class_.status =='Senior High School'" >
                 <table  class="table" id="hide" v-if="seen">
                   <thead >
                     <th scope="col">Student</th>
