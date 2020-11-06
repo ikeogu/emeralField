@@ -45,10 +45,10 @@
 </head>
 
 <body id="page-top">
-   <div id="app">
+   
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+    <div id="app">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -226,7 +226,7 @@
 
     </div>
     <!-- End of Content Wrapper -->
-
+   </div>
   </div>
   <!-- End of Page Wrapper -->
 
@@ -253,7 +253,7 @@
       </div>
     </div>
   </div>
- </div>
+ 
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
