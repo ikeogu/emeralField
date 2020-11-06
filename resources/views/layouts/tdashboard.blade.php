@@ -24,7 +24,7 @@
     <title>{{ config('app.name', 'EmeraldField Schools') }} |
         @yield('title')
     </title>
-
+    @yield('style')
     <!-- Scripts -->
      <script src="{{ asset('js/app.js') }}" defer></script> 
 
@@ -128,7 +128,7 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item">
-                          <button onclick="goBack()" class=" btn btn-warning text-white btn-block btn-sm">Go Back</button>
+                         
                           <!-- Dropdown - Messages -->
                           <p id="demo" class="m-o text-bold"></p>
                         </li>
