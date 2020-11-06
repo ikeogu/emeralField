@@ -13,7 +13,54 @@
           <div class="card-header bg-success text-white"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
-              <div class="row" v-if="this.class__.status =='Junior High School' || 'Senior High School'">
+              <div class="row" v-if="this.class__.status =='Junior High School'">
+               
+                <div class="col-12 table-responsive">
+                  <table  class=" table-bordered table-striped" >
+                    <thead >
+                      <th>Subject</th>
+                        <th>CAT 1</th>
+                        <th>CAT 2</th>
+                        <th>MSC</th>
+                        <th>TCA</th>
+                        <th>Exam</th>
+                        <th>Grand Total</th>
+                         
+                    </thead>
+                    <tbody>
+        
+                      <tr v-for="marks in assignedSubjects" :key="marks.id" :subject_id="marks.subject_id">
+                         <td>{{marks.subname}}</td>
+                          <td>{{marks.CAT1}}</td>
+                           <td>{{marks.CAT2}}</td>
+                           <td>{{marks.MSC}}</td>
+                           <td>{{marks.TCA}}</td>
+                            <td>{{marks.Exam}}</td>
+                            <td>{{marks.GT}}</td>
+                       
+                          <td>  
+                            <!-- <a href="#"
+                                data-target="#exampleModal"
+                                data-toggle="modal"
+                                v-on:click="getSubjectID(subject.id)"
+                                class="btn btn-success" >Add Score
+                            </a> 
+                              <a href="#"
+                               v-on:click="editScore(marks.id)"
+                                data-target="#exampleModalEdit"
+                                data-toggle="modal"
+                                v-bind:title="marks.subject_id"
+                                class="btn btn-success">Edit
+                            </a>-->
+                            
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div> 
+              <div class="row" v-if="this.class__.status =='Senior High School'">
                
                 <div class="col-12 table-responsive">
                   <table  class=" table-bordered table-striped" >
