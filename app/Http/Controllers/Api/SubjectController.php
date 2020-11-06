@@ -156,14 +156,21 @@ class SubjectController extends Controller
     }
 
     public function studentsubjects($id,$term_id,$class_id){
-        
-        $marks = SubjectMark::where('student_id','=',$id)->where('s5_class_id',$class_id)->
+        if(Auth::check()){
+            $marks = SubjectMark::where('student_id','=',$id)->where('s5_class_id',$class_id)->
         where('term_id','=',$term_id)->with('subject')
         ->get();
         $student = Student::find($id);
         $term = Term::find($term_id);
-        $class_T = S5Class::find($class_id);    
-        return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
+        $class_T = S5Class::find($class_id);   
+        if(Auth::user()->isAdmin == 1){
+            return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
+        }
+        elseif(Auth::user()->isAdmin == 3){
+            return  view('students/sheet',['student'=>$student , 'data'=>json_encode($marks),'term'=>$term,'class_T'=>$class_T]);
+        }
+        }
+        
     }
 
     public function my_subjects($id,$term_id,$class_id){

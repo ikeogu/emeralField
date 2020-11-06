@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('ct_msc_sheet/{term}/class/{class}','StudentController@msc_ct')->name('msc_ct');
     Route::get('ct_grand_total/{term}/class/{class}','StudentController@grandTotal_ct')->name('gt_ct');
     Route::get('ct_tca/{term}/class/{class}','StudentController@tca_ct')->name('tca_ct');
-    Route::get('ct_summative/stud/{student}/term/{term}/class/{class}','StudentController@summative_sheet_ct')->name('sum_Ct');
+    Route::get('ct_summative/stud/{student}/term/{term}/class/{class}','StudentController@summative_sheet_ct')->name('sum_ct');
     Route::get('ct_cat/stud/{student}/term/{term}/class/{class}','StudentController@cat1_ct')->name('cat1_ct');
     Route::get('ct_cat2/stud/{student}/term/{term}/class/{class}','StudentController@cat2_ct')->name('cat2_ct');
     // Route::get('msc/stud/{student}/term/{term}/class/{class}','StudentController@msc')->name('msc');
