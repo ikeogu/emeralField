@@ -127,7 +127,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="text-left">a+ <span>(95 - 100%)</span> <span class="pl-3">a (90 - 94%)</span></td>
+                                <td class="text-left">b+ <span>(85 - 89%)</span> <span class="pl-3">b (80 - 84%)</span></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
