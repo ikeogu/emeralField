@@ -2,7 +2,7 @@
 
 @section('title', 'Student Result Exam ')
 
-@section('content')
+@section('tboard')
 
 
 <div class="container-fluid">

@@ -2,7 +2,7 @@
 
 @section('title', 'Total Continuous AssessMent')
 
-@section('content')
+@section('tboard')
 
 
 <div class="container-fluid" > 

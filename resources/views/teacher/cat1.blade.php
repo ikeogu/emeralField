@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('css/sumative.css')}}">
 
 @endsection  
-@section('content')
+@section('tboard')
 
         <section class="container my-5">
             <div class="d-flex justify-content-end">

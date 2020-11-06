@@ -2,7 +2,7 @@
 
 @section('title', 'GRAND TOTAL BROADSHEET')
 
-@section('content')
+@section('tboard')
 
 
 <div class="container-fluid">

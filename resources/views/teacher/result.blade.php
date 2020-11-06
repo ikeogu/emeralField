@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('css/result.css')}}">
 
 @endsection  
-@section('content')
+@section('tboard')
 
     <div class="d-flex justify-content-end">
         <a href="{{route('dr',[$student->id,$term->id,$class_->id])}}" type="button" class="btn btn-outline-success"><i class="fa fa-download" aria-hidden="true"></i>Download</a>

@@ -61,7 +61,7 @@
     }
 </style>
 @endsection  
-@section('content')
+@section('tboard')
 
     <!-- details table -->
         <section class="container my-5">

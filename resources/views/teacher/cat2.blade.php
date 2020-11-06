@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('css/sumative.css')}}">
 
 @endsection  
-@section('content')
+@section('tboard')
 
 
 
