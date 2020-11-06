@@ -45,7 +45,7 @@
 </head>
 
 <body id="page-top">
-  <div id="app">
+  
   <!-- Page Wrapper -->
   <div id="wrapper">
     
@@ -180,7 +180,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                {{-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span> --}}
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -202,11 +202,12 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-         
+          <div id="app">
           <!-- Content Row -->
           <div class="row">
             @yield('content')
             
+          </div>
           </div>
         </div>
         <!-- /.container-fluid -->
@@ -226,7 +227,7 @@
 
     </div>
     <!-- End of Content Wrapper -->
-   </div>
+   
   </div>
   <!-- End of Page Wrapper -->
 

@@ -34,8 +34,10 @@ import students from './components/students/index.vue';
  import Tboard from './components/teachers/tboard';
  import Stud from './components/teachers/stud_with_subject.vue';
  import classStudent from './components/class/classstudent.vue';
- 
- 
+ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+ import 'bootstrap/dist/css/bootstrap.css'
+ import 'bootstrap-vue/dist/bootstrap-vue.css'
+ import { BModal, VBModal } from 'bootstrap-vue'
  import Biodata from './components/students/biodata';
  import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
  import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
@@ -52,9 +54,9 @@ Vue.use(InfiniteScroll);
  Vue.use(VueRouter);
 Vue.component('pagination', require('laravel-vue-pagination'));
 
-
-// Vue.use(VueResource);
-// Vue.use(axios);
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios);
 Vue.use(VueAuthenticate, {
     baseUrl: 'https://emerald-field-school.herokuapp.com//', // Your API domain
