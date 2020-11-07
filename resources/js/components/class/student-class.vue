@@ -155,7 +155,7 @@
                             
                           <td>
 
-                            <a :href="'https://emerald-field-school.herokuapp.com/api/studentSubject_ct/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
+                            <a :href="'https://emerald-field-school.herokuapp.com/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
                             class="btn btn-warning text-white  ">View Subjects</a>
                           </td>
                   <td><a href="#" class="btn btn-success text-white"
