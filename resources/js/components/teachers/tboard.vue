@@ -296,7 +296,7 @@
                         <div class="form-group">
                           <label for="gender">Choose class</label>
                           <select class="form-control" name="class_name"  v-model="item.class_id">
-                                <option v-for="subject in class5 "  :key="subject.id" v-bind:value="subject.id">{{ subject.name }}</option>
+                                <option v-for="subject in class5 "  :key="subject.id" v-bind:value="subject.id">{{ subject.name }} |{{ subject.description }}</option>
                           </select>
                         </div>
                         <div class="form-group">
