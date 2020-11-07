@@ -1472,8 +1472,8 @@
           })
           .then(data => {
             this.subject_id = '';
-            this.assignedSubjectsList(student_id);
-            this.unassignedSubjectsList(student_id);
+            this.assignedSubjectsList(studentid);
+            this.unassignedSubjectsList(studentid);
             var self = this
             setTimeout(function() {
               self.succmsg = true
