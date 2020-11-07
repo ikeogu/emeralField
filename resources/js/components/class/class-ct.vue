@@ -1466,14 +1466,14 @@
       deleteSubject(studentid, subjectid) {
         this.$http
           .delete('https://emerald-field-school.herokuapp.com/api/students/'+studentid+'/deletesubject/'+subjectid+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
-            student_id: studentid,
-            subject_id: subjectid,
+            student_id: this.studentid,
+            subject_id: this.subjectid,
             
           })
           .then(data => {
-            this.subject_id = '';
-            this.assignedSubjectsList(studentid);
-            this.unassignedSubjectsList(studentid);
+            this.subjectid = '';
+            this.assignedSubjectsList(this.studentid);
+            this.unassignedSubjectsList(this.studentid);
             var self = this
             setTimeout(function() {
               self.succmsg = true

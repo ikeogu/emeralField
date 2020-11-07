@@ -516,6 +516,7 @@
             this.teacher.name = ''
             this.teacher.start_year= ''
             this.teacher.level = ''
+            this.teacher.status =''
            
             var self = this
             setTimeout(function() {

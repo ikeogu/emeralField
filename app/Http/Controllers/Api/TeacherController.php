@@ -103,9 +103,10 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        Teacher::whereId($request->teacher_id)->update($request->except(['_method','_token','teacher_id']));
     }
 
     /**
