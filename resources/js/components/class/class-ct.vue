@@ -108,7 +108,7 @@
                           <tr v-for="subject in assignedSubjects" :key="subject.id">
                             <th scope="row">{{ subject.name }}</th>
                             <td>{{subject.description}}</td>
-                            <td><a href="#" v-on:click="deleteSubject(this.student_id, subject.id)" >Delete</a></td>
+                            <td><a href="#" v-on:click="deleteSubject(student_id, subject.id)" >Delete</a></td>
                           </tr>
                         </tbody>
                         
@@ -1465,11 +1465,12 @@
      
       deleteSubject(studentid, subjectid) {
         this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/students/'+studentid+'/deletesubject/'+subjectid+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
-            student_id: studentid,
-            subject_id: subjectid,
+          .delete('https://emerald-field-school.herokuapp.com/api/students/'+this.student_id+'/deletesubject/'+subjectid+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+                  
+                  student_id: this.student_id,
+                  subject_id: subjectid,
             
-          })
+                  })
           .then(data => {
             this.subjectid = '';
             this.assignedSubjectsList(this.student_id);

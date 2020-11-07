@@ -632,7 +632,7 @@
       },
       deleteSubject(teacher_id, subid){
           this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/teachers/'+teacher_id+'/deletesubject/'+subid, {
+          .delete('https://emerald-field-school.herokuapp.com/api/teachers/'+this.teacher_id+'/deletesubject/'+subid, {
             teacher_id: this.teacher_id,
             subject_id: this.subid,
           })
