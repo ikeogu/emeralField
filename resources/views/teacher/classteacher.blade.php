@@ -20,7 +20,7 @@
         <tbody>
             @foreach ($classt as $key => $item)
             <tr>
-                <th scope="row">{{$key + 1}}</th>
+                <td scope="row">{{$key + 1}}</td>
                 <td>{{$item->term}}</td>
                 <td>{{$item->myclass}}</td>
                 <td>
