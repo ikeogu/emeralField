@@ -195,15 +195,13 @@ class StudentController extends Controller
 
       public function deleteSubject(Student $student, Subject $subject,$class_id, Term $term)
       {
-       
-        $sub = StudentSubject::where('student_id',$student->id)->where('term_id',$term->id)
-        ->where('s5_class_id',$class_id)->where('subject_id',$subject->id)->first();
+        $class_ = S5Class::find($class_id);
+        $term->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$class_->id));
         
+        $student->subjects()->detach($subject->id,array('term_id' => $term->id,'s5_class_id'=>$class_->id));
+
         $mark = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
         ->where('s5_class_id',$class_id)->where('subject_id',$subject->id)->first();
-        
-
-          $sub->delete();
           $mark->delete();
                 
       }
