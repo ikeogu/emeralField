@@ -56,7 +56,7 @@
                       
                      <option>Choose Status</option>
                      <option value="Corp member">Corp Member</option>
-                     <option valie="Full Staff">Full Staff</option>
+                     <option valie="Staff">Staff</option>
                     
                     </select>
                 </div>
@@ -65,10 +65,12 @@
                     <label for="address">Choose a Class</label>
                     <select class="form-control" name="level" v-model="teacher.level"  placeholder="Choose Class">
                       
-                     <option>Choose Level</option>
-                     <option value="High School">High School</option>
-                     <option valie="Year School">Year School</option>
+                     
                      <option value="Early Years">Early Years</option>
+                     <option value="Junior High School"> Junior High School</option>
+                     <option value="Senior High School"> Senior High School</option>
+                     <option valie="Year School">Year School</option>
+                     
                     </select>
                 </div>
                 <div class="form-group text-right">
@@ -114,7 +116,7 @@
                       
                      <option>Choose Status</option>
                      <option value="Corp member">Corp Member</option>
-                     <option valie="Full Staff">Full Staff</option>
+                     <option valie="Staff"> Staff</option>
                     
                     </select>
                 </div>
@@ -124,10 +126,11 @@
                     <label for="address">Choose a Class</label>
                     <select class="form-control" name="level" v-model="teacher.level"  placeholder="Choose Class">
                       
-                     <option>Choose Level</option>
-                     <option value="High School">High School</option>
-                     <option valie="Year School">Year School</option>
+                                          
                      <option value="Early Years">Early Years</option>
+                     <option value="Junior High School"> Junior High School</option>
+                     <option value="Senior High School"> Senior High School</option>
+                     <option valie="Year School">Year School</option>
                     </select>
                 </div>
                   
