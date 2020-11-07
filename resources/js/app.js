@@ -45,7 +45,8 @@ import students from './components/students/index.vue';
 //  Vue.prototype.$userId = document.querySelector("meta[name='user_id']").getAttribute('content');
 import moment from 'moment';
 import student_class_T from  './components/class/class-ct.vue';
-
+import _ from 'lodash'
+Vue.prototype._ = _
 
 
 
