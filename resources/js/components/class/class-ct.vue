@@ -108,7 +108,7 @@
                           <tr v-for="subject in assignedSubjects" :key="subject.id">
                             <th scope="row">{{ subject.name }}</th>
                             <td>{{subject.description}}</td>
-                            <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSub(student_id, subject.id)" data-toggle="modal">Delete</a></td>
+                            <td><a href="#" v-on:click="deleteSubject(student_id, subject.id)" >Delete</a></td>
                           </tr>
                         </tbody>
                         
@@ -434,30 +434,7 @@
             </div>
           </div>
       </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <p>Are you sure want to delete the record? </p>
-                </div>
-                <div class="form-group text-center">
-                  <button class="btn btn-success" v-on:click="hideModal()">Cancel</button>
-                </div>
-                <div class="form-group text-center">
-                  <button class="btn btn-success" v-on:click="deleteSubject()">Ok</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        
         <div class="modal fade" id="delModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1390,8 +1367,6 @@
         attend_id:'',
         query:'',
         results:{},
-        stud:'',
-        sub:'',
       }
     },
     computed: {
@@ -1487,20 +1462,15 @@
             }, 3000)
           })
       },
-      deleteSub(student_id, subject_id){
-        this.stud = student_id
-        this.sub = subject_id
-
-      },
-      deleteSubject() {
+     
+      deleteSubject(student_id, subject_id) {
         this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/students/'+this.stud+'/deletesubject/'+this.sub+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
-            student_id: this.stud,
-            subject_id: this.sub,
+          .delete('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+            student_id: student_id,
+            subject_id: subject_id,
           })
           .then(data => {
-            this.sub = '';
-            this.stud = '';
+            this.subject_id = '';
             this.assignedSubjectsList(student_id);
             this.unassignedSubjectsList(student_id);
             var self = this
