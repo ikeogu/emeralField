@@ -1274,7 +1274,7 @@
               </thead>
               <tbody >
                   
-                <tr  v-for="(st,index) in attendance" :key="st.id" >
+                <tr  v-for="(st,index) in orderedAttend" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ st.student}}</td>
                   <td>{{ st.dp}}</td>
@@ -1398,7 +1398,10 @@
           },
           orderedBehave: function () {
             return _.orderBy(this.behaviour, 'student')
-          }
+          },
+           orderedAttend: function () {
+            return _.orderBy(this.attendance, 'student')
+          },
     },
     
     methods: {
@@ -1519,7 +1522,7 @@
       fetchAttend(){
        this.$http.get('https://emerald-field-school.herokuapp.com/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.attendance = response.data.data;
-          console.log(this.attendance)
+         
        })
           
       },

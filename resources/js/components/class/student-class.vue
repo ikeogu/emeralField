@@ -124,8 +124,8 @@
         </div>
 
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Student List</h6>
+            <div class="card-header py-3 bg-success">
+              <h6 class="m-0 font-weight-bold text-white">Student List</h6>
             </div>
           <div class="card-body">
           <div class="table-responsive">
@@ -155,7 +155,7 @@
                             
                           <td>
 
-                            <a :href="'https://emerald-field-school.herokuapp.com/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
+                            <a :href="'https://emerald-field-school.herokuapp.com/api/studentSubject_ct/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
                             class="btn btn-warning text-white  ">View Subjects</a>
                           </td>
                   <td><a href="#" class="btn btn-success text-white"
@@ -199,7 +199,7 @@
               </thead>
               <tbody>
                   
-                <tr v-for="(st,index) in comments" :key="st.id" >
+                <tr v-for="(st,index) in orderedComment" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ st.student}}</td>
                   <td>{{ st.teacher}}</td>
@@ -254,7 +254,30 @@
                   <th> Shows respect and Kidness to all</th>
                   <th>Action</th>
                 </tr>
-                <tr v-else-if="myId.status =='Senior High School' || 'Junior High School'" :key="myId.id">
+                <tr v-else-if="myId.status =='Senior High School'" :key="myId.id">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Home work culture</th>
+                  <th>Class Attendance</th>
+                  <th>Care (School property)</th>
+                  <th>Responsibilty</th>
+                  <th> Honesty</th>
+                  <th> Initiative</th>
+                  <th> Leadership Role</th>
+                  <th> Dress Code</th>
+                  <th> Obeidence</th>
+                  <th> Politeness</th>
+                  <th> Team Sport</th>
+                  <th> Sociability</th>
+                  <th> Psychomotor Skill & Physical Skill</th>
+                  <th> Sport</th>
+                  <th> Note Completion</th>
+                  <th> Spoken English</th>
+                  <th> Musical Skill</th>
+                  <th> Craft</th>
+                  <th>Action</th>
+                </tr>
+                <tr v-else-if="myId.status =='Junior High School'" :key="myId.id">
                   <th>#</th>
                   <th>Name</th>
                   <th>Home work culture</th>
@@ -280,7 +303,7 @@
               </thead>
               <tbody v-if="myId.status =='Early Years'" :key="myId.id">
                   
-                <tr  v-for="(st,index) in behaviour" :key="st.id" >
+                <tr  v-for="(st,index) in orderedBehave" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ st.student}}</td>
                   <td>{{ st.pic}}</td>
@@ -304,7 +327,7 @@
               </tbody>
               <tbody v-if="myId.status =='Year School'" :key="myId.id">
                   
-                <tr  v-for="(st,index) in behaviour" :key="st.id" >
+                <tr  v-for="(st,index) in orderedBehave" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ st.student}}</td>
                   <td>{{ st.pic}}</td>
@@ -341,9 +364,42 @@
                  
                 
               </tfoot>
-              <tbody v-if="myId.status ==='High School'" :key="myId.id">
+              <tbody v-if="myId.status =='Junior High School'" :key="myId.id">
                   
-                <tr  v-for="(st,index) in behaviour" :key="st.id" >
+                <tr  v-for="(st,index) in orderedBehave" :key="st.id" >
+                  <th scope="row">{{ index + 1 }}</th>
+                  <td>{{ st.student}}</td>
+                  <td>{{ st.hwc}}</td>
+                  <td>{{ st.catt}}</td>
+                  <td>{{ st.care}}</td>
+                  <td>{{ st.res}}</td>
+                  <td>{{ st.Hon}}</td>
+                  <td>{{ st.init}}</td>
+                  <td>{{ st.lead}}</td>
+                  <td>{{ st.dressc}}</td>
+                  <td>{{ st.obey}}</td>
+                  <td>{{ st.pol}}</td>
+                  <td>{{ st.team}}</td>
+                  <td>{{ st.soc}}</td>
+                  <td>{{ st.psy}}</td>
+                  <td>{{ st.sport}}</td>
+                  <td>{{ st.notec}}</td>
+                  <td>{{ st.spoken}}</td>
+                  <td>{{ st.mus}}</td>
+                  <td>{{ st.craft}}</td>
+                <td>
+                  <a href="#" class="btn btn-success text-white"
+                       v-on:click="bevId(st.id)"
+                       data-target="#exampleModbev"
+                       data-toggle="modal"
+                       v-bind:title="st.name">Edit</a>
+                  </td>
+                       
+                </tr>
+              </tbody>
+               <tbody v-if="myId.status =='Senior High School'" :key="myId.id">
+                  
+                <tr  v-for="(st,index) in orderedBehave" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ st.student}}</td>
                   <td>{{ st.hwc}}</td>
@@ -458,7 +514,7 @@
           </div>
         </div>
 
-        <div  v-if="myId.status =='Senior High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div  v-if="myId.status === 'Senior High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -714,7 +770,7 @@
 
           </div>
         </div>
-        <div  v-if="myId.status =='Junior High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div  v-if="myId.status === 'Junior High School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -970,7 +1026,7 @@
 
           </div>
         </div>
-        <div  v-if="myId.status =='Year School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div  v-if="myId.status === 'Year School'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -1084,7 +1140,7 @@
           </div>
         </div>
 
-        <div  v-if="myId.status =='Early Years'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div  v-if="myId.status === 'Early Years'" :key="myId.id" class="modal fade" id="exampleModbev" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -1218,7 +1274,7 @@
               </thead>
               <tbody >
                   
-                <tr  v-for="(st,index) in attendance" :key="st.id" >
+                <tr  v-for="(st,index) in orderedAttend" :key="st.id" >
                   <th scope="row">{{ index + 1 }}</th>
                   <td>{{ st.student}}</td>
                   <td>{{ st.dp}}</td>
@@ -1295,23 +1351,9 @@
 </template>
 
 <script>
-// import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
-// import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
+   
 
-// import { AutoCompletePlugin } from '@syncfusion/ej2-vue-dropdowns';
 
-// import Vue from 'vue';
-// Vue.use(AutoCompletePlugin);
-// Vue.use(ButtonPlugin);
-
-// var itemVue = Vue.component("itemTemplate", {
-//   template: `<span><span class ='name'> {{data.name}}</span> <span class ='oname'> {{data.oname}}</span> <span class='surname'> {{data.surname}}</span></span>`,
-// });
-// var remoteData = new DataManager({
-//     url: 'https://emerald-field-school.herokuapp.com/api/allstudents',
-//     adaptor: new ODataV4Adaptor,
-//     crossDomain: true
-// });
   export default {
       
     data() {
@@ -1349,6 +1391,17 @@
         query:'',
         results:{},
       }
+    },
+    computed: {
+          orderedComment: function () {
+            return _.orderBy(this.comments, 'student')
+          },
+          orderedBehave: function () {
+            return _.orderBy(this.behaviour, 'student')
+          },
+           orderedAttend: function () {
+            return _.orderBy(this.attendance, 'student')
+          },
     },
     
     methods: {
@@ -1469,7 +1522,7 @@
       fetchAttend(){
        this.$http.get('https://emerald-field-school.herokuapp.com/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.attendance = response.data.data;
-          console.log(this.attendance)
+         
        })
           
       },
