@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class StudentSubject extends Model
 {
     //
-    protected $table = 'student_subject';
+    protected $table = 'subject_term';
 }
