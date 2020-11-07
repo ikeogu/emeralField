@@ -200,10 +200,10 @@ class StudentController extends Controller
         ->where('s5_class_id',$class_id)->where('subject_id',$subject->id)->first();
         if($sub !== null){
           $sub->delete();
-          return response()->json(['message'=> 'Subject ',200]);
+          return response()->json(['message'=> 'Subject deleted',200]);
         
         }
-        return response()->json(['message'=> 'Teacher Not found',404]);
+        return response()->json(['message'=> 'Subject Not found',404]);
         
       }
       
