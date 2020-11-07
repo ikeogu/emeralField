@@ -1463,11 +1463,12 @@
           })
       },
      
-      deleteSubject(student_id, subject_id) {
+      deleteSubject(studentid, subjectid) {
         this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
-            student_id: student_id,
-            subject_id: subject_id,
+          .delete('https://emerald-field-school.herokuapp.com/api/students/'+studentid+'/deletesubject/'+subjectid+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+            student_id: studentid,
+            subject_id: subjectid,
+            
           })
           .then(data => {
             this.subject_id = '';

@@ -228,41 +228,52 @@ class TermController extends Controller
  //Add student to their appropiate class and Term
   public function add_student_term(Student $student, Term $term, $s5class){
     $class_ = S5Class::find($s5class);
-    $studentTerm = new StudentTerm();
-    $comment = new Comment();
-    $behaviour = new BehaviourChart();
-    $attend = new Attendance();
+    
     $class_teacher = ClassTeacher::where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
 
     if($class_teacher != null) {
       //code...
-      $studentTerm->term_id = $term->id;
-      $studentTerm->s5_class_id = $class_->id;
-      $studentTerm->student_id = $student->id;
-      $studentTerm->subject_id = 17;
-      // add teacher and student to Term and ...
-      
-      $comment->term_id = $studentTerm->term_id;
-      $comment->s5_class_id = $studentTerm->s5_class_id;
-      $comment->student_id = $studentTerm->student_id;
-      $comment->teacher_id = $class_teacher->teacher_id;
-      $comment->comment = '';
-      $comment->hcomment = '';
-      $behaviour->term_id = $studentTerm->term_id;
-      $behaviour->s5_class_id = $studentTerm->s5_class_id;
-      $behaviour->student_id = $studentTerm->student_id;
-      // attendance
-      $attend->term_id = $studentTerm->term_id;
-      $attend->s5_class_id = $studentTerm->s5_class_id;
-      $attend->student_id = $studentTerm->student_id;
 
-      
-      if($studentTerm->save()){
-        $attend->save();
-        $behaviour->save();
-        $comment->save();
+      $studentTerm = StudentTerm::where('term_id', '=', $term->id)->where('student_id','=',$student->id)
+      ->where('s5_class_id','=',$class_->id)->first();
+      if($studentTerm === null ){
+        $studentTerm = new StudentTerm();
+        $comment = new Comment();
+        $behaviour = new BehaviourChart();
+        $attend = new Attendance();
+
+        
+        $studentTerm->term_id = $term->id;
+        $studentTerm->s5_class_id = $class_->id;
+        $studentTerm->student_id = $student->id;
+        $studentTerm->subject_id = 17;
+        // add teacher and student to Term and ...
+        
+        $comment->term_id = $studentTerm->term_id;
+        $comment->s5_class_id = $studentTerm->s5_class_id;
+        $comment->student_id = $studentTerm->student_id;
+        $comment->teacher_id = $class_teacher->teacher_id;
+        $comment->comment = '';
+        $comment->hcomment = '';
+        $behaviour->term_id = $studentTerm->term_id;
+        $behaviour->s5_class_id = $studentTerm->s5_class_id;
+        $behaviour->student_id = $studentTerm->student_id;
+        // attendance
+        $attend->term_id = $studentTerm->term_id;
+        $attend->s5_class_id = $studentTerm->s5_class_id;
+        $attend->student_id = $studentTerm->student_id;
+
+        
+        if($studentTerm->save()){
+          $attend->save();
+          $behaviour->save();
+          $comment->save();
+        }
+        return $studentTerm;
+      }else{
+        return response()->json('success', 'Student has been assigned to class Already!');
       }
-      return $studentTerm;
+
     }else {
        return response()->json('success', 'Teacher has Not been assigned to a class');
     }

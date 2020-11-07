@@ -212,12 +212,23 @@ class SubjectMarkController extends Controller
                 }
             }
             // find another way to update and create new average
-            $avg = new Average();
-            $avg->aver_ = $total /$stud->subjectMark->count();
-            $avg->student_id = $stud->id;
-            $avg->s5_class_id = $class_->id;
-            $avg->term_id = $term->id;
-            $avg->save();
+            $avg = Average::where('student_id',$stud->id)->where('s5_class_id',$class_)->where('term_id',$term->id)->first();
+            if($avg === null){
+                $avg = new Average();
+                $avg->aver_ = $total /$stud->subjectMark->count();
+                $avg->student_id = $stud->id;
+                $avg->s5_class_id = $class_->id;
+                $avg->term_id = $term->id;
+                $avg->save();
+            }else{
+               
+                $avg->aver_ = $total /$stud->subjectMark->count();
+                $avg->student_id = $stud->id;
+                $avg->s5_class_id = $class_->id;
+                $avg->term_id = $term->id;
+                $avg->save();
+            }
+            
         
     }
 
