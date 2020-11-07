@@ -198,7 +198,7 @@ class TermController extends Controller
         foreach($student_id as $id){
           array_push($ids,$id->student_id);
         } 
-        $students = Student::whereIn('id',$ids)->get();
+        $students = Student::whereIn('id',$ids)->orderBy('name', 'ASC')->get();
         return view('class/studentClass',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
   }
   public function students_in_term2($id,$class_id){
@@ -210,7 +210,7 @@ class TermController extends Controller
     foreach($student_id as $id){
       array_push($ids,$id->student_id);
     } 
-    $students = Student::whereIn('id',$ids)->get();
+    $students = Student::whereIn('id',$ids)->orderBy('name', 'ASC')->get();
     return view('class/classStudent2',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
 }
   public function term_class_t($class_id, $term,$subject_id){

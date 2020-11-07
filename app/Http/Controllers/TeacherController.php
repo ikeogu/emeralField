@@ -36,6 +36,7 @@ class TeacherController extends Controller
     public function sub_class(){
         return view('teacher/student_in_class');
     }
+    // fix you later
     public function classt($id){
         $te = Teacher::find($id);
         $ct = ClassTeacher::where('teacher_id',$te->id)->get();
