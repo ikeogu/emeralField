@@ -18,6 +18,7 @@ use App\StudentTermClass;
 use App\User;
 use App\Term;
 use App\S5Class;
+use App\StudentSubject;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -194,8 +195,10 @@ class StudentController extends Controller
 
       public function deleteSubject(Student $student, Subject $subject,$class_id, Term $term)
       {
-        $student->subjects()->detach($subject->id,array('term_id' => $term->id,'s5_class_id'=>$class_id));
-        $term->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$class_id));
+       
+        $sub = StudentSubject::where('student_id',$student->id)->where('term_id',$term->id)
+        ->where('s5_class_id',$class_id)->where('subject_id',$subject->id)->first();
+        $sub->delete();
       }
       
 
