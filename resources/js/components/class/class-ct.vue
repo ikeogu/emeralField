@@ -108,7 +108,7 @@
                           <tr v-for="subject in assignedSubjects" :key="subject.id">
                             <th scope="row">{{ subject.name }}</th>
                             <td>{{subject.description}}</td>
-                            <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSubject(student_id, subject.id)" data-toggle="modal">Delete</a></td>
+                            <td><a href="#" data-target="#exampleModal2" v-on:click="deleteSub(student_id, subject.id)" data-toggle="modal">Delete</a></td>
                           </tr>
                         </tbody>
                         
@@ -1390,6 +1390,8 @@
         attend_id:'',
         query:'',
         results:{},
+        stud:'',
+        sub:'',
       }
     },
     computed: {
@@ -1485,14 +1487,20 @@
             }, 3000)
           })
       },
-      deleteSubject(student_id, subject_id) {
+      deleteSub(student_id, subject_id){
+        this.stud = student_id
+        this.sub = subject_id
+
+      },
+      deleteSubject() {
         this.$http
-          .delete('https://emerald-field-school.herokuapp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
-            student_id: this.student_id,
-            subject_id: this.subject_id,
+          .delete('https://emerald-field-school.herokuapp.com/api/students/'+this.stud+'/deletesubject/'+this.sub+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+            student_id: this.stud,
+            subject_id: this.sub,
           })
           .then(data => {
-            this.subject_id = '';
+            this.sub = '';
+            this.stud = '';
             this.assignedSubjectsList(student_id);
             this.unassignedSubjectsList(student_id);
             var self = this
