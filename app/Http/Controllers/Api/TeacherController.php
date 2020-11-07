@@ -176,6 +176,13 @@ class TeacherController extends Controller
     return  ClassTeacherResource::collection(ClassTeacher::where('teacher_id',$classTeacher->teacher_id)->get());
 
   }
+  public function removeClassTeacher($teacherid){
+  
+    $classTeacher = ClassTeacher::find($teacherid);
+    
+    $classTeacher->delete();
+    
+  }
   public function t_class($teacherid){
     $te = Teacher::find($teacherid);
     $ct = ClassTeacher::where('teacher_id',$te->id)->get();

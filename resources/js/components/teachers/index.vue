@@ -303,7 +303,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal  ofassigned classes-->
          <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -323,12 +323,17 @@
                            <th>#</th>
                             <th>Class</th>
                             <th> Term</th>
+                            <th> Action</th>
                           </thead>
                           <tbody>
                           <tr v-for="(m,index) in mclass" :key="m.id">
                            <td>{{index + 1}}</td>
                             <td>{{m.myclass}}</td>
                             <td>{{m.term}}</td>
+                            <td>
+                               <a href="#" class="btn btn-danger text-white" v-on:click="removeClassTeacher(m.id)" 
+                               v-bind:id="id">Delete</a>
+                            </td>
                           </tr>
                           </tbody>
                         </table>
@@ -345,7 +350,7 @@
           </div>
         </div>
   
-    <!-- Modal -->
+    <!-- Modal  to assign class-->
         <div class="modal fade" id="exampleModal123" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -629,6 +634,24 @@
             
             
           })
+      },
+      removeClassTeacher(Tid){
+        this.$http.delete('https://emerald-field-school.herokuapp.com/api/removeClassTeacher/' +Tid).then(data => {
+          this.succmsg = false
+          var self = this
+          setTimeout(function() {
+            self.succmsg = true
+          }, 3000)
+
+          this.actionmsg = 'Class Teacher removed successfully'
+          this.teacherLists(this.pagenumber)
+          $('#exampleModa').modal('hide')
+          $('body')
+            .removeClass()
+            .removeAttr('style')
+          $('.modal-backdrop').remove()
+        })
+    
       },
       deleteSubject(teacher_id, subid){
           this.$http
