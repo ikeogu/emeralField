@@ -264,7 +264,7 @@ class TermController extends Controller
       }
       return $studentTerm;
     }else {
-       return back()->with('success', 'Teacher has Not been assigned to a class');
+       return response()->json('success', 'Teacher has Not been assigned to a class');
     }
    
     //  check what happens after adding a child
