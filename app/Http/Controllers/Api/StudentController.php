@@ -198,7 +198,13 @@ class StudentController extends Controller
        
         $sub = StudentSubject::where('student_id',$student->id)->where('term_id',$term->id)
         ->where('s5_class_id',$class_id)->where('subject_id',$subject->id)->first();
-        $sub->delete();
+        if($sub !== null){
+          $sub->delete();
+          return response()->json(['message'=> 'Subject ',200]);
+        
+        }
+        return response()->json(['message'=> 'Teacher Not found',404]);
+        
       }
       
 

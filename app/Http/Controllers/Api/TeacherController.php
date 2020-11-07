@@ -119,8 +119,11 @@ class TeacherController extends Controller
     {
         //
         $teacher = Teacher::find($id);
-        $teacher->delete();
-        return new TeacherResource($id);
+        if($teacher !== null){
+          $teacher->delete();
+        }
+       
+        return response()->json(['message'=> 'Teacher Not found',404]);
     }
 
     
