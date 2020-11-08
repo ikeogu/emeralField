@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\ClassTeacher;
 use App\Http\Resources\ClassTeacherResource;
+use App\S5Class;
 use Illuminate\Http\Request;
 use App\Teacher;
+use App\Term;
 use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
@@ -40,7 +42,16 @@ class TeacherController extends Controller
     public function classt($id){
         $te = Teacher::find($id);
         $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-        dd(ClassTeacherResource::collection($ct));
-        return view('teacher.classteacher',['classt'=> ClassTeacherResource::collection($ct)]);
+        $t = [];
+        $cl = [];
+        foreach ($ct as $key => $value) {
+            # code...
+            array_push($t, $value->term_id);
+            
+            array_push($cl, $value->s5_class_id);
+        }
+        $ter = Term::with('classes')->whereIn('id',$t)->get();
+        // $cla = S5Class::whereIn('id',$cl)->get();
+        return view('teacher.classteacher',['classt'=>$ter ]);
     }
 }
