@@ -42,16 +42,7 @@ class TeacherController extends Controller
     public function classt($id){
         $te = Teacher::find($id);
         $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-        $t = [];
-        $cl = [];
-        foreach ($ct as $key => $value) {
-            # code...
-            array_push($t, $value->term_id);
-            
-            array_push($cl, $value->s5_class_id);
-        }
-        $ter = Term::with('classes')->whereIn('id',$t)->get();
-        // $cla = S5Class::whereIn('id',$cl)->get();
-        return view('teacher.classteacher',['classt'=>$ter ]);
+    
+        return view('teacher.classteacher',['classt'=>ClassTeacherResource::collection($ct) ]);
     }
 }

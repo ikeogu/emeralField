@@ -329,7 +329,7 @@
                           <tr v-for="(m,index) in mclass" :key="m.id">
                            <td>{{index + 1}}</td>
                             <td>{{m.myclass}}</td>
-                            <td>{{m.term}}</td>
+                            <td>{{m.term_}}</td>
                             <td>
                                <a href="#" class="btn btn-danger text-white" v-on:click="removeClassTeacher(m.id)" 
                                v-bind:id="id">Delete</a>

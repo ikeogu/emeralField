@@ -271,11 +271,11 @@ class TermController extends Controller
         }
         return $studentTerm;
       }else{
-        return response()->json('success', 'Student has been assigned to class Already!');
+        return response()->json('message', 'Student has been assigned to class Already!');
       }
 
     }else {
-       return response()->json('success', 'Teacher has Not been assigned to a class');
+       return response()->json('message', 'Teacher has Not been assigned to a class');
     }
    
     //  check what happens after adding a child
