@@ -237,8 +237,11 @@ class StudentController extends Controller
         $student = Student::find($id);
         $term = Term::find($term_id);
         $class = S5Class::find($class_id);
-             
-        return  view('students/term_sheet',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);
+        if(Auth::user()->isAdmin == 1){
+          return  view('students/term_sheet',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);
+        }
+        return  view('students/term_sheet2',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);  
+        
       }
 
       

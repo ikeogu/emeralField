@@ -36,7 +36,7 @@
             <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-4 btn col-sm-4 btn-block btn-success ">Result </a>
             </div>
           </div> 
-        @elseif($class_T->status === 'Year School' || $class_T->status === 'Year School')
+        @elseif($class_T->status === 'Year School')
         <div class="row">
             <div class="row">
                 <a href="{{route('sum',[$student->id,$term->id,$class_T->id])}}" class="col-6 col-sm-6 btn btn-block btn-success">Summative </a>
@@ -44,7 +44,13 @@
                 <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-6  col-sm-6 btn btn-block btn-success ">Result </a>
                 </div>
               </div> 
-         
+          @elseif($class_T->status === 'Early Years')
+          <div class="row">
+            <a href="{{route('sum',[$student->id,$term->id,$class_T->id])}}" class="col-6 col-sm-6 btn btn-block btn-success">Summative </a>
+            <div class="col-md-6">
+            <a href="{{route('result',[$student->id,$term->id,$class_T->id])}}" class="col-6  col-sm-6 btn btn-block btn-success ">Result </a>
+            </div>
+          </div> 
         @endif
        
     <term-sheet :s_details ="{{$student}}" :term="{{$term}}" :class_T="{{$class_T}}"></term-sheet>
