@@ -42,7 +42,7 @@ class TeacherController extends Controller
     public function classt($id){
         $te = Teacher::find($id);
         $ct = ClassTeacher::where('teacher_id',$te->id)->get();
-        $classt = ClassTeacherResource::collection($ct);
+        $classt = new ClassTeacherResource($ct);
         return view('teacher.classteacher',[ 'classt'=>$classt->toArray()]);
     }
 }
