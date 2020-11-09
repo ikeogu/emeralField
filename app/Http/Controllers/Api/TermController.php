@@ -202,12 +202,12 @@ private function getStudentsInClass($id,$class_id){
 }
   public function students_in_term($id,$class_id){
     $data = $this->getStudentsInClass($id,$class_id);
-    return view('class/studentClass',['terms'=>$data['students'],'t'=>$data['term'],'class_t'=>$data['class_T']]);
+    return view('class/studentClass',['terms'=>$data['students'],'t'=>$data['term'],'class_T'=>$data['class_t']]);
   }
   public function students_in_term2($id,$class_id){
     $data = $this->getStudentsInClass($id,$class_id);
     //dd($data);
-    return view('class/studentClass2',['terms'=>$data['students'],'t'=>$data['term'],'class_T'=>$data['class_t']]);;
+    return view('class/classStudent2',['terms'=>$data['students'],'t'=>$data['term'],'class_T'=>$data['class_t']]);;
 }
   public function term_class_t($class_id, $term,$subject_id){
    //visit here later if there is any future modification to make 
