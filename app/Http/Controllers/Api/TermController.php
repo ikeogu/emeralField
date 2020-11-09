@@ -189,29 +189,24 @@ class TermController extends Controller
     return  new S5ClassResourceCollection($classes->term);
   }
 // this function fetches each student from the appropiate class and term
+private function getStudentsInClass($id,$class_id){
+  $term = Term::find($id);
+  $class_T = S5Class::find($class_id);
+  $student_id = StudentTerm::where('s5_class_id', $class_id)->where('term_id',$id)->get();
+  $ids = array();
+  foreach($student_id as $id){
+    array_push($ids,$id->student_id);
+  } 
+  $students = Student::whereIn('id',$ids)->orderBy('name', 'ASC')->get();
+  return ['term'=>$term,'class_t'=>$class_T,'students'=>$students];
+}
   public function students_in_term($id,$class_id){
-
-        $term = Term::find($id);
-        $class_T = S5Class::find($class_id);
-        $student_id = StudentTerm::where('s5_class_id', $class_id)->where('term_id',$id)->get();
-        $ids = array();
-        foreach($student_id as $id){
-          array_push($ids,$id->student_id);
-        } 
-        $students = Student::whereIn('id',$ids)->orderBy('name', 'ASC')->get();
-        return view('class/studentClass',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
+    $data = $this->getStudentsInClass($id,$class_id);
+    return view('class/studentClass',['terms'=>$data['students'],'t'=>$data['term'],'class_T'=>$data['class_T']]);
   }
   public function students_in_term2($id,$class_id){
-
-    $term = Term::find($id);
-    $class_T = S5Class::find($class_id);
-    $student_id = StudentTerm::where('s5_class_id', $class_id)->where('term_id',$id)->get();
-    $ids = array();
-    foreach($student_id as $id){
-      array_push($ids,$id->student_id);
-    } 
-    $students = Student::whereIn('id',$ids)->orderBy('name', 'ASC')->get();
-    return view('class/classStudent2',['terms'=>$students,'t'=>$term,'class_T'=>$class_T]);
+    $data = $this->getStudentsInClass($id,$class_id);
+    return view('class/studentClass2',['terms'=>$data['students'],'t'=>$data['term'],'class_T'=>$data['class_T']]);;
 }
   public function term_class_t($class_id, $term,$subject_id){
    //visit here later if there is any future modification to make 
@@ -307,5 +302,5 @@ class TermController extends Controller
     
     return view('class.classStudent',['students'=>json_encode($class_std),'t'=>$term_,'class_'=>$class_]);
   }
-  
+  //
 }

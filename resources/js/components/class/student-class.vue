@@ -2,7 +2,11 @@
 
   <div id="postsrec" class="mt-5">
     <div class="row mt-5">
-      <div class="col-lg-12 text-right" style="margin-bottom: 20px;">
+      <div class="col-lg-6 text-right" style="margin-bottom: 20px;">
+        <a href="#" v-on:click="assignSubjectToMyStudents()"
+           class="btn btn-info">Assign Subjects To All</a>
+      </div>
+       <div class="col-lg-6 text-right" style="margin-bottom: 20px;">
         <a href="#"
            data-target="#exampleModalCenter"
            data-toggle="modal"
@@ -1483,6 +1487,21 @@
             setTimeout(function() {
               self.succmsg = true
             }, 3000)
+          })
+      },
+      assignSubjectToMyStudents(){
+        this.$http
+          .post('https://emerald-field-school.herokuapp.com/api/assign_all_subjects_to_students/'+this.T_id.id+'/class/'+this.myId.id, {
+            class_id: this.T_id.id,
+            term_id : this.T_id.id
+          })
+          .then(data => {
+            this.subject_id = '';
+            var self = this
+            setTimeout(function() {
+              self.succmsg = true
+            }, 3000)
+            this.actionmsg = 'All Subjects assigned successfully!'
           })
       },
       deleteSubject(student_id, subject_id) {

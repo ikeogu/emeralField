@@ -103,6 +103,7 @@ Route::namespace('Api')->group(function () {
         Route::get('studentSubject_ct/{id}/term/{term}/class/{class}','SubjectController@studentsubjects_ct');
         Route::get('my_subjects/{student}/class/{class}/term/{term}','StudentController@my_record');
         Route::delete('removeClassTeacher/{classteacher}','TeacherController@removeClassTeacher');
+        Route::post('assign_all_subjects_to_students/{term}/class/{class}','StudentController@assignSubjectToMyStudent');
         
     Route::middleware('auth:api', 'throttle:60,1')->group(function () {
        

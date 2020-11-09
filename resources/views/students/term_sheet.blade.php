@@ -1,8 +1,8 @@
-@extends('layouts.studentboard')
+@extends('layouts.dashboard')
 
 @section('title', 'My term sheet')
 
-@section('sboard')
+@section('content')
 
 <div class="container-fluid">
     

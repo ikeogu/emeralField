@@ -251,7 +251,7 @@
                 </thead>
               
                 <tbody>
-                    <tr v-for="(teacher, index) in laravelData.data" :key="teacher.id">
+                    <tr v-for="(teacher, index) in orderedTeachers" :key="teacher.id">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ teacher.name }}</td>
                     <td>{{ teacher.start_year}}</td>
@@ -369,7 +369,7 @@
                         <div class="form-group">
                           <label for="gender">Choose class</label>
                           <select class="form-control" name="class_name" v-model="item.class_id">
-                                <option v-for="classes in laravelClassData "  :key="classes.id" v-bind:value="classes.id">
+                                <option v-for="classes in orderedclasses "  :key="classes.id" v-bind:value="classes.id">
                                 {{ classes.name }} {{ classes.description }}
                                 </option>
                           </select>
@@ -439,6 +439,15 @@
         actionmsg: ''
       }
     },
+    computed: {
+          orderedclasses: function () {
+            return _.orderBy(this.laravelClassData, 'name')
+          },
+           orderedTeachers: function () {
+            return _.orderBy(this.laravelData, 'name')
+          },
+          
+    },
     ready: function() {
       this.fetchClasses();
       },
@@ -460,7 +469,7 @@
         }
         this.$http.get('https://emerald-field-school.herokuapp.com/api/teachers?page=' + page).then(response => {
           //this.posts = response.data.data;
-          this.laravelData = response.data
+          this.laravelData = response.data.data
           console.log(this.laravelData)
           this.pagenumber = page
         })

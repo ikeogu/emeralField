@@ -19,7 +19,9 @@ use App\User;
 use App\Term;
 use App\S5Class;
 use App\StudentSubject;
+use App\StudentTerm;
 use DB;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 class StudentController extends Controller
@@ -192,7 +194,36 @@ class StudentController extends Controller
               $subject->subjectMark()->save($mark);
               $class_->subjectMark()->save($mark);  
       }
-
+      // assign subjects to all my student.
+      public function assignSubjectToMyStudent($term, $s5class)
+      {
+        $data = Student::getStudentsInClass($term,$s5class);
+        $subjects = Subject::where('level',$data['class_T']->status)->get();
+        foreach($data['students'] as $student){
+          
+          foreach($subjects as $subject){
+            $studentterm = StudentTerm::where('student_id',$student->id)->where('term_id',$data['term']->id)->
+            where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
+            if($studentterm === null){
+              $data['term']->subject()->attach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$data['class_T']->id));
+              $student->subjects()->attach($subject->id,array('term_id' => $data['term']->id,'s5_class_id'=>$data['class_T']->id));
+              
+              $mark = new SubjectMark();
+              $mark->student_id = $student->id;
+              $mark->subject_id = $subject->id;
+              $mark->subname = $subject->name;
+              $mark->term_id = $term->id;
+              $mark->s5_class_id= $data['class_T']->id;
+              $student->subjectMark()->save($mark);
+              $subject->subjectMark()->save($mark);
+              $data['class_T']->subjectMark()->save($mark); 
+            }
+           
+          }
+                      
+        }
+         
+      }
       public function deleteSubject(Student $student, Subject $subject,$class_id, Term $term)
       {
         $class_ = S5Class::find($class_id);
@@ -234,14 +265,17 @@ class StudentController extends Controller
       }
 
       public function my_record($id, $class_id, $term_id){
+        Auth::check();
         $student = Student::find($id);
         $term = Term::find($term_id);
         $class = S5Class::find($class_id);
-        if(Auth::user()->isAdmin == 1){
+        if(Auth::user()->isAdmin === 1){
           return  view('students/term_sheet',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);
-        }
-        return  view('students/term_sheet2',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);  
+        }elseif(Auth::user()->isAdmin === 4){
+          return  view('students/term_sheet2',['student'=>$student ,'class_T'=>$class, 'term'=>$term]);  
         
+        }
+       
       }
 
       

@@ -239,7 +239,7 @@
                   
                 </thead>
                 <tbody>
-                  <tr v-for="(sub,index) in laravelData.data" :key="sub.id">
+                  <tr v-for="(sub,index) in subjects" :key="sub.id">
                     <td>{{ index + 1 }}</td>
                     <td>{{ sub.name }}</td>
                     <td>{{ sub.description }}</td>
@@ -303,6 +303,12 @@
         actionmsg: ''
       }
     },
+    computed: {
+          orderedSubject: function () {
+            return _.orderBy(this.laravelData, 'name')
+          },
+          
+    },
     methods: {
       subjectLists(page) {
         if (typeof page === 'undefined') {
@@ -310,7 +316,7 @@
         }
         this.$http.get('https://emerald-field-school.herokuapp.com/api/subjects?page=' + page).then(response => {
           //this.posts = response.data.data;
-          this.laravelData = response.data
+          this.laravelData = response.data.data
           this.pagenumber = page
         })
       },

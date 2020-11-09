@@ -31,7 +31,7 @@ class StudentController extends Controller
     }
 
     public function hschool(){
-        $h = Student::where('level','=','High School')->get();
+        $h = Student::where('level','=','Senior School')->get();
         return view('students/hschool',['h'=>$h]);
     }
     public function jhschool(){
@@ -43,7 +43,7 @@ class StudentController extends Controller
         return view('students/yschool',['h'=>$h]);
     }
     public function eschool(){
-        $h = Student::where('level','=','Early School')->get();
+        $h = Student::where('level','=','Early Years')->get();
         return view('students/eschool',['h'=>$h]);
     }
     public function grade($val,$grades){

@@ -516,4 +516,15 @@ class Student extends Model
     
         return max($score_list);
     }
+    public static function getStudentsInClass($id,$class_id){
+        $term = Term::find($id);
+        $class_T = S5Class::find($class_id);
+        $student_id = StudentTerm::where('s5_class_id', $class_id)->where('term_id',$id)->get();
+        $ids = array();
+        foreach($student_id as $id){
+          array_push($ids,$id->student_id);
+        } 
+        $students = Student::whereIn('id',$ids)->orderBy('name', 'ASC')->get();
+        return ['term'=>$term,'class_T'=>$class_T,'students'=>$students];
+      }
 }
