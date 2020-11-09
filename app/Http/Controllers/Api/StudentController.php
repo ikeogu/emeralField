@@ -212,7 +212,7 @@ class StudentController extends Controller
               $mark->student_id = $student->id;
               $mark->subject_id = $subject->id;
               $mark->subname = $subject->name;
-              $mark->term_id = $term->id;
+              $mark->term_id = $data['term']->id;
               $mark->s5_class_id= $data['class_T']->id;
               $student->subjectMark()->save($mark);
               $subject->subjectMark()->save($mark);
