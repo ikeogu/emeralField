@@ -1487,7 +1487,7 @@
       },
        removeSubjectToMyStudents(){
         this.$http
-          .post('https://emerald-field-school.herokuapp.com/api/remove_all_subjects_from_students/'+this.T_id.id+'/class/'+this.myId.id, {
+          .delete('https://emerald-field-school.herokuapp.com/api/remove_all_subjects_from_students/'+this.T_id.id+'/class/'+this.myId.id, {
             class_id: this.T_id.id,
             term_id : this.T_id.id
           })

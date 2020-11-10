@@ -105,7 +105,7 @@ Route::namespace('Api')->group(function () {
         Route::delete('removeClassTeacher/{classteacher}','TeacherController@removeClassTeacher');
         Route::post('assign_all_subjects_to_students/{term}/class/{class}','StudentController@assignSubjectToMyStudent');
         
-        Route::post('remove_all_subjects_from_students/{term}/class/{class}','StudentController@removeSubjectToMyStudent');
+        Route::delete('remove_all_subjects_from_students/{term}/class/{class}','StudentController@removeSubjectToMyStudent');
         
     Route::middleware('auth:api', 'throttle:60,1')->group(function () {
        
