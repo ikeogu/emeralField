@@ -19,7 +19,7 @@
                     <th >Name</th>
                     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate text-lowercase the-table">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
+                        <th class="rotate text-capitalize ">{{\Illuminate\Support\Str::limit($item->name, 18, $end='...')}}</th>
                           
                     @endforeach
                 
@@ -177,7 +177,10 @@
               line-height: 120px;
     }
     th, td{
-    font-size: 12px;
+    font-size: 6px;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 .word th{
     word-break: break-word;
