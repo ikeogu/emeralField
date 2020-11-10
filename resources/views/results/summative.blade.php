@@ -19,8 +19,9 @@
                     <th >Name</th>
                     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word text-lowercase" >{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
-                          
+                    <th class="rotate text-capitalize ">
+                        <div>{{$item->name}}</div>
+                    </th>   
                     @endforeach
                 
                 
