@@ -6,10 +6,10 @@
         <a href="#" v-on:click="assignSubjectToMyStudents()"
            class="btn btn-info">Assign Subjects To All</a>
       </div>
-      <div class="col-lg-4 text-right" style="margin-bottom: 10px;">
+      <!-- <div class="col-lg-4 text-right" style="margin-bottom: 10px;">
         <a href="#" v-on:click="removeSubjectToMyStudents()"
            class="btn btn-danger">Remove all Assigned Subjects </a>
-      </div>
+      </div> -->
        <div class="col-lg-4 text-right" style="margin-bottom: 10px;">
         <a href="#"
            data-target="#exampleModalCenter"

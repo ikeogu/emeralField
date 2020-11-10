@@ -204,7 +204,7 @@ class StudentController extends Controller
           foreach($subjects as $subject){
             $studentterm = StudentTerm::where('student_id',$student->id)->where('term_id',$data['term']->id)->
             where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
-            if($studentterm === null){
+            if($studentterm == null){
               $data['term']->subject()->attach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$data['class_T']->id));
               $student->subjects()->attach($subject->id,array('term_id' => $data['term']->id,'s5_class_id'=>$data['class_T']->id));
               
@@ -233,11 +233,12 @@ class StudentController extends Controller
           foreach($subjects as $subject){
               $data['term']->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$data['class_T']->id));
               $student->subjects()->detach($subject->id,array('term_id' => $data['term']->id,'s5_class_id'=>$data['class_T']->id));
+              // $mark = SubjectMark::where('student_id',$student->id)->where('term_id',$term->id)
+              // ->where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
+              //   $mark->delete();
+                      
           }    
-            StudentTerm::where('term_id',$data['term']->id)->
-            where('s5_class_id',$data['class_T']->id)->delete();
-             
-              
+           
          
                       
         }
