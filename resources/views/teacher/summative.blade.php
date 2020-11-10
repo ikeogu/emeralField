@@ -13,13 +13,15 @@
         <div class="card-header bg-success text-white">SUMMATIVE TEST {{$class_->name}}| {{$class_->description}}     {{$term->name}} ||  {{$term->session}}</div>
         <div class="card-body">
             <div class="col-12 table-responsive">
-                <table  class="table table-striped table-bordered  text-default">
+                <table  class="table table-striped table-bordered  text-default" cellpadding="0" cellspacing="0" align="center">
                 <thead class="header">
                     <th class="rotate">S/No</th>
                     <th >Name</th>
                     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate text-capitalize ">{{\Illuminate\Support\Str::limit($item->name, 18, $end='...')}}</th>
+                        <th class="rotate text-capitalize ">
+                            <div>{{$item->name}}</div>
+                        </th>
                           
                     @endforeach
                 
@@ -144,20 +146,24 @@
 
 @endsection
 <style>
- .rotate {
-  transform: rotate(-90deg);
-
-  /* Legacy vendor prefixes that you probably don't need... */
-  /* Safari */
-  -webkit-transform: rotate(-90deg);
-  /* Firefox */
-  -moz-transform: rotate(-90deg);
-  /* IE */
-  -ms-transform: rotate(-90deg);
-  /* Opera */
-  -o-transform: rotate(-90deg);
-  /* Internet Explorer */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ td {
+    border: 1px black solid;
+    padding: 5px;
+}
+.rotate {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.rotate div {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+         margin-left: -10em;
+         margin-right: -10em;
 }
 .table { font-size: 1rem; }
 
@@ -177,7 +183,7 @@
               line-height: 120px;
     }
     th, td{
-    font-size: 6px;
+    font-size: 12px;
     font-weight: bolder;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
@@ -191,7 +197,9 @@
 }
 </style>
 <script>
-
+$(document).ready(function() {
+  $('.rotate').css('height', $('.rotate').width());
+});
 
 //Trim and re-trim only when necessary (prevent re-trim when string is shorted than maxLength, it causes last word cut) 
 function shorten(text,max) {
