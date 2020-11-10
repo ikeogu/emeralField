@@ -22,8 +22,9 @@
                      $cl_av = 0;
                     @endphp     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate .the-table text-lowercase">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
-                          
+                    <th class="rotate text-capitalize ">
+                        <div>{{$item->name}}</div>
+                    </th>  
                     @endforeach
                 
                 
@@ -131,20 +132,24 @@
 </div>
 @endsection
 <style>
-    .rotate {
-  transform: rotate(-90deg);
-
-  /* Legacy vendor prefixes that you probably don't need... */
-  /* Safari */
-  -webkit-transform: rotate(-90deg);
-  /* Firefox */
-  -moz-transform: rotate(-90deg);
-  /* IE */
-  -ms-transform: rotate(-90deg);
-  /* Opera */
-  -o-transform: rotate(-90deg);
-  /* Internet Explorer */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+   td {
+    border: 1px black solid;
+    padding: 5px;
+}
+.rotate {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.rotate div {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+         margin-left: -10em;
+         margin-right: -10em;
 }
 .table { font-size: 1rem; }
 

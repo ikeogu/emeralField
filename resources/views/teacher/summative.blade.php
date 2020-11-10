@@ -183,7 +183,7 @@
               line-height: 120px;
     }
     th, td{
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bolder;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
