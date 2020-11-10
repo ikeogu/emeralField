@@ -267,11 +267,13 @@ private function getStudentsInClass($id,$class_id){
         }
         return $studentTerm;
       }else{
-        return response()->json('message', 'Student has been assigned to class Already!');
+        $data = ['message', 'Student has been assigned to class Already!'];
+        return response()->json($data,204);
       }
 
     }else {
-       return response()->json('message', 'Teacher has Not been assigned to a class');
+      $data = ['message', 'Student has been assigned to class Already!'];
+       return response()->json($data,204);
     }
    
     //  check what happens after adding a child

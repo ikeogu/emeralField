@@ -231,12 +231,16 @@ class StudentController extends Controller
         foreach($data['students'] as $student){
           
           foreach($subjects as $subject){
-            $studentterm = StudentTerm::where('student_id',$student->id)->where('term_id',$data['term']->id)->
-            where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
               $data['term']->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$data['class_T']->id));
               $student->subjects()->detach($subject->id,array('term_id' => $data['term']->id,'s5_class_id'=>$data['class_T']->id));
+              
+            $studentterm = StudentTerm::where('student_id',$student->id)->where('term_id',$data['term']->id)->
+            where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
+             if($studentterm){
               $studentterm->delete();
            
+             }
+              
           }
                       
         }
