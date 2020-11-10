@@ -63,7 +63,7 @@
         
               <!-- Nav Item - Dashboard -->
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{route('teacher.dashboard')}}">
                   <i class="fas fa-fw fa-tachometer-alt"></i>
                   <span>Teacher's Dashboard</span></a>
               </li>
