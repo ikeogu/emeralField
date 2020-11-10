@@ -224,6 +224,24 @@ class StudentController extends Controller
         }
          
       }
+      public function removeSubjectToMyStudent($term, $s5class)
+      {
+        $data = Student::getStudentsInClass($term,$s5class);
+        $subjects = Subject::where('level',$data['class_T']->status)->get();
+        foreach($data['students'] as $student){
+          
+          foreach($subjects as $subject){
+            $studentterm = StudentTerm::where('student_id',$student->id)->where('term_id',$data['term']->id)->
+            where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
+              $data['term']->subject()->detach($subject->id,array('student_id' => $student->id,'s5_class_id'=>$data['class_T']->id));
+              $student->subjects()->detach($subject->id,array('term_id' => $data['term']->id,'s5_class_id'=>$data['class_T']->id));
+              $studentterm->delete();
+           
+          }
+                      
+        }
+         
+      }
       public function deleteSubject(Student $student, Subject $subject,$class_id, Term $term)
       {
         $class_ = S5Class::find($class_id);
