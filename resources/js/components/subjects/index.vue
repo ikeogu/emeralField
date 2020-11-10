@@ -239,7 +239,7 @@
                   
                 </thead>
                 <tbody>
-                  <tr v-for="(sub,index) in subjects" :key="sub.id">
+                  <tr v-for="(sub,index) in orderedSubject" :key="sub.id">
                     <td>{{ index + 1 }}</td>
                     <td>{{ sub.name }}</td>
                     <td>{{ sub.description }}</td>
