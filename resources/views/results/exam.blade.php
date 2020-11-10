@@ -16,7 +16,7 @@
                     <th >Name</th>
                     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word text-lowercase" scope="col">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
+                        <th class="rotate word text-lowercase the-table">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
                           
                     @endforeach
                 
@@ -178,6 +178,10 @@
 }
 .word th{
     word-break: break-word;
+}
+.the-table {
+    table-layout: fixed;
+    over-flow: break-word;
 }
 </style>
 <script>

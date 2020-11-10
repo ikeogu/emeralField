@@ -22,7 +22,7 @@
                      $cl_av = 0;
                     @endphp     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word text-lowercase" scope="col">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
+                        <th class="rotate .the-table text-lowercase">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
                           
                     @endforeach
                 
@@ -169,6 +169,10 @@ th, td{
 }
 .word th{
     word-break: break-word;
+}
+.the-table {
+    table-layout: fixed;
+    over-flow: break-word;
 }
 </style>
 <script>
