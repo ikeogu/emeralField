@@ -282,7 +282,7 @@ private function getStudentsInClass($id,$class_id){
     $student = Student::find($studid);
     $class_ = S5Class::find($classid);
     $term = Term::find($termid);
-    $studTerm = StudentTerm::where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
+    $studTerm = StudentTerm::where('term_id',$term->id)->where('student_id',$student->id)->where('s5_class_id',$class_->id)->first();
     $comment = Comment::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
     $att = Attendance::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
     $behave = BehaviourChart::where('student_id',$student->id)->where('term_id',$term->id)->where('s5_class_id',$class_->id)->first();
