@@ -338,7 +338,31 @@
                           </button>
               </div>
               <div class="modal-body">
-                <form method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore" v-if="logged_in.level === 'High School'">
+                <form method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore" v-if="logged_in.level === 'Senior High School'">
+
+                   <div class="form-group">
+                    <label for="roll_no">CAT 1</label>
+                    <input type="text" name="CAT1"  class="form-control" placeholder="Enter CAT 1 Score" v-model="student_mark.CAT1" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="roll_no">CAT 2</label>
+                    <input type="number" name="CAT2" class="form-control" placeholder="Enter CAT 2 Score" v-model="student_mark.CAT2" />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact">MSC</label>
+                    <input type="number" name="MSC"  class="form-control" placeholder="Enter MSC Score" v-model="student_mark.MSC" />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact">Exam</label>
+                    <input type="number" name="exam"  class="form-control" placeholder="Enter MSC Score" v-model="student_mark.Exam" />
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button class="btn btn-success">Update</button>
+                  </div>
+                </form>
+                <form method="post" name="updatescore" id="updatescore" action="#" @submit.prevent="updateScore" v-if="logged_in.level === 'Junior High School'">
 
                    <div class="form-group">
                     <label for="roll_no">CAT 1</label>
