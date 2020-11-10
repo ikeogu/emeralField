@@ -201,7 +201,7 @@ class StudentController extends Controller
         $subjects = Subject::where('level',$data['class_T']->status)->get();
         foreach($data['students'] as $student){
           
-          foreach($subjects as $subject){
+          foreach($subjects->sortByAsc('name') as $subject){
             $studentterm = StudentTerm::where('student_id',$student->id)->where('term_id',$data['term']->id)->
             where('s5_class_id',$data['class_T']->id)->where('subject_id',$subject->id)->first();
             if($studentterm == null){
