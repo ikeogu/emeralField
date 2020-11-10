@@ -135,7 +135,7 @@ class TeacherController extends Controller
         array_push($ids, $subject->id);
       }
 
-      $subjects = Subject::whereNotIn('id', $ids)->where('level','=',$t->level)->get();
+      $subjects = Subject::whereNotIn('id', $ids)->get();
   
       return $subjects;
 
