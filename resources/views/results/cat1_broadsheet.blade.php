@@ -22,7 +22,7 @@
                      $cl_av = 0;
                     @endphp     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word text-lowercase" scope="col" >{{$item->name}}</th>
+                        <th class="rotate word text-lowercase" scope="col" >{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
                           
                     @endforeach
                     <th class="rotate">Total</th>

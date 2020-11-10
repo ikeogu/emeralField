@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
     <div class="card">
-    <div class="card-header bg-success text-capitalize text-white">C.A.T 1 {{$class_->name}}|   {{$class_->description}}  | {{$term->name}}|  {{$term->session}}</div>
+    <div class="card-header bg-success text-capitalize text-white">C.A.T 1 {{$class_->name}} |   {{$class_->description}}  | {{$term->name}}|  {{$term->session}}</div>
         <div class="card-body">
             <div class="col-12 table-responsive">
                 <table  class="table table-striped table-bordered m-0  text-default" style="width:100%">
@@ -22,7 +22,7 @@
                      $cl_av = 0;
                     @endphp     
                     @foreach ($subject as  $key => $item)
-                        <th class="rotate word text-lowercase" scope="col">{{$item->name}}</th>
+                        <th class="rotate word text-lowercase" scope="col">{{\Illuminate\Support\Str::limit($item->name, 12, $end='...')}}</th>
                           
                     @endforeach
                     <th class="rotate">Total</th>
