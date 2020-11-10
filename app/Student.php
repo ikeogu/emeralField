@@ -177,13 +177,14 @@ class Student extends Model
     public static function h_aver($class, $term){
         $num = Average::where('s5_class_id',$class)->where('term_id',$term)->get();
         $array = [];
-        if($num != null){
+        if($num){
             foreach ($num as  $value) {
                 # code...
                 array_push($array,$value->aver_);
             }
             return number_format(max($array));
         }
+        return '';
        
     }
 
