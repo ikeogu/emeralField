@@ -24,7 +24,7 @@ class Teacher extends JsonResource
             'start_year' => $this->start_year,
             'status' => $this->status,
             'level' => $this->level,
-            'track' => User::where('teacher_id',$this->id)->first()->keep_track,
+            // 'track' => User::where('teacher_id',$this->id)->first()->keep_track,
             'subjects' => SubjectResource::collection($this->whenLoaded('subjects')),
             'class_teacher' => ClassTeacherResource::collection($this->whenLoaded('classTeacher')),
             ];
