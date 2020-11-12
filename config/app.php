@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'EmeraldFieldSchools'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://emerald-field-school.herokuapp.com'),
+    'url' => env('APP_URL', 'https://efs.ishlp.com'),
 
     /*
     |--------------------------------------------------------------------------

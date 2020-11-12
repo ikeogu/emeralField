@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth.jwt']], function () {
 });
 
 Route::namespace('Api')->group(function () {
+    Route::group(['middleware' => 'cors'], function () {
         Route::apiResource('students', 'StudentController');
         Route::apiResource('subjects', 'SubjectController');
         Route::apiResource('grades', 'GradeSettingController');
@@ -106,7 +107,7 @@ Route::namespace('Api')->group(function () {
         Route::post('assign_all_subjects_to_students/{term}/class/{class}','StudentController@assignSubjectToMyStudent');
         
         Route::delete('remove_all_subjects_from_students/{term}/class/{class}','StudentController@removeSubjectToMyStudent');
-        
+    });   
     Route::middleware('auth:api', 'throttle:60,1')->group(function () {
        
         Route::get('results/students', 'ResultController@students');

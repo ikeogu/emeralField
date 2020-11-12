@@ -45,6 +45,7 @@ import students from './components/students/index.vue';
 //  Vue.prototype.$userId = document.querySelector("meta[name='user_id']").getAttribute('content');
 import moment from 'moment';
 import student_class_T from  './components/class/class-ct.vue';
+
 import _ from 'lodash'
 Vue.prototype._ = _
 
@@ -61,14 +62,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios);
 Vue.use(VueAuthenticate, {
-    baseUrl: 'https://emerald-field-school.herokuapp.com//', // Your API domain
-
-    providers: {
-        // google: {
-        //     clientId: '519675463204-7bc7lvaqti1teo41im6e5he5lbjjvthk.apps.googleusercontent.com',
-        //     redirectUri: 'http://localhost:8000/' // Your client app URL
-        // }
-    }
+    baseUrl: 'hello', // Your API domain
 });
 
 //vue-toaster
@@ -101,29 +95,6 @@ const router = new VueRouter({
 ]
 });
 
-// router.beforeEach((to, from, next) => {
-
-//     // check if the route requires authentication and user is not logged in
-//     if (to.matched.some(route => route.meta.requiresAuth) && !store.state.isLoggedIn) {
-//         // redirect to login page
-//         next({ name: 'login' })
-//         return
-//     }
-
-//     // if logged in redirect to dashboard
-//     if(to.path === '/login' && store.state.isLoggedIn) {
-//         next({ name: 'dashboard' })
-//         return
-//     }
-
-//     next()
-// });
-Vue.router = router
-// Vue.use(require('@websanova/vue-auth'), {
-//     auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
-//     http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
-//     router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
-// });
 App.router = Vue.router
 // new Vue(App).$mount('#app');
 new Vue({

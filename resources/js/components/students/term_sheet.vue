@@ -14,7 +14,7 @@
           <div class="card-header"> {{assignedSubjects.length}} Subject's Record</div>
             <div class="card-body">
 
-              <div class="row" v-if="student_details.level =='Junior High School'|| 'Senior High School'">
+              <div class="row" v-if="student_details.level =='Junior High School'|| student_details.level =='Senior High School'">
                
                 <div class="col-12 table-responsive">
                   <table  class="table-wrapper table table-striped" >
@@ -172,7 +172,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/my_subject/'+this.student_details.id+'/class/'+this.myClass.id+'/term/'+this.T.id).then(response => {
+        this.$http.get('https://efs.ishlp.com/api/my_subject/'+this.student_details.id+'/class/'+this.myClass.id+'/term/'+this.T.id).then(response => {
           
           this.assignedSubjects = response.data
           

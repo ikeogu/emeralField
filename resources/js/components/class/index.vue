@@ -175,7 +175,7 @@
                   <td>{{ las.status }}</td>
                   <td>
                     <!-- <a :href="'http://127.0.0.1:8000/api/studentsclass/' + las.id" class="btn btn-info text-white ">More</a> -->
-                    <a :href="'https://emerald-field-school.herokuapp.com/api/class_terms/' + las.id" class="btn btn-info text-white ">More</a>
+                    <a :href="'https://efs.ishlp.com/api/class_terms/' + las.id" class="btn btn-info text-white ">More</a>
                   </td>
                   <!-- link to student in a class -->
                   <td><a href="#"
@@ -235,7 +235,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses?page=' + page).then(response => {
+        this.$http.get('https://efs.ishlp.com/api/schclasses?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -248,7 +248,7 @@
       },
       addClass() {
         this.$http
-          .post('https://emerald-field-school.herokuapp.com/api/schclasses', {
+          .post('https://efs.ishlp.com/api/schclasses', {
             name: this.classes.name,
             description: this.classes.description,
             no_of_students: this.classes.no_of_students,
@@ -276,7 +276,7 @@
           })
       },
       editClass(classesid) {
-        this.$http.get('https://emerald-field-school.herokuapp.com/api/schclasses/' + classesid).then(data => {
+        this.$http.get('https://efs.ishlp.com/api/schclasses/' + classesid).then(data => {
           this.classes.name = data.data.data.name
           this.classes.description = data.data.data.description,
           this.classes.no_of_students = data.data.data.no_of_students
@@ -286,7 +286,7 @@
       },
       updateClass() {
         this.$http
-          .put('https://emerald-field-school.herokuapp.com/api/schclass/' + this.id, {
+          .put('https://efs.ishlp.com/api/schclass/' + this.id, {
             schclass_id:this.id,
             name: this.classes.name,
             description:this.classes.description,
@@ -318,7 +318,7 @@
         this.id = classesid
       },
       deleteClass() {
-        this.$http.delete('https://emerald-field-school.herokuapp.com/api/schclasses/' + this.id).then(data => {
+        this.$http.delete('https://efs.ishlp.com/api/schclasses/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
