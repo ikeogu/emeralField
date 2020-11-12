@@ -143,7 +143,7 @@
                     <div class="card-body">
                       <h5 class="card-title" style=" font-size:9px;">{{term.name}}</h5>
                       <p class="card-text" style=" font-size:9px;">{{term.session}}</p>
-                      <a :href="'https://efs.ishlp.com/api/my_subjects/'+logged_in.id+'/class/'+class_id+'/term/'+term.id" class="btn btn-success btn-sm"  >view</a>
+                      <a :href="BASE_URL + '/api/my_subjects/'+logged_in.id+'/class/'+class_id+'/term/'+term.id" class="btn btn-success btn-sm"  >view</a>
                     </div>
                   </div>
                 </div>
@@ -161,7 +161,7 @@
 </template>
 
 <script>
-
+   const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -192,14 +192,14 @@
     methods: {
 
       fetchMyClass() {
-        this.$http.get('https://efs.ishlp.com/api/myclass/' +this.logged_in.id ).then(response => {
+        this.$http.get(BASE_URL + '/api/myclass/' +this.logged_in.id ).then(response => {
           this.myClasses = response.data.data
         })
       },
      
       updateStudent() {
         this.$http
-          .patch('https://efs.ishlp.com/api/students/' + this.logged_in.id, {
+          .patch(BASE_URL + '/api/students/' + this.logged_in.id, {
 
             student_id:this.logged_in.id,
             name: this.logged_in.name,
@@ -229,7 +229,7 @@
       
       ClassId(class_id){
         this.class_id = class_id,
-        this.$http.get('https://efs.ishlp.com/api/s5class_term/' + class_id ).then(response => {
+        this.$http.get(BASE_URL + '/api/s5class_term/' + class_id ).then(response => {
           this.terms = response.data.data
         })
       },

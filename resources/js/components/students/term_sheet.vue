@@ -130,7 +130,7 @@
 
 <script src="https://vuejs.org/js/vue.min.js"></script>
 <script>
-
+  const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -172,7 +172,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/my_subject/'+this.student_details.id+'/class/'+this.myClass.id+'/term/'+this.T.id).then(response => {
+        this.$http.get(BASE_URL + '/api/my_subject/'+this.student_details.id+'/class/'+this.myClass.id+'/term/'+this.T.id).then(response => {
           
           this.assignedSubjects = response.data
           

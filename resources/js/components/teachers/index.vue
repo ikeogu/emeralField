@@ -401,7 +401,7 @@
 </template>
 
 <script>
-
+  const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -456,7 +456,7 @@
     methods: {
 
       fetchClasses() {
-        this.$http.get('https://efs.ishlp.com/api/schclasses').then(response => {
+        this.$http.get(BASE_URL + '/api/schclasses').then(response => {
           //this.posts = response.data.data;
           this.laravelClassData = response.data.data
           
@@ -467,7 +467,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/teachers?page=' + page).then(response => {
+        this.$http.get(BASE_URL + '/api/teachers?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data.data
           console.log(this.laravelData)
@@ -476,7 +476,7 @@
       },
       addTeacher() {
         this.$http
-          .post('https://efs.ishlp.com/api/teachers', {
+          .post(BASE_URL + '/api/teachers', {
             
             start_year: this.teacher.start_year,
             level: this.teacher.level,
@@ -506,7 +506,7 @@
           })
       },
       editTeacher(teacherid) {
-        this.$http.get('https://efs.ishlp.com/api/teachers/' + teacherid).then(data => {
+        this.$http.get(BASE_URL + '/api/teachers/' + teacherid).then(data => {
           
           this.teacher.name = data.data.data.name
           this.teacher.start_year = data.data.data.start_year
@@ -517,7 +517,7 @@
       },
       updateTeacher() {
         this.$http
-          .put('https://efs.ishlp.com/api/teachers/' + this.id, {
+          .put(BASE_URL + '/api/teachers/' + this.id, {
             teacher_id:this.id,
             name: this.teacher.name,
             start_year: this.teacher.start_year,
@@ -549,7 +549,7 @@
         this.id = teacherid
       },
       deleteteacher() {
-        this.$http.delete('https://efs.ishlp.com/api/teachers/' + this.id).then(data => {
+        this.$http.delete(BASE_URL + '/api/teachers/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
@@ -574,7 +574,7 @@
       },
 
         unassignedSubjectList(subject) {
-        this.$http.get('https://efs.ishlp.com/api/teachers/'+subject+'/unassignedsubjects').then(response => {
+        this.$http.get(BASE_URL + '/api/teachers/'+subject+'/unassignedsubjects').then(response => {
           this.unassignedSubjects = response.data;
           
           this.teacher.teacher_id = subject;
@@ -582,13 +582,13 @@
         })
       },
       assignedSubjectList(subject) {
-        this.$http.get('https://efs.ishlp.com/api/teachers/'+subject+'/assignedsubjects').then(response => {
+        this.$http.get(BASE_URL + '/api/teachers/'+subject+'/assignedsubjects').then(response => {
           this.assignedSubjects = response.data
         })
       },
       assignSubject(teacher_id, subject_id){
         this.$http
-          .post('https://efs.ishlp.com/api/teachers/'+this.teacher.teacher_id+'/assignsubject/'+subject_id, {
+          .post(BASE_URL + '/api/teachers/'+this.teacher.teacher_id+'/assignsubject/'+subject_id, {
             teacher_id: this.teacher.teacher_id,
             subject_id: this.class_id,
           })
@@ -604,7 +604,7 @@
       },
        classTerms() {
 
-        this.$http.get('https://efs.ishlp.com/api/terms').then(response => {
+        this.$http.get(BASE_URL + '/api/terms').then(response => {
           //this.posts = response.data.data;
           this.classLists = response.data.data
           
@@ -615,7 +615,7 @@
         this.teacher_(this.item.teacher_id)
       },
       teacher_(t){
-        this.$http.get('https://efs.ishlp.com/api/teacher_c/'+t)
+        this.$http.get(BASE_URL + '/api/teacher_c/'+t)
         .then(response => {
           this.mclass= response.data.data
           console.log(this.mclass)
@@ -623,7 +623,7 @@
       },
       classTeacher(teacherid, classid,termid){
         this.$http
-          .get('https://efs.ishlp.com/api/assignclassteacher/'+teacherid +'/class/'+classid +'/term/'+termid)
+          .get(BASE_URL + '/api/assignclassteacher/'+teacherid +'/class/'+classid +'/term/'+termid)
           .then(response => {
           this.myclass= response.data.data
         
@@ -645,7 +645,7 @@
           })
       },
       removeClassTeacher(Tid){
-        this.$http.delete('https://efs.ishlp.com/api/removeClassTeacher/' +Tid).then(data => {
+        this.$http.delete(BASE_URL + '/api/removeClassTeacher/' +Tid).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
@@ -664,7 +664,7 @@
       },
       deleteSubject(teacher_id, subid){
           this.$http
-          .delete('https://efs.ishlp.com/api/teachers/'+teacher_id+'/deletesubject/'+subid, {
+          .delete(BASE_URL + '/api/teachers/'+teacher_id+'/deletesubject/'+subid, {
             teacher_id: this.teacher_id,
             subject_id: this.subid,
           })

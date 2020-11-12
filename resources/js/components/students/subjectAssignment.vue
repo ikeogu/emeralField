@@ -114,7 +114,7 @@
 </template>
 
 <script>
-
+   const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -135,7 +135,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/students?page=' + page).then(response => {
+        this.$http.get(BASE_URL + '/api/students?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.students = response.data
           this.pagenumber = page
@@ -146,20 +146,20 @@
       Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
     },
       unassignedSubjectsList(student) {
-        this.$http.get('https://efs.ishlp.com/api/students/'+student+'/unassignedsubjects').then(response => {
+        this.$http.get(BASE_URL + '/api/students/'+student+'/unassignedsubjects').then(response => {
           this.unassignedSubjects = response.data;
           this.student_id = student;
           this.assignedSubjectsList(student);
         })
       },
       assignedSubjectsList(student,term_id) {
-        this.$http.get('https://efs.ishlp.com/api/students/'+student+'/assignedsubjects/'+term_id+'/term').then(response => {
+        this.$http.get(BASE_URL + '/api/students/'+student+'/assignedsubjects/'+term_id+'/term').then(response => {
           this.assignedSubjects = response.data
         })
       },
       assignSubject(student_id, subject_id) {
         this.$http
-          .post('https://efs.ishlp.com/api/students/'+student_id+'/assignsubject/'+subject_id, {
+          .post(BASE_URL + '/api/students/'+student_id+'/assignsubject/'+subject_id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
           })
@@ -175,7 +175,7 @@
       },
       deleteSubject(student_id, subject_id) {
         this.$http
-          .delete('https://efs.ishlp.com/api/students/'+student_id+'/deletesubject/'+subject_id, {
+          .delete(BASE_URL + '/api/students/'+student_id+'/deletesubject/'+subject_id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
           })
@@ -193,7 +193,7 @@
         this.id = studentid
       },
       deleteStudent() {
-        this.$http.delete('https://efs.ishlp.com/api/students/' + this.id).then(data => {
+        this.$http.delete(BASE_URL + '/api/students/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

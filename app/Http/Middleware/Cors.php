@@ -3,7 +3,7 @@
 use Closure;
 use Illuminate\Http\Response;
 
-class CORS {
+class Cors {
 
     /**
      * Handle an incoming request.

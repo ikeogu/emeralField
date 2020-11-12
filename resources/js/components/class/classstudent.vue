@@ -41,7 +41,7 @@
                             
                           <td>
 
-                            <a :href="'https://efs.ishlp.com/api/studentSubject/'+st.id+'/class/'+classId.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
+                            <a :href="BASE_URL + '/api/studentSubject/'+st.id+'/class/'+classId.id+'/term/'+T_id.id" class="btn btn-info text-white  ">View Subjects</a>
                           </td>
                   
                 </tr>
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+   const BASE_URL = 'https://efs.ishlp.com';
  export default {
     data() {
       return {

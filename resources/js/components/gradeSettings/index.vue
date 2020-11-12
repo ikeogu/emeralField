@@ -198,7 +198,7 @@
 </template>
 
 <script>
-
+   const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -220,7 +220,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/grades?page=' + page).then(response => {
+        this.$http.get(BASE_URL + '/api/grades?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -228,7 +228,7 @@
       },
       addGradeSetting() {
         this.$http
-          .post('https://efs.ishlp.com/api/grades', {
+          .post(BASE_URL + '/api/grades', {
             percentage: this.setting.percentage,
             grade: this.setting.grade,
             description: this.setting.description,
@@ -255,7 +255,7 @@
           })
       },
       editGradeSetting(settingid) {
-        this.$http.get('https://efs.ishlp.com/api/grades/' + settingid).then(data => {
+        this.$http.get(BASE_URL + '/api/grades/' + settingid).then(data => {
           this.setting.percentage = data.data.data.percentage
           this.setting.grade = data.data.data.grade
           this.setting.description = data.data.data.description
@@ -265,7 +265,7 @@
       },
       updateGradeSetting() {
         this.$http
-          .patch('https://efs.ishlp.com/api/grades/' + this.id, {
+          .patch(BASE_URL + '/api/grades/' + this.id, {
             percentage: this.setting.percentage,
             grade: this.setting.grade,
             description: this.setting.description,
@@ -295,7 +295,7 @@
         this.id = settingid
       },
       deleteGradeSetting() {
-        this.$http.delete('https://efs.ishlp.com/api/grades/' + this.id).then(data => {
+        this.$http.delete(BASE_URL + '/api/grades/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

@@ -163,7 +163,7 @@
                             
                           <td>
 
-                            <a :href="'https://efs.ishlp.com/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
+                            <a :href="BASE_URL + '/api/studentSubject/'+st.id+'/term/'+T_id.id+'/class/'+myId.id" 
                             class="btn btn-warning text-white  ">View Subjects</a>
                           </td>
                   <td><a href="#" class="btn btn-success text-white"
@@ -1359,7 +1359,7 @@
 </template>
 
 <script>
-   
+    const BASE_URL = 'https://efs.ishlp.com';
 
 
   export default {
@@ -1418,7 +1418,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/students?page=' + page).then(response => {
+        this.$http.get(BASE_URL + '/api/students?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.students = response.data
           this.pagenumber = page         
@@ -1426,7 +1426,7 @@
       },
       autoComplete(){
                    
-            this.$http.post('https://efs.ishlp.com/api/search',{query: this.query}).then(response => {
+            this.$http.post(BASE_URL + '/api/search',{query: this.query}).then(response => {
             this.results = response.data;
             console.log(this.results);
             });  
@@ -1439,7 +1439,7 @@
       addStudent(id) {
          this.add_student.term_id  = this.T_id.id,
         this.$http
-          .post('https://efs.ishlp.com/api/add_student_class/'+id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
+          .post(BASE_URL + '/api/add_student_class/'+id+'/term/'+ this.add_student.term_id +'/class/'+this.myId.id , {
              term_id: this.add_student.term_id ,
             student_id: this.add_student.stud_id,
             class_id:this.myId.id
@@ -1464,21 +1464,21 @@
       },
       
       unassignedSubjectsList(student,term_id) {
-        this.$http.get('https://efs.ishlp.com/api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+        this.$http.get(BASE_URL + '/api/students/'+student+'/unassignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.unassignedSubjects = response.data;
           this.student_id = student;
           this.assignedSubjectsList(student);
         })
       },
       assignedSubjectsList(student,term_id) {
-        this.$http.get('https://efs.ishlp.com/api/students/'+student+'/assignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+        this.$http.get(BASE_URL + '/api/students/'+student+'/assignedsubjects/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.assignedSubjects = response.data
         })
       },
       
       assignSubject(student_id, subject_id,term_id){
         this.$http
-          .post('https://efs.ishlp.com/api/students/'+student_id+'/assignsubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+          .post(BASE_URL + '/api/students/'+student_id+'/assignsubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
             term_id : this.T_id.id
@@ -1495,7 +1495,7 @@
       },
       assignSubjectToMyStudents(){
         this.$http
-          .post('https://efs.ishlp.com/api/assign_all_subjects_to_students/'+this.T_id.id+'/class/'+this.myId.id, {
+          .post(BASE_URL + '/api/assign_all_subjects_to_students/'+this.T_id.id+'/class/'+this.myId.id, {
             class_id: this.T_id.id,
             term_id : this.T_id.id
           })
@@ -1510,7 +1510,7 @@
       },
       removeSubjectToMyStudents(){
         this.$http
-          .delete('https://efs.ishlp.com/api/remove_all_subjects_from_students/'+this.T_id.id+'/class/'+this.myId.id, {
+          .delete(BASE_URL + '/api/remove_all_subjects_from_students/'+this.T_id.id+'/class/'+this.myId.id, {
             class_id: this.T_id.id,
             term_id : this.T_id.id
           })
@@ -1525,7 +1525,7 @@
       },
       deleteSubject(student_id, subject_id) {
         this.$http
-          .delete('https://efs.ishlp.com/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
+          .delete(BASE_URL + '/api/students/'+student_id+'/deletesubject/'+subject_id+'/class/'+this.myId.id+'/term/'+this.T_id.id, {
             student_id: this.student_id,
             subject_id: this.subject_id,
           })
@@ -1544,21 +1544,21 @@
       
       },
       fetchComment(){
-       this.$http.get('https://efs.ishlp.com/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get(BASE_URL + '/api/comment/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.comments = response.data.data;
           
        })
           
       },
       fetchBehave(){
-       this.$http.get('https://efs.ishlp.com/api/behave/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get(BASE_URL + '/api/behave/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.behaviour = response.data.data;
           
        })
           
       },
       fetchAttend(){
-       this.$http.get('https://efs.ishlp.com/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
+       this.$http.get(BASE_URL + '/api/attendance/class/'+this.myId.id+'/term/'+this.T_id.id).then(response => {
           this.attendance = response.data.data;
          
        })
@@ -1572,7 +1572,7 @@
       },
       updateComment() {
         this.$http
-          .put('https://efs.ishlp.com/api/comments/' + this.comment_id, {
+          .put(BASE_URL + '/api/comments/' + this.comment_id, {
             comment_id: this.comment_id,
             comment: this.comments.comment,
             hcomment: this.comments.hcomment,
@@ -1593,7 +1593,7 @@
           })
       },
       removeStudent() {
-        this.$http.delete('https://efs.ishlp.com/api/remove_stud_in_class/student/'+this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
+        this.$http.delete(BASE_URL + '/api/remove_stud_in_class/student/'+this.id+'/class/'+this.myId.id+'/term/'+this.T_id.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {
@@ -1626,7 +1626,7 @@
       },
       updateBehaviour() {
         this.$http
-          .put('https://efs.ishlp.com/api/behaviour/'+ this.bev_id, {
+          .put(BASE_URL + '/api/behaviour/'+ this.bev_id, {
             behave_id: this.bev_id,
             pic:this.behaviour.pic,
             la:this.behaviour.la,
@@ -1697,7 +1697,7 @@
 
       updateAttendance() {
         this.$http
-          .put('https://efs.ishlp.com/api/attendance/'+ this.attend_id, {
+          .put(BASE_URL + '/api/attendance/'+ this.attend_id, {
             attend_id: this.attend_id,
             dp:this.attendance.dp,
             da:this.attendance.da,

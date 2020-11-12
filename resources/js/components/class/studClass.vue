@@ -8,7 +8,7 @@
         <div class="card-body">
         <h5 class="card-title">{{term.name}}</h5>
         <p class="card-text">{{term.session}}</p>
-        <a :href="'https://efs.ishlp.com/api/' + term.id" class="btn btn-success">view</a>
+        <a :href="BASE_URL + '/api/' + term.id" class="btn btn-success">view</a>
         </div>
       </div>
         
@@ -140,7 +140,7 @@
 </template>
 
 <script>
-
+   const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -169,14 +169,14 @@
     methods: {
 
       fetchMyClass() {
-        this.$http.get('https://efs.ishlp.com/api/myclass/' +this.logged_in.id ).then(response => {
+        this.$http.get(BASE_URL + '/api/myclass/' +this.logged_in.id ).then(response => {
           this.myClasses = response.data.data
         })
       },
      
       updateStudent() {
         this.$http
-          .patch('https://efs.ishlp.com/api/students/' + this.logged_in.id, {
+          .patch(BASE_URL + '/api/students/' + this.logged_in.id, {
 
             student_id:this.logged_in.id,
             name: this.logged_in.name,

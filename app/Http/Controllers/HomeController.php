@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        
             if(Auth::user()->isAdmin === 1){
                return redirect(route('term')); 
             }
@@ -35,8 +35,7 @@ class HomeController extends Controller
                 return redirect(route('teacher.dashboard'));
             }
             return redirect('/login');
-        }
-        return redirect('/login');
+       
     }
     
     public function logout(){

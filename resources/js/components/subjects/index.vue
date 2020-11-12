@@ -271,7 +271,7 @@
 </template>
 
 <script>
-
+  const BASE_URL = 'https://efs.ishlp.com';
   export default {
     data() {
       return {
@@ -314,7 +314,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/subjects?page=' + page).then(response => {
+        this.$http.get(BASE_URL + '/api/subjects?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data.data
           this.pagenumber = page
@@ -327,7 +327,7 @@
       },
       addSubject() {
         this.$http
-          .post('https://efs.ishlp.com/api/subjects', {
+          .post(BASE_URL + '/api/subjects', {
             name: this.subject.name,
             description: this.subject.description,
             home_work: this.subject.home_work,
@@ -368,7 +368,7 @@
           })
       },
       editSubject(subjectid) {
-        this.$http.get('https://efs.ishlp.com/api/subjects/' + subjectid).then(data => {
+        this.$http.get(BASE_URL + '/api/subjects/' + subjectid).then(data => {
           this.subject.name = data.data.data.name,
           this.subject.description = data.data.data.description,
           this.subject.home_work = data.data.data.home_work,
@@ -385,7 +385,7 @@
       },
       updateSubject() {
         this.$http
-          .patch('https://efs.ishlp.com/api/subjects/' + this.id, {
+          .patch(BASE_URL + '/api/subjects/' + this.id, {
             name: this.subject.name,
             description: this.subject.description,
             // home_work: this.subject.home_work,
@@ -430,7 +430,7 @@
         this.id = subjectid
       },
       deleteSubject() {
-        this.$http.delete('https://efs.ishlp.com/api/subjects/' + this.id).then(data => {
+        this.$http.delete(BASE_URL + '/api/subjects/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

@@ -51,14 +51,14 @@
     methods: {
 
       fetchClasses() {
-        this.$http.get('https://efs.ishlp.com/api/schclasses').then(response => {
+        this.$http.get(BASE_URL + '/api/schclasses').then(response => {
           //this.posts = response.data.data;
           this.laravelClassData = response.data
           
         })
       },
         fetchTerms() {
-        this.$http.get('https://efs.ishlp.com/api/terms').then(responses => {
+        this.$http.get(BASE_URL + '/api/terms').then(responses => {
           //this.posts = response.data.data;
           this.laravelTerm = responses.data
           
@@ -71,7 +71,7 @@
         if (typeof page === 'undefined') {
           page = 1
         }
-        this.$http.get('https://efs.ishlp.com/api/students?page=' + page).then(response => {
+        this.$http.get(BASE_URL + '/api/students?page=' + page).then(response => {
           //this.posts = response.data.data;
           this.laravelData = response.data
           this.pagenumber = page
@@ -79,7 +79,7 @@
       },
       addStudent() {
         this.$http
-          .post('https://efs.ishlp.com/api/students', {
+          .post(BASE_URL + '/api/students', {
             name: this.student.name,
             surname: this.student.surname,
             gender: this.student.gender,
@@ -119,7 +119,7 @@
           })
       },
       editStudent(studentid) {
-        this.$http.get('https://efs.ishlp.com/api/students/' + studentid).then(data => {
+        this.$http.get(BASE_URL + '/api/students/' + studentid).then(data => {
           
           this.student.name = data.data.data.name
           this.student.surname = data.data.data.surname
@@ -135,7 +135,7 @@
       },
       updateStudent() {
         this.$http
-          .patch('https://efs.ishlp.com/api/students/' + this.id, {
+          .patch(BASE_URL + '/api/students/' + this.id, {
             student_id:this.id,
             name: this.student.name,
             surname: this.student.surname,
@@ -172,7 +172,7 @@
         this.id = studentid
       },
       deleteStudent() {
-        this.$http.delete('https://efs.ishlp.com/api/students/' + this.id).then(data => {
+        this.$http.delete(BASE_URL + '/api/students/' + this.id).then(data => {
           this.succmsg = false
           var self = this
           setTimeout(function() {

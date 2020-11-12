@@ -46,6 +46,7 @@ import students from './components/students/index.vue';
 import moment from 'moment';
 import student_class_T from  './components/class/class-ct.vue';
 
+
 import _ from 'lodash'
 Vue.prototype._ = _
 
@@ -61,10 +62,6 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios);
-Vue.use(VueAuthenticate, {
-    baseUrl: 'hello', // Your API domain
-});
-
 //vue-toaster
 import Toaster from 'v-toaster';
 import 'v-toaster/dist/v-toaster.css';
