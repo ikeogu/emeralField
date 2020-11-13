@@ -8,7 +8,7 @@
         "php": "^7.4.10",
         "barryvdh/laravel-dompdf": "^0.8.7",
         "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^1.0",
+        "fruitcake/laravel-cors": "^2.0",
         "huddledigital/zendesk-laravel": "^3.5",
         "laravel/framework": "^7.0",
         "laravel/helpers": "^1.2",
